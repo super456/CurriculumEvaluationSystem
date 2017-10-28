@@ -16,9 +16,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
+	<!-- 添加网站图标为学校院徽 -->
+	<link rel="shortcut icon" href="publicStyle/images/favicon.ico"/>
 
 <link rel="stylesheet" type="text/css" href="publicStyle/css/login-css/styles.css">
 <!-- 背景图片放在css/login-css/style.css中显示不出来，还没找到具体问题，应该是文件存放的路径跟运行路径不一致的问题 -->
@@ -47,8 +46,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</select></center><br>
 					<input type="text" name="CheckCode" placeholder="验证码">	<!--  <img src="images/verify.PNG" border="0" class="verifyimg" />-->
 	               <button type="submit" >登录</button>
-		<!--  	<button type="submit" id="login-button">登录</button><br>-->
-			<!--  <button type="reset" id="login-button">取消</button>-->
 		</form>
 	</div>
 	<!-- 背景方块随机出现的样式 -->
