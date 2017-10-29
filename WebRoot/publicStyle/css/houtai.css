@@ -1,10 +1,20 @@
 @charset "UTF-8";
+
 /*世武修改了页面图片路径*/
+/*这里有一个bug：如果浏览器添加的扩展程序有：广告净化器、Adblock Plus将会屏蔽右侧顶部标签栏样式*/
+
+
 html,body{height:100%;}
-.scm{background:url(../images/min_bg.png) no-repeat;}
+.scm{background:url(../images/top-bg.png) no-repeat;}
 #admin{font-size:14px;color:#545454;height:100%;}
-.ad-menu{float:left;width:235px;background-color:#494642;height:100%;overflow-y:auto;}
-.ad-menu .ad-logo{padding:6px 0px 17px 0px;text-align:center;background-color:#63605c;}
+
+/*更改左侧菜单列表背景颜色*/
+
+.ad-menu{float:left;width:235px;background-color:#47C4A5;height:100%;overflow-y:auto;}
+
+/*更改左侧logo背景颜色*/
+
+.ad-menu .ad-logo{padding:6px 0px 17px 0px;text-align:center;background-color:#20B2AA;}
 .ad-menu .ad-list{padding-top:15px;}
 .ad-menu .ad-list .li-item{padding-left:35px;color:#FFF;height:50px;line-height:50px;cursor:pointer;position:relative;}
 .ad-menu .ad-list li dl{display:none;}
@@ -29,7 +39,10 @@ html,body{height:100%;}
 .ad-menu .ad-list  dd.on .dd-item{color:#FFF;}
 .ad-comment-box{margin-left:235px;background-color:#ededef;height:100%;}
 .ad-comment-box .ad-top-comment{}
-.ad-top-comment .ad-message{height: 50px;padding:0 30px;background-color:#ededef;}
+
+/*以下是主页右边栏顶部样式*/
+
+.ad-top-comment .ad-message{height: 50px;padding:0 30px;background-color:#20B2AA;}
 .ad-top-comment .ad-message .ad-top-left{float:left;margin-top: 9px;}
 .ad-top-comment .ad-message .ad-change-btn{float:left;margin-top:6px;}
 .ad-top-comment .ad-message .ad-list-btn{display:inline-block;width:16px;height:13px;background-position:-62px -29px;}
@@ -52,32 +65,53 @@ html,body{height:100%;}
 .ad-top-comment .ad-message .ad-wel-text{margin-left:46px;height:36px;}
 .ad-top-comment .ad-message .ad-wel-text .font-wel{line-height:18px;}
 .ad-top-comment .ad-message .ad-wel-text .font-wel a:hover{color:#ec6654;}
-.ad-top-comment .ad-main-nav-box{height: 37px;background-color:#FFF;border:solid #c3c2c4;border-width:1px 0px 1px 0px;position:relative;}
+
+
+.ad-top-comment .ad-main-nav-box{height: 37px;background-color:#20B2AA;border:solid #47C4A5;border-width:1px 0px 1px 0px;position:relative;}
 .ad-top-comment .ad-main-wraper{margin-left:167px;overflow:hidden;}
 .ad-top-comment .ad-main-wraper ul{padding: 6px 0px;float:left;}
 .ad-top-comment .ad-main-wraper ul li{padding:0 12px;line-height: 25px;float:left;display:inline;cursor:pointer;}
 .ad-top-comment .ad-main-wraper ul li:hover{font-weight:bold;}
-.ad-top-comment .ad-main-wraper ul li.over{font-weight:bold;background-color:#efefef;box-shadow:0px 0px 3px #333 inset;border-radius:3px;}
-.ad-top-comment .ad-sub-nav-box{height: 37px;background-color:#e4e4e7;border-bottom:4px solid #5c5956;position:relative;}
+
+
+.ad-top-comment .ad-main-wraper ul li.over{font-weight:bold;background-color:#20B2AA;box-shadow:0px 0px 3px #333 inset;border-radius:3px;}
+
+
+.ad-top-comment .ad-sub-nav-box{height: 37px;background-color:#20B2AA;border-bottom:4px solid #47C4A5;position:relative;}
+
+
 .ad-top-comment .ad-sub-record{position:absolute;width:144px;text-align:center;background-color:#dadadd;line-height:45px;color:#333;}
 .ad-top-comment .ad-sub-wraper{margin-left:54px;padding-top: 5px;overflow:hidden;}
 .ad-top-comment .ad-sub-wraper .ad-sub-list{height: 32px;float:left;}
 .ad-top-comment .ad-sub-wraper .ad-sub-list li{line-height:36px;padding:0 15px;text-align:center;color:#26354a;float:left;display:inline;cursor:pointer;}
-.ad-top-comment .ad-sub-wraper .ad-sub-list li:hover{background-color:#807c78;border-top-left-radius:8px;border-top-right-radius:8px;color:#FFF;cursor:pointer;}
+
+.ad-top-comment .ad-sub-wraper .ad-sub-list li:hover{background-color:#20B2AA;border-top-left-radius:8px;border-top-right-radius:8px;color:#FFF;cursor:pointer;}
+
+
 .ad-top-comment .ad-sub-wraper .ad-sub-list .sub-close{width:22px;height:22px;background-position:-92px 0px;display:inline-block;margin-left:8px;vertical-align:middle;margin-top:-4px;cursor:pointer;}
 .ad-top-comment .ad-sub-wraper .ad-sub-list .sub-close:hover{background-position:-92px -32px;}
-.ad-top-comment .ad-sub-wraper .ad-sub-list li.active{background-color:#5c5956;border-top-left-radius:8px;border-top-right-radius:8px;color:#FFF;cursor:pointer;}
-.ad-top-comment .jian-a{width:36px;height: 37px;position:absolute;top:0px;display:inline-block;background-image:url(../images/min_arrow.png);background-repeat:no-repeat;}
+
+
+.ad-top-comment .ad-sub-wraper .ad-sub-list li.active{background-color:#20B2AA;border-top-left-radius:8px;border-top-right-radius:8px;color:#FFF;cursor:pointer;}
+
+
+.ad-top-comment .jian-a{width:36px;height: 37px;position:absolute;top:0px;display:inline-block;background-image:url(../images/top-arrow.png);background-repeat:no-repeat;}
 .ad-top-comment .pre{background-position: 12px -82px;}
 .ad-top-comment .pre:hover{background-position:12px 10px;}
 .ad-top-comment .main-sel{left:113px;}
 .ad-top-comment .sub-sel{left:0px;}
 .ad-top-comment .next{background-position: -81px -80px;right:0px;}
 .ad-top-comment .next:hover{background-position:-81px 12px;}
-.ad-top-comment .j_tabBg{background-color:#fff;}
+
+
+.ad-top-comment .j_tabBg{background-color:#47C4A5;}
+
+
 .ad-top-comment .j_tabBg:hover{opacity:0.8;}
 .ad-main-comment{background-color:#FFF;box-shadow:0px 0px 6px #ccc;/*height:calc(100% - 134px);height:-moz-calc(100% - 134px);height:-webkit-calc(100% - 134px);*/}
 
 #breadcrumbs-three{overflow:hidden;position:absolute;top:0px;left:0px;}
 #breadcrumbs-three li{float:left;}
-#breadcrumbs-three a{padding:9px 0px;text-align:center;width:90px;padding-right:21px;background:url(../images/ad-ara.jpg) no-repeat;float:left;text-decoration:none;color:#444;;text-shadow:0 1px 0 rgba(255,255,255,.5);}
+
+
+#breadcrumbs-three a{padding:9px 0px;text-align:center;width:90px;padding-right:21px;background:url(../images/top-ara.jpg) no-repeat;float:left;text-decoration:none;color:#fff;;text-shadow:0 1px 0 rgba(255,255,255,.5);}
