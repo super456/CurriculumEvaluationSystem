@@ -15,13 +15,13 @@ public class StuSqlBean {
 	ResultSet rs;
 	
 	public StuSqlBean(){
-		String url = "jdbc:sqlserver://localhost:1433;DatabaseName=curriculumEvaluationSystem";
+		String uri = "jdbc:sqlserver://localhost:1433;DatabaseName=curriculumEvaluationSystem";
 		String user="sa";
 		String password = "123456";
 		
 		try {
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-			con = DriverManager.getConnection(url,user,password);
+			con = DriverManager.getConnection(uri,user,password);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {

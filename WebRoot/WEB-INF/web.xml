@@ -10,12 +10,21 @@
     <servlet-name>test</servlet-name>
     <servlet-class>student.servlet.test</servlet-class>
   </servlet>
-
+  <servlet>
+    <servlet-name>AddStuServlet</servlet-name>
+    <servlet-class>admin.servlet.AddStuServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
-    <servlet-name>test</servlet-name>
-    <url-pattern>/servlet/test</url-pattern>
+    <servlet-name>AddStuServlet</servlet-name>
+    <url-pattern>/addStu</url-pattern>
   </servlet-mapping>
-  <welcome-file-list>
-    <welcome-file>index.jsp</welcome-file>
-  </welcome-file-list>
+  
+  <servlet>
+    <servlet-name>AddTeaServlet</servlet-name>
+    <servlet-class>admin.servlet.AddTeaServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddTeaServlet</servlet-name>
+    <url-pattern>/addTea</url-pattern>
+  </servlet-mapping>
 </web-app>

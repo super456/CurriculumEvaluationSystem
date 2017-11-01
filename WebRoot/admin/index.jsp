@@ -42,16 +42,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <dd>
                                     <a href="admin/#" class="dd-item">更新学生信息<span class="scm dd-ar"></span></a>
                                     <ul class="ad-item-list">
-                                        <li class="J_menuItem" href="admin/index_v2.html" data-index="1">更新学生信息</li>
+                                        <li class="J_menuItem" href="admin/updateStuInfo.jsp" data-index="1">更新学生信息</li>
                                     </ul>
                                 </dd>
                                 <dd>
                                     <a href="admin/#" class="dd-item">添加学生信息<span class="scm dd-ar"></span></a>
-                                    
+                                    <ul class="ad-item-list">
+                                        <li class="J_menuItem" href="admin/addStuInfo.jsp" data-index="1">添加学生信息</li>
+                                    </ul>
                                 </dd>
                                 <dd>
                                     <a href="admin/#" class="dd-item">删除学生信息<span class="scm dd-ar"></span></a>
-                                    
+                                    <ul class="ad-item-list">
+                                        <li class="J_menuItem" href="admin/deleteStuInfo.jsp" data-index="1">删除学生信息</li>
+                                    </ul>
                                 </dd>
                             </dl>
                         </li>
@@ -65,16 +69,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     </ul>
                                 </dd>
                                 <dd>
-                                    <a href="admin/#" class="dd-item">更新指定教师信息<span class="scm dd-ar"></span></a>
-                                    
+                                    <a href="admin/#" class="dd-item">更新教师信息<span class="scm dd-ar"></span></a>
+                                    <ul class="ad-item-list">
+                                        <li class="J_menuItem" href="admin/updateTeaInfo.jsp" data-index="1">更新教师信息</li>
+                                    </ul>
                                 </dd>
                                 <dd>
                                     <a href="admin/#" class="dd-item">添加教师信息<span class="scm dd-ar"></span></a>
-                                    
+                                    <ul class="ad-item-list">
+                                        <li class="J_menuItem" href="admin/addTeaInfo.jsp" data-index="1">添加教师信息</li>
+                                    </ul>
                                 </dd>
                                 <dd>
                                     <a href="admin/#" class="dd-item">删除教师信息<span class="scm dd-ar"></span></a>
-                                    
+                                    <ul class="ad-item-list">
+                                        <li class="J_menuItem" href="admin/deleteTeaInfo.jsp" data-index="1">更新学生信息</li>
+                                    </ul>
                                 </dd>
                             </dl>
                         </li>
@@ -86,11 +96,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     
                                 </dd>
                                 <dd>
-                                    <a href="admin/#" class="dd-item">添加一门课程信息<span class="scm dd-ar"></span></a>
+                                    <a href="admin/#" class="dd-item">添加课程信息<span class="scm dd-ar"></span></a>
                                     
                                 </dd>
                                 <dd>
-                                    <a href="admin/#" class="dd-item">更新一门课程信息<span class="scm dd-ar"></span></a>
+                                    <a href="admin/#" class="dd-item">更新课程信息<span class="scm dd-ar"></span></a>
                                     
                                 </dd>
                                 
