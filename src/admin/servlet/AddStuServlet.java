@@ -64,7 +64,6 @@ public class AddStuServlet extends HttpServlet {
 			pre.setString(7, stuRemarks);
 			pre.executeUpdate();
 		} catch (SQLException e) {
-			System.out.print("≤Â»Î ß∞‹!");
 			e.printStackTrace();
 		}finally{
 			try {
@@ -75,7 +74,7 @@ public class AddStuServlet extends HttpServlet {
 			}
 			
 		}
-		RequestDispatcher dispatcher = request.getRequestDispatcher("admin/addStuInfo.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("admin/showStuInfo.jsp");
 		dispatcher.forward(request, response);
 	}
 

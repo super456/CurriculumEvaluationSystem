@@ -2,11 +2,10 @@ package admin.servlet;
 
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Calendar;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
@@ -15,7 +14,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class AddTeaServlet extends HttpServlet {
+import admin.bean.CourseInfo;
+
+
+public class SearchByCouNum extends HttpServlet{
 
 	public void init(ServletConfig config) throws ServletException {
 		super.init(config);
@@ -34,46 +36,41 @@ public class AddTeaServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		request.setCharacterEncoding("gb2312");
+		response.setCharacterEncoding("gb2312");
+		CourseInfo couBean = new CourseInfo();
+		
 		Connection con = null;
 		PreparedStatement pre = null;
-
+		ResultSet rs = null;
 		
 		String uri = "jdbc:sqlserver://localhost:55780;DatabaseName=curriculumEvaluationSystem";
 		String user="sa";
 		String password = "123456";
 		
-		String num = request.getParameter("teaNum");
-		String teaName = request.getParameter("teaName");
-		String teaSex = request.getParameter("teaSex");
-		String birthday = request.getParameter("teaBirthday");
-		String teaForm = request.getParameter("teaForm");
-		String phone = request.getParameter("teaPhone");
-		String teaRemarks = request.getParameter("teaRemarks");
-		if(num.length()==0 || num==null){
-			response.sendRedirect("admin/addTeaInfo.jsp");
-		}
+		String num = request.getParameter("couNum");		
+		int couNum = Integer.parseInt(num);
 		
-		int teaNum = Integer.parseInt(num);
-		int teaPhone = Integer.parseInt(phone);
-		String [] str = birthday.split("[-/]");
-		int year = Integer.parseInt(str[0]);
-		int month = Integer.parseInt(str[1]);
-		int day = Integer.parseInt(str[2]);
-		Calendar calendar = Calendar.getInstance();
-		calendar.set(year, month-1,day);
-		Date teaBirthday = new java.sql.Date(calendar.getTimeInMillis());
-		String condition = "insert into teaInfo values(?,?,?,?,?,?,?)";
+		String condition = "select * from courseInfo where couNum=?";
 		try {
 			con = DriverManager.getConnection(uri, user, password);
 			pre = con.prepareStatement(condition);
-			pre.setInt(1, teaNum);
-			pre.setString(2, teaName);
-			pre.setString(3, teaSex);
-			pre.setDate(4, teaBirthday);
-			pre.setString(5, teaForm);
-			pre.setInt(6, teaPhone);
-			pre.setString(7, teaRemarks);
-			pre.executeUpdate();
+			pre.setInt(1, couNum);
+			rs = pre.executeQuery();
+			while(rs.next()){
+				couBean.setCouNum(rs.getInt(1));
+				couBean.setTeaNum(rs.getInt(2));
+				couBean.setCouName(rs.getString(3));
+				couBean.setCouTerm(rs.getInt(4));
+				couBean.setCouFrom(rs.getString(5));
+				couBean.setCouTime(rs.getString(6));
+				couBean.setCouPlace(rs.getString(7));
+				couBean.setCouCredit(rs.getInt(8));
+				String couRemarks = rs.getString(9);
+				if(couRemarks==null){
+					couRemarks="";
+				}
+				couBean.setCouRemarks(couRemarks);
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally{
@@ -85,8 +82,8 @@ public class AddTeaServlet extends HttpServlet {
 			}
 			
 		}
-		RequestDispatcher dispatcher = request.getRequestDispatcher("admin/showTeaInfo.jsp");
+		request.setAttribute("courseBean", couBean);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("admin/updateCouInfo.jsp");
 		dispatcher.forward(request, response);
 	}
-
 }

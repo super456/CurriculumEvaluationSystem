@@ -81,4 +81,40 @@
     <servlet-name>DeleteTeaServlet</servlet-name>
     <url-pattern>/deleteTea</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>SearchByCouNum</servlet-name>
+    <servlet-class>admin.servlet.SearchByCouNum</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SearchByCouNum</servlet-name>
+    <url-pattern>/searchByCouNum</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>UpdateCouServlet</servlet-name>
+    <servlet-class>admin.servlet.UpdateCouServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateCouServlet</servlet-name>
+    <url-pattern>/updateCou</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>DeleteCouServlet</servlet-name>
+    <servlet-class>admin.servlet.DeleteCouServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteCouServlet</servlet-name>
+    <url-pattern>/deleteCou</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>AddCouServlet</servlet-name>
+    <servlet-class>admin.servlet.AddCouServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddCouServlet</servlet-name>
+    <url-pattern>/addCou</url-pattern>
+  </servlet-mapping>
 </web-app>

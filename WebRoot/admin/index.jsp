@@ -94,13 +94,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <dd>
                                     <a href="admin/#" class="dd-item">查看所有课程信息<span class="scm dd-ar"></span></a>
                                     <ul class="ad-item-list">
-                                        <li class="J_menuItem" href="admin/showCourseInfo.jsp" data-index="1">更新学生信息</li>
+                                        <li class="J_menuItem" href="admin/showCourseInfo.jsp" data-index="1">查看所有课程信息</li>
                                     </ul>
                                 </dd>
                                 <dd>
                                     <a href="admin/#" class="dd-item">添加课程信息<span class="scm dd-ar"></span></a>
                                     <ul class="ad-item-list">
-                                        <li class="J_menuItem" href="admin/addTeaInfo.jsp" data-index="1">更新学生信息</li>
+                                        <li class="J_menuItem" href="admin/addCourseInfo.jsp" data-index="1">添加课程信息</li>
                                     </ul>
                                 </dd>
                                 

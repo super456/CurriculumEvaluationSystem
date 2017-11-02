@@ -37,15 +37,15 @@ public class StuSqlBean {
 			pre = con.prepareStatement(sql);
 			rs = pre.executeQuery();
 			while(rs.next()){
-				StuInfo been = new StuInfo();
-				been.setStuNum(rs.getInt(1));
-				been.setStuName(rs.getString(2));
-				been.setStuSex(rs.getString(3));
-				been.setStuGrade(rs.getInt(4));
-				been.setStuForm(rs.getString(5));
-				been.setStuPhone(rs.getInt(6));
-				been.setStuRemarks(rs.getString(7));
-				list.add(been);
+				StuInfo bean = new StuInfo();
+				bean.setStuNum(rs.getInt(1));
+				bean.setStuName(rs.getString(2));
+				bean.setStuSex(rs.getString(3));
+				bean.setStuGrade(rs.getInt(4));
+				bean.setStuForm(rs.getString(5));
+				bean.setStuPhone(rs.getInt(6));
+				bean.setStuRemarks(rs.getString(7));
+				list.add(bean);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
