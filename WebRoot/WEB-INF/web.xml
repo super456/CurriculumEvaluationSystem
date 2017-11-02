@@ -27,4 +27,58 @@
     <servlet-name>AddTeaServlet</servlet-name>
     <url-pattern>/addTea</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>UpdateStuServlet</servlet-name>
+    <servlet-class>admin.servlet.UpdateStuServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateStuServlet</servlet-name>
+    <url-pattern>/updateStu</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>SearchByStuNum</servlet-name>
+    <servlet-class>admin.servlet.SearchByStuNum</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SearchByStuNum</servlet-name>
+    <url-pattern>/searchByStuNum</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>DeleteStuServlet</servlet-name>
+    <servlet-class>admin.servlet.DeleteStuServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteStuServlet</servlet-name>
+    <url-pattern>/deleteStu</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>SearchByTeaNum</servlet-name>
+    <servlet-class>admin.servlet.SearchByTeaNum</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SearchByTeaNum</servlet-name>
+    <url-pattern>/searchByTeaNum</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>UpdateTeaServlet</servlet-name>
+    <servlet-class>admin.servlet.UpdateTeaServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateTeaServlet</servlet-name>
+    <url-pattern>/updateTea</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>DeleteTeaServlet</servlet-name>
+    <servlet-class>admin.servlet.DeleteTeaServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteTeaServlet</servlet-name>
+    <url-pattern>/deleteTea</url-pattern>
+  </servlet-mapping>
 </web-app>

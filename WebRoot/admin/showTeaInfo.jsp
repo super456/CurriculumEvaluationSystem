@@ -17,7 +17,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-
+	
+<style type="text/css">
+a {
+	list-style-type: none;
+	padding: 0px;
+	margin: 0px;
+	color: #53e3a6;
+	text-decoration: none;
+}
+a:hover {
+	color: cyan;
+}
+</style>
   </head>
   
   <body style="background-color:#FFF;">
@@ -30,6 +42,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <td>所在单位</td>
   <td>联系电话</td>
   <td>简介</td>
+  <td>操作</td>
   </tr>
 <jsp:useBean id="TeaBean" class="admin.bean.TeaInfo" />
 <jsp:useBean id="sqlBean" class="admin.bean.TeaSqlBean" />
@@ -47,6 +60,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <td><%= TeaBean.getTeaForm() %></td>
    <td><%= TeaBean.getTeaPhone() %></td>
    <td><%= TeaBean.getTeaRemarks() %></td>
+   <td align="center">
+	<a href="searchByTeaNum?teaNum=<%=TeaBean.getTeaNum()%>">更新</a>&nbsp;
+	<a href="deleteTea?teaNum=<%= TeaBean.getTeaNum() %>"
+	onclick="return confirm('确定删除?')">删除</a>
+	</td>
    </tr>
 <%  }
 %>

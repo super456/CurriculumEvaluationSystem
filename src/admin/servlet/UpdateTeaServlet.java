@@ -15,7 +15,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class AddTeaServlet extends HttpServlet {
+import admin.bean.StuInfo;
+
+public class UpdateTeaServlet extends HttpServlet {
 
 	public void init(ServletConfig config) throws ServletException {
 		super.init(config);
@@ -36,22 +38,19 @@ public class AddTeaServlet extends HttpServlet {
 		request.setCharacterEncoding("gb2312");
 		Connection con = null;
 		PreparedStatement pre = null;
-
 		
 		String uri = "jdbc:sqlserver://localhost:55780;DatabaseName=curriculumEvaluationSystem";
 		String user="sa";
 		String password = "123456";
 		
 		String num = request.getParameter("teaNum");
+		
 		String teaName = request.getParameter("teaName");
 		String teaSex = request.getParameter("teaSex");
 		String birthday = request.getParameter("teaBirthday");
 		String teaForm = request.getParameter("teaForm");
 		String phone = request.getParameter("teaPhone");
 		String teaRemarks = request.getParameter("teaRemarks");
-		if(num.length()==0 || num==null){
-			response.sendRedirect("admin/addTeaInfo.jsp");
-		}
 		
 		int teaNum = Integer.parseInt(num);
 		int teaPhone = Integer.parseInt(phone);
@@ -62,20 +61,19 @@ public class AddTeaServlet extends HttpServlet {
 		Calendar calendar = Calendar.getInstance();
 		calendar.set(year, month-1,day);
 		Date teaBirthday = new java.sql.Date(calendar.getTimeInMillis());
-		String condition = "insert into teaInfo values(?,?,?,?,?,?,?)";
+
+		String condition = "update teaInfo set teaName=?,teaSex=?,teaBirthday=?,teaForm=?,teaPhone=?,teaRemarks=? where teaNum="+teaNum;
 		try {
 			con = DriverManager.getConnection(uri, user, password);
 			pre = con.prepareStatement(condition);
-			pre.setInt(1, teaNum);
-			pre.setString(2, teaName);
-			pre.setString(3, teaSex);
-			pre.setDate(4, teaBirthday);
-			pre.setString(5, teaForm);
-			pre.setInt(6, teaPhone);
-			pre.setString(7, teaRemarks);
+			pre.setString(1, teaName);
+			pre.setString(2, teaSex);
+			pre.setDate(3, teaBirthday);
+			pre.setString(4, teaForm);
+			pre.setInt(5, teaPhone);
+			pre.setString(6, teaRemarks);
 			pre.executeUpdate();
 		} catch (SQLException e) {
-			System.out.print("≤Â»Î ß∞‹!");
 			e.printStackTrace();
 		}finally{
 			try {
@@ -86,7 +84,7 @@ public class AddTeaServlet extends HttpServlet {
 			}
 			
 		}
-		RequestDispatcher dispatcher = request.getRequestDispatcher("admin/addTeaInfo.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("admin/showTeaInfo.jsp");
 		dispatcher.forward(request, response);
 	}
 

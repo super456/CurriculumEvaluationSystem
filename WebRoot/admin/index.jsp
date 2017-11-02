@@ -42,7 +42,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <dd>
                                     <a href="admin/#" class="dd-item">更新学生信息<span class="scm dd-ar"></span></a>
                                     <ul class="ad-item-list">
-                                        <li class="J_menuItem" href="admin/updateStuInfo.jsp" data-index="1">更新学生信息</li>
+                                        <li class="J_menuItem" href="admin/showStuInfo.jsp" data-index="1">更新学生信息</li>
                                     </ul>
                                 </dd>
                                 <dd>
@@ -54,7 +54,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <dd>
                                     <a href="admin/#" class="dd-item">删除学生信息<span class="scm dd-ar"></span></a>
                                     <ul class="ad-item-list">
-                                        <li class="J_menuItem" href="admin/deleteStuInfo.jsp" data-index="1">删除学生信息</li>
+                                        <li class="J_menuItem" href="admin/showStuInfo.jsp" data-index="1">删除学生信息</li>
                                     </ul>
                                 </dd>
                             </dl>
@@ -71,7 +71,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <dd>
                                     <a href="admin/#" class="dd-item">更新教师信息<span class="scm dd-ar"></span></a>
                                     <ul class="ad-item-list">
-                                        <li class="J_menuItem" href="admin/updateTeaInfo.jsp" data-index="1">更新教师信息</li>
+                                        <li class="J_menuItem" href="admin/showTeaInfo.jsp" data-index="1">更新教师信息</li>
                                     </ul>
                                 </dd>
                                 <dd>
@@ -83,7 +83,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <dd>
                                     <a href="admin/#" class="dd-item">删除教师信息<span class="scm dd-ar"></span></a>
                                     <ul class="ad-item-list">
-                                        <li class="J_menuItem" href="admin/deleteTeaInfo.jsp" data-index="1">更新学生信息</li>
+                                        <li class="J_menuItem" href="admin/showTeaInfo.jsp" data-index="1">更新学生信息</li>
                                     </ul>
                                 </dd>
                             </dl>
@@ -93,15 +93,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <dl>
                                 <dd>
                                     <a href="admin/#" class="dd-item">查看所有课程信息<span class="scm dd-ar"></span></a>
-                                    
+                                    <ul class="ad-item-list">
+                                        <li class="J_menuItem" href="admin/showCourseInfo.jsp" data-index="1">更新学生信息</li>
+                                    </ul>
                                 </dd>
                                 <dd>
                                     <a href="admin/#" class="dd-item">添加课程信息<span class="scm dd-ar"></span></a>
-                                    
-                                </dd>
-                                <dd>
-                                    <a href="admin/#" class="dd-item">更新课程信息<span class="scm dd-ar"></span></a>
-                                    
+                                    <ul class="ad-item-list">
+                                        <li class="J_menuItem" href="admin/addTeaInfo.jsp" data-index="1">更新学生信息</li>
+                                    </ul>
                                 </dd>
                                 
                             </dl>

@@ -15,7 +15,7 @@ public class TeaSqlBean {
 	ResultSet rs;
 	
 	public TeaSqlBean(){
-		String url = "jdbc:sqlserver://localhost:1433;DatabaseName=curriculumEvaluationSystem";
+		String url = "jdbc:sqlserver://localhost:55780;DatabaseName=curriculumEvaluationSystem";
 		String user="sa";
 		String password = "123456";
 		

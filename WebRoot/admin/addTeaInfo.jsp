@@ -81,7 +81,7 @@ form button:hover {
 <div class="wrapper">
   <div class="container">
   <center>
-  <h2 style="color:cyan">&nbsp;添 加 教师 信 息</h2>
+  <h2 style="color:cyan">&nbsp;添 加 教 师 信 息</h2>
   <form action="addTea" method="post" name=form class="form">
   <table border=0 background="#ffffff">
   <tr><td>教师编号: </td>  

@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="gb2312"%>
+
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -8,14 +9,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
+	<meta charset="gb2312">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
 <style type="text/css">
 .wrapper {
   background: #50a3a2;
@@ -29,7 +30,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 .container {
   max-width: 600px;
   margin: 0 auto;
-  height: 610px;
+  height: 650px;
   text-align: center;
 }
 form {
@@ -78,39 +79,36 @@ form button:hover {
   </head>
   
   <body>
-
-<div class="wrapper">
+  <div class="wrapper">
   <div class="container">
  <center>
-  <h2 style="color:cyan">&nbsp;添 加 学 生 信 息</h2>
-  <form action="addStu" method="post" name=form class="form">
+  <h2 style="color:cyan">&nbsp;修 改 学 生 信 息</h2>
+  <form action="updateStu" method="post" name=form class="form">
   <table border=0 background="#ffffff">
   <tr><td>学生编号: </td>  
-  <td><input type="text" name="stuNum" /></td></tr>
+  <td><input type="text" name="stuNum" value=<%= request.getAttribute("stuNum") %> readonly /></td></tr>
   <tr><td>姓名:</td>       
-  <td><input type="text" name="stuName" /></td></tr>
+  <td><input type="text" name="stuName" value=<%= request.getAttribute("stuName") %> /></td></tr>
   <tr><td>性别:</td>
-  <td> <select name="stuSex">
-  <option value="男" selected>--男生--</option>
-  <option value="女" >--女生--</option>
+  <td> <input type="text" name="stuSex" value=<%= request.getAttribute("stuSex") %> />
   </select></td></tr> 
   <tr><td>年级:</td>       
-  <td><input type="text" name="stuGrade" /></td></tr> 
+  <td><input type="text" name="stuGrade" value=<%= request.getAttribute("stuGrade") %> /></td></tr> 
   <tr><td>院系专业及班级:</td>       
-  <td><input type="text" name="stuForm" /></td></tr>
+  <td><input type="text" name="stuForm" value=<%= request.getAttribute("stuForm") %> /></td></tr>
   <tr><td>联系电话:</td>       
-  <td><input type="text" name="stuPhone" /></td></tr>
+  <td><input type="text" name="stuPhone" value=<%= request.getAttribute("stuPhone") %> /></td></tr>
   <tr><td>备注:</td>
   <td><textArea name="stuRemarks" rows=8 cols=26 
-  style="background-color: rgba(255, 255, 255, 0.2);border-radius:3px;font-size: 18px;color: white;"></textArea></td></tr> 
-  <tr><td>&nbsp;<button type="submit" >提交</button></td> 
+  style="background-color: rgba(255, 255, 255, 0.2);border-radius:3px;font-size: 18px;color: white;"
+   ><%= request.getAttribute("stuRemarks") %></textArea></td></tr> 
+  <tr><td>&nbsp;<button type="submit" >修改</button></td> 
   <td>&nbsp;&nbsp;&nbsp;<button type="reset">重置</button></td></tr> 
   </table>
   </form>
   </center>
   </div>
 </div>
-
-
+    
   </body>
 </html>

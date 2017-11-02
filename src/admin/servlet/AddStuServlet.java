@@ -33,7 +33,7 @@ public class AddStuServlet extends HttpServlet {
 		PreparedStatement pre = null;
 
 		
-		String uri = "jdbc:sqlserver://localhost:1433;DatabaseName=curriculumEvaluationSystem";
+		String uri = "jdbc:sqlserver://localhost:55780;DatabaseName=curriculumEvaluationSystem";
 		String user="sa";
 		String password = "123456";
 		
