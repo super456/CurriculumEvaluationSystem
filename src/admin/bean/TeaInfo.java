@@ -1,12 +1,26 @@
 package admin.bean;
 
 import java.util.Date;
+import java.util.List;
 
 public class TeaInfo {
 
 	int teaNum,teaPhone;
-	String teaName,teaSex,teaForm,teaRemarks;
+	String teaName,teaSex,teaForm,teaRemarks,limitMess;
+	public String getLimitMess() {
+		return limitMess;
+	}
+	public void setLimitMess(String limitMess) {
+		this.limitMess = limitMess;
+	}
 	Date teaBirthday;
+	List list;
+	public List getList() {
+		return list;
+	}
+	public void setList(List list) {
+		this.list = list;
+	}
 	public int getTeaNum() {
 		return teaNum;
 	}

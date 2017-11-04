@@ -117,4 +117,31 @@
     <servlet-name>AddCouServlet</servlet-name>
     <url-pattern>/addCou</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>LimitUserLogin</servlet-name>
+    <servlet-class>admin.servlet.LimitUserLogin</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LimitUserLogin</servlet-name>
+    <url-pattern>/limitLogin</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>SelectByStuInfo</servlet-name>
+    <servlet-class>admin.servlet.SelectByStuInfo</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SelectByStuInfo</servlet-name>
+    <url-pattern>/selectByStuInfo</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>SelectByTeaInfo</servlet-name>
+    <servlet-class>admin.servlet.SelectByTeaInfo</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SelectByTeaInfo</servlet-name>
+    <url-pattern>/selectByTeaInfo</url-pattern>
+  </servlet-mapping>
 </web-app>

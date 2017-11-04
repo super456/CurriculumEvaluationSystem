@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,6 +38,7 @@ public class TeaSqlBean {
 			while(rs.next()){
 				TeaInfo bean = new TeaInfo();
 				bean.setTeaNum(rs.getInt(1));
+				bean.setLimitMess(limitMess(rs.getInt(1)));
 				bean.setTeaName(rs.getString(2));
 				bean.setTeaSex(rs.getString(3));
 				bean.setTeaBirthday(rs.getDate(4));
@@ -58,5 +60,20 @@ public class TeaSqlBean {
 			
 		}
 		return list;
+	}
+	public String limitMess(int accountNum) throws SQLException{
+		String sql = "select perLimit from userLogin where accountNum="+accountNum;
+		Statement stat = con.createStatement();
+		ResultSet rs = stat.executeQuery(sql);
+		String limitMess = null;
+		while(rs.next()){
+			int perLimit = rs.getInt(1);
+			if(perLimit == 0){
+				limitMess = "·ñ";
+			}else if(perLimit == 1){
+				limitMess = "ÊÇ";
+			}
+		}
+		return limitMess;
 	}
 }

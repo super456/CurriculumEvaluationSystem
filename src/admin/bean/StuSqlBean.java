@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,6 +40,7 @@ public class StuSqlBean {
 			while(rs.next()){
 				StuInfo bean = new StuInfo();
 				bean.setStuNum(rs.getInt(1));
+				bean.setLimitMess(limitMess(rs.getInt(1)));
 				bean.setStuName(rs.getString(2));
 				bean.setStuSex(rs.getString(3));
 				bean.setStuGrade(rs.getInt(4));
@@ -62,4 +64,21 @@ public class StuSqlBean {
 		return list;
 	}
 	
+	public String limitMess(int accountNum) throws SQLException{
+		String sql = "select perLimit from userLogin where accountNum="+accountNum;
+		Statement stat = con.createStatement();
+		ResultSet rs = stat.executeQuery(sql);
+		String limitMess = null;
+		while(rs.next()){
+			int perLimit = rs.getInt(1);
+			if(perLimit == 0){
+				limitMess = "·ñ";
+			}else if(perLimit == 1){
+				limitMess = "ÊÇ";
+			}
+		}
+		rs.close();
+		stat.close();
+		return limitMess;
+	}
 }
