@@ -132,15 +132,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <dl>
                                 <dd>
                                     <a href="admin/#" class="dd-item">查看所有通告栏信息<span class="scm dd-ar"></span></a>
+                                    <ul class="ad-item-list">
+                                        <li class="J_menuItem" href="admin/showNoticeBarInfo.jsp" data-index="1">查看所有通告栏信息</li>
+                                    </ul>
+                                    
                                 </dd>
                                 <dd>
                                     <a href="admin/#" class="dd-item">通告栏信息限制<span class="scm dd-ar"></span></a>
+                                    <ul class="ad-item-list">
+                                        <li class="J_menuItem" href="admin/showNoticeBarInfo.jsp" data-index="1">通告栏信息限制</li>
+                                    </ul>
                                 </dd>
                                 <dd>
                                     <a href="admin/#" class="dd-item">添加通告栏信息<span class="scm dd-ar"></span></a>
-                                </dd>
-                                <dd>
-                                    <a href="admin/#" class="dd-item">删除通告栏信息<span class="scm dd-ar"></span></a>
+                                    <ul class="ad-item-list">
+                                        <li class="J_menuItem" href="admin/addNoticeBarInfo.jsp" data-index="1">添加通告栏信息</li>
+                                    </ul>
                                 </dd>
                             </dl>
                         </li>
@@ -152,15 +159,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 </dd>
                                 <dd>
                                     <a href="admin/#" class="dd-item">添加管理员信息<span class="scm dd-ar"></span></a>
-                                </dd>
-                                <dd>
-                                    <a href="admin/#" class="dd-item">更新管理员信息<span class="scm dd-ar"></span></a>
-                                </dd>
-                                <dd>
-                                    <a href="admin/#" class="dd-item">删除管理员信息<span class="scm dd-ar"></span></a>
-                                </dd>
-                                <dd>
-                                    <a href="admin/#" class="dd-item">筛选管理员信息<span class="scm dd-ar"></span></a>
                                 </dd>
                             </dl>
                         </li>

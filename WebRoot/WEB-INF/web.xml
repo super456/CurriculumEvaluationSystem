@@ -144,4 +144,40 @@
     <servlet-name>SelectByTeaInfo</servlet-name>
     <url-pattern>/selectByTeaInfo</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>AddNoticeServlet</servlet-name>
+    <servlet-class>admin.servlet.AddNoticeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddNoticeServlet</servlet-name>
+    <url-pattern>/addNoticeBar</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>SearchByNoticeNum</servlet-name>
+    <servlet-class>admin.servlet.SearchByNoticeNum</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SearchByNoticeNum</servlet-name>
+    <url-pattern>/searchByNoticeNum</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>UpdateNoticeServlet</servlet-name>
+    <servlet-class>admin.servlet.UpdateNoticeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateNoticeServlet</servlet-name>
+    <url-pattern>/updateNotice</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>DeleteNoticeServlet</servlet-name>
+    <servlet-class>admin.servlet.DeleteNoticeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteNoticeServlet</servlet-name>
+    <url-pattern>/deleteNotice</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -105,7 +105,7 @@ button:hover{
 				<td><%=stuBean.getStuPhone()%></td>
 				<td><%=stuBean.getStuRemarks()%></td>
 				<td align="center" valign="bottom">
-				<form action="limitLogin?accountNum=<%=stuBean.getStuNum()%>&tableName=admin/selectStuInfo.jsp" method="post" >
+				<form action="limitLogin?accountNum=<%=stuBean.getStuNum()%>&tableName=admin/showStuInfo.jsp" method="post" >
 				<button type="submit" ><%=stuBean.getLimitMess() %></button>
 				</form>
 				</td>
