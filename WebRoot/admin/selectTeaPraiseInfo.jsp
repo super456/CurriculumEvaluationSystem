@@ -91,14 +91,9 @@ button:hover{
 					所有总平均分数
 				</td>
 			</tr>
-			<jsp:useBean id="teaPraiseBean" class="admin.bean.TeaPraiseListInfo" />
-			<jsp:useBean id="sqlBean" class="admin.bean.TeaPraiseListSqlBean" />
+			<jsp:useBean id="teaPraiseBean" class="admin.bean.TeaPraiseListInfo" scope="request" /> 
 			<%
-                String sql = "select teaPraiseListNum,teaPraiseListInfo.couNum,couName,"+
-                "teaPraiseListInfo.teaNum,teaName,teaPraiseListInfo.couTerm,theAllAvgScore from teaPraiseListInfo "+
-                "inner join courseInfo on teaPraiseListInfo.couNum=courseInfo.couNum inner join "+
-                "teaInfo on teaPraiseListInfo.teaNum=teaInfo.teaNum";
-				java.util.List list = sqlBean.showAllTeaPraise(sql);
+				java.util.List list = (List)request.getAttribute("list");
 				for (java.util.Iterator it = list.iterator(); it.hasNext();) {
 					teaPraiseBean = (admin.bean.TeaPraiseListInfo) it.next();
 			%>
@@ -120,3 +115,4 @@ button:hover{
 
 	</body>
 </html>
+

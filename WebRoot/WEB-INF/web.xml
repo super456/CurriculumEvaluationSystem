@@ -180,4 +180,13 @@
     <servlet-name>DeleteNoticeServlet</servlet-name>
     <url-pattern>/deleteNotice</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>SelectByTeaPraiseInfo</servlet-name>
+    <servlet-class>admin.servlet.SelectByTeaPraiseInfo</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SelectByTeaPraiseInfo</servlet-name>
+    <url-pattern>/selectByTeaPraiseInfo</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -116,10 +116,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     </ul>
                                 </dd>
                                 <dd>
-                                    <a href="admin/#" class="dd-item">筛选课程评比结果<span class="scm dd-ar"></span></a>
-                                    
-                                </dd>
-                                <dd>
                                     <a href="admin/#" class="dd-item">筛选查看评比详情<span class="scm dd-ar"></span></a>
                                     
                                 </dd>
