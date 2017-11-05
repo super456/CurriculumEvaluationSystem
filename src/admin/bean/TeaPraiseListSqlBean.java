@@ -5,17 +5,16 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TeaSqlBean {
+public class TeaPraiseListSqlBean {
 
 	Connection con;
 	PreparedStatement pre;
 	ResultSet rs;
 	
-	public TeaSqlBean(){
+	public TeaPraiseListSqlBean(){
 		String url = "jdbc:sqlserver://localhost:55780;DatabaseName=curriculumEvaluationSystem";
 		String user="sa";
 		String password = "123456";
@@ -29,22 +28,21 @@ public class TeaSqlBean {
 			e.printStackTrace();
 		}
 	}
-	public List showAllTea(String sql){
+	public List showAllTeaPraise(String sql){
 		List list = new ArrayList();
 		
 		try {
 			pre = con.prepareStatement(sql);
 			rs = pre.executeQuery();
 			while(rs.next()){
-				TeaInfo bean = new TeaInfo();
-				bean.setTeaNum(rs.getInt(1));
-				bean.setLimitMess(limitMess(rs.getInt(1)));
-				bean.setTeaName(rs.getString(2));
-				bean.setTeaSex(rs.getString(3));
-				bean.setTeaBirthday(rs.getDate(4));
-				bean.setTeaForm(rs.getString(5));
-				bean.setTeaPhone(rs.getInt(6));
-				bean.setTeaRemarks(rs.getString(7));
+				TeaPraiseListInfo bean = new TeaPraiseListInfo();
+				bean.setTeaPraiseListNum(rs.getInt(1));
+				bean.setCouNum(rs.getInt(2));
+				bean.setCouName(rs.getString(3));
+				bean.setTeaNum(rs.getInt(4));
+				bean.setTeaName(rs.getString(5));
+				bean.setCouTerm(rs.getInt(6));
+				bean.setTheAllAvgScore(rs.getFloat(7));
 				list.add(bean);
 			}
 		} catch (Exception e) {
@@ -60,20 +58,5 @@ public class TeaSqlBean {
 			
 		}
 		return list;
-	}
-	public String limitMess(int accountNum) throws SQLException{
-		String sql = "select perLimit from userLogin where accountNum="+accountNum;
-		Statement stat = con.createStatement();
-		ResultSet rs = stat.executeQuery(sql);
-		String limitMess = null;
-		while(rs.next()){
-			int perLimit = rs.getInt(1);
-			if(perLimit == 0){
-				limitMess = "·ñ";
-			}else if(perLimit == 1){
-				limitMess = "ÊÇ";
-			}
-		}
-		return limitMess;
 	}
 }

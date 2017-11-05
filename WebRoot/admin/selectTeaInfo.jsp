@@ -1,11 +1,12 @@
 <%@ page language="java" import="java.util.*" pageEncoding="gb2312"%>
-<jsp:useBean id="stuBean" class="admin.bean.StuInfo" />
-<jsp:useBean id="sqlBean" class="admin.bean.StuSqlBean" />
+<jsp:useBean id="teaBean" class="admin.bean.TeaInfo" scope="request" />
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
+
+	String limitMess = (String) request.getAttribute("limitMess");
 %>
 
 <html>
@@ -21,7 +22,7 @@
 		<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 		<meta http-equiv="description" content="This is my page">
 
-<style type="text/css">
+		<style type="text/css">
 a {
 	list-style-type: none;
 	padding: 0px;
@@ -33,7 +34,6 @@ a {
 a:hover {
 	color: cyan;
 }
-
 button{
    font-size:20px;
    width:50px;
@@ -49,23 +49,29 @@ button:hover{
 	</head>
 
 	<body style="background-color: #FFF;">
-	<center>
-	<form action="selectByStuInfo" method="post" name=form>
-	<select name="select">
-	<option value="stuNum" selected>学号</option>
-	<option value="stuName">姓名</option>
-	<option value="stuGrade">年级</option>
-	<option value="stuForm">院系专业</option>
-	</select>
-	<input type="text" name="userInfo" style="width:160px;height:25px" />
-	<input type="submit" value="搜索"/>
-	</form>
-	</center>
+		<center>
+			<form action="selectByTeaInfo" method="post" name=form>
+				<select name="select">
+					<option value="teaNum" selected>
+						教师编号
+					</option>
+					<option value="teaName">
+						姓名
+					</option>
+					<option value="teaForm">
+						单位
+					</option>
+				</select>
+				<input type="text" name="userInfo"
+					style="width: 160px; height: 25px" />
+				<input type="submit" value="搜索" />
+			</form>
+		</center>
 
 		<table border=1 bgcolor="#ffffff" width=100%>
 			<tr align="center">
 				<td>
-					学生编号
+					教师编号
 				</td>
 				<td>
 					姓名
@@ -74,19 +80,19 @@ button:hover{
 					性别
 				</td>
 				<td>
-					年级
+					出生日期
 				</td>
 				<td>
-					院系专业及班级
+					所在单位
 				</td>
 				<td>
-					电话
+					联系电话
 				</td>
 				<td>
-					备注
+					简介
 				</td>
 				<td>
-				     是否限制登录
+				  是否限制登录
 				</td>
 				<td>
 					操作
@@ -94,35 +100,35 @@ button:hover{
 			</tr>
 
 			<%
-				String sql = "select * from stuInfo order by stuNum";
-				java.util.List list = sqlBean.showAllStu(sql);
+				java.util.List list = (List)request.getAttribute("list");
 				for (java.util.Iterator it = list.iterator(); it.hasNext();) {
-					stuBean = (admin.bean.StuInfo) it.next();
+					teaBean = (admin.bean.TeaInfo) it.next();
 			%>
 			<tr>
-				<td><%=stuBean.getStuNum()%></td>
-				<td><%=stuBean.getStuName()%></td>
-				<td><%=stuBean.getStuSex()%></td>
-				<td><%=stuBean.getStuGrade()%></td>
-				<td><%=stuBean.getStuForm()%></td>
-				<td><%=stuBean.getStuPhone()%></td>
-				<td><%=stuBean.getStuRemarks()%></td>
-				<td align="center" valign="middle" >
-				<form class="button" action="limitLogin?accountNum=<%=stuBean.getStuNum()%>&tableName=admin/showStuInfo.jsp" method="post" >
-				<button  type="submit" ><%= stuBean.getLimitMess() %></button>
-				</form>
+				<td><%=teaBean.getTeaNum()%></td>
+				<td><%=teaBean.getTeaName()%></td>
+				<td><%=teaBean.getTeaSex()%></td>
+				<td><%=teaBean.getTeaBirthday()%></td>
+				<td><%=teaBean.getTeaForm()%></td>
+				<td><%=teaBean.getTeaPhone()%></td>
+				<td><%=teaBean.getTeaRemarks()%></td>
+				<td align="center" valign="bottom">
+					<form
+						action="limitLogin?accountNum=<%=teaBean.getTeaNum()%>&tableName=admin/showTeaInfo.jsp"
+						method="post">
+						<button type="submit" ><%=teaBean.getLimitMess() %></button>
+					</form>
 				</td>
 				<td align="center">
-					<a href="searchByStuNum?stuNum=<%=stuBean.getStuNum()%>">更新</a>
+					<a href="searchByTeaNum?teaNum=<%=teaBean.getTeaNum()%>">更新</a>
 					&nbsp;
-					<a href="deleteStu?stuNum=<%= stuBean.getStuNum() %>"
+					<a href="deleteTea?teaNum=<%=teaBean.getTeaNum()%>"
 						onclick="return confirm('确定删除?')">删除</a>
 				</td>
 			</tr>
 			<%
 				}
 			%>
-
 
 		</table>
 

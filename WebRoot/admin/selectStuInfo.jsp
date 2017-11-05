@@ -1,6 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="gb2312"%>
-<jsp:useBean id="stuBean" class="admin.bean.StuInfo" />
-<jsp:useBean id="sqlBean" class="admin.bean.StuSqlBean" />
+<jsp:useBean id="stuBean" class="admin.bean.StuInfo" scope="request" />
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -33,7 +32,6 @@ a {
 a:hover {
 	color: cyan;
 }
-
 button{
    font-size:20px;
    width:50px;
@@ -86,19 +84,18 @@ button:hover{
 					备注
 				</td>
 				<td>
-				     是否限制登录
+				    是否限制登录
 				</td>
 				<td>
 					操作
 				</td>
 			</tr>
-
+			
 			<%
-				String sql = "select * from stuInfo order by stuNum";
-				java.util.List list = sqlBean.showAllStu(sql);
-				for (java.util.Iterator it = list.iterator(); it.hasNext();) {
-					stuBean = (admin.bean.StuInfo) it.next();
-			%>
+			    java.util.List list = (List)request.getAttribute("list");
+				for (java.util.Iterator it = list.iterator();it.hasNext();) {
+					stuBean = (admin.bean.StuInfo)it.next();
+			 %>
 			<tr>
 				<td><%=stuBean.getStuNum()%></td>
 				<td><%=stuBean.getStuName()%></td>
@@ -107,9 +104,9 @@ button:hover{
 				<td><%=stuBean.getStuForm()%></td>
 				<td><%=stuBean.getStuPhone()%></td>
 				<td><%=stuBean.getStuRemarks()%></td>
-				<td align="center" valign="middle" >
-				<form class="button" action="limitLogin?accountNum=<%=stuBean.getStuNum()%>&tableName=admin/showStuInfo.jsp" method="post" >
-				<button  type="submit" ><%= stuBean.getLimitMess() %></button>
+				<td align="center" valign="bottom">
+				<form action="limitLogin?accountNum=<%=stuBean.getStuNum()%>&tableName=admin/showStuInfo.jsp" method="post" >
+				<button type="submit" ><%=stuBean.getLimitMess() %></button>
 				</form>
 				</td>
 				<td align="center">
@@ -120,9 +117,8 @@ button:hover{
 				</td>
 			</tr>
 			<%
-				}
+			  }
 			%>
-
 
 		</table>
 

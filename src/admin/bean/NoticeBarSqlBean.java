@@ -5,17 +5,16 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StuSqlBean {
+public class NoticeBarSqlBean {
 
 	Connection con;
 	PreparedStatement pre;
 	ResultSet rs;
 	
-	public StuSqlBean(){
+	public NoticeBarSqlBean(){
 		String uri = "jdbc:sqlserver://localhost:55780;DatabaseName=curriculumEvaluationSystem";
 		String user="sa";
 		String password = "123456";
@@ -31,22 +30,20 @@ public class StuSqlBean {
 		
 	}
 	
-	public List showAllStu(String sql){
+	public List showAllNoticeBar(String sql){
 		List list = new ArrayList();
 		
 		try {
 			pre = con.prepareStatement(sql);
 			rs = pre.executeQuery();
 			while(rs.next()){
-				StuInfo bean = new StuInfo();
-				bean.setStuNum(rs.getInt(1));
-				bean.setLimitMess(limitMess(rs.getInt(1)));
-				bean.setStuName(rs.getString(2));
-				bean.setStuSex(rs.getString(3));
-				bean.setStuGrade(rs.getInt(4));
-				bean.setStuForm(rs.getString(5));
-				bean.setStuPhone(rs.getInt(6));
-				bean.setStuRemarks(rs.getString(7));
+				NoticeBarInfo bean = new NoticeBarInfo();
+				bean.setNoticeBarInfoNum(rs.getInt(1));
+				bean.setTitle(rs.getString(2));
+				bean.setReleaseTime(rs.getDate(3));
+				bean.setAuthor(rs.getString(4));
+				bean.setContent(rs.getString(5));
+				bean.setNoticeBarInfoLimit(rs.getInt(6)); 
 				list.add(bean);
 			}
 		} catch (Exception e) {
@@ -63,22 +60,5 @@ public class StuSqlBean {
 		}
 		return list;
 	}
-	
-	public String limitMess(int accountNum) throws SQLException{
-		String sql = "select perLimit from userLogin where accountNum="+accountNum;
-		Statement stat = con.createStatement();
-		ResultSet rs = stat.executeQuery(sql);
-		String limitMess = null;
-		while(rs.next()){
-			int perLimit = rs.getInt(1);
-			if(perLimit == 0){
-				limitMess = "·ñ";
-			}else if(perLimit == 1){
-				limitMess = "ÊÇ";
-			}
-		}
-		rs.close();
-		stat.close();
-		return limitMess;
-	}
+
 }

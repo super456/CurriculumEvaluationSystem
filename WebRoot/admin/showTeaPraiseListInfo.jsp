@@ -70,61 +70,46 @@ button:hover{
 		<table border=1 bgcolor="#ffffff" width=100%>
 			<tr align="center">
 				<td>
+					教师好评榜编号
+				</td>
+				<td>
+					课程编号
+				</td>
+				<td>
+					课程名称
+				</td>
+				<td>
 					教师编号
 				</td>
 				<td>
-					姓名
+					教师名称
 				</td>
 				<td>
-					性别
+					开课学期
 				</td>
 				<td>
-					出生日期
-				</td>
-				<td>
-					所在单位
-				</td>
-				<td>
-					联系电话
-				</td>
-				<td>
-					简介
-				</td>
-				<td>
-				  是否限制登录
-				</td>
-				<td>
-					操作
+					所有总平均分数
 				</td>
 			</tr>
-			<jsp:useBean id="teaBean" class="admin.bean.TeaInfo" />
-			<jsp:useBean id="sqlBean" class="admin.bean.TeaSqlBean" />
+			<jsp:useBean id="teaPraiseBean" class="admin.bean.TeaPraiseListInfo" />
+			<jsp:useBean id="sqlBean" class="admin.bean.TeaPraiseListSqlBean" />
 			<%
-				String sql = "select * from teaInfo";
-				java.util.List list = sqlBean.showAllTea(sql);
+                String sql = "select teaPraiseListNum,teaPraiseListInfo.couNum,courseInfo.couName,"+
+                "teaPraiseListInfo.teaNum,teaName,teaPraiseListInfo.couTerm,theAllAvgScore from teaPraiseListInfo "+
+                "inner join courseInfo on teaPraiseListInfo.couNum=courseInfo.couNum inner join "+
+                "teaInfo on teaPraiseListInfo.teaNum=teaInfo.teaNum";
+				java.util.List list = sqlBean.showAllTeaPraise(sql);
 				for (java.util.Iterator it = list.iterator(); it.hasNext();) {
-					teaBean = (admin.bean.TeaInfo) it.next();
+					teaPraiseBean = (admin.bean.TeaPraiseListInfo) it.next();
 			%>
 			<tr>
-				<td><%=teaBean.getTeaNum()%></td>
-				<td><%=teaBean.getTeaName()%></td>
-				<td><%=teaBean.getTeaSex()%></td>
-				<td><%=teaBean.getTeaBirthday()%></td>
-				<td><%=teaBean.getTeaForm()%></td>
-				<td><%=teaBean.getTeaPhone()%></td>
-				<td><%=teaBean.getTeaRemarks()%></td>
-				<td align="center" valign="bottom">
-					<form
-						action="limitLogin?accountNum=<%=teaBean.getTeaNum()%>&tableName=admin/showTeaInfo.jsp"
-						method="post">
-						<button type="submit" ><%=teaBean.getLimitMess() %></button>
-					</form>
-				</td>
-				<td align="center">
-					<a href="searchByTeaNum?teaNum=<%=teaBean.getTeaNum()%>">更新</a>&nbsp;
-					<a href="deleteTea?teaNum=<%=teaBean.getTeaNum()%>"
-	                onclick="return confirm('确定删除?')">删除</a>
-				</td>
+			    <td><%=teaPraiseBean.getTeaPraiseListNum() %></td>
+				<td><%=teaPraiseBean.getCouNum() %></td>
+				<td><%=teaPraiseBean.getCouName() %></td>
+				<td><%=teaPraiseBean.getTeaNum() %></td>
+				<td><%=teaPraiseBean.getTeaName() %></td>
+				<td><%=teaPraiseBean.getCouTerm() %></td>
+				<td><%=teaPraiseBean.getTheAllAvgScore() %></td>
 			</tr>
 			<%
 				}
