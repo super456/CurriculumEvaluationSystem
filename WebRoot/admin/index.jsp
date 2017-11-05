@@ -111,7 +111,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <dl>
                                 <dd>
                                     <a href="admin/#" class="dd-item">查看课程评比结果<span class="scm dd-ar"></span></a>
-                                    
+                                    <ul class="ad-item-list">
+                                        <li class="J_menuItem" href="admin/showTeaPraiseListInfo.jsp" data-index="1">查看课程评比结果</li>
+                                    </ul>
                                 </dd>
                                 <dd>
                                     <a href="admin/#" class="dd-item">筛选课程评比结果<span class="scm dd-ar"></span></a>
