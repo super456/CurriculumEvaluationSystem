@@ -185,6 +185,13 @@
     <servlet-name>SelectByTeaPraiseInfo</servlet-name>
     <servlet-class>admin.servlet.SelectByTeaPraiseInfo</servlet-class>
   </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>loginCheck</servlet-name>
+    <servlet-class>loginCheck.loginCheck</servlet-class>
+  </servlet>
+
   <servlet-mapping>
     <servlet-name>SelectByTeaPraiseInfo</servlet-name>
     <url-pattern>/selectByTeaPraiseInfo</url-pattern>
@@ -252,4 +259,9 @@
     <servlet-name>SelectByAdminInfo</servlet-name>
     <url-pattern>/selectByAdminInfo</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>loginCheck</servlet-name>
+    <url-pattern>/loginCheck</url-pattern>
+  </servlet-mapping>
+
 </web-app>
