@@ -207,4 +207,49 @@
     <servlet-name>SelectByCouClassStuInfo</servlet-name>
     <url-pattern>/selectByCouClassStuInfo</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>AddAdminServlet</servlet-name>
+    <servlet-class>admin.servlet.AddAdminServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddAdminServlet</servlet-name>
+    <url-pattern>/addAdmin</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>SearchByAdminNum</servlet-name>
+    <servlet-class>admin.servlet.SearchByAdminNum</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SearchByAdminNum</servlet-name>
+    <url-pattern>/searchByAdminNum</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>UpdateAdminServlet</servlet-name>
+    <servlet-class>admin.servlet.UpdateAdminServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateAdminServlet</servlet-name>
+    <url-pattern>/updateAdmin</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>DeleteAdminServlet</servlet-name>
+    <servlet-class>admin.servlet.DeleteAdminServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteAdminServlet</servlet-name>
+    <url-pattern>/deleteAdmin</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>SelectByAdminInfo</servlet-name>
+    <servlet-class>admin.servlet.SelectByAdminInfo</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SelectByAdminInfo</servlet-name>
+    <url-pattern>/selectByAdminInfo</url-pattern>
+  </servlet-mapping>
 </web-app>

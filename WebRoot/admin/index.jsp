@@ -157,10 +157,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <div class="li-item"><em class="scm li-ico ic6"></em>管理员信息管理<span class="scm arrow"></span></div>
                             <dl>
                                 <dd>
-                                    <a href="admin/#" class="dd-item">查看所有管理员<span class="scm dd-ar"></span></a>
+                                    <a href="admin/#" class="dd-item">查看所有管理员信息<span class="scm dd-ar"></span></a>
+                                    <ul class="ad-item-list">
+                                        <li class="J_menuItem" href="admin/showAdminInfo.jsp" data-index="1">查看所有管理员信息</li>
+                                    </ul>
                                 </dd>
                                 <dd>
                                     <a href="admin/#" class="dd-item">添加管理员信息<span class="scm dd-ar"></span></a>
+                                    <ul class="ad-item-list">
+                                        <li class="J_menuItem" href="admin/addAdminInfo.jsp" data-index="1">添加管理员信息</li>
+                                    </ul>
                                 </dd>
                             </dl>
                         </li>
