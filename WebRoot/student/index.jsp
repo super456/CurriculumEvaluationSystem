@@ -206,8 +206,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <div class="ad-welcom">
                                 <div class="ad-wel-img"><img src="publicStyle/images/top-logo.png" height="36" width="36"></div>
                                 <div class="ad-wel-text">
-                                    <div class="font-wel">欢迎您！<strong>杜世武</strong></div>
-                                    <div class="font-wel"><a href="javascript:;"><strong>安全退出</strong></a></div>
+                                    <div class="font-wel">欢迎您：<strong><%= session.getAttribute("userName") %>&nbsp;<%= session.getAttribute("loginIdentity") %></strong></div>
+                                    	<div class="font-wel">
+                                    		<strong>
+                                    			<a href="loginOut.jsp" onclick="return confirm('确定退出吗？');">安全退出</a>
+                                    			</strong>
+                                    		</div>
                                 </div>
                             </div>
                         </div>
@@ -234,8 +238,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <a href="javascript:;" class="scm jian-a next j_tabBg J_tabRight"></a>
                     </div>
                 </div>
+                
+                <!-- 登录主页面右侧显示的的内容 -->
                 <div class="ad-main-comment J_mainContent" id="ad-iframe">
-                    <iframe class="J_iframe" name="iframe0" width="100%" height="100%" src="student/index_v0.html" frameborder="0" data-id="index_v0.html" seamless></iframe>
+                    <iframe class="J_iframe" name="iframe0" width="100%" height="100%" src="student/homePage.jsp" frameborder="0" data-id="index_v0.html" seamless></iframe>
                 </div>
     		</div>
     	</div>
