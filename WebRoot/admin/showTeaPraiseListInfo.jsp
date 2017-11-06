@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="gb2312"%>
-
+<jsp:useBean id="teaPraiseBean" class="admin.bean.TeaPraiseListInfo" />
+<jsp:useBean id="sqlBean" class="admin.bean.TeaPraiseListSqlBean" />
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -11,9 +12,6 @@
 	<head>
 		<base href="<%=basePath%>">
 
-		<meta charset="gb2312">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="renderer" content="webkit">
 		<meta http-equiv="pragma" content="no-cache">
 		<meta http-equiv="cache-control" content="no-cache">
 		<meta http-equiv="expires" content="0">
@@ -32,18 +30,24 @@ a {
 a:hover {
 	color: cyan;
 }
-button{
-   font-size:20px;
-   width:50px;
-   padding: 0px;
-   margin-top: 20px;
-   height:25px;
-   background-color:#96FED1;
-}
-button:hover{
-   background-color:white;
-}
 </style>
+
+		<script type="text/javascript">
+	function postwith(to, p) {
+		var myForm = document.createElement("form");
+		myForm.method = "post";
+		myForm.action = to;
+		for ( var k in p) {
+			var myInput = document.createElement("input");
+			myInput.setAttribute("name", k);
+			myInput.setAttribute("value", p[k]);
+			myForm.appendChild(myInput);
+		}
+		document.body.appendChild(myForm);
+		myForm.submit();
+		document.body.removeChild(myForm);
+	}
+</script>
 	</head>
 
 	<body style="background-color: #FFF;">
@@ -90,26 +94,32 @@ button:hover{
 				<td>
 					所有总平均分数
 				</td>
+				<td>
+					操作
+				</td>
 			</tr>
-			<jsp:useBean id="teaPraiseBean" class="admin.bean.TeaPraiseListInfo" />
-			<jsp:useBean id="sqlBean" class="admin.bean.TeaPraiseListSqlBean" />
 			<%
-                String sql = "select teaPraiseListNum,teaPraiseListInfo.couNum,couName,"+
-                "teaPraiseListInfo.teaNum,teaName,teaPraiseListInfo.couTerm,theAllAvgScore from teaPraiseListInfo "+
-                "inner join courseInfo on teaPraiseListInfo.couNum=courseInfo.couNum inner join "+
-                "teaInfo on teaPraiseListInfo.teaNum=teaInfo.teaNum";
+				String sql = "select teaPraiseListNum,teaPraiseListInfo.couNum,couName,"
+						+ "teaPraiseListInfo.teaNum,teaName,teaPraiseListInfo.couTerm,theAllAvgScore from teaPraiseListInfo "
+						+ "inner join courseInfo on teaPraiseListInfo.couNum=courseInfo.couNum inner join "
+						+ "teaInfo on teaPraiseListInfo.teaNum=teaInfo.teaNum";
 				java.util.List list = sqlBean.showAllTeaPraise(sql);
 				for (java.util.Iterator it = list.iterator(); it.hasNext();) {
 					teaPraiseBean = (admin.bean.TeaPraiseListInfo) it.next();
 			%>
 			<tr>
-			    <td><%=teaPraiseBean.getTeaPraiseListNum() %></td>
-				<td><%=teaPraiseBean.getCouNum() %></td>
-				<td><%=teaPraiseBean.getCouName() %></td>
-				<td><%=teaPraiseBean.getTeaNum() %></td>
-				<td><%=teaPraiseBean.getTeaName() %></td>
-				<td><%=teaPraiseBean.getCouTerm() %></td>
-				<td><%=teaPraiseBean.getTheAllAvgScore() %></td>
+				<td><%=teaPraiseBean.getTeaPraiseListNum()%></td>
+				<td><%=teaPraiseBean.getCouNum()%></td>
+				<td><%=teaPraiseBean.getCouName()%></td>
+				<td><%=teaPraiseBean.getTeaNum()%></td>
+				<td><%=teaPraiseBean.getTeaName()%></td>
+				<td><%=teaPraiseBean.getCouTerm()%></td>
+				<td><%=teaPraiseBean.getTheAllAvgScore()%></td>
+				<td align="center">
+					<a
+						href="javascript:postwith('selectByCommentCouInfo',{'select':'couNum','userInfo':'<%=teaPraiseBean.getCouNum()%>'})">
+						查看详情</a>
+				</td>
 			</tr>
 			<%
 				}

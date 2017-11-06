@@ -28,12 +28,6 @@ public class SearchByStuNum extends HttpServlet{
 	}
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-		doPost(request,response);
-	}
-
-	public void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
 		request.setCharacterEncoding("gb2312");
 		response.setCharacterEncoding("gb2312");
 		StuInfo stuBean = new StuInfo();
@@ -47,7 +41,7 @@ public class SearchByStuNum extends HttpServlet{
 		
 		String num = request.getParameter("stuNum");		
 		int stuNum = Integer.parseInt(num);
-		
+		String tableName = request.getParameter("tableName");
 		String condition = "select * from stuInfo where stuNum=?";
 		try {
 			con = DriverManager.getConnection(uri, user, password);
@@ -78,7 +72,13 @@ public class SearchByStuNum extends HttpServlet{
 			}
 			
 		}
-		RequestDispatcher dispatcher = request.getRequestDispatcher("admin/updateStuInfo.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher(tableName);
 		dispatcher.forward(request, response);
+	}
+
+	public void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		
+		response.sendRedirect("admin/showCouClassStuInfo.jsp");
 	}
 }

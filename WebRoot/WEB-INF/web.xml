@@ -189,4 +189,22 @@
     <servlet-name>SelectByTeaPraiseInfo</servlet-name>
     <url-pattern>/selectByTeaPraiseInfo</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>SelectByCommentCouInfo</servlet-name>
+    <servlet-class>admin.servlet.SelectByCommentCouInfo</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SelectByCommentCouInfo</servlet-name>
+    <url-pattern>/selectByCommentCouInfo</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>SelectByCouClassStuInfo</servlet-name>
+    <servlet-class>admin.servlet.SelectByCouClassStuInfo</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SelectByCouClassStuInfo</servlet-name>
+    <url-pattern>/selectByCouClassStuInfo</url-pattern>
+  </servlet-mapping>
 </web-app>

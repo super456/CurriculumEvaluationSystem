@@ -28,12 +28,6 @@ public class SearchByNoticeNum extends HttpServlet{
 	}
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-		doPost(request,response);
-	}
-
-	public void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
 		request.setCharacterEncoding("gb2312");
 		response.setCharacterEncoding("gb2312");
 		NoticeBarInfo noticeBean = new NoticeBarInfo();
@@ -48,6 +42,7 @@ public class SearchByNoticeNum extends HttpServlet{
 		
 		String num = request.getParameter("noticeBarInfoNum");		
 		int noticeBarInfoNum = Integer.parseInt(num);
+		String tableName = request.getParameter("tableName");
 		
 		String condition = "select * from noticeBarInfo where noticeBarInfoNum=?";
 		try {
@@ -58,6 +53,7 @@ public class SearchByNoticeNum extends HttpServlet{
 			while(rs.next()){
 				noticeBean.setNoticeBarInfoNum(rs.getInt(1));
 				noticeBean.setTitle(rs.getString(2));
+				noticeBean.setReleaseTime(rs.getDate(3));
 				noticeBean.setAuthor(rs.getString(4));
 				noticeBean.setContent(rs.getString(5));
 				noticeBean.setNoticeBarInfoLimit(rs.getInt(6));
@@ -74,7 +70,13 @@ public class SearchByNoticeNum extends HttpServlet{
 			
 		}
 		request.setAttribute("noticeBean", noticeBean);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("admin/updateNoticeInfo.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher(tableName);
 		dispatcher.forward(request, response);
+	}
+
+	public void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		response.sendRedirect("admin/showNoticeBarInfo.jsp");
 	}
 }

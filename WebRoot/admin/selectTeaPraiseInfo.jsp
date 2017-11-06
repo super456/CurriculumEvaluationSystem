@@ -32,17 +32,6 @@ a {
 a:hover {
 	color: cyan;
 }
-button{
-   font-size:20px;
-   width:50px;
-   padding: 0px;
-   margin-top: 20px;
-   height:25px;
-   background-color:#96FED1;
-}
-button:hover{
-   background-color:white;
-}
 </style>
 	</head>
 
@@ -90,6 +79,7 @@ button:hover{
 				<td>
 					所有总平均分数
 				</td>
+				
 			</tr>
 			<jsp:useBean id="teaPraiseBean" class="admin.bean.TeaPraiseListInfo" scope="request" /> 
 			<%

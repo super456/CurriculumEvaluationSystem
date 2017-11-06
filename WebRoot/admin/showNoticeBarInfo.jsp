@@ -62,7 +62,8 @@ a:hover {
 				<td><%=noticeBarBean.getSmallContent() %></td>
 				<td><%=noticeBarBean.getLimitMess() %></td>
 				<td align="center">
-					<a href="searchByNoticeNum?noticeBarInfoNum=<%=noticeBarBean.getNoticeBarInfoNum() %>">更新</a>
+				    <a href="searchByNoticeNum?noticeBarInfoNum=<%=noticeBarBean.getNoticeBarInfoNum() %>&tableName=admin/searchNoticeInfo.jsp">查看</a>
+					<a href="searchByNoticeNum?noticeBarInfoNum=<%=noticeBarBean.getNoticeBarInfoNum() %>&tableName=admin/updateNoticeInfo.jsp">更新</a>
 					<a href="deleteNotice?noticeBarInfoNum=<%= noticeBarBean.getNoticeBarInfoNum() %>"
 						onclick="return confirm('确定删除?')">删除</a>
 				</td>
