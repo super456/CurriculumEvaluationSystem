@@ -62,6 +62,7 @@ public class UpdateTeaServlet extends HttpServlet {
 		calendar.set(year, month-1,day);
 		Date teaBirthday = new java.sql.Date(calendar.getTimeInMillis());
 
+		String sql = "update userLogin set userName=? where accountNum="+teaNum;
 		String condition = "update teaInfo set teaName=?,teaSex=?,teaBirthday=?,teaForm=?,teaPhone=?,teaRemarks=? where teaNum="+teaNum;
 		try {
 			con = DriverManager.getConnection(uri, user, password);
@@ -72,6 +73,9 @@ public class UpdateTeaServlet extends HttpServlet {
 			pre.setString(4, teaForm);
 			pre.setInt(5, teaPhone);
 			pre.setString(6, teaRemarks);
+			pre.executeUpdate();
+			pre = con.prepareStatement(sql);
+			pre.setString(1, teaName);
 			pre.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

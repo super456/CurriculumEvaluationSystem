@@ -52,6 +52,10 @@ public class AddAdminServlet extends HttpServlet{
 		int adminNum = Integer.parseInt(num);
 		int adminPhone = Integer.parseInt(phone);
 		int adminLimit = Integer.parseInt(limit);
+		int pwd = 123456 ;
+		String userType = "π‹¿Ì‘±";
+		int perLimit = 0;
+		String sql = "insert into userLogin values(?,?,?,?,?)";
 		String condition = "insert into adminInfo values(?,?,?,?,?)";
 		try {
 			con = DriverManager.getConnection(uri, user, password);
@@ -61,6 +65,13 @@ public class AddAdminServlet extends HttpServlet{
 			pre.setInt(3, adminPhone);
 			pre.setInt(4, adminLimit);
 			pre.setString(5, adminRemarks);
+			pre.executeUpdate();
+			pre = con.prepareStatement(sql);
+			pre.setInt(1, adminNum);
+			pre.setString(2, adminName);
+			pre.setInt(3, pwd);
+			pre.setString(4, userType);
+			pre.setInt(5, perLimit);
 			pre.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

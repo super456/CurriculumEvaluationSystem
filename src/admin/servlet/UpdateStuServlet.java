@@ -55,6 +55,7 @@ public class UpdateStuServlet extends HttpServlet {
 		int stuGrade = Integer.parseInt(grade);
 		int stuPhone = Integer.parseInt(phone);
 
+		String sql = "update userLogin set userName=? where accountNum="+stuNum;
 		String condition = "update stuInfo set stuName=?,stuSex=?,stuGrade=?,stuForm=?,stuPhone=?,stuRemarks=? where stuNum="+stuNum;
 		try {
 			con = DriverManager.getConnection(uri, user, password);
@@ -65,6 +66,9 @@ public class UpdateStuServlet extends HttpServlet {
 			pre.setString(4, stuForm);
 			pre.setInt(5, stuPhone);
 			pre.setString(6, stuRemarks);
+			pre.executeUpdate();
+			pre = con.prepareStatement(sql);
+			pre.setString(1, stuName);
 			pre.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

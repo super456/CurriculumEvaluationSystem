@@ -43,9 +43,13 @@ public class DeleteTeaServlet extends HttpServlet {
 		int teaNum = Integer.parseInt(num);
 
 		String condition = "delete from teaInfo where teaNum=?";
+		String sql = "delete from userLogin where accountNum=?";
 		try {
 			con = DriverManager.getConnection(uri, user, password);
 			pre = con.prepareStatement(condition);
+			pre.setInt(1, teaNum);
+			pre.executeUpdate();
+			pre = con.prepareStatement(sql);
 			pre.setInt(1, teaNum);
 			pre.executeUpdate();
 		} catch (SQLException e) {

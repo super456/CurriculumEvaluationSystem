@@ -62,6 +62,10 @@ public class AddTeaServlet extends HttpServlet {
 		Calendar calendar = Calendar.getInstance();
 		calendar.set(year, month-1,day);
 		Date teaBirthday = new java.sql.Date(calendar.getTimeInMillis());
+		int pwd = 123456 ;
+		String userType = "ΩÃ ¶";
+		int perLimit = 0;
+		String sql = "insert into userLogin values(?,?,?,?,?)";
 		String condition = "insert into teaInfo values(?,?,?,?,?,?,?)";
 		try {
 			con = DriverManager.getConnection(uri, user, password);
@@ -73,6 +77,13 @@ public class AddTeaServlet extends HttpServlet {
 			pre.setString(5, teaForm);
 			pre.setInt(6, teaPhone);
 			pre.setString(7, teaRemarks);
+			pre.executeUpdate();
+			pre = con.prepareStatement(sql);
+			pre.setInt(1, teaNum);
+			pre.setString(2, teaName);
+			pre.setInt(3, pwd);
+			pre.setString(4, userType);
+			pre.setInt(5, perLimit);
 			pre.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

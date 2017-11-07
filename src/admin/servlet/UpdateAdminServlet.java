@@ -49,6 +49,7 @@ public class UpdateAdminServlet extends HttpServlet{
 		int adminPhone = Integer.parseInt(phone);
 		int adminLimit = Integer.parseInt(limit);
 
+		String sql = "update userLogin set userName=? where accountNum="+adminNum;
 		String condition = "update adminInfo set adminName=?,adminPhone=?,adminLimit=?,adminRemarks=? where adminNum="+adminNum;
 		try {
 			con = DriverManager.getConnection(uri, user, password);
@@ -57,6 +58,9 @@ public class UpdateAdminServlet extends HttpServlet{
 			pre.setInt(2, adminPhone);
 			pre.setInt(3, adminLimit);
 			pre.setString(4, adminRemarks);
+			pre.executeUpdate();
+			pre = con.prepareStatement(sql);
+			pre.setString(1, adminName);
 			pre.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

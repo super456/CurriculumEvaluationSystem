@@ -51,7 +51,12 @@ public class AddStuServlet extends HttpServlet {
 		int stuNum = Integer.parseInt(num);
 		int stuGrade = Integer.parseInt(grade);
 		int stuPhone = Integer.parseInt(phone);
+		
+		int pwd = 123456 ;
+		String userType = "Ñ§Éú";
+		int perLimit = 0;
 		String condition = "insert into stuInfo values(?,?,?,?,?,?,?)";
+		String sql = "insert into userLogin values(?,?,?,?,?)";
 		try {
 			con = DriverManager.getConnection(uri, user, password);
 			pre = con.prepareStatement(condition);
@@ -62,6 +67,13 @@ public class AddStuServlet extends HttpServlet {
 			pre.setString(5, stuForm);
 			pre.setInt(6, stuPhone);
 			pre.setString(7, stuRemarks);
+			pre.executeUpdate();
+			pre = con.prepareStatement(sql);
+			pre.setInt(1, stuNum);
+			pre.setString(2, stuName);
+			pre.setInt(3, pwd);
+			pre.setString(4, userType);
+			pre.setInt(5, perLimit);
 			pre.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
