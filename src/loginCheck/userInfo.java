@@ -1,13 +1,15 @@
 package loginCheck;
 
-//±¾ÀàÓÃÓÚ´æ´¢µÇÂ¼½çÃæÓÃ»§ÊäÈë²¢ÇÒÍ¨¹ıjsÑéÖ¤µÄĞÅÏ¢
+//æš‚æ—¶æœªç”¨åˆ°è¯¥ç±»ï¼Œå› ä¸ºç”¨æˆ·çš„åŸºæœ¬ä¿¡æ¯éƒ½å­˜å‚¨åœ¨sessionå¯¹è±¡ä¸­
+
+//æœ¬ç±»ç”¨äºå­˜å‚¨ç™»å½•ç•Œé¢ç”¨æˆ·è¾“å…¥å¹¶ä¸”é€šè¿‡jséªŒè¯çš„ä¿¡æ¯
 public class userInfo {
-	int accountNum = 0;// ÓÃ»§ÊäÈëµÄÕËºÅ
-	String userPassword = null;// ÓÃ»§ÊäÈëµÄÃÜÂë
-	boolean isCheck = false;// ÓÃÓÚÅĞ¶ÏÓÃ»§ÊÇ·ñ±»ÏŞÖÆµÇÂ¼£¬µÇÂ¼ÕËºÅ»òÃÜÂëÊÇ·ñÊäÈëÕıÈ·£¬
-	// ×îºóÊÇ·ñµÇÂ¼³É¹¦
-	String userName = null;// ÓÃÓÚ»ñÈ¡ÓÃ»§µÇÂ¼³É¹¦µÄÓÃ»§Ãû
-	String loginIdentity=null;//ÓÃÓÚ´æ´¢µÇÂ¼Éí·İ£¬Ö÷Ò³ÏÔÊ¾
+	int accountNum = 0;// ç”¨æˆ·è¾“å…¥çš„è´¦å·
+	String userPassword = null;// ç”¨æˆ·è¾“å…¥çš„å¯†ç 
+	boolean isCheck = false;// ç”¨äºåˆ¤æ–­ç”¨æˆ·æ˜¯å¦è¢«é™åˆ¶ç™»å½•ï¼Œç™»å½•è´¦å·æˆ–å¯†ç æ˜¯å¦è¾“å…¥æ­£ç¡®ï¼Œ
+	// æœ€åæ˜¯å¦ç™»å½•æˆåŠŸ
+	String userName = null;// ç”¨äºè·å–ç”¨æˆ·ç™»å½•æˆåŠŸçš„ç”¨æˆ·å
+	String loginIdentity=null;//ç”¨äºå­˜å‚¨ç™»å½•èº«ä»½ï¼Œä¸»é¡µæ˜¾ç¤º
 	
 	public String getLoginIdentity() {
 		return loginIdentity;

@@ -255,6 +255,13 @@
     <servlet-name>SelectByAdminInfo</servlet-name>
     <servlet-class>admin.servlet.SelectByAdminInfo</servlet-class>
   </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>noticeBarList</servlet-name>
+    <servlet-class>student.servlet.noticeBarList</servlet-class>
+  </servlet>
+
   <servlet-mapping>
     <servlet-name>SelectByAdminInfo</servlet-name>
     <url-pattern>/selectByAdminInfo</url-pattern>
@@ -262,6 +269,10 @@
   <servlet-mapping>
     <servlet-name>loginCheck</servlet-name>
     <url-pattern>/loginCheck</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>noticeBarList</servlet-name>
+    <url-pattern>/noticeBarList</url-pattern>
   </servlet-mapping>
 
 </web-app>

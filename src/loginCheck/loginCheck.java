@@ -72,13 +72,13 @@ public class loginCheck extends HttpServlet {
 	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		  request.setCharacterEncoding("utf-8");//ÉèÖÃ±àÂë£¬´¦Àíºº×ÖĞÅÏ¢
-		  //ÉèÖÃµÇÂ¼Ê§°ÜµÄ·µ»ØĞÅÏ¢Á÷
+		  request.setCharacterEncoding("utf-8");//è®¾ç½®ç¼–ç ï¼Œå¤„ç†æ±‰å­—ä¿¡æ¯
+		  //è®¾ç½®ç™»å½•å¤±è´¥çš„è¿”å›ä¿¡æ¯æµ
 		  response.setContentType("text/html;charset=gb2312");
 		PrintWriter out = response.getWriter();
 		  userInfo userinfo=null;//
-		  HttpSession session=request.getSession(true);//Æô¶¯ÓÃ»§¶À×ÔµÄsession¶ÔÏó
-		  try {//·ÀÖ¹¿Õ¶ÔÏó²úÉúÔËÓÃ£¬´´½¨javabean¶ÔÏó£¬²¢´æ´¢Îªsession¶ÔÏóÖĞ
+		  HttpSession session=request.getSession(true);//å¯åŠ¨ç”¨æˆ·ç‹¬è‡ªçš„sessionå¯¹è±¡
+		  try {//é˜²æ­¢ç©ºå¯¹è±¡äº§ç”Ÿè¿ç”¨ï¼Œåˆ›å»ºjavabeanå¯¹è±¡ï¼Œå¹¶å­˜å‚¨ä¸ºsessionå¯¹è±¡ä¸­
 			userinfo=(userInfo)session.getAttribute("userinfo");//
 			if (userinfo==null) {
 				userinfo=new userInfo();
@@ -93,33 +93,33 @@ public class loginCheck extends HttpServlet {
 		int accountNum=Integer.parseInt(request.getParameter("accountNum"));
 		String userPassword=request.getParameter("userPassword");
 		String loginIdentity=request.getParameter("select");
-		session.setAttribute("loginIdentity", loginIdentity);//°ó¶¨´æ´¢session¶ÔÏóÓÃ»§µÄµÇÂ¼Éí·İ
-		//Êı¾İ¿â²éÑ¯ÑéÖ¤ÕËºÅÃÜÂë
+		session.setAttribute("loginIdentity", loginIdentity);//ç»‘å®šå­˜å‚¨sessionå¯¹è±¡ç”¨æˆ·çš„ç™»å½•èº«ä»½
+		//æ•°æ®åº“æŸ¥è¯¢éªŒè¯è´¦å·å¯†ç 
 		String sqlString= "Select*from userLogin where accountNum='" + accountNum
 		+ "'and password='" + userPassword + "'and userType='"+loginIdentity+"'";
 		connectSql conSql=new connectSql();
-		conSql.StartCon();//Æô¶¯Á¬½ÓÊı¾İ¿â
+		conSql.StartCon();//å¯åŠ¨è¿æ¥æ•°æ®åº“
 		boolean result=conSql.loginQuery(sqlString);
 		if (result) {
-			//ÕËºÅ¡¢ÃÜÂë¡¢Éí·İÈıÕßÍ¨¹ıÊı¾İ¿âĞÅÏ¢ÑéÖ¤
-			//»ñÈ¡²éÑ¯Êı¾İ¿âµÄ¸ÃÓÃ»§µÄÓÃ»§Ãû
+			//è´¦å·ã€å¯†ç ã€èº«ä»½ä¸‰è€…é€šè¿‡æ•°æ®åº“ä¿¡æ¯éªŒè¯
+			//è·å–æŸ¥è¯¢æ•°æ®åº“çš„è¯¥ç”¨æˆ·çš„ç”¨æˆ·å
 			String sqlString2="Select userName from userLogin where accountNum='" + accountNum + "'";
-			conSql.StartCon();//Æô¶¯Á¬½ÓÊı¾İ¿â
+			conSql.StartCon();//å¯åŠ¨è¿æ¥æ•°æ®åº“
 			String userName=conSql.execQuery(sqlString2);
-			session.setAttribute("accountNum", accountNum);//°ó¶¨´æ´¢session¶ÔÏóµÄÓÃ»§ÕËºÅ
-			session.setAttribute("userName", userName);//°ó¶¨´æ´¢session¶ÔÏóµÄÓÃ»§µÄÓÃ»§Ãû
-			//¸ù¾İÓÃ»§Ñ¡ÔñµÄµÇÂ¼Éí·İ£¬Ìø×ªÏàÓ¦µÄ½çÃæ
-			if (loginIdentity.equals("Ñ§Éú")) {
+			session.setAttribute("accountNum", accountNum);//ç»‘å®šå­˜å‚¨sessionå¯¹è±¡çš„ç”¨æˆ·è´¦å·
+			session.setAttribute("userName", userName);//ç»‘å®šå­˜å‚¨sessionå¯¹è±¡çš„ç”¨æˆ·çš„ç”¨æˆ·å
+			//æ ¹æ®ç”¨æˆ·é€‰æ‹©çš„ç™»å½•èº«ä»½ï¼Œè·³è½¬ç›¸åº”çš„ç•Œé¢
+			if (loginIdentity.equals("å­¦ç”Ÿ")) {
 				response.sendRedirect("student/index.jsp");
-			}else if (loginIdentity.equals("½ÌÊ¦")) {
+			}else if (loginIdentity.equals("æ•™å¸ˆ")) {
 				response.sendRedirect("teacher/index.jsp");
 			}else {
 				response.sendRedirect("admin/index.jsp");
 			}
 	
 		}else {
-			//ÕËºÅ¡¢ÃÜÂë¡¢µÇÂ¼Éí·İÎ´Í¨¹ıÊı¾İ¿âĞÅÏ¢ÑéÖ¤
-			out.println("<SCRIPT language=javascript > alert('ÓÃ»§Ãû»òÃÜÂë»òÕßµÇÂ¼Éí·İ²»ÕıÈ·£¬ÇëÖØĞÂÊäÈë£¡');window.location='index.jsp';</script>"); 
+			//è´¦å·ã€å¯†ç ã€ç™»å½•èº«ä»½æœªé€šè¿‡æ•°æ®åº“ä¿¡æ¯éªŒè¯
+			out.println("<SCRIPT language=javascript > alert('ç”¨æˆ·åæˆ–å¯†ç æˆ–è€…ç™»å½•èº«ä»½ä¸æ­£ç¡®ï¼Œè¯·é‡æ–°è¾“å…¥ï¼');window.location='index.jsp';</script>"); 
 			return;
 		}
 		
