@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'loginOut.jsp' starting page</title>
+    <title>主页右侧显示内容</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -21,11 +21,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	-->
 
   </head>
-<style>
+  	<!--不能使用background-image来设置背景图片-->
+<style  type="text/css">
+	body{
+	background:url("/CurriculumEvaluationSystem/publicStyle/images/home-bg.jpg") no-repeat center;
+	}
 	div{
 		text-align: center;
 		font-size: 40px;
-		font-color:gray;
+		color:gray;
 	}
 </style>
 <body>

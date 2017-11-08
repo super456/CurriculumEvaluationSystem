@@ -30,7 +30,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 .container {
   max-width: 600px;
   margin: 0 auto;
-  height: 650px;
+  height: 620px;
   text-align: center;
 }
 form {
@@ -76,6 +76,19 @@ form button:hover {
 	 color:white;
 }
 </style>
+<script type="text/javascript">
+  window.onload=function(){   
+  var osel=document.getElementById("teaSex"); 
+  var length=osel.getElementsByTagName("option").length; 
+  var opts = osel.getElementsByTagName("option");
+  var status = "<%=request.getAttribute("teaSex")%>";
+  for(var i=0;i<length;i++){
+    if(status == opts[i].value){
+     opts[i].selected=true;
+    }
+  }  
+} 
+</script>
   </head>
   
   <body>
@@ -90,7 +103,9 @@ form button:hover {
   <tr><td>姓名:</td>       
   <td><input type="text" name="teaName" value=<%= request.getAttribute("teaName") %> /></td></tr>
   <tr><td>性别:</td>
-  <td> <input type="text" name="teaSex" value=<%= request.getAttribute("teaSex") %> />
+  <td> <select name="teaSex" id="teaSex">
+  <option value="男" >--男性--</option>
+  <option value="女" >--女性--</option>
   </select></td></tr> 
   <tr><td>出生日期:</td>       
   <td><input type="text" name="teaBirthday" value=<%= request.getAttribute("teaBirthday") %> /></td></tr> 

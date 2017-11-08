@@ -7,7 +7,7 @@ public class connectSql {
 	PreparedStatement pst;
 	ResultSet rs;
 	
-	//Æô¶¯Á¬½ÓÊı¾İ¿â·½·¨
+	//å¯åŠ¨è¿æ¥æ•°æ®åº“æ–¹æ³•
 	public void StartCon(){
 		String uri = "jdbc:sqlserver://localhost:55780;DatabaseName=curriculumEvaluationSystem";
 		String user="sa";
@@ -24,15 +24,15 @@ public class connectSql {
 		}
 	}
 	
-	//1.Ö´ĞĞµÇÂ¼ÅĞ¶ÏÁ¬½ÓÊı¾İ¿â²Ù×÷Óï¾ä
+	//1.æ‰§è¡Œç™»å½•åˆ¤æ–­è¿æ¥æ•°æ®åº“æ“ä½œè¯­å¥
 	public boolean loginQuery(String sql){
 		try {
 			pst = con.prepareStatement(sql);
 			rs = pst.executeQuery();
 			if (rs.next()) {
-				return true;//Ö¤Ã÷²Ù×÷ÓĞ½á¹û£¬·µ»Øtrue
+				return true;//è¯æ˜æ“ä½œæœ‰ç»“æœï¼Œè¿”å›true
 		} else {
-			return false;//Ö¤Ã÷²Ù×÷Ã»½á¹û£¬·µ»Øfalse
+			return false;//è¯æ˜æ“ä½œæ²¡ç»“æœï¼Œè¿”å›false
 		}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -47,10 +47,10 @@ public class connectSql {
 			}
 			
 		}
-		return false;//Ä¬ÈÏ·µ»Øfalse£¬Ö¤Ã÷Êı¾İ¿â²éÑ¯Ê§°Ü£¬Ã»ÓĞ½á¹û
+		return false;//é»˜è®¤è¿”å›falseï¼Œè¯æ˜æ•°æ®åº“æŸ¥è¯¢å¤±è´¥ï¼Œæ²¡æœ‰ç»“æœ
 	}
 	
-	//2.²Ù×÷Êı¾İ¿â£¬Ö´ĞĞÓï¾ä£¬·µ»ØÖ¸¶¨²éÑ¯µÄÊı¾İ£¬µ¥ĞĞÊı×éÊı¾İÎªÖ÷,
+	//2.æ“ä½œæ•°æ®åº“ï¼Œæ‰§è¡Œè¯­å¥ï¼Œè¿”å›æŒ‡å®šæŸ¥è¯¢çš„æ•°æ®ï¼Œå•è¡Œæ•°ç»„æ•°æ®ä¸ºä¸»,
 	public String  execQuery(String sql){
 		String  result=null;
 		try {
@@ -76,4 +76,34 @@ public class connectSql {
 		}
 		return result;
 	}
+	
+	
+	//3.æ‰§è¡Œæ•°æ®åº“è¯­å¥ï¼Œè¿”å›è¡¨å†…æ‰€æœ‰æ•°æ®ï¼Œä»¥äºŒç»´æ•°ç»„å­˜å‚¨æ•°æ®
+	public String  [][]list(String sqlString){
+		String [][] tableRecord=null;
+		try {
+			pst = con.prepareStatement(sqlString);
+			rs = pst.executeQuery();
+			if (rs.next()) {
+				//tableRecord=rs.getString(1);
+			}else {
+				tableRecord=null;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally{
+			try {
+				pst.close();
+				con.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}
+		return tableRecord;
+	}
+	
+	
 }

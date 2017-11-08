@@ -22,10 +22,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
   </head>
 <style>
+    body{
+	background:url("/CurriculumEvaluationSystem/publicStyle/images/home-bg.jpg") no-repeat center;
+	}
 	div{
 		text-align: center;
 		font-size: 40px;
-		color:cyan;
+		color:gray;
 	}
 </style>
 <body>

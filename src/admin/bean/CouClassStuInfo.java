@@ -34,9 +34,9 @@ public class CouClassStuInfo {
 
 	public void setIsTeach(int isTeach) {
 		if(isTeach == 0)
-			isTeachMess = "·ñ";
+			isTeachMess = "å¦";
 		else if(isTeach == 1)
-			isTeachMess = "ÊÇ";
+			isTeachMess = "æ˜¯";
 		this.isTeach = isTeach;
 	}
 

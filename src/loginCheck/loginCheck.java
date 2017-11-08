@@ -77,6 +77,8 @@ public class loginCheck extends HttpServlet {
 		  //设置登录失败的返回信息流
 		  response.setContentType("text/html;charset=utf-8");
 		  PrintWriter out = response.getWriter();
+		  request.setCharacterEncoding("utf-8");//设置编码，处理汉字信息
+		  //设置登录失败的返回信息流
 		  userInfo userinfo=null;//
 		  HttpSession session=request.getSession(true);//启动用户独自的session对象
 		  try {//防止空对象产生运用，创建javabean对象，并存储为session对象中
@@ -96,7 +98,7 @@ public class loginCheck extends HttpServlet {
 		String loginIdentity=request.getParameter("select");
 		session.setAttribute("loginIdentity", loginIdentity);//绑定存储session对象用户的登录身份
 		//数据库查询验证账号密码
-		String sqlString= "Select * from userLogin where accountNum='" + accountNum
+		String sqlString= "Select*from userLogin where accountNum='" + accountNum
 		+ "'and password='" + userPassword + "'and userType='"+loginIdentity+"'";
 		connectSql conSql=new connectSql();
 		conSql.StartCon();//启动连接数据库

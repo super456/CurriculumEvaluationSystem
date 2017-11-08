@@ -62,9 +62,10 @@ public class TeaSqlBean {
 		return list;
 	}
 	public String limitMess(int accountNum) throws SQLException{
-		String sql = "select perLimit from userLogin where accountNum="+accountNum;
-		Statement stat = con.createStatement();
-		ResultSet rs = stat.executeQuery(sql);
+		String sql = "select perLimit from userLogin where accountNum=?";
+		PreparedStatement pre1 = con.prepareStatement(sql);
+		pre1.setInt(1, accountNum);
+		ResultSet rs = pre1.executeQuery();
 		String limitMess = null;
 		while(rs.next()){
 			int perLimit = rs.getInt(1);
@@ -74,6 +75,8 @@ public class TeaSqlBean {
 				limitMess = "是";
 			}
 		}
+		rs.close();
+		pre1.close();
 		return limitMess;
 	}
 }

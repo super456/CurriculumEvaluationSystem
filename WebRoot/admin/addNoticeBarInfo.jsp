@@ -91,7 +91,7 @@ form button:hover {
   <tr><td>作者:</td>       
   <td><input type="text" name="author" /></td></tr>
   <tr><td>内容:</td>
-  <td><textArea name="content" rows=8 cols=26 
+  <td><textArea name="content" rows=8 cols=25 
   style="background-color: rgba(255, 255, 255, 0.2);border-radius:3px;font-size: 18px;color: white;"
    ></textArea></td></tr>
   <tr><td>查看限制:</td>       
