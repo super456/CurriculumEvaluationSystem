@@ -63,7 +63,7 @@ public class AddTeaServlet extends HttpServlet {
 		calendar.set(year, month-1,day);
 		Date teaBirthday = new java.sql.Date(calendar.getTimeInMillis());
 		int pwd = 123456 ;
-		String userType = "½ÌÊ¦";
+		String userType = "æ•™å¸ˆ";
 		int perLimit = 0;
 		String sql = "insert into userLogin values(?,?,?,?,?)";
 		String condition = "insert into teaInfo values(?,?,?,?,?,?,?)";

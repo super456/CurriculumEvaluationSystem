@@ -9,14 +9,14 @@ public class connectSql {
 	
 	//启动连接数据库方法
 	public void StartCon(){
-		String uri = "jdbc:sqlserver://localhost:1433;DatabaseName=curriculumEvaluationSystem";
+		String uri = "jdbc:sqlserver://localhost:55780;DatabaseName=curriculumEvaluationSystem";
 		String user="sa";
 		String password = "123456";
 		
 		try {
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 			con = DriverManager.getConnection(uri,user,password);
-			//System.out.println("Connection Successful!"); 
+			System.out.println("Connection Successful!"); 
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {

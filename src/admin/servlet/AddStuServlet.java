@@ -53,7 +53,7 @@ public class AddStuServlet extends HttpServlet {
 		int stuPhone = Integer.parseInt(phone);
 		
 		int pwd = 123456 ;
-		String userType = "Ñ§Éú";
+		String userType = "å­¦ç”Ÿ";
 		int perLimit = 0;
 		String condition = "insert into stuInfo values(?,?,?,?,?,?,?)";
 		String sql = "insert into userLogin values(?,?,?,?,?)";

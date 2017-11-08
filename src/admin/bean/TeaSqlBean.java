@@ -69,9 +69,9 @@ public class TeaSqlBean {
 		while(rs.next()){
 			int perLimit = rs.getInt(1);
 			if(perLimit == 0){
-				limitMess = "·ñ";
+				limitMess = "å¦";
 			}else if(perLimit == 1){
-				limitMess = "ÊÇ";
+				limitMess = "æ˜¯";
 			}
 		}
 		return limitMess;
