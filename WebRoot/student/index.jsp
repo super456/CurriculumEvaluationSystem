@@ -1,4 +1,8 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@page import="student.bean.NoticeBarList"%>
+
+ <jsp:useBean id="showStuNoticeBar" class="student.bean.NoticeBarList" scope="session"/>
+<jsp:useBean id="conSql" class="publicConnectSql.connectSql" scope="session"/>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -35,6 +39,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <dd>
                                     <a href="student/#" class="dd-item">通知列表<span class="scm dd-ar"></span></a>
                                     <ul class="ad-item-list">
+                                                      <!-- 以下是添加通告栏连接数据库展示文章标题的代码 -->
+   
+                                   <%
+											String sql = "select * from noticeBarInfo  where noticeBarInfoLimit=1 or noticeBarInfoLimit=0";
+											conSql.StartCon();
+											int count=1;
+                                   			java.util.List list = conSql.showStuAndTeaNoticeBar(sql);
+											for (java.util.Iterator it = list.iterator(); it.hasNext();) {
+											showStuNoticeBar = (NoticeBarList) it.next();
+									%>
+									 <li class="J_menuItem" href="viewNoticeBarContent?noticeBarNum=<%=showStuNoticeBar.getNoticeBarInfoNum() %>" data-index="1"><%= count%>、<%=showStuNoticeBar.getTitle() %></li>
+										
+									<% count++; } %>
                                         <li class="J_menuItem" href="student/index_v1.html" data-index="1">测试用例一</li>
                                         <li class="J_menuItem" href="student/index_v2.html" data-index="2">测试用例二</li>
                                         <li class="J_menuItem" href="student/index_v3.html" data-index="3">测试用例三</li>
