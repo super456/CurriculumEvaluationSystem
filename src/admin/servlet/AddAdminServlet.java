@@ -53,7 +53,7 @@ public class AddAdminServlet extends HttpServlet{
 		int adminPhone = Integer.parseInt(phone);
 		int adminLimit = Integer.parseInt(limit);
 		int pwd = 123456 ;
-		String userType = "¹ÜÀíÔ±";
+		String userType = "ç®¡ç†å‘˜";
 		int perLimit = 0;
 		String sql = "insert into userLogin values(?,?,?,?,?)";
 		String condition = "insert into adminInfo values(?,?,?,?,?)";

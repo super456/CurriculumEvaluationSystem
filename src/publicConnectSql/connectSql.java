@@ -16,7 +16,7 @@ public class connectSql {
 		try {
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 			con = DriverManager.getConnection(uri,user,password);
-			//System.out.println("Connection Successful!"); 
+			System.out.println("Connection Successful!"); 
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {

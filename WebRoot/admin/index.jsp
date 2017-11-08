@@ -40,21 +40,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     </ul>
                                 </dd>
                                 <dd>
-                                    <a href="admin/#" class="dd-item">更新学生信息<span class="scm dd-ar"></span></a>
-                                    <ul class="ad-item-list">
-                                        <li class="J_menuItem" href="admin/showStuInfo.jsp" data-index="1">更新学生信息</li>
-                                    </ul>
-                                </dd>
-                                <dd>
                                     <a href="admin/#" class="dd-item">添加学生信息<span class="scm dd-ar"></span></a>
                                     <ul class="ad-item-list">
                                         <li class="J_menuItem" href="admin/addStuInfo.jsp" data-index="1">添加学生信息</li>
-                                    </ul>
-                                </dd>
-                                <dd>
-                                    <a href="admin/#" class="dd-item">删除学生信息<span class="scm dd-ar"></span></a>
-                                    <ul class="ad-item-list">
-                                        <li class="J_menuItem" href="admin/showStuInfo.jsp" data-index="1">删除学生信息</li>
                                     </ul>
                                 </dd>
                             </dl>
@@ -69,21 +57,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     </ul>
                                 </dd>
                                 <dd>
-                                    <a href="admin/#" class="dd-item">更新教师信息<span class="scm dd-ar"></span></a>
-                                    <ul class="ad-item-list">
-                                        <li class="J_menuItem" href="admin/showTeaInfo.jsp" data-index="1">更新教师信息</li>
-                                    </ul>
-                                </dd>
-                                <dd>
                                     <a href="admin/#" class="dd-item">添加教师信息<span class="scm dd-ar"></span></a>
                                     <ul class="ad-item-list">
                                         <li class="J_menuItem" href="admin/addTeaInfo.jsp" data-index="1">添加教师信息</li>
-                                    </ul>
-                                </dd>
-                                <dd>
-                                    <a href="admin/#" class="dd-item">删除教师信息<span class="scm dd-ar"></span></a>
-                                    <ul class="ad-item-list">
-                                        <li class="J_menuItem" href="admin/showTeaInfo.jsp" data-index="1">更新学生信息</li>
                                     </ul>
                                 </dd>
                             </dl>
@@ -224,11 +200,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     </li>
                                 </ul>
                             </div>
-                            <div class="ad-welcom">
+                           <div class="ad-welcom">
                                 <div class="ad-wel-img"><img src="publicStyle/images/top-logo.png" height="36" width="36"></div>
                                 <div class="ad-wel-text">
-                                    <div class="font-wel">欢迎您！<strong>杜世武</strong></div>
-                                    <div class="font-wel"><a href="javascript:;"><strong>安全退出</strong></a></div>
+                                    <div class="font-wel">欢迎您：<strong><%= session.getAttribute("userName") %>&nbsp;<%= session.getAttribute("loginIdentity") %></strong></div>
+                                    	<div class="font-wel">
+                                    		<strong>
+                                    			<a href="loginOut.jsp" onclick="return confirm('确定退出吗？');">安全退出</a>
+                                    			</strong>
+                                    		</div>
                                 </div>
                             </div>
                         </div>
@@ -256,7 +236,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     </div>
                 </div>
                 <div class="ad-main-comment J_mainContent" id="ad-iframe">
-                    <iframe class="J_iframe" name="iframe0" width="100%" height="100%" src="admin/index_v0.html" frameborder="0" data-id="index_v0.html" seamless></iframe>
+                    <iframe class="J_iframe" name="iframe0" width="100%" height="100%" src="admin/homePage.jsp" frameborder="0" data-id="index_v0.html" seamless></iframe>
                 </div>
     		</div>
     	</div>

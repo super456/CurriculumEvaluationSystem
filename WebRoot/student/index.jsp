@@ -3,6 +3,7 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
@@ -32,31 +33,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <div class="li-item"><em class="scm li-ico ic1"></em>通告栏<span class="scm arrow"></span></div>
                             <dl>
                                 <dd>
-                                    <a href="noticeBarList" class="dd-item">通知列表<span class="scm dd-ar"></span></a>
+                                    <a href="student/#" class="dd-item">通知列表<span class="scm dd-ar"></span></a>
                                     <ul class="ad-item-list">
-                                        <li class="J_menuItem" href="student/noticeBarList/2017-10-2501.jsp" data-index="1">关于启用课程评教系统的通知</li>
-                                        <li class="J_menuItem" href="student/noticeBarList/2017-10-2502.jsp" data-index="2">课程评教：学生须知</li>
-                                        <!-- 以下内容为测试： -->
-                                       <jsp:useBean id="nBL" class="student.bean.NoticeBarList" scope="request"/>
-                                        <% String [][]record=nBL.getTableRecord();
-                            			for(int i=0;i<record.length;i++){ 
-                            			if(record[i][6]=="0" || record[i][6]=="1"){
-                            			%>
-                            			
-                                          <li class="J_menuItem" href="student/noticeBarList/index.jsp?rowNum=<%=i %> " data-index="12">
-                                          <%= record[i][2]%></li>
-                                        <%}} %>
-                                        
-                                        <li class="J_menuItem" href="student/noticeBarList/index.jsp" data-index="3">测试用例三</li>
-                                        <li class="J_menuItem" href="student/noticeBarList/index.jsp" data-index="4">测试用例四</li>
-                                        <li class="J_menuItem" href="student/noticeBarList/index.jsp" data-index="5">测试用例五</li>
-                                        <li class="J_menuItem" href="student/noticeBarList/index.jsp" data-index="6">测试用例六</li>
-                                        <li class="J_menuItem" href="student/noticeBarList/index.jsp" data-index="7">测试用例七</li>
-                                        <li class="J_menuItem" href="student/noticeBarList/index.jsp" data-index="8">测试用例八</li>
-                                        <li class="J_menuItem" href="student/noticeBarList/index.jsp" data-index="9">测试用例九</li>
-                                        <li class="J_menuItem" href="student/noticeBarList/index.jsp" data-index="10">测试用例十</li>
-                                        <li class="J_menuItem" href="student/noticeBarList/index.jsp" data-index="11">测试用例十一</li>
-                                        <li class="J_menuItem" href="student/noticeBarList/index.jsp" data-index="12">测试用例十二</li>
+                                        <li class="J_menuItem" href="student/index_v1.html" data-index="1">测试用例一</li>
+                                        <li class="J_menuItem" href="student/index_v2.html" data-index="2">测试用例二</li>
+                                        <li class="J_menuItem" href="student/index_v3.html" data-index="3">测试用例三</li>
+                                        <li class="J_menuItem" href="student/index_v4.html" data-index="4">测试用例四</li>
+                                        <li class="J_menuItem" href="student/index_v5.html" data-index="5">测试用例五</li>
+                                        <li class="J_menuItem" href="student/index_v6.html" data-index="6">测试用例六</li>
+                                        <li class="J_menuItem" href="student/index_v7.html" data-index="7">测试用例七</li>
+                                        <li class="J_menuItem" href="student/index_v8.html" data-index="8">测试用例八</li>
+                                        <li class="J_menuItem" href="student/index_v9.html" data-index="9">测试用例九</li>
+                                        <li class="J_menuItem" href="student/index_v10.html" data-index="10">测试用例十</li>
+                                        <li class="J_menuItem" href="student/index_v11.html" data-index="11">测试用例十一</li>
+                                        <li class="J_menuItem" href="student/index_v12.html" data-index="12">测试用例十二</li>
                                     </ul>
                                 </dd>
                                 

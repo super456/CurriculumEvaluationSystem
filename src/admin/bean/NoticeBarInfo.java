@@ -25,13 +25,13 @@ public class NoticeBarInfo {
 	}
 	public void setNoticeBarInfoLimit(int noticeBarInfoLimit) {
 		if(noticeBarInfoLimit == 0)
-			limitMess="学生,教师查看";
+			limitMess="瀛︾敓,鏁欏笀鏌ョ湅";
 		else if(noticeBarInfoLimit == 1)
-			limitMess="学生查看";
+			limitMess="瀛︾敓鏌ョ湅";
 		else if(noticeBarInfoLimit == 2)
-			limitMess="教师查看";
+			limitMess="鏁欏笀鏌ョ湅";
 		else if(noticeBarInfoLimit == 3)
-			limitMess="禁止查看";
+			limitMess="绂佹鏌ョ湅";
 		this.noticeBarInfoLimit = noticeBarInfoLimit;
 	}
 	public String getLimitMess() {

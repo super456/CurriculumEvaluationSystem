@@ -3,6 +3,7 @@ package loginCheck;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -72,10 +73,12 @@ public class loginCheck extends HttpServlet {
 	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		  request.setCharacterEncoding("UTF-8");//设置编码，处理汉字信息
+		  //设置登录失败的返回信息流
+		  response.setContentType("text/html;charset=utf-8");
+		  PrintWriter out = response.getWriter();
 		  request.setCharacterEncoding("utf-8");//设置编码，处理汉字信息
 		  //设置登录失败的返回信息流
-		  response.setContentType("text/html;charset=gb2312");
-		PrintWriter out = response.getWriter();
 		  userInfo userinfo=null;//
 		  HttpSession session=request.getSession(true);//启动用户独自的session对象
 		  try {//防止空对象产生运用，创建javabean对象，并存储为session对象中
@@ -114,7 +117,7 @@ public class loginCheck extends HttpServlet {
 			}else if (loginIdentity.equals("教师")) {
 				response.sendRedirect("teacher/index.jsp");
 			}else {
-				response.sendRedirect("admin/index.jsp");
+				response.sendRedirect("admin");
 			}
 	
 		}else {
@@ -127,13 +130,8 @@ public class loginCheck extends HttpServlet {
 		out.close();
 	}
 
-	/**
-	 * Initialization of the servlet. <br>
-	 *
-	 * @throws ServletException if an error occurs
-	 */
 	public void init() throws ServletException {
-		// Put your code here
+		
 	}
 
 }

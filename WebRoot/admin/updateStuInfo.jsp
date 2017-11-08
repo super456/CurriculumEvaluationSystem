@@ -30,7 +30,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 .container {
   max-width: 600px;
   margin: 0 auto;
-  height: 650px;
+  height: 620px;
   text-align: center;
 }
 form {
@@ -76,6 +76,20 @@ form button:hover {
 	 color:white;
 }
 </style>
+
+<script type="text/javascript">
+  window.onload=function(){   
+  var osel=document.getElementById("stuSex"); 
+  var length=osel.getElementsByTagName("option").length; 
+  var opts = osel.getElementsByTagName("option");
+  var status = "<%=request.getAttribute("stuSex")%>";
+  for(var i=0;i<length;i++){
+    if(status == opts[i].value){
+     opts[i].selected=true;
+    }
+  }  
+} 
+</script>
   </head>
   
   <body>
@@ -90,7 +104,9 @@ form button:hover {
   <tr><td>姓名:</td>       
   <td><input type="text" name="stuName" value=<%= request.getAttribute("stuName") %> /></td></tr>
   <tr><td>性别:</td>
-  <td> <input type="text" name="stuSex" value=<%= request.getAttribute("stuSex") %> />
+  <td> <select name="stuSex" id="stuSex">
+  <option value="男" >--男生--</option>
+  <option value="女" >--女生--</option>
   </select></td></tr> 
   <tr><td>年级:</td>       
   <td><input type="text" name="stuGrade" value=<%= request.getAttribute("stuGrade") %> /></td></tr> 
