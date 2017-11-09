@@ -1,6 +1,13 @@
 package publicConnectSql;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+
+import student.bean.NoticeBarList;
+import student.bean.ViewEvaluationInfo;
+
+import admin.bean.AdminInfo;
 
 public class connectSql {
 	Connection con;
@@ -16,7 +23,7 @@ public class connectSql {
 		try {
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 			con = DriverManager.getConnection(uri,user,password);
-			System.out.println("Connection Successful!"); 
+			//System.out.println("Connection Successful!"); 
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
@@ -103,6 +110,71 @@ public class connectSql {
 			
 		}
 		return tableRecord;
+	}
+	
+	
+	//4.用于展示学生主页面或教师主页面，通告栏的通知列表信息
+	public List showStuAndTeaNoticeBar(String sql){
+		List list = new ArrayList();
+		
+		try {
+			pst = con.prepareStatement(sql);
+			rs = pst.executeQuery();
+			while(rs.next()){
+				NoticeBarList bean = new NoticeBarList();
+				bean.setNoticeBarInfoNum(rs.getInt(1));
+				bean.setTitle(rs.getString(2));
+				bean.setReleaseTime(rs.getDate(3));
+				bean.setAuthor(rs.getString(4));
+				bean.setContent(rs.getString(5));
+				list.add(bean);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		finally{
+			try {
+				pst.close();
+				con.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}
+		return list;
+	}
+	
+	
+	//5.获取学生查看课程评教信息
+	public List showStuViewEvaluationInfo(String sql){
+		List list = new ArrayList();
+		
+		try {
+			pst = con.prepareStatement(sql);
+			rs = pst.executeQuery();
+			while(rs.next()){
+				ViewEvaluationInfo bean = new ViewEvaluationInfo();
+				bean.setCouName(rs.getString(1));
+				bean.setTeaName(rs.getString(2));
+				bean.setCouTime(rs.getString(3));
+				bean.setCouPlace(rs.getString(4));
+				bean.setCouCredit(rs.getString(5));
+				bean.setIsTeach(rs.getInt(6));
+				list.add(bean);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		finally{
+			try {
+				pst.close();
+				con.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}
+		return list;
 	}
 	
 	

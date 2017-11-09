@@ -249,12 +249,6 @@
     <servlet-name>SelectByAdminInfo</servlet-name>
     <servlet-class>admin.servlet.SelectByAdminInfo</servlet-class>
   </servlet>
-  <servlet>
-    <description>This is the description of my J2EE component</description>
-    <display-name>This is the display name of my J2EE component</display-name>
-    <servlet-name>noticeBarList</servlet-name>
-    <servlet-class>student.servlet.noticeBarList</servlet-class>
-  </servlet>
 
   <servlet-mapping>
     <servlet-name>SelectByAdminInfo</servlet-name>
@@ -269,9 +263,38 @@
     <servlet-name>loginCheck</servlet-name>
     <url-pattern>/loginCheck</url-pattern>
   </servlet-mapping>
+  
+    <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>noticeBarList</servlet-name>
+    <servlet-class>student.servlet.noticeBarList</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>noticeBarList</servlet-name>
     <url-pattern>/noticeBarList</url-pattern>
+  </servlet-mapping>
+  
+    <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>viewNoticeBarContent</servlet-name>
+    <servlet-class>student.servlet.viewNoticeBarContent</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>viewNoticeBarContent</servlet-name>
+    <url-pattern>/viewNoticeBarContent</url-pattern>
+  </servlet-mapping>
+  
+    <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>viewEvaluationInfo</servlet-name>
+    <servlet-class>student.servlet.viewEvaluationInfo</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>viewEvaluationInfo</servlet-name>
+    <url-pattern>/viewEvaluationInfo</url-pattern>
   </servlet-mapping>
 
   <servlet>

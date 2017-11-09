@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>课程评教：学生须知</title>
+    <title>这里是选择评教课程页面</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -21,8 +21,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	-->
 
   </head>
-  
-  <body>
   <!-- 判断用户是不是直接打开这个网址，而有没有通过登录界面登录 -->
 <%
 	String userName=(String)session.getAttribute("userName");
@@ -36,6 +34,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  		<% 
  	}
 %>
+  <body>
     This is my JSP page. <br>
   </body>
 </html>

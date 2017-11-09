@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>这里是通知栏所有通知列表</title>
+    <title>这里是通知栏某个通知具体内容</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -21,10 +21,34 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	-->
 
   </head>
-  
+  <style type="text/css">
+.wrapper {
+  width: 100%;
+  overflow: hidden;
+
+}
+.container {
+  margin: 0 auto;
+  height: 450px;
+  text-align: center;
+}
+table{
+	border=0;
+	background="#ffffff";
+}
+</style>
   <body>
+  <!-- 做一个页面访问量，有一个问题：因为本页面是所有通告栏文章通用展示的，所以会显示所有文章的阅读量总和 -->
+  <%! int count=0;
+  		synchronized void setCount(){
+  		
+  		count++;
+  		}
+  %>
+  
 <!-- 判断用户是不是直接打开这个网址，而有没有通过登录界面登录 -->
 <%
+	setCount();//执行访问量方法体计数
 	String userName=(String)session.getAttribute("userName");
  	if(userName==null){
  		%>
@@ -36,20 +60,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  		<% 
  	}
 %>
-	<table border="1">
-			<% String []columnName=nBL.getColumnName(); %>
-			<tr><%  for(String s:columnName){  %>
-			<th><%=s %></th>
-			<%} %>
-			</tr>
-			<% String [][]record=nBL.getTableRecord();
-			String rN=request.getParameter("rowNum");
-			int rowNum=Integer.parseInt(rN);
-			%><tr>
-			<% for(int j=0;j<record[rowNum].length;j++){ %>
-			<td><%=record[rowNum][j] %></td>
-			<%} %>
-			</tr>
-	</table>
+<div class="wrapper">
+  <div class="container">
+ <center>
+  <h2>&nbsp;<%=request.getAttribute("title") %></h2>
+  <table>
+  <tr><td>作者: <%=request.getAttribute("author") %></td><td>发布时间：<%=request.getAttribute("releaseTime") %></td><td>访问量：<%=count %></td></tr>  
+  <tr><td colspan="2"><testarea rows="5"cols="20">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=request.getAttribute("content") %></testarea></td></tr>
+
+  </table>
+  </center>
+  </div>
+</div>
   </body>
 </html>

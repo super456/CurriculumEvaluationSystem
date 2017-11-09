@@ -1,4 +1,8 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@page import="student.bean.NoticeBarList"%>
+
+ <jsp:useBean id="showStuNoticeBar" class="student.bean.NoticeBarList" scope="session"/>
+<jsp:useBean id="conSql" class="publicConnectSql.connectSql" scope="session"/>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -35,18 +39,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <dd>
                                     <a href="student/#" class="dd-item">通知列表<span class="scm dd-ar"></span></a>
                                     <ul class="ad-item-list">
-                                        <li class="J_menuItem" href="student/index_v1.html" data-index="1">测试用例一</li>
-                                        <li class="J_menuItem" href="student/index_v2.html" data-index="2">测试用例二</li>
-                                        <li class="J_menuItem" href="student/index_v3.html" data-index="3">测试用例三</li>
-                                        <li class="J_menuItem" href="student/index_v4.html" data-index="4">测试用例四</li>
-                                        <li class="J_menuItem" href="student/index_v5.html" data-index="5">测试用例五</li>
-                                        <li class="J_menuItem" href="student/index_v6.html" data-index="6">测试用例六</li>
-                                        <li class="J_menuItem" href="student/index_v7.html" data-index="7">测试用例七</li>
-                                        <li class="J_menuItem" href="student/index_v8.html" data-index="8">测试用例八</li>
-                                        <li class="J_menuItem" href="student/index_v9.html" data-index="9">测试用例九</li>
-                                        <li class="J_menuItem" href="student/index_v10.html" data-index="10">测试用例十</li>
-                                        <li class="J_menuItem" href="student/index_v11.html" data-index="11">测试用例十一</li>
-                                        <li class="J_menuItem" href="student/index_v12.html" data-index="12">测试用例十二</li>
+                                                      <!-- 以下是添加通告栏连接数据库展示文章标题的代码 -->
+   
+                                   <%
+											String sql = "select * from noticeBarInfo  where noticeBarInfoLimit=1 or noticeBarInfoLimit=0";
+											conSql.StartCon();
+											int count=1;
+                                   			java.util.List list = conSql.showStuAndTeaNoticeBar(sql);
+											for (java.util.Iterator it = list.iterator(); it.hasNext();) {
+											showStuNoticeBar = (NoticeBarList) it.next();
+									%>
+									 <li class="J_menuItem" href="viewNoticeBarContent?noticeBarNum=<%=showStuNoticeBar.getNoticeBarInfoNum() %>" data-index="1"><%= count%>、<%=showStuNoticeBar.getTitle() %></li>
+										
+									<% count++; } %>
+                                       
                                     </ul>
                                 </dd>
                                 
@@ -54,17 +60,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </li>
                         <li>
                             <div class="li-item"><em class="scm li-ico ic2"></em>评教课程<span class="scm arrow"></span></div>
-                            <dl>
-                                <dd>
-                                    <a href="student/#" class="dd-item">查看评教信息<span class="scm dd-ar"></span></a>
-                                </dd>
-                                <dd>
-                                    <a href="student/#" class="dd-item">未评教课程<span class="scm dd-ar"></span></a>
-                                </dd>
-                                <dd>
-                                    <a href="student/#" class="dd-item">选择评教课程<span class="scm dd-ar"></span></a>
-                                </dd>
-                               
+                                
+                               <dl>
+                               		<dd>
+                               		 <a href="student/#" class="dd-item">查看评教信息<span class="scm dd-ar"></span></a>
+                                	<ul class="ad-item-list">
+                                        <li class="J_menuItem" href="student/evaluation/index.jsp?couTerm=171802" data-index="1">查看评教信息</li>
+                                        <li class="J_menuItem" href="index_v2.html" data-index="2">未评教课程</li>
+                                        <li class="J_menuItem" href="index_v3.html" data-index="3">选择评教课程</li>   
+                                    </ul>
+                                   </dd>
+                                   
                             </dl>
                         </li>
                         <li>
