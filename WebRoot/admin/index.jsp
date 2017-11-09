@@ -147,18 +147,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             </dl>
                         </li>
                         <li>
-                            <div class="li-item"><em class="scm li-ico ic7"></em>系统管理<span class="scm arrow"></span></div>
+                            <div class="li-item"><em class="scm li-ico ic7"></em>评教卡内容管理<span class="scm arrow"></span></div>
                             <dl>
                                 <dd>
-                                    <a href="admin/#" class="dd-item">校友高级搜索<span class="scm dd-ar"></span></a>
-                                    
+                                    <a href="admin/#" class="dd-item">查看评教卡内容<span class="scm dd-ar"></span></a>
+                                    <ul class="ad-item-list">
+                                        <li class="J_menuItem" href="admin/showComCon.jsp" data-index="1">查看评教卡内容</li>
+                                    </ul>
                                 </dd>
                                 <dd>
-                                 <a href="admin/#" class="dd-item">校友高级搜索<span class="scm dd-ar"></span></a>
+                                 <a href="admin/#" class="dd-item">添加评教卡内容<span class="scm dd-ar"></span></a>
                                  <ul class="ad-item-list">
-                                    <form action="admin/index_v1.html" method="post">
-                                    <li type="submit" class="J_menuItem" data-index="1">校友高级搜索<span class="scm dd-ar"></li>
-                                    </form>
+                                    <li class="J_menuItem" href="admin/addComCon.jsp" data-index="1">添加评教卡内容</li>
                                  </ul>
                                 </dd>
                             </dl>

@@ -103,7 +103,7 @@ form button:hover {
   <tr><td>上课学分:</td>       
   <td><input type="text" name="couCredit" value=<jsp:getProperty name="courseBean" property="couCredit" /> /></td></tr>
   <tr><td>备注:</td>
-  <td><textArea name="couRemarks" rows=8 cols=26 
+  <td><textArea name="couRemarks" rows=8 cols=24 
   style="background-color: rgba(255, 255, 255, 0.2);border-radius:3px;font-size: 18px;color: white;"
    ><jsp:getProperty name="courseBean" property="couRemarks" /></textArea></td></tr> 
   <tr><td>&nbsp;<button type="submit" >修改</button></td> 

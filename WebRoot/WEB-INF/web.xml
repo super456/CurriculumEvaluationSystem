@@ -274,4 +274,39 @@
     <url-pattern>/noticeBarList</url-pattern>
   </servlet-mapping>
 
+  <servlet>
+    <servlet-name>AddComCon</servlet-name>
+    <servlet-class>admin.servlet.AddComCon</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddComCon</servlet-name>
+    <url-pattern>/addComCon</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>DeleteComCon</servlet-name>
+    <servlet-class>admin.servlet.DeleteComConServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteComCon</servlet-name>
+    <url-pattern>/deleteComCon</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>SearchByComConNum</servlet-name>
+    <servlet-class>admin.servlet.SearchByComConNum</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SearchByComConNum</servlet-name>
+    <url-pattern>/searchByComConNum</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>UpdateComCon</servlet-name>
+    <servlet-class>admin.servlet.UpdateComConServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateComCon</servlet-name>
+    <url-pattern>/updateComCon</url-pattern>
+  </servlet-mapping>
 </web-app>

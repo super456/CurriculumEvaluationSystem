@@ -105,12 +105,12 @@ button:hover{
 				<td><%=stuBean.getStuPhone()%></td>
 				<td><%=stuBean.getStuRemarks()%></td>
 				<td align="center" valign="bottom">
-				<form action="limitLogin?accountNum=<%=stuBean.getStuNum()%>&tableName=admin/showStuInfo.jsp" method="post" >
+				<form action="limitLogin?accountNum=<%=stuBean.getStuNum()%>&tableName=admin/selectStuInfo.jsp&table=stuInfo" method="post" >
 				<button type="submit" ><%=stuBean.getLimitMess() %></button>
 				</form>
 				</td>
 				<td align="center">
-					<a href="searchByStuNum?stuNum=<%=stuBean.getStuNum()%>">更新</a>
+					<a href="searchByStuNum?stuNum=<%=stuBean.getStuNum()%>&tableName=admin/updateStuInfo.jsp">更新</a>
 					&nbsp;
 					<a href="deleteStu?stuNum=<%= stuBean.getStuNum() %>"
 						onclick="return confirm('确定删除?')">删除</a>

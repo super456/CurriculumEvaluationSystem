@@ -114,7 +114,7 @@ button:hover{
 				<td><%=teaBean.getTeaRemarks()%></td>
 				<td align="center" valign="bottom">
 					<form
-						action="limitLogin?accountNum=<%=teaBean.getTeaNum()%>&tableName=admin/showTeaInfo.jsp"
+						action="limitLogin?accountNum=<%=teaBean.getTeaNum()%>&tableName=admin/selectTeaInfo.jsp&table=teaInfo"
 						method="post">
 						<button type="submit" ><%=teaBean.getLimitMess() %></button>
 					</form>

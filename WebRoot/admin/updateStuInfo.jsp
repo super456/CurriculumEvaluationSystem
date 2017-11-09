@@ -115,7 +115,7 @@ form button:hover {
   <tr><td>联系电话:</td>       
   <td><input type="text" name="stuPhone" value=<%= request.getAttribute("stuPhone") %> /></td></tr>
   <tr><td>备注:</td>
-  <td><textArea name="stuRemarks" rows=8 cols=26 
+  <td><textArea name="stuRemarks" rows=8 cols=24 
   style="background-color: rgba(255, 255, 255, 0.2);border-radius:3px;font-size: 18px;color: white;"
    ><%= request.getAttribute("stuRemarks") %></textArea></td></tr> 
   <tr><td>&nbsp;<button type="submit" >修改</button></td> 

@@ -102,7 +102,7 @@ form button:hover {
   <tr><td>学分:</td>       
   <td><input type="text" name="couCredit" /></td></tr>
   <tr><td>备注:</td>
-  <td><textArea name="couRemarks" rows=8 cols=26 
+  <td><textArea name="couRemarks" rows=8 cols=24 
   style="background-color: rgba(255, 255, 255, 0.2);border-radius:3px;font-size: 18px;color: white;"></textArea></td></tr> 
   <tr><td>&nbsp;<button type="submit" >提交</button></td> 
   <td>&nbsp;&nbsp;&nbsp;<button type="reset">重置</button></td></tr> 

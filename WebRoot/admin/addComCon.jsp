@@ -29,7 +29,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 .container {
   max-width: 600px;
   margin: 0 auto;
-  height: 610px;
   text-align: center;
 }
 form {
@@ -44,13 +43,13 @@ form input {
   outline: 0;
   border: 1px solid rgba(255, 255, 255, 0.4);
   background-color: rgba(255, 255, 255, 0.2);
-  width: 250px;
+  width: 300px;
+  height: 35px;
   border-radius: 3px;
   padding: 10px 15px;
-  margin: 0 auto 10px auto;
+  margin: 0 auto 12px auto;
   display: block;
-  text-align: center;
-  font-size: 18px;
+  font-size: 15px;
   color: white;
   font-weight: 300;
 }
@@ -75,6 +74,12 @@ form button:hover {
 	 color:white;
 }
 </style>
+
+<script type="text/javascript">
+ function click(){
+ alert("添加成功!");
+ }
+</script>
   </head>
   
   <body>
@@ -82,29 +87,34 @@ form button:hover {
 <div class="wrapper">
   <div class="container">
  <center>
-  <h2 style="color:cyan">&nbsp;添 加 学 生 信 息</h2>
-  <form action="addStu" method="post" name=form class="form">
+  <h2 style="color:cyan">&nbsp;添 加 评 教 卡 内 容</h2>
+  <form action="addComCon" method="post" name=form class="form">
   <table border=0 background="#ffffff">
-  <tr><td>学生编号: </td>  
-  <td><input type="text" name="stuNum" /></td></tr>
-  <tr><td>姓名:</td>       
-  <td><input type="text" name="stuName" /></td></tr>
-  <tr><td>性别:</td>
-  <td> <select name="stuSex">
-  <option value="男" selected>--男生--</option>
-  <option value="女" >--女生--</option>
-  </select></td></tr> 
-  <tr><td>年级:</td>       
-  <td><input type="text" name="stuGrade" /></td></tr> 
-  <tr><td>院系专业及班级:</td>       
-  <td><input type="text" name="stuForm" /></td></tr>
-  <tr><td>联系电话:</td>       
-  <td><input type="text" name="stuPhone" /></td></tr>
-  <tr><td>备注:</td>
-  <td><textArea name="stuRemarks" rows=8 cols=24 
+  <tr><td>第一项内容: </td>  
+  <td><input type="text" name="theFirstCon" /></td></tr>
+  <tr><td>第二项内容:</td>       
+  <td><input type="text" name="theSecondCon" /></td></tr>
+  <tr><td>第三项内容:</td>
+  <td><input type="text" name="theThirdCon" /></td></tr> 
+  <tr><td>第四项内容:</td>       
+  <td><input type="text" name="theFourthCon" /></td></tr> 
+  <tr><td>第五项内容:</td>       
+  <td><input type="text" name="theFifthCon" /></td></tr>
+  <tr><td>第六项内容:</td>       
+  <td><input type="text" name="theSixthCon" /></td></tr>
+  <tr><td>第七项内容:</td>       
+  <td><input type="text" name="theSeventhCon" /></td></tr>
+  <tr><td>第八项内容:</td>       
+  <td><input type="text" name="theEighthCon" /></td></tr>
+  <tr><td>第九项内容:</td>       
+  <td><input type="text" name="theNinthCon" /></td></tr>
+  <tr><td>第十项内容:</td>       
+  <td><input type="text" name="theTenthCon" /></td></tr>
+  <tr><td>备注信息:</td>
+  <td><textArea name="comConRemarks" rows=6 cols=30 
   style="background-color: rgba(255, 255, 255, 0.2);border-radius:3px;font-size: 18px;color: white;"></textArea></td></tr> 
-  <tr><td>&nbsp;<button type="submit" >提交</button></td> 
-  <td>&nbsp;&nbsp;&nbsp;<button type="reset">重置</button></td></tr> 
+  <tr align="center"><td><button type="submit" onclick="click()">提交</button></td> 
+  <td>&nbsp;&nbsp;<button type="reset">重置</button></td></tr> 
   </table>
   </form>
   </center>
