@@ -12,7 +12,7 @@
   </servlet>
   <servlet>
     <servlet-name>AddStuServlet</servlet-name>
-    <servlet-class>admin.servlet.AddStuServlet</servlet-class>
+    <servlet-class>admin.servlet.student.AddStuServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>AddStuServlet</servlet-name>
@@ -21,7 +21,7 @@
   
   <servlet>
     <servlet-name>AddTeaServlet</servlet-name>
-    <servlet-class>admin.servlet.AddTeaServlet</servlet-class>
+    <servlet-class>admin.servlet.teacher.AddTeaServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>AddTeaServlet</servlet-name>
@@ -30,7 +30,7 @@
   
   <servlet>
     <servlet-name>UpdateStuServlet</servlet-name>
-    <servlet-class>admin.servlet.UpdateStuServlet</servlet-class>
+    <servlet-class>admin.servlet.student.UpdateStuServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>UpdateStuServlet</servlet-name>
@@ -39,7 +39,7 @@
   
   <servlet>
     <servlet-name>SearchByStuNum</servlet-name>
-    <servlet-class>admin.servlet.SearchByStuNum</servlet-class>
+    <servlet-class>admin.servlet.student.SearchByStuNum</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>SearchByStuNum</servlet-name>
@@ -48,7 +48,7 @@
   
   <servlet>
     <servlet-name>DeleteStuServlet</servlet-name>
-    <servlet-class>admin.servlet.DeleteStuServlet</servlet-class>
+    <servlet-class>admin.servlet.student.DeleteStuServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>DeleteStuServlet</servlet-name>
@@ -57,7 +57,7 @@
   
   <servlet>
     <servlet-name>SearchByTeaNum</servlet-name>
-    <servlet-class>admin.servlet.SearchByTeaNum</servlet-class>
+    <servlet-class>admin.servlet.teacher.SearchByTeaNum</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>SearchByTeaNum</servlet-name>
@@ -66,7 +66,7 @@
   
   <servlet>
     <servlet-name>UpdateTeaServlet</servlet-name>
-    <servlet-class>admin.servlet.UpdateTeaServlet</servlet-class>
+    <servlet-class>admin.servlet.teacher.UpdateTeaServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>UpdateTeaServlet</servlet-name>
@@ -75,7 +75,7 @@
   
   <servlet>
     <servlet-name>DeleteTeaServlet</servlet-name>
-    <servlet-class>admin.servlet.DeleteTeaServlet</servlet-class>
+    <servlet-class>admin.servlet.teacher.DeleteTeaServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>DeleteTeaServlet</servlet-name>
@@ -84,7 +84,7 @@
   
   <servlet>
     <servlet-name>SearchByCouNum</servlet-name>
-    <servlet-class>admin.servlet.SearchByCouNum</servlet-class>
+    <servlet-class>admin.servlet.course.SearchByCouNum</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>SearchByCouNum</servlet-name>
@@ -93,7 +93,7 @@
   
   <servlet>
     <servlet-name>UpdateCouServlet</servlet-name>
-    <servlet-class>admin.servlet.UpdateCouServlet</servlet-class>
+    <servlet-class>admin.servlet.course.UpdateCouServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>UpdateCouServlet</servlet-name>
@@ -102,7 +102,7 @@
   
   <servlet>
     <servlet-name>DeleteCouServlet</servlet-name>
-    <servlet-class>admin.servlet.DeleteCouServlet</servlet-class>
+    <servlet-class>admin.servlet.course.DeleteCouServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>DeleteCouServlet</servlet-name>
@@ -111,7 +111,7 @@
   
   <servlet>
     <servlet-name>AddCouServlet</servlet-name>
-    <servlet-class>admin.servlet.AddCouServlet</servlet-class>
+    <servlet-class>admin.servlet.course.AddCouServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>AddCouServlet</servlet-name>
@@ -129,7 +129,7 @@
   
   <servlet>
     <servlet-name>SelectByStuInfo</servlet-name>
-    <servlet-class>admin.servlet.SelectByStuInfo</servlet-class>
+    <servlet-class>admin.servlet.student.SelectByStuInfo</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>SelectByStuInfo</servlet-name>
@@ -138,7 +138,7 @@
   
   <servlet>
     <servlet-name>SelectByTeaInfo</servlet-name>
-    <servlet-class>admin.servlet.SelectByTeaInfo</servlet-class>
+    <servlet-class>admin.servlet.teacher.SelectByTeaInfo</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>SelectByTeaInfo</servlet-name>
@@ -147,7 +147,7 @@
   
   <servlet>
     <servlet-name>AddNoticeServlet</servlet-name>
-    <servlet-class>admin.servlet.AddNoticeServlet</servlet-class>
+    <servlet-class>admin.servlet.noticeBar.AddNoticeServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>AddNoticeServlet</servlet-name>
@@ -156,7 +156,7 @@
   
   <servlet>
     <servlet-name>SearchByNoticeNum</servlet-name>
-    <servlet-class>admin.servlet.SearchByNoticeNum</servlet-class>
+    <servlet-class>admin.servlet.noticeBar.SearchByNoticeNum</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>SearchByNoticeNum</servlet-name>
@@ -165,7 +165,7 @@
   
   <servlet>
     <servlet-name>UpdateNoticeServlet</servlet-name>
-    <servlet-class>admin.servlet.UpdateNoticeServlet</servlet-class>
+    <servlet-class>admin.servlet.noticeBar.UpdateNoticeServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>UpdateNoticeServlet</servlet-name>
@@ -174,7 +174,7 @@
   
   <servlet>
     <servlet-name>DeleteNoticeServlet</servlet-name>
-    <servlet-class>admin.servlet.DeleteNoticeServlet</servlet-class>
+    <servlet-class>admin.servlet.noticeBar.DeleteNoticeServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>DeleteNoticeServlet</servlet-name>
@@ -183,7 +183,7 @@
   
   <servlet>
     <servlet-name>SelectByTeaPraiseInfo</servlet-name>
-    <servlet-class>admin.servlet.SelectByTeaPraiseInfo</servlet-class>
+    <servlet-class>admin.servlet.commentCourse.SelectByTeaPraiseInfo</servlet-class>
   </servlet>
 
   <servlet-mapping>
@@ -193,7 +193,7 @@
   
   <servlet>
     <servlet-name>SelectByCommentCouInfo</servlet-name>
-    <servlet-class>admin.servlet.SelectByCommentCouInfo</servlet-class>
+    <servlet-class>admin.servlet.commentCourse.SelectByCommentCouInfo</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>SelectByCommentCouInfo</servlet-name>
@@ -202,7 +202,7 @@
   
   <servlet>
     <servlet-name>SelectByCouClassStuInfo</servlet-name>
-    <servlet-class>admin.servlet.SelectByCouClassStuInfo</servlet-class>
+    <servlet-class>admin.servlet.commentCourse.SelectByCouClassStuInfo</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>SelectByCouClassStuInfo</servlet-name>
@@ -211,7 +211,7 @@
   
   <servlet>
     <servlet-name>AddAdminServlet</servlet-name>
-    <servlet-class>admin.servlet.AddAdminServlet</servlet-class>
+    <servlet-class>admin.servlet.admin.AddAdminServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>AddAdminServlet</servlet-name>
@@ -220,7 +220,7 @@
   
   <servlet>
     <servlet-name>SearchByAdminNum</servlet-name>
-    <servlet-class>admin.servlet.SearchByAdminNum</servlet-class>
+    <servlet-class>admin.servlet.admin.SearchByAdminNum</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>SearchByAdminNum</servlet-name>
@@ -229,7 +229,7 @@
   
   <servlet>
     <servlet-name>UpdateAdminServlet</servlet-name>
-    <servlet-class>admin.servlet.UpdateAdminServlet</servlet-class>
+    <servlet-class>admin.servlet.admin.UpdateAdminServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>UpdateAdminServlet</servlet-name>
@@ -238,7 +238,7 @@
   
   <servlet>
     <servlet-name>DeleteAdminServlet</servlet-name>
-    <servlet-class>admin.servlet.DeleteAdminServlet</servlet-class>
+    <servlet-class>admin.servlet.admin.DeleteAdminServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>DeleteAdminServlet</servlet-name>
@@ -247,7 +247,7 @@
   
   <servlet>
     <servlet-name>SelectByAdminInfo</servlet-name>
-    <servlet-class>admin.servlet.SelectByAdminInfo</servlet-class>
+    <servlet-class>admin.servlet.admin.SelectByAdminInfo</servlet-class>
   </servlet>
 
   <servlet-mapping>
@@ -299,7 +299,7 @@
 
   <servlet>
     <servlet-name>AddComCon</servlet-name>
-    <servlet-class>admin.servlet.AddComCon</servlet-class>
+    <servlet-class>admin.servlet.commentContent.AddComCon</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>AddComCon</servlet-name>
@@ -308,7 +308,7 @@
   
   <servlet>
     <servlet-name>DeleteComCon</servlet-name>
-    <servlet-class>admin.servlet.DeleteComConServlet</servlet-class>
+    <servlet-class>admin.servlet.commentContent.DeleteComConServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>DeleteComCon</servlet-name>
@@ -317,7 +317,7 @@
   
   <servlet>
     <servlet-name>SearchByComConNum</servlet-name>
-    <servlet-class>admin.servlet.SearchByComConNum</servlet-class>
+    <servlet-class>admin.servlet.commentContent.SearchByComConNum</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>SearchByComConNum</servlet-name>
@@ -326,7 +326,7 @@
   
   <servlet>
     <servlet-name>UpdateComCon</servlet-name>
-    <servlet-class>admin.servlet.UpdateComConServlet</servlet-class>
+    <servlet-class>admin.servlet.commentContent.UpdateComConServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>UpdateComCon</servlet-name>

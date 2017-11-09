@@ -16,10 +16,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import admin.bean.StuInfo;
-import admin.bean.StuSqlBean;
-import admin.bean.TeaInfo;
-import admin.bean.TeaSqlBean;
+import admin.bean.student.StuInfo;
+import admin.bean.teacher.TeaInfo;
+
+
 
 public class LimitUserLogin extends HttpServlet{
 

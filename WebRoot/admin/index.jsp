@@ -36,13 +36,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <dd>
                                     <a href="admin/#" class="dd-item">查看所有学生信息<span class="scm dd-ar"></span></a>
                                     <ul class="ad-item-list">
-                                        <li class="J_menuItem" href="admin/showStuInfo.jsp" data-index="1">查看所有学生信息</li>
+                                        <li class="J_menuItem" href="admin/student/showStuInfo.jsp" data-index="1">查看所有学生信息</li>
                                     </ul>
                                 </dd>
                                 <dd>
                                     <a href="admin/#" class="dd-item">添加学生信息<span class="scm dd-ar"></span></a>
                                     <ul class="ad-item-list">
-                                        <li class="J_menuItem" href="admin/addStuInfo.jsp" data-index="1">添加学生信息</li>
+                                        <li class="J_menuItem" href="admin/student/addStuInfo.jsp" data-index="1">添加学生信息</li>
                                     </ul>
                                 </dd>
                             </dl>
@@ -53,13 +53,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <dd>
                                     <a href="admin/#" class="dd-item">查看所有教师信息<span class="scm dd-ar"></span></a>
                                     <ul class="ad-item-list">
-                                        <li class="J_menuItem" href="admin/showTeaInfo.jsp" data-index="1">查看所有教师信息</li>
+                                        <li class="J_menuItem" href="admin/teacher/showTeaInfo.jsp" data-index="1">查看所有教师信息</li>
                                     </ul>
                                 </dd>
                                 <dd>
                                     <a href="admin/#" class="dd-item">添加教师信息<span class="scm dd-ar"></span></a>
                                     <ul class="ad-item-list">
-                                        <li class="J_menuItem" href="admin/addTeaInfo.jsp" data-index="1">添加教师信息</li>
+                                        <li class="J_menuItem" href="admin/teacher/addTeaInfo.jsp" data-index="1">添加教师信息</li>
+                                    </ul>
+                                </dd>
+                            </dl>
+                        </li>
+                        <li>
+                            <div class="li-item"><em class="scm li-ico ic6"></em>管理员信息管理<span class="scm arrow"></span></div>
+                            <dl>
+                                <dd>
+                                    <a href="admin/#" class="dd-item">查看所有管理员信息<span class="scm dd-ar"></span></a>
+                                    <ul class="ad-item-list">
+                                        <li class="J_menuItem" href="admin/adminInfo/showAdminInfo.jsp" data-index="1">查看所有管理员信息</li>
+                                    </ul>
+                                </dd>
+                                <dd>
+                                    <a href="admin/#" class="dd-item">添加管理员信息<span class="scm dd-ar"></span></a>
+                                    <ul class="ad-item-list">
+                                        <li class="J_menuItem" href="admin/adminInfo/addAdminInfo.jsp" data-index="1">添加管理员信息</li>
                                     </ul>
                                 </dd>
                             </dl>
@@ -70,13 +87,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <dd>
                                     <a href="admin/#" class="dd-item">查看所有课程信息<span class="scm dd-ar"></span></a>
                                     <ul class="ad-item-list">
-                                        <li class="J_menuItem" href="admin/showCourseInfo.jsp" data-index="1">查看所有课程信息</li>
+                                        <li class="J_menuItem" href="admin/course/showCourseInfo.jsp" data-index="1">查看所有课程信息</li>
                                     </ul>
                                 </dd>
                                 <dd>
                                     <a href="admin/#" class="dd-item">添加课程信息<span class="scm dd-ar"></span></a>
                                     <ul class="ad-item-list">
-                                        <li class="J_menuItem" href="admin/addCourseInfo.jsp" data-index="1">添加课程信息</li>
+                                        <li class="J_menuItem" href="admin/course/addCourseInfo.jsp" data-index="1">添加课程信息</li>
                                     </ul>
                                 </dd>
                                 
@@ -88,60 +105,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <dd>
                                     <a href="admin/#" class="dd-item">查看课程评比结果<span class="scm dd-ar"></span></a>
                                     <ul class="ad-item-list">
-                                        <li class="J_menuItem" href="admin/showTeaPraiseListInfo.jsp" data-index="1">查看课程评比结果</li>
+                                        <li class="J_menuItem" href="admin/commentCourse/showTeaPraiseListInfo.jsp" data-index="1">查看课程评比结果</li>
                                     </ul>
                                 </dd>
                                 <dd>
                                     <a href="admin/#" class="dd-item">查看课程评比详情<span class="scm dd-ar"></span></a>
                                     <ul class="ad-item-list">
-                                        <li class="J_menuItem" href="admin/showCommentCouInfo.jsp" data-index="1">查看课程评比详情</li>
+                                        <li class="J_menuItem" href="admin/commentCourse/showCommentCouInfo.jsp" data-index="1">查看课程评比详情</li>
                                     </ul>
                                 </dd>
                                 <dd>
                                     <a href="admin/#" class="dd-item">查看班级学生评比信息<span class="scm dd-ar"></span></a>
                                     <ul class="ad-item-list">
-                                        <li class="J_menuItem" href="admin/showCouClassStuInfo.jsp" data-index="1">查看班级学生评比信息</li>
-                                    </ul>
-                                </dd>
-                            </dl>
-                        </li>
-                        <li>
-                            <div class="li-item"><em class="scm li-ico ic5"></em>通告栏信息管理<span class="scm arrow"></span></div>
-                            <dl>
-                                <dd>
-                                    <a href="admin/#" class="dd-item">查看所有通告栏信息<span class="scm dd-ar"></span></a>
-                                    <ul class="ad-item-list">
-                                        <li class="J_menuItem" href="admin/showNoticeBarInfo.jsp" data-index="1">查看所有通告栏信息</li>
-                                    </ul>
-                                    
-                                </dd>
-                                <dd>
-                                    <a href="admin/#" class="dd-item">通告栏信息限制<span class="scm dd-ar"></span></a>
-                                    <ul class="ad-item-list">
-                                        <li class="J_menuItem" href="admin/showNoticeBarInfo.jsp" data-index="1">通告栏信息限制</li>
-                                    </ul>
-                                </dd>
-                                <dd>
-                                    <a href="admin/#" class="dd-item">添加通告栏信息<span class="scm dd-ar"></span></a>
-                                    <ul class="ad-item-list">
-                                        <li class="J_menuItem" href="admin/addNoticeBarInfo.jsp" data-index="1">添加通告栏信息</li>
-                                    </ul>
-                                </dd>
-                            </dl>
-                        </li>
-                        <li>
-                            <div class="li-item"><em class="scm li-ico ic6"></em>管理员信息管理<span class="scm arrow"></span></div>
-                            <dl>
-                                <dd>
-                                    <a href="admin/#" class="dd-item">查看所有管理员信息<span class="scm dd-ar"></span></a>
-                                    <ul class="ad-item-list">
-                                        <li class="J_menuItem" href="admin/showAdminInfo.jsp" data-index="1">查看所有管理员信息</li>
-                                    </ul>
-                                </dd>
-                                <dd>
-                                    <a href="admin/#" class="dd-item">添加管理员信息<span class="scm dd-ar"></span></a>
-                                    <ul class="ad-item-list">
-                                        <li class="J_menuItem" href="admin/addAdminInfo.jsp" data-index="1">添加管理员信息</li>
+                                        <li class="J_menuItem" href="admin/commentCourse/showCouClassStuInfo.jsp" data-index="1">查看班级学生评比信息</li>
                                     </ul>
                                 </dd>
                             </dl>
@@ -152,17 +128,41 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <dd>
                                     <a href="admin/#" class="dd-item">查看评教卡内容<span class="scm dd-ar"></span></a>
                                     <ul class="ad-item-list">
-                                        <li class="J_menuItem" href="admin/showComCon.jsp" data-index="1">查看评教卡内容</li>
+                                        <li class="J_menuItem" href="admin/commentContent/showComCon.jsp" data-index="1">查看评教卡内容</li>
                                     </ul>
                                 </dd>
                                 <dd>
                                  <a href="admin/#" class="dd-item">添加评教卡内容<span class="scm dd-ar"></span></a>
                                  <ul class="ad-item-list">
-                                    <li class="J_menuItem" href="admin/addComCon.jsp" data-index="1">添加评教卡内容</li>
+                                    <li class="J_menuItem" href="admin/commentContent/addComCon.jsp" data-index="1">添加评教卡内容</li>
                                  </ul>
                                 </dd>
-                            </dl>
+                            </dl>                            
                         </li>
+                        <li>
+                            <div class="li-item"><em class="scm li-ico ic5"></em>通告栏信息管理<span class="scm arrow"></span></div>
+                            <dl>
+                                <dd>
+                                    <a href="admin/#" class="dd-item">查看所有通告栏信息<span class="scm dd-ar"></span></a>
+                                    <ul class="ad-item-list">
+                                        <li class="J_menuItem" href="admin/noticeBar/showNoticeBarInfo.jsp" data-index="1">查看所有通告栏信息</li>
+                                    </ul>
+                                    
+                                </dd>
+                                <dd>
+                                    <a href="admin/#" class="dd-item">通告栏信息限制<span class="scm dd-ar"></span></a>
+                                    <ul class="ad-item-list">
+                                        <li class="J_menuItem" href="admin/noticeBar/showNoticeBarInfo.jsp" data-index="1">通告栏信息限制</li>
+                                    </ul>
+                                </dd>
+                                <dd>
+                                    <a href="admin/#" class="dd-item">添加通告栏信息<span class="scm dd-ar"></span></a>
+                                    <ul class="ad-item-list">
+                                        <li class="J_menuItem" href="admin/noticeBar/addNoticeBarInfo.jsp" data-index="1">添加通告栏信息</li>
+                                    </ul>
+                                </dd>
+                            </dl>
+                        </li>                        
                     </ul>
                 </div>
             </div>

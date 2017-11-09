@@ -7,7 +7,7 @@ import java.util.List;
 import student.bean.NoticeBarList;
 import student.bean.ViewEvaluationInfo;
 
-import admin.bean.AdminInfo;
+import admin.bean.admin.AdminInfo;
 
 public class connectSql {
 	Connection con;
