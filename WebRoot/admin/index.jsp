@@ -152,7 +152,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <dd>
                                     <a href="admin/#" class="dd-item">通告栏信息限制<span class="scm dd-ar"></span></a>
                                     <ul class="ad-item-list">
-                                        <li class="J_menuItem" href="admin/noticeBar/showNoticeBarInfo.jsp" data-index="1">通告栏信息限制</li>
+                                        <li class="J_menuItem" href="admin/noticeBar/noticeBarInfoLimit.jsp" data-index="1">通告栏信息限制</li>
                                     </ul>
                                 </dd>
                                 <dd>
