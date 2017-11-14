@@ -4,6 +4,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import student.bean.CommentContents;
 import student.bean.NoticeBarList;
 import student.bean.ViewEvaluationInfo;
 
@@ -57,7 +58,7 @@ public class connectSql {
 		return false;//默认返回false，证明数据库查询失败，没有结果
 	}
 	
-	//2.操作数据库，执行语句，返回指定查询的数据，单行数组数据为主,
+	//2.操作数据库，执行语句，返回String类型的指定查询的数据，单行数据为主,
 	public String  execQuery(String sql){
 		String  result=null;
 		try {
@@ -84,17 +85,16 @@ public class connectSql {
 		return result;
 	}
 	
-	
-	//3.执行数据库语句，返回表内所有数据，以二维数组存储数据
-	public String  [][]list(String sqlString){
-		String [][] tableRecord=null;
+	//3.执行数据库语句，返回int类型指定的单行数据
+	public int  intQuery(String sqlString){
+		int num = 0;
 		try {
 			pst = con.prepareStatement(sqlString);
 			rs = pst.executeQuery();
 			if (rs.next()) {
-				//tableRecord=rs.getString(1);
+				num=rs.getInt(1);
 			}else {
-				tableRecord=null;
+				num=0;
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -109,7 +109,7 @@ public class connectSql {
 			}
 			
 		}
-		return tableRecord;
+		return num;
 	}
 	
 	
@@ -177,5 +177,95 @@ public class connectSql {
 		return list;
 	}
 	
+	//6.获取学生要评教卡的每一项的内容信息
+	public List showCommentContent(String sql){
+		List list = new ArrayList();
+		
+		try {
+			pst = con.prepareStatement(sql);
+			rs = pst.executeQuery();
+			while(rs.next()){
+				CommentContents bean = new CommentContents();
+				bean.setComConNum(rs.getInt(1));
+				bean.setTheFirstCon(rs.getString(2));
+				bean.setTheSecondCon(rs.getString(3));
+				bean.setTheThirdCon(rs.getString(4));
+				bean.setTheFourthCon(rs.getString(5));
+				bean.setTheFifthCon(rs.getString(6));
+				bean.setTheSixthCon(rs.getString(7));
+				bean.setTheSeventhCon(rs.getString(8));
+				bean.setTheEighthCon(rs.getString(9));
+				bean.setTheNinthCon(rs.getString(10));
+				bean.setTheTenthCon(rs.getString(11));
+				list.add(bean);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		finally{
+			try {
+				pst.close();
+				con.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}
+		return list;
+	}
+	
+	//7.插入、更新、删除数据库表格数据方法体，可以指定插入一行数据
+	public int insertUpdate(String sqlString){
+		int judge=0;//判断是否插入成功，0表示插入失败，1表示插入成功
+		try {
+			pst=con.prepareStatement(sqlString);
+			judge=pst.executeUpdate();
+			if (judge>0) {
+				judge=1;
+			}else {
+				judge=0;
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally{
+			try {
+				pst.close();
+				con.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}
+		
+		return judge;
+	}
+	
+	//8.获取该门课的每一个学生的评教平均分，并相加求和取评教了的学生的人数总和的平均数
+	public float SumStuAvgCou(String sqlString){
+		float avgSum=0;//求和平均分
+		int countStu=0;//计算已评教学生的人数
+		try {
+			pst=con.prepareStatement(sqlString);
+			rs = pst.executeQuery();
+			while(rs.next()){
+				countStu++;
+				avgSum+=rs.getFloat(1);
+			}
+			avgSum=avgSum/countStu;//处理该门课已评教的学生的平均分总数除于已评教的学生人数
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally{
+			try {
+				pst.close();
+				con.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}
+		return avgSum;
+	}
 	
 }
