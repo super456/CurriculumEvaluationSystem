@@ -6,6 +6,7 @@ import java.util.List;
 
 import student.bean.CommentContents;
 import student.bean.NoticeBarList;
+import student.bean.PersonalInfo;
 import student.bean.ViewEvaluationInfo;
 
 import admin.bean.admin.AdminInfo;
@@ -14,7 +15,7 @@ public class connectSql {
 	Connection con;
 	PreparedStatement pst;
 	ResultSet rs;
-	
+	PersonalInfo pBean = new PersonalInfo();//设置一个全局对象的bean，测试其他页面调用时，PersonalInfo类内容不为空
 	//启动连接数据库方法
 	public void StartCon(){
 		String uri = "jdbc:sqlserver://localhost:55780;DatabaseName=curriculumEvaluationSystem";
@@ -267,5 +268,39 @@ public class connectSql {
 		}
 		return avgSum;
 	}
+	
+	
+	//9.获取学生个人信息及存储信息方法体
+	public List showPersonalInfo(String sql){
+		List list = new ArrayList();
+		
+		try {
+			pst = con.prepareStatement(sql);
+			rs = pst.executeQuery();
+			while(rs.next()){
+				pBean.setStuNum((rs.getInt(1)));
+				pBean.setStuName(rs.getString(2));
+				pBean.setStuSex(rs.getString(3));
+				pBean.setStuGrade(rs.getInt(4));
+				pBean.setStuFrom(rs.getString(5));
+				pBean.setStuPhone(rs.getInt(6));
+				pBean.setStuRemarks(rs.getString(7));
+				list.add(pBean);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		finally{
+			try {
+				pst.close();
+				con.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}
+		return list;
+	}
+	
 	
 }
