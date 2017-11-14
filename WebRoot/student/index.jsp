@@ -66,8 +66,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                		 <a href="javascript:;" class="dd-item">查看评教信息<span class="scm dd-ar"></span></a>
                                 	<ul class="ad-item-list">
                                         <li class="J_menuItem" href="student/evaluation/index.jsp?couTerm=171802" data-index="1">查看评教信息</li>
-                                        <li class="J_menuItem" href="index_v2.html" data-index="2">未评教课程</li>
-                                        <li class="J_menuItem" href="index_v3.html" data-index="3">选择评教课程</li>   
+                                <!--     <li class="J_menuItem" href="index_v2.html" data-index="2">未评教课程</li>
+                                        <li class="J_menuItem" href="index_v3.html" data-index="3">选择评教课程</li>    -->    
                                     </ul>
                                    </dd>
                                    
@@ -77,65 +77,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <div class="li-item"><em class="scm li-ico ic3"></em>个人信息<span class="scm arrow"></span></div>
                             <dl>
                                 <dd>
-                                    <a href="student/#" class="dd-item">查看信息<span class="scm dd-ar"></span></a>
+                                    <a href="javascript:;" class="dd-item">查看及修改<span class="scm dd-ar"></span></a>
                                     <ul class="ad-item-list">
-                                        <li class="J_menuItem" href="index_v1.html" data-index="1">测试用例一</li>
-                                        <li class="J_menuItem" href="index_v2.html" data-index="2">测试用例二</li>
-                                        <li class="J_menuItem" href="index_v3.html" data-index="3">测试用例三</li>
-                                        <li class="J_menuItem" href="index_v4.html" data-index="4">测试用例四</li>
-                                        <li class="J_menuItem" href="index_v5.html" data-index="5">测试用例五</li>
-                                        <li class="J_menuItem" href="index_v6.html" data-index="6">测试用例六</li>
-                                        <li class="J_menuItem" href="index_v7.html" data-index="7">测试用例七</li>
-                                        <li class="J_menuItem" href="index_v8.html" data-index="8">测试用例八</li>
-                                        <li class="J_menuItem" href="index_v9.html" data-index="9">测试用例九</li>
-                                        <li class="J_menuItem" href="index_v10.html" data-index="10">测试用例十</li>
-                                        <li class="J_menuItem" href="index_v11.html" data-index="11">测试用例十一</li>
+                                        <li class="J_menuItem" href="student/personalInfo" data-index="1">查看信息</li>
+                                        <li class="J_menuItem" href="student/personalInfo/update.jsp" data-index="2">修改信息</li>
+                                        <li class="J_menuItem" href="student/personalInfo/changePsw.jsp" data-index="3">修改密码</li>
                                     </ul>
-                                </dd>
-                                <dd>
-                                    <a href="#" class="dd-item">修改信息<span class="scm dd-ar"></span></a>
-                                    <ul class="ad-item-list">
-                                        <li class="J_menuItem" href="index_v1.html" data-index="1">测试用例一</li>
-                                        <li class="J_menuItem" href="index_v2.html" data-index="2">测试用例二</li>
-                                        <li class="J_menuItem" href="index_v3.html" data-index="3">测试用例三</li>
-                                        <li class="J_menuItem" href="index_v4.html" data-index="4">测试用例四</li>
-                                        <li class="J_menuItem" href="index_v5.html" data-index="5">测试用例五</li>
-                                        <li class="J_menuItem" href="index_v6.html" data-index="6">测试用例六</li>
-                                        <li class="J_menuItem" href="index_v7.html" data-index="7">测试用例七</li>
-                                        <li class="J_menuItem" href="index_v8.html" data-index="8">测试用例八</li>
-                                        <li class="J_menuItem" href="index_v9.html" data-index="9">测试用例九</li>
-                                        <li class="J_menuItem" href="index_v10.html" data-index="10">测试用例十</li>
-                                        <li class="J_menuItem" href="index_v11.html" data-index="11">测试用例十一</li>
-                                    </ul>
-                                </dd>
-                                <dd>
-                                    <a href="#" class="dd-item">修改密码<span class="scm dd-ar"></span></a>
-                                    <ul class="ad-item-list">
-                                        <li class="J_menuItem" href="index_v1.html" data-index="1">测试用例一</li>
-                                        <li class="J_menuItem" href="index_v2.html" data-index="2">测试用例二</li>
-                                        <li class="J_menuItem" href="index_v3.html" data-index="3">测试用例三</li>
-                                        <li class="J_menuItem" href="index_v4.html" data-index="4">测试用例四</li>
-                                        <li class="J_menuItem" href="index_v5.html" data-index="5">测试用例五</li>
-                                        <li class="J_menuItem" href="index_v6.html" data-index="6">测试用例六</li>
-                                        <li class="J_menuItem" href="index_v7.html" data-index="7">测试用例七</li>
-                                        <li class="J_menuItem" href="index_v8.html" data-index="8">测试用例八</li>
-                                        <li class="J_menuItem" href="index_v9.html" data-index="9">测试用例九</li>
-                                        <li class="J_menuItem" href="index_v10.html" data-index="10">测试用例十</li>
-                                        <li class="J_menuItem" href="index_v11.html" data-index="11">测试用例十一</li>
-                                    </ul>
-                                </dd>
-                              
-                                
+                                </dd>                               
                             </dl>
                         </li>
                         <li>
                             <div class="li-item"><em class="scm li-ico ic4"></em>教师好评榜<span class="scm arrow"></span></div>
                             <dl>
                                 <dd>
-                                    <a href="student/#" class="dd-item">校友高级搜索<span class="scm dd-ar"></span></a>
-                                </dd>
-                                <dd>
-                                    <a href="student/#" class="dd-item">校友高级搜索<span class="scm dd-ar"></span></a>
+                                    <a href="javascript:;" class="dd-item">各学期好评<span class="scm dd-ar"></span></a>
+                                     <ul class="ad-item-list">
+                                        <li class="J_menuItem" href="student/teaPraiseListInfo" data-index="1">各学期好评</li>
+                                        <li class="J_menuItem" href="student/teaPraiseListInfo/honor.jsp" data-index="2">获奖荣誉</li>
+                                        <li class="J_menuItem" href="student/teaPraiseListInfo/notice.jsp" data-index="3">奖罚通告</li>
+                                    </ul>
                                 </dd>
                             </dl>
                         </li>
