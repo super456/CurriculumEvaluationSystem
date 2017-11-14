@@ -122,7 +122,8 @@ public class loginCheck extends HttpServlet {
 	
 		}else {
 			//账号、密码、登录身份未通过数据库信息验证
-			out.println("<SCRIPT language=javascript > alert('用户名或密码或者登录身份不正确，请重新输入！');window.location='index.jsp';</script>"); 
+		//	out.println("<SCRIPT language=javascript > alert('用户名或密码或者登录身份不正确，请重新输入！');window.location='index.jsp';</script>"); 
+			out.println("<SCRIPT language=javascript > alert('用户名或密码或者登录身份不正确，请重新输入！');window.history.back();</script>"); 
 			return;
 		}
 		
