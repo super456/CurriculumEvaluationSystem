@@ -7,7 +7,8 @@ public class ViewEvaluationInfo {
 	String couTime=null;//课程上课时间
 	String couPlace=null;//课程上课地点
 	String couCredit=null;//课程学分
-	int isTeach=0;//是否评教了
+	int isTeach;//是否评教了
+	
 	public String getCouName() {
 		return couName;
 	}
