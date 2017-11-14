@@ -63,7 +63,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 
                                <dl>
                                		<dd>
-                               		 <a href="student/#" class="dd-item">查看评教信息<span class="scm dd-ar"></span></a>
+                               		 <a href="javascript:;" class="dd-item">查看评教信息<span class="scm dd-ar"></span></a>
                                 	<ul class="ad-item-list">
                                         <li class="J_menuItem" href="student/evaluation/index.jsp?couTerm=171802" data-index="1">查看评教信息</li>
                                         <li class="J_menuItem" href="index_v2.html" data-index="2">未评教课程</li>
