@@ -37,7 +37,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <div class="li-item"><em class="scm li-ico ic1"></em>通告栏<span class="scm arrow"></span></div>
                             <dl>
                                 <dd>
-                                    <a href="student/#" class="dd-item">通知列表<span class="scm dd-ar"></span></a>
+                                    <a href="javascript:;" class="dd-item">通知列表<span class="scm dd-ar"></span></a>
                                     <ul class="ad-item-list">
                                                       <!-- 以下是添加通告栏连接数据库展示文章标题的代码 -->
    
@@ -92,9 +92,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <dd>
                                     <a href="javascript:;" class="dd-item">各学期好评<span class="scm dd-ar"></span></a>
                                      <ul class="ad-item-list">
-                                        <li class="J_menuItem" href="student/teaPraiseListInfo" data-index="1">各学期好评</li>
+                                        <li class="J_menuItem" href="student/teaPraiseListInfo/index.jsp?couTerm=171802" data-index="1">各学期好评</li>
                                         <li class="J_menuItem" href="student/teaPraiseListInfo/honor.jsp" data-index="2">获奖荣誉</li>
-                                        <li class="J_menuItem" href="student/teaPraiseListInfo/notice.jsp" data-index="3">奖罚通告</li>
                                     </ul>
                                 </dd>
                             </dl>
