@@ -120,7 +120,7 @@ form button:hover {
   <tr><td>年级:</td>       
   <td><input type="text" name="stuGrade" value=<%= personalInfo.getStuGrade() %> /></td></tr> 
   <tr><td>院系专业及班级:</td>       
-  <td><input type="text" name="stuForm" value=<%= personalInfo.getStuFrom() %> /></td></tr>
+  <td><input type="text" name="stuFrom" value=<%= personalInfo.getStuFrom() %> /></td></tr>
   <tr><td>联系电话:</td>       
   <td><input type="text" name="stuPhone" value=<%= personalInfo.getStuPhone()%> /></td></tr>
   <tr><td>备注:</td>
