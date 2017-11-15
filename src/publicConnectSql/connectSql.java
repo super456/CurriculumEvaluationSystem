@@ -4,9 +4,12 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.sun.media.ui.TabControl;
+
 import student.bean.CommentContents;
 import student.bean.NoticeBarList;
 import student.bean.PersonalInfo;
+import student.bean.TeaPraiseListInfo;
 import student.bean.ViewEvaluationInfo;
 
 import admin.bean.admin.AdminInfo;
@@ -302,5 +305,38 @@ public class connectSql {
 		return list;
 	}
 	
+	
+	//10.教师好评榜分学期及关键字筛选信息方法体
+	public List showTeaPraiseListInfo(String sql){
+		List list = new ArrayList();
+		
+		try {
+			pst = con.prepareStatement(sql);
+			rs = pst.executeQuery();
+			while(rs.next()){
+				TeaPraiseListInfo bean=new TeaPraiseListInfo();
+				bean.setCouName(rs.getString(1));
+				bean.setTeaName(rs.getString(2));
+				bean.setCouFrom(rs.getString(3));
+				bean.setCouTime(rs.getString(4));
+				bean.setCouPlace(rs.getString(5));
+				bean.setCouCredit(rs.getInt(6));
+				bean.setTheAllAvgScore(rs.getFloat(7));
+				list.add(bean);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		finally{
+			try {
+				pst.close();
+				con.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}
+		return list;
+	}
 	
 }
