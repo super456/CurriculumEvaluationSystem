@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="gb2312"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 
 <%
 String path = request.getContextPath();
@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-	<meta charset="gb2312">
+	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit">
 	<meta http-equiv="pragma" content="no-cache">
@@ -93,33 +93,47 @@ form button:hover {
   </head>
   
   <body>
+  
+  <!-- 判断用户是不是直接打开这个网址，而有没有通过登录界面登录 -->
+		<%
+			String userName = (String) session.getAttribute("userName");
+			if (userName == null) {
+		%>
+		<script>
+	    alert(" 您未登录，请从登录界面登录！");
+	    //这个问题谨记，很实用
+		top.location.href="index.jsp";
+ 		</script>
+		<%
+			}
+		%>
   <div class="wrapper">
   <div class="container">
  <center>
-  <h2 style="color:cyan">&nbsp;�� �� ѧ �� �� Ϣ</h2>
+  <h2 style="color:cyan">&nbsp;修 改 学 生 信 息</h2>
   <form action="updateStu" method="post" name=form class="form">
   <table border=0 background="#ffffff">
-  <tr><td>ѧ�����: </td>  
+  <tr><td>学生编号: </td>  
   <td><input type="text" name="stuNum" value=<%= request.getAttribute("stuNum") %> readonly /></td></tr>
-  <tr><td>����:</td>       
+  <tr><td>姓名:</td>       
   <td><input type="text" name="stuName" value=<%= request.getAttribute("stuName") %> /></td></tr>
-  <tr><td>�Ա�:</td>
+  <tr><td>性别:</td>
   <td> <select name="stuSex" id="stuSex">
-  <option value="��" >--����--</option>
-  <option value="Ů" >--Ů��--</option>
+  <option value="男" >--男生--</option>
+  <option value="女" >--女生--</option>
   </select></td></tr> 
-  <tr><td>�꼶:</td>       
+  <tr><td>年级:</td>       
   <td><input type="text" name="stuGrade" value=<%= request.getAttribute("stuGrade") %> /></td></tr> 
-  <tr><td>Ժϵרҵ���༶:</td>       
+  <tr><td>院系专业及班级:</td>       
   <td><input type="text" name="stuForm" value=<%= request.getAttribute("stuForm") %> /></td></tr>
-  <tr><td>��ϵ�绰:</td>       
+  <tr><td>联系电话:</td>       
   <td><input type="text" name="stuPhone" value=<%= request.getAttribute("stuPhone") %> /></td></tr>
-  <tr><td>��ע:</td>
+  <tr><td>备注:</td>
   <td><textArea name="stuRemarks" rows=8 cols=24 
   style="background-color: rgba(255, 255, 255, 0.2);border-radius:3px;font-size: 18px;color: white;"
    ><%= request.getAttribute("stuRemarks") %></textArea></td></tr> 
-  <tr><td>&nbsp;<button type="submit" >�޸�</button></td> 
-  <td>&nbsp;&nbsp;&nbsp;<button type="reset">����</button></td></tr> 
+  <tr><td>&nbsp;<button type="submit" >修改</button></td> 
+  <td>&nbsp;&nbsp;&nbsp;<button type="reset">重置</button></td></tr> 
   </table>
   </form>
   </center>

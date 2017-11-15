@@ -1,6 +1,7 @@
 package admin.servlet.commentContent;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -31,7 +32,9 @@ public class DeleteComConServlet extends HttpServlet{
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		request.setCharacterEncoding("gb2312");
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html");
+		response.setCharacterEncoding("utf-8");
 		Connection con = null;
 		PreparedStatement pre = null;
 		
@@ -39,6 +42,7 @@ public class DeleteComConServlet extends HttpServlet{
 		String user="sa";
 		String password = "123456";
 		
+		PrintWriter out = response.getWriter();
 		String num = request.getParameter("comConNum");	
 		int comConNum = Integer.parseInt(num);
 
@@ -48,7 +52,9 @@ public class DeleteComConServlet extends HttpServlet{
 			pre = con.prepareStatement(condition);
 			pre.setInt(1, comConNum);
 			pre.executeUpdate();
+			out.println("<SCRIPT language=javascript > alert('删除成功!');window.location='admin/commentContent/showComCon.jsp';</script>");			
 		} catch (SQLException e) {
+			out.println("<SCRIPT language=javascript > alert('删除失败!');window.location='admin/commentContent/showComCon.jsp';</script>");			
 			e.printStackTrace();
 		}finally{
 			try {
@@ -59,7 +65,7 @@ public class DeleteComConServlet extends HttpServlet{
 			}
 			
 		}
-		RequestDispatcher dispatcher = request.getRequestDispatcher("admin/commentContent/showComCon.jsp");
-		dispatcher.forward(request, response);
+		//RequestDispatcher dispatcher = request.getRequestDispatcher("admin/commentContent/showComCon.jsp");
+		//dispatcher.forward(request, response);
 	}
 }

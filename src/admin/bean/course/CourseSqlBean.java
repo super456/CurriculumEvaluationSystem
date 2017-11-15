@@ -40,13 +40,14 @@ public class CourseSqlBean {
 				CourseInfo bean = new CourseInfo();
 				bean.setCouNum(rs.getInt(1));
 				bean.setTeaNum(rs.getInt(2));
-				bean.setCouName(rs.getString(3));
-				bean.setCouTerm(rs.getInt(4));
-				bean.setCouFrom(rs.getString(5));
-				bean.setCouTime(rs.getString(6));
-				bean.setCouPlace(rs.getString(7));
-				bean.setCouCredit(rs.getInt(8));
-				bean.setCouRemarks(rs.getString(9));
+				bean.setTeaName(rs.getString(3));
+				bean.setCouName(rs.getString(4));
+				bean.setCouTerm(rs.getInt(5));
+				bean.setCouFrom(rs.getString(6));
+				bean.setCouTime(rs.getString(7));
+				bean.setCouPlace(rs.getString(8));
+				bean.setCouCredit(rs.getInt(9));
+				bean.setCouRemarks(rs.getString(10));
 				list.add(bean);
 			}
 		} catch (Exception e) {

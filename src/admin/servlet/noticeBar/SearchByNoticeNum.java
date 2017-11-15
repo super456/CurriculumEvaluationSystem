@@ -28,8 +28,9 @@ public class SearchByNoticeNum extends HttpServlet{
 	}
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-		request.setCharacterEncoding("gb2312");
-		response.setCharacterEncoding("gb2312");
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html");
+		response.setCharacterEncoding("utf-8");
 		NoticeBarInfo noticeBean = new NoticeBarInfo();
 		
 		Connection con = null;

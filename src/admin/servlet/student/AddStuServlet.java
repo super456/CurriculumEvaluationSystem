@@ -1,6 +1,7 @@
 package admin.servlet.student;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
@@ -28,11 +29,13 @@ public class AddStuServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		request.setCharacterEncoding("gb2312");
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html");
+		response.setCharacterEncoding("utf-8");
 		Connection con = null;
 		PreparedStatement pre = null;
 
-		
+		PrintWriter out = response.getWriter();
 		String uri = "jdbc:sqlserver://localhost:55780;DatabaseName=curriculumEvaluationSystem";
 		String user="sa";
 		String password = "123456";
@@ -45,7 +48,8 @@ public class AddStuServlet extends HttpServlet {
 		String phone = request.getParameter("stuPhone");
 		String stuRemarks = request.getParameter("stuRemarks");
 		if(num.length()==0 || num==null){
-			response.sendRedirect("admin/student/addStuInfo.jsp");
+			out.println("<SCRIPT language=javascript > alert('添加失败,请输入学生编号!');window.location='admin/student/addStuInfo.jsp';</script>");
+			//response.sendRedirect("admin/student/addStuInfo.jsp");
 		}
 		
 		int stuNum = Integer.parseInt(num);
@@ -75,7 +79,9 @@ public class AddStuServlet extends HttpServlet {
 			pre.setString(4, userType);
 			pre.setInt(5, perLimit);
 			pre.executeUpdate();
+			out.println("<SCRIPT language=javascript > alert('添加成功!');window.location='admin/student/showStuInfo.jsp';</script>");			
 		} catch (SQLException e) {
+			out.println("<SCRIPT language=javascript > alert('添加失败!');window.location='admin/student/addStuInfo.jsp';</script>");
 			e.printStackTrace();
 		}finally{
 			try {
@@ -86,8 +92,8 @@ public class AddStuServlet extends HttpServlet {
 			}
 			
 		}
-		RequestDispatcher dispatcher = request.getRequestDispatcher("admin/student/showStuInfo.jsp");
-		dispatcher.forward(request, response);
+		//RequestDispatcher dispatcher = request.getRequestDispatcher("admin/student/showStuInfo.jsp");
+		//dispatcher.forward(request, response);
 	}
 
 }

@@ -1,6 +1,7 @@
 package admin.servlet.noticeBar;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -31,10 +32,13 @@ public class DeleteNoticeServlet extends HttpServlet{
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		request.setCharacterEncoding("gb2312");
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html");
+		response.setCharacterEncoding("utf-8");
 		Connection con = null;
 		PreparedStatement pre = null;
 		
+		PrintWriter out = response.getWriter();
 		String uri = "jdbc:sqlserver://localhost:55780;DatabaseName=curriculumEvaluationSystem";
 		String user="sa";
 		String password = "123456";
@@ -48,7 +52,9 @@ public class DeleteNoticeServlet extends HttpServlet{
 			pre = con.prepareStatement(condition);
 			pre.setInt(1, noticeBarInfoNum);
 			pre.executeUpdate();
+			out.println("<SCRIPT language=javascript > alert('删除成功!');window.location='admin/noticeBar/showNoticeBarInfo.jsp';</script>");			
 		} catch (SQLException e) {
+			out.println("<SCRIPT language=javascript > alert('删除失败!');window.location='admin/noticeBar/showNoticeBarInfo.jsp';</script>");			
 			e.printStackTrace();
 		}finally{
 			try {
@@ -59,7 +65,7 @@ public class DeleteNoticeServlet extends HttpServlet{
 			}
 			
 		}
-		RequestDispatcher dispatcher = request.getRequestDispatcher("admin/noticeBar/showNoticeBarInfo.jsp");
-		dispatcher.forward(request, response);
+		//RequestDispatcher dispatcher = request.getRequestDispatcher("admin/noticeBar/showNoticeBarInfo.jsp");
+		//dispatcher.forward(request, response);
 	}
 }

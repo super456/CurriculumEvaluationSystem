@@ -1,6 +1,7 @@
 package admin.servlet.admin;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -31,7 +32,9 @@ public class UpdateAdminServlet extends HttpServlet{
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		request.setCharacterEncoding("gb2312");
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html");
+		response.setCharacterEncoding("utf-8");
 		Connection con = null;
 		PreparedStatement pre = null;
 		
@@ -39,6 +42,9 @@ public class UpdateAdminServlet extends HttpServlet{
 		String user="sa";
 		String password = "123456";
 		
+		PrintWriter out = response.getWriter();
+		String tableName = request.getParameter("tableName");
+		String[] mess = tableName.split("[-/]");
 		String num = request.getParameter("adminNum");
 		String adminName = request.getParameter("adminName");
 		String limit = request.getParameter("adminLimit");
@@ -62,7 +68,15 @@ public class UpdateAdminServlet extends HttpServlet{
 			pre = con.prepareStatement(sql);
 			pre.setString(1, adminName);
 			pre.executeUpdate();
+			if(mess[1].equals("adminInfo"))
+			 out.println("<SCRIPT language=javascript > alert('修改成功');window.location='admin/adminInfo/showAdminInfo.jsp';</script>");	
+			else
+			 out.println("<SCRIPT language=javascript > alert('修改成功');window.location='admin/personInfo/showAdminInfo.jsp';</script>");		
 		} catch (SQLException e) {
+			if(mess[1].equals("adminInfo"))
+			 out.println("<SCRIPT language=javascript > alert('修改失败');window.location='admin/adminInfo/showAdminInfo.jsp';</script>");		
+			else
+			 out.println("<SCRIPT language=javascript > alert('修改失败');window.location='admin/personInfo/showAdminInfo.jsp';</script>");		
 			e.printStackTrace();
 		}finally{
 			try {
@@ -73,7 +87,7 @@ public class UpdateAdminServlet extends HttpServlet{
 			}
 			
 		}
-		RequestDispatcher dispatcher = request.getRequestDispatcher("admin/adminInfo/showAdminInfo.jsp");
-		dispatcher.forward(request, response);
+		//RequestDispatcher dispatcher = request.getRequestDispatcher("admin/adminInfo/showAdminInfo.jsp");
+		//dispatcher.forward(request, response);
 	}
 }

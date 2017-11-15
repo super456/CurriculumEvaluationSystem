@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="gb2312"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <jsp:useBean id="sqlBean" class="admin.bean.noticeBar.NoticeBarSqlBean" />
 <jsp:useBean id="noticeBarBean"
 	class="admin.bean.noticeBar.NoticeBarInfo" />
@@ -20,7 +20,7 @@
 	<head>
 		<base href="<%=basePath%>">
 
-		<meta charset="gb2312">
+		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="renderer" content="webkit">
 		<meta http-equiv="pragma" content="no-cache">
@@ -45,25 +45,39 @@ a:hover {
 	</head>
 
 	<body style="background-color: #FFF;">
+	
+	<!-- 判断用户是不是直接打开这个网址，而有没有通过登录界面登录 -->
+		<%
+			String userName = (String) session.getAttribute("userName");
+			if (userName == null) {
+		%>
+		<script>
+	    alert(" 您未登录，请从登录界面登录！");
+	    //这个问题谨记，很实用
+		top.location.href="index.jsp";
+ 		</script>
+		<%
+			}
+		%>
 		<table border=1 bgcolor="#ffffff" width=100%>
 			<tr align="center">
 				<td>
-					ͨ�������
+					通告栏编号
 				</td>
 				<td>
-					����
+					标题
 				</td>
 				<td>
-					����ʱ��
+					发布时间
 				</td>
 				<td>
-					����
+					作者
 				</td>
 				<td>
-					����
+					内容
 				</td>
 				<td>
-					�鿴���Ʋ���
+					查看限制操作
 				</td>
 			</tr>
 
@@ -83,19 +97,19 @@ a:hover {
 					<form action="limitNotice?noticeBarInfoNum=<%=noticeBarBean.getNoticeBarInfoNum()%>" method="post" style="margin-top: 20px;">
 						<select name="noticeBarLimit">
 							<option value="0">
-								ѧ��,��ʦ�鿴
+								学生,教师查看
 							</option>
 							<option value="1">
-								ѧ���鿴
+								学生查看
 							</option>
 							<option value="2">
-								��ʦ�鿴
+								教师查看
 							</option>
 							<option value="3">
-								��ֹ�鿴
+								禁止查看
 							</option>
 						</select>
-						<input type="submit" value="����" />
+						<input type="submit" value="设置" />
 					</form>
 				</td>
 			</tr>

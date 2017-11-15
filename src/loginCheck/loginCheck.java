@@ -113,9 +113,9 @@ public class loginCheck extends HttpServlet {
 			session.setAttribute("userName", userName);//绑定存储session对象的用户的用户名
 			//根据用户选择的登录身份，跳转相应的界面
 			if (loginIdentity.equals("学生")) {
-				response.sendRedirect("student/index.jsp");
+				response.sendRedirect("student");
 			}else if (loginIdentity.equals("教师")) {
-				response.sendRedirect("teacher/index.jsp");
+				response.sendRedirect("teacher");
 			}else {
 				response.sendRedirect("admin");
 			}

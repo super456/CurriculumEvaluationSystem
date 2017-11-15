@@ -6,6 +6,7 @@ import java.util.List;
 
 import student.bean.NoticeBarList;
 import student.bean.ViewEvaluationInfo;
+import teacher.bean.TeaInfo;
 
 import admin.bean.admin.AdminInfo;
 
@@ -177,5 +178,35 @@ public class connectSql {
 		return list;
 	}
 	
-	
+	//6.获取教师个人信息
+	public List viewTeaInfo(String sql){
+		List list = new ArrayList();
+		TeaInfo bean = new TeaInfo();
+		try {
+			pst = con.prepareStatement(sql);
+			rs = pst.executeQuery();
+			while(rs.next()){
+				bean.setTeaNum(rs.getInt(1));
+				bean.setTeaName(rs.getString(2));
+				bean.setTeaSex(rs.getString(3));
+				bean.setTeaBirthday(rs.getDate(4));
+				bean.setTeaForm(rs.getString(5));
+				bean.setTeaPhone(rs.getInt(6));
+				bean.setTeaRemarks(rs.getString(7));
+				list.add(bean);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		finally{
+			try {
+				pst.close();
+				con.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}
+		return list;
+	}
 }

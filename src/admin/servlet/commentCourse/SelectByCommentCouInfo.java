@@ -25,8 +25,9 @@ public class SelectByCommentCouInfo extends HttpServlet{
 	}
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-		request.setCharacterEncoding("gb2312");
+		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html");
+		response.setCharacterEncoding("utf-8");
 		
 		String num1 = request.getParameter("stuNum");
 		String num2 = request.getParameter("couNum");

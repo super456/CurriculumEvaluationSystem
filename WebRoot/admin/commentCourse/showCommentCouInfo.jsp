@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="gb2312"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -10,7 +10,7 @@
 	<head>
 		<base href="<%=basePath%>">
 
-		<meta charset="gb2312">
+		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="renderer" content="webkit">
 		<meta http-equiv="pragma" content="no-cache">
@@ -23,74 +23,87 @@
 
 	<body style="background-color: #FFF;">
 
+<!-- åˆ¤æ–­ç”¨æˆ·æ˜¯ä¸æ˜¯ç›´æ¥æ‰“å¼€è¿™ä¸ªç½‘å€ï¼Œè€Œæœ‰æ²¡æœ‰é€šè¿‡ç™»å½•ç•Œé¢ç™»å½• -->
+		<%
+			String userName = (String) session.getAttribute("userName");
+			if (userName == null) {
+		%>
+		<script>
+	    alert(" æ‚¨æœªç™»å½•ï¼Œè¯·ä»ç™»å½•ç•Œé¢ç™»å½•ï¼");
+	    //è¿™ä¸ªé—®é¢˜è°¨è®°ï¼Œå¾ˆå®ç”¨
+		top.location.href="index.jsp";
+ 		</script>
+		<%
+			}
+		%>
 		<center>
 			<form action="selectByCommentCouInfo" method="post">
 				<select name="select">
 					<option value="couNum" selected>
-						¿Î³Ì±àºÅ
+						è¯¾ç¨‹ç¼–å·
 					</option>
 					<option value="stuNum">
-						Ñ§Éú±àºÅ
+						å­¦ç”Ÿç¼–å·
 					</option>
 				</select>
 				<input type="text" name="userInfo"
 					style="width: 160px; height: 25px" />
-				<input type="submit" value="ËÑË÷" />
+				<input type="submit" value="æœç´¢" />
 			</form>
 		</center>
 
 		<table border=1 bgcolor="#ffffff" width=130%>
 			<tr align="center">
 				<td>
-					ÆÀ½Ì¿Î³Ì±àºÅ
+					è¯„æ•™è¯¾ç¨‹ç¼–å·
 				</td>
 				<td>
-					¿Î³Ì±àºÅ
+					è¯¾ç¨‹ç¼–å·
 				</td>
 				<td>
-					Ñ§Éú±àºÅ
+					å­¦ç”Ÿç¼–å·
 				</td>
 				<td>
-					ÆÀ½ÌÊ±¼ä
+					è¯„æ•™æ—¶é—´
 				</td>
 				<td>
-					first·ÖÊı
+					firståˆ†æ•°
 				</td>
 				<td>
-					second·ÖÊı
+					secondåˆ†æ•°
 				</td>
 				<td>
-					third·ÖÊı
+					thirdåˆ†æ•°
 				</td>
 				<td>
-					fourth·ÖÊı
+					fourthåˆ†æ•°
 				</td>
 				<td>
-					fifth·ÖÊı
+					fifthåˆ†æ•°
 				</td>
 				<td>
-					sixth·ÖÊı
+					sixthåˆ†æ•°
 				</td>
 				<td>
-					seventh·ÖÊı
+					seventhåˆ†æ•°
 				</td>
 				<td>
-					eighth·ÖÊı
+					eighthåˆ†æ•°
 				</td>
 				<td>
-					ninth·ÖÊı
+					ninthåˆ†æ•°
 				</td>
 				<td>
-					tenth·ÖÊı
+					tenthåˆ†æ•°
 				</td>
 				<td>
-					ÁôÑÔÇø
+					ç•™è¨€åŒº
 				</td>
 				<td>
-					×Ü·ÖÊı
+					æ€»åˆ†æ•°
 				</td>
 				<td>
-					Æ½¾ù·ÖÊı
+					å¹³å‡åˆ†æ•°
 				</td>
 			</tr>
 			<jsp:useBean id="commentCouBean" class="admin.bean.commentCourse.CommentCouInfo" />
