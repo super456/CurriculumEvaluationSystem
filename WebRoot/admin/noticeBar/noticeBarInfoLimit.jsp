@@ -15,12 +15,11 @@
     </script>
 <%	}
 %>
-
 <html>
 	<head>
 		<base href="<%=basePath%>">
 
-		<meta charset="UTF-8">
+		<meta charset="gb2312">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="renderer" content="webkit">
 		<meta http-equiv="pragma" content="no-cache">
@@ -45,20 +44,6 @@ a:hover {
 	</head>
 
 	<body style="background-color: #FFF;">
-	
-	<!-- 判断用户是不是直接打开这个网址，而有没有通过登录界面登录 -->
-		<%
-			String userName = (String) session.getAttribute("userName");
-			if (userName == null) {
-		%>
-		<script>
-	    alert(" 您未登录，请从登录界面登录！");
-	    //这个问题谨记，很实用
-		top.location.href="index.jsp";
- 		</script>
-		<%
-			}
-		%>
 		<table border=1 bgcolor="#ffffff" width=100%>
 			<tr align="center">
 				<td>

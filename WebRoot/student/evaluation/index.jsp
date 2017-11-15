@@ -111,6 +111,7 @@ button:hover{
 			<jsp:useBean id="viewCouJnfo" class="student.bean.ViewEvaluationInfo"/>
 			<jsp:useBean id="conSql" class="publicConnectSql.connectSql"/>
 			<%
+			 // request.setCharacterEncoding("utf-8");
 			int accountNum=(Integer)session.getAttribute("accountNum");//获取学生账号
 			
 				String condition = "select courseInfo.couName,teaInfo.teaName,courseInfo.couTime,courseInfo.couPlace,courseInfo.couCredit,couClassStuInfo.isTeach from courseInfo,couClassStuInfo,teaInfo where couClassStuInfo.stuNum='"+accountNum+"' and couClassStuInfo.couNum=courseInfo.couNum and courseInfo.couTerm='"+couTerm+"' and courseInfo.teaNum=teaInfo.teaNum";
@@ -131,11 +132,12 @@ button:hover{
 				%>
 				<td>未评教</td>
 					<td align="center">
-					<a href="student/evaluation/commentCourse.jsp?couName=<%= viewCouJnfo.getCouName() %>" ><button type="button">评教</button></a>
+					<a href="student/evaluation/commentCourse.jsp?couName=<%= viewCouJnfo.getCouName() %>&teaName=<%=viewCouJnfo.getTeaName() %>" ><button type="button">评教</button></a>
 				</td>
 				<%}else{ %>
 				<td>已评教</td>
 				<td align="center">
+				<!-- 使用样式点击无效事件 -->
 					<button type="button" disabled="disabled">评教</button>
 				</td>
 				<%} %>
