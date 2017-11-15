@@ -25,7 +25,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
 <body style="background-color: #FFF;">
-
+<!-- 判断用户是不是直接打开这个网址，而有没有通过登录界面登录 -->
+<%
+	String userName=(String)session.getAttribute("userName");
+ 	if(userName==null){
+ 		%>
+ 		<script type="text/javascript">
+ 		alert("您未登录，请从登录界面登录！");
+ 		//这个问题谨记，很实用
+ 		top.location.href="index.jsp";
+ 		</script>
+ 		<% 
+ 	}
+%>
 		<center>
 			<form action="student/teaPraiseListInfo/index.jsp" method="post">
 				<select name="couTerm">

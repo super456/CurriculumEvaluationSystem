@@ -87,6 +87,19 @@ form button:hover {
   </head>
   
   <body>
+  <!-- 判断用户是不是直接打开这个网址，而有没有通过登录界面登录 -->
+<%
+	String userName=(String)session.getAttribute("userName");
+ 	if(userName==null){
+ 		%>
+ 		<script type="text/javascript">
+ 		alert("您未登录，请从登录界面登录！");
+ 		//这个问题谨记，很实用
+ 		top.location.href="index.jsp";
+ 		</script>
+ 		<% 
+ 	}
+%>
   			<%
 				int stuNum=(Integer)session.getAttribute("accountNum");
 				String sql = "select * from stuInfo where stuNum='"+stuNum+"'";
