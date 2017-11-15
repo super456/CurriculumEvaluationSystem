@@ -37,8 +37,9 @@ public class SearchByComConNum extends HttpServlet{
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		request.setCharacterEncoding("gb2312");
-		response.setCharacterEncoding("gb2312");
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html");
+		response.setCharacterEncoding("utf-8");
 		Connection con = null;
 		PreparedStatement pre = null;
 		ResultSet rs = null;

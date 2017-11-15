@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="gb2312"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -74,47 +74,54 @@ form button:hover {
 	 color:white;
 }
 </style>
-
-<script type="text/javascript">
- function click(){
- alert("���ӳɹ�!");
- }
-</script>
   </head>
   
   <body>
 
+<!-- 判断用户是不是直接打开这个网址，而有没有通过登录界面登录 -->
+		<%
+			String userName = (String) session.getAttribute("userName");
+			if (userName == null) {
+		%>
+		<script>
+	    alert(" 您未登录，请从登录界面登录！");
+	    //这个问题谨记，很实用
+		top.location.href="index.jsp";
+ 		</script>
+		<%
+			}
+		%>
 <div class="wrapper">
   <div class="container">
  <center>
-  <h2 style="color:cyan">&nbsp;�� �� �� �� �� �� ��</h2>
+  <h2 style="color:cyan">&nbsp;添 加 评 教 卡 内 容</h2>
   <form action="addComCon" method="post" name=form class="form">
   <table border=0 background="#ffffff">
-  <tr><td>��һ������: </td>  
+  <tr><td>第一项内容: </td>  
   <td><input type="text" name="theFirstCon" /></td></tr>
-  <tr><td>�ڶ�������:</td>       
+  <tr><td>第二项内容:</td>       
   <td><input type="text" name="theSecondCon" /></td></tr>
-  <tr><td>����������:</td>
+  <tr><td>第三项内容:</td>
   <td><input type="text" name="theThirdCon" /></td></tr> 
-  <tr><td>����������:</td>       
+  <tr><td>第四项内容:</td>       
   <td><input type="text" name="theFourthCon" /></td></tr> 
-  <tr><td>����������:</td>       
+  <tr><td>第五项内容:</td>       
   <td><input type="text" name="theFifthCon" /></td></tr>
-  <tr><td>����������:</td>       
+  <tr><td>第六项内容:</td>       
   <td><input type="text" name="theSixthCon" /></td></tr>
-  <tr><td>����������:</td>       
+  <tr><td>第七项内容:</td>       
   <td><input type="text" name="theSeventhCon" /></td></tr>
-  <tr><td>�ڰ�������:</td>       
+  <tr><td>第八项内容:</td>       
   <td><input type="text" name="theEighthCon" /></td></tr>
-  <tr><td>�ھ�������:</td>       
+  <tr><td>第九项内容:</td>       
   <td><input type="text" name="theNinthCon" /></td></tr>
-  <tr><td>��ʮ������:</td>       
+  <tr><td>第十项内容:</td>       
   <td><input type="text" name="theTenthCon" /></td></tr>
-  <tr><td>��ע��Ϣ:</td>
+  <tr><td>备注信息:</td>
   <td><textArea name="comConRemarks" rows=6 cols=30 
   style="background-color: rgba(255, 255, 255, 0.2);border-radius:3px;font-size: 18px;color: white;"></textArea></td></tr> 
-  <tr align="center"><td><button type="submit" onclick="click()">�ύ</button></td> 
-  <td>&nbsp;&nbsp;<button type="reset">����</button></td></tr> 
+  <tr align="center"><td><button type="submit" onclick="click()">提交</button></td> 
+  <td>&nbsp;&nbsp;<button type="reset">重置</button></td></tr> 
   </table>
   </form>
   </center>

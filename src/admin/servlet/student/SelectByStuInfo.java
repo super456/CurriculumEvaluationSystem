@@ -39,10 +39,10 @@ public class SelectByStuInfo extends HttpServlet{
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		request.setCharacterEncoding("gb2312");
+		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html");
-		
-		
+		response.setCharacterEncoding("utf-8");
+				
 		String select = request.getParameter("select");
 		String userInfo = request.getParameter("userInfo");	    
 		String condition = "select * from stuInfo where "+select+" like '%"+userInfo+"%'";

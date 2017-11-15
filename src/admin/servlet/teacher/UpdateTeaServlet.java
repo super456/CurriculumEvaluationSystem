@@ -1,6 +1,7 @@
 package admin.servlet.teacher;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
@@ -35,13 +36,18 @@ public class UpdateTeaServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		request.setCharacterEncoding("gb2312");
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html");
+		response.setCharacterEncoding("utf-8");
 		Connection con = null;
 		PreparedStatement pre = null;
 		
 		String uri = "jdbc:sqlserver://localhost:55780;DatabaseName=curriculumEvaluationSystem";
 		String user="sa";
 		String password = "123456";
+		
+		String tableName = request.getParameter("tableName");
+		String [] mess = tableName.split("[-/]");
 		
 		String num = request.getParameter("teaNum");
 		
@@ -62,6 +68,7 @@ public class UpdateTeaServlet extends HttpServlet {
 		calendar.set(year, month-1,day);
 		Date teaBirthday = new java.sql.Date(calendar.getTimeInMillis());
 
+		PrintWriter out = response.getWriter();
 		String sql = "update userLogin set userName=? where accountNum="+teaNum;
 		String condition = "update teaInfo set teaName=?,teaSex=?,teaBirthday=?,teaForm=?,teaPhone=?,teaRemarks=? where teaNum="+teaNum;
 		try {
@@ -77,7 +84,15 @@ public class UpdateTeaServlet extends HttpServlet {
 			pre = con.prepareStatement(sql);
 			pre.setString(1, teaName);
 			pre.executeUpdate();
+			if(mess[1].equals("teacher"))
+			    out.println("<SCRIPT language=javascript > alert('修改成功!');window.location='admin/teacher/showTeaInfo.jsp';</script>");
+			else
+				out.println("<SCRIPT language=javascript > alert('修改成功!');window.location='teacher/personInfo/viewTeaInfo.jsp';</script>");
 		} catch (SQLException e) {
+			if(mess[1].equals("teacher"))
+			    out.println("<SCRIPT language=javascript > alert('修改失败!');window.location='admin/teacher/showTeaInfo.jsp';</script>");
+			else
+				out.println("<SCRIPT language=javascript > alert('修改失败!');window.location='teacher/personInfo/viewTeaInfo.jsp';</script>");
 			e.printStackTrace();
 		}finally{
 			try {
@@ -88,8 +103,8 @@ public class UpdateTeaServlet extends HttpServlet {
 			}
 			
 		}
-		RequestDispatcher dispatcher = request.getRequestDispatcher("admin/teacher/showTeaInfo.jsp");
-		dispatcher.forward(request, response);
+		//RequestDispatcher dispatcher = request.getRequestDispatcher(tableName);
+		//dispatcher.forward(request, response);
 	}
 
 }

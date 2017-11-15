@@ -14,7 +14,7 @@ public class AdminSqlBean {
 	PreparedStatement pre;
 	ResultSet rs;
 	
-	public AdminSqlBean(){
+	public void startCon(){
 		String uri = "jdbc:sqlserver://localhost:55780;DatabaseName=curriculumEvaluationSystem";
 		String user="sa";
 		String password = "123456";
@@ -58,5 +58,52 @@ public class AdminSqlBean {
 			
 		}
 		return list;
+	}
+	
+	public int searchAdminNum(String sql){
+		int accountNum = 0;
+		
+		try {
+			pre = con.prepareStatement(sql);
+			rs = pre.executeQuery();
+			while(rs.next()){
+				accountNum = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		finally{
+			try {
+				pre.close();
+				con.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}
+		return accountNum;
+	}
+	//获取用户密码
+	public String searchUserPwd(String sql){
+		String password = null;
+		try {
+			pre = con.prepareStatement(sql);
+			rs = pre.executeQuery();
+			while(rs.next()){
+				password = rs.getString(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		finally{
+			try {
+				pre.close();
+				con.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}
+		return password;
 	}
 }

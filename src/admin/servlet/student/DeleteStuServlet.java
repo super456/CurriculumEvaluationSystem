@@ -1,6 +1,7 @@
 package admin.servlet.student;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -32,7 +33,9 @@ public class DeleteStuServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		request.setCharacterEncoding("gb2312");
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html");
+		response.setCharacterEncoding("utf-8");
 		Connection con = null;
 		PreparedStatement pre = null;
 		
@@ -43,6 +46,7 @@ public class DeleteStuServlet extends HttpServlet {
 		String num = request.getParameter("stuNum");	
 		int stuNum = Integer.parseInt(num);
 
+		PrintWriter out = response.getWriter();
 		String condition = "delete from stuInfo where stuNum=?";
 		String sql = "delete from userLogin where accountNum=?";
 		try {
@@ -53,7 +57,9 @@ public class DeleteStuServlet extends HttpServlet {
 			pre = con.prepareStatement(sql);
 			pre.setInt(1, stuNum);
 			pre.executeUpdate();
+			out.println("<SCRIPT language=javascript > alert('删除成功!');window.location='admin/student/showStuInfo.jsp';</script>");
 		} catch (SQLException e) {
+			out.println("<SCRIPT language=javascript > alert('删除失败!');window.location='admin/student/showStuInfo.jsp';</script>");
 			e.printStackTrace();
 		}finally{
 			try {
@@ -64,8 +70,8 @@ public class DeleteStuServlet extends HttpServlet {
 			}
 			
 		}
-		RequestDispatcher dispatcher = request.getRequestDispatcher("admin/student/showStuInfo.jsp");
-		dispatcher.forward(request, response);
+		//RequestDispatcher dispatcher = request.getRequestDispatcher("admin/student/showStuInfo.jsp");
+		//dispatcher.forward(request, response);
 	}
 
 }

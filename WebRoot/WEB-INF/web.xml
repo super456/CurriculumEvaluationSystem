@@ -295,6 +295,28 @@
     <url-pattern>/viewNoticeBarContent</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>ViewNoticeBarContent</servlet-name>
+    <servlet-class>teacher.servlet.viewNoticeBarContent</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewNoticeBarContent</servlet-name>
+    <url-pattern>/ViewNoticeBarContent</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>UpdateTeaPwd</servlet-name>
+    <servlet-class>teacher.servlet.UpdateTeaPwd</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateTeaPwd</servlet-name>
+    <url-pattern>/updateUserPwd</url-pattern>
+  </servlet-mapping>
+  
     <servlet>
     <description>This is the description of my J2EE component</description>
     <display-name>This is the display name of my J2EE component</display-name>
@@ -306,6 +328,28 @@
     <url-pattern>/viewEvaluationInfo</url-pattern>
   </servlet-mapping>
 
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>ViewByStuNum</servlet-name>
+    <servlet-class>teacher.servlet.ViewByStuNum</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewByStuNum</servlet-name>
+    <url-pattern>/viewByStuNum</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>SelectByTeaPraise</servlet-name>
+    <servlet-class>teacher.servlet.SelectByTeaPraise</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SelectByTeaPraise</servlet-name>
+    <url-pattern>/selectByTeaPraise</url-pattern>
+  </servlet-mapping>
+  
   <servlet>
     <servlet-name>AddComCon</servlet-name>
     <servlet-class>admin.servlet.commentContent.AddComCon</servlet-class>

@@ -3,7 +3,13 @@ package admin.bean.course;
 public class CourseInfo {
 
 	int couNum,teaNum,couTerm,couCredit;
-	String couName,couFrom,couTime,couPlace,couRemarks;
+	String couName,couFrom,couTime,couPlace,couRemarks,teaName;
+	public String getTeaName() {
+		return teaName;
+	}
+	public void setTeaName(String teaName) {
+		this.teaName = teaName;
+	}
 	public int getCouNum() {
 		return couNum;
 	}

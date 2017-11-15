@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="gb2312"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 
 <%
 	String path = request.getContextPath();
@@ -11,7 +11,7 @@
 	<head>
 		<base href="<%=basePath%>">
 
-		<meta charset="gb2312">
+		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="renderer" content="webkit">
 		<meta http-equiv="pragma" content="no-cache">
@@ -48,53 +48,66 @@ button:hover{
 
 	<body style="background-color: #FFF;">
 
+<!-- 判断用户是不是直接打开这个网址，而有没有通过登录界面登录 -->
+		<%
+			String userName = (String) session.getAttribute("userName");
+			if (userName == null) {
+		%>
+		<script>
+	    alert(" 您未登录，请从登录界面登录！");
+	    //这个问题谨记，很实用
+		top.location.href="index.jsp";
+ 		</script>
+		<%
+			}
+		%>
 		<center>
 			<form action="selectByTeaInfo" method="post">
 				<select name="select">
 					<option value="teaNum" selected>
-						��ʦ���
+						教师编号
 					</option>
 					<option value="teaName">
-						����
+						姓名
 					</option>
 					<option value="teaForm">
-						��λ
+						单位
 					</option>
 				</select>
 				<input type="text" name="userInfo"
 					style="width: 160px; height: 25px" />
-				<input type="submit" value="����" />
+				<input type="submit" value="搜索" />
 			</form>
 		</center>
 
 		<table border=1 bgcolor="#ffffff" width=100%>
 			<tr align="center">
 				<td>
-					��ʦ���
+					教师编号
 				</td>
 				<td>
-					����
+					姓名
 				</td>
 				<td>
-					�Ա�
+					性别
 				</td>
 				<td>
-					��������
+					出生日期
 				</td>
 				<td>
-					���ڵ�λ
+					所在单位
 				</td>
 				<td>
-					��ϵ�绰
+					联系电话
 				</td>
 				<td>
-					���
+					简介
 				</td>
 				<td>
-				  �Ƿ����Ƶ�¼
+				  是否限制登录
 				</td>
 				<td>
-					����
+					操作
 				</td>
 			</tr>
 			<jsp:useBean id="teaBean" class="admin.bean.teacher.TeaInfo" />
@@ -121,9 +134,9 @@ button:hover{
 					</form>
 				</td>
 				<td align="center">
-					<a href="searchByTeaNum?teaNum=<%=teaBean.getTeaNum()%>">����</a>&nbsp;
+					<a href="searchByTeaNum?teaNum=<%=teaBean.getTeaNum()%>">更新</a>&nbsp;
 					<a href="deleteTea?teaNum=<%=teaBean.getTeaNum()%>"
-	                onclick="return confirm('ȷ��ɾ��?')">ɾ��</a>
+	                onclick="return confirm('确定删除?')">删除</a>
 				</td>
 			</tr>
 			<%

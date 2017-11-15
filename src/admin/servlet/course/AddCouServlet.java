@@ -1,6 +1,7 @@
 package admin.servlet.course;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -31,11 +32,13 @@ public class AddCouServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		request.setCharacterEncoding("gb2312");
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html");
+		response.setCharacterEncoding("utf-8");
 		Connection con = null;
 		PreparedStatement pre = null;
 
-		
+		PrintWriter out = response.getWriter();
 		String uri = "jdbc:sqlserver://localhost:55780;DatabaseName=curriculumEvaluationSystem";
 		String user="sa";
 		String password = "123456";
@@ -71,7 +74,9 @@ public class AddCouServlet extends HttpServlet {
 			pre.setInt(8, couCredit);
 			pre.setString(9, couRemarks);
 			pre.executeUpdate();
+			out.println("<SCRIPT language=javascript > alert('添加成功!');window.location='admin/course/showCourseInfo.jsp';</script>");			
 		} catch (SQLException e) {
+			out.println("<SCRIPT language=javascript > alert('添加失败!');window.location='admin/course/addCourseInfo.jsp';</script>");			
 			e.printStackTrace();
 		}finally{
 			try {
@@ -82,8 +87,8 @@ public class AddCouServlet extends HttpServlet {
 			}
 			
 		}
-		RequestDispatcher dispatcher = request.getRequestDispatcher("admin/course/showCourseInfo.jsp");
-		dispatcher.forward(request, response);
+		//RequestDispatcher dispatcher = request.getRequestDispatcher("admin/course/showCourseInfo.jsp");
+		//dispatcher.forward(request, response);
 	}
 
 }

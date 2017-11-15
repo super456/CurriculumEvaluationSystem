@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="gb2312"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <jsp:useBean id="sqlBean" class="admin.bean.noticeBar.NoticeBarSqlBean" />
 <jsp:useBean id="noticeBarBean" class="admin.bean.noticeBar.NoticeBarInfo" />
 <%
@@ -12,7 +12,7 @@
 	<head>
 		<base href="<%=basePath%>">
 
-		<meta charset="gb2312">
+		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="renderer" content="webkit">
 		<meta http-equiv="pragma" content="no-cache">
@@ -37,15 +37,29 @@ a:hover {
 	</head>
 
 	<body style="background-color: #FFF;">
+	
+	<!-- 判断用户是不是直接打开这个网址，而有没有通过登录界面登录 -->
+		<%
+			String userName = (String) session.getAttribute("userName");
+			if (userName == null) {
+		%>
+		<script>
+	    alert(" 您未登录，请从登录界面登录！");
+	    //这个问题谨记，很实用
+		top.location.href="index.jsp";
+ 		</script>
+		<%
+			}
+		%>
 		<table border=1 bgcolor="#ffffff" width=100%>
 <tr align="center">
-  <td>ͨ�������</td>
-  <td>����</td>
-  <td>����ʱ��</td>
-  <td>����</td>
-  <td>����</td>
-  <td>�鿴����</td>
-  <td>����</td>
+  <td>通告栏编号</td>
+  <td>标题</td>
+  <td>发布时间</td>
+  <td>作者</td>
+  <td>内容</td>
+  <td>查看限制</td>
+  <td>操作</td>
 </tr>
 
 			<%
@@ -62,10 +76,10 @@ a:hover {
 				<td><%=noticeBarBean.getSmallContent() %></td>
 				<td><%=noticeBarBean.getLimitMess() %></td>
 				<td align="center">
-				    <a href="searchByNoticeNum?noticeBarInfoNum=<%=noticeBarBean.getNoticeBarInfoNum() %>&tableName=admin/noticeBar/searchNoticeInfo.jsp">�鿴</a>
-					<a href="searchByNoticeNum?noticeBarInfoNum=<%=noticeBarBean.getNoticeBarInfoNum() %>&tableName=admin/noticeBar/updateNoticeInfo.jsp">����</a>
+				    <a href="searchByNoticeNum?noticeBarInfoNum=<%=noticeBarBean.getNoticeBarInfoNum() %>&tableName=admin/noticeBar/searchNoticeInfo.jsp">查看</a>
+					<a href="searchByNoticeNum?noticeBarInfoNum=<%=noticeBarBean.getNoticeBarInfoNum() %>&tableName=admin/noticeBar/updateNoticeInfo.jsp">更新</a>
 					<a href="deleteNotice?noticeBarInfoNum=<%= noticeBarBean.getNoticeBarInfoNum() %>"
-						onclick="return confirm('ȷ��ɾ��?')">ɾ��</a>
+						onclick="return confirm('确定删除?')">删除</a>
 				</td>
 			</tr>
 			<%

@@ -1,6 +1,7 @@
 package admin.servlet.admin;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -31,7 +32,9 @@ public class DeleteAdminServlet extends HttpServlet{
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		request.setCharacterEncoding("gb2312");
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html");
+		response.setCharacterEncoding("utf-8");
 		Connection con = null;
 		PreparedStatement pre = null;
 		
@@ -39,6 +42,7 @@ public class DeleteAdminServlet extends HttpServlet{
 		String user="sa";
 		String password = "123456";
 		
+		PrintWriter out = response.getWriter();
 		String num = request.getParameter("adminNum");	
 		int adminNum = Integer.parseInt(num);
 
@@ -52,7 +56,9 @@ public class DeleteAdminServlet extends HttpServlet{
 			pre = con.prepareStatement(sql);
 			pre.setInt(1, adminNum);
 			pre.executeUpdate();
+			out.println("<SCRIPT language=javascript > alert('删除成功!');window.location='admin/adminInfo/showAdminInfo.jsp';</script>");			
 		} catch (SQLException e) {
+			out.println("<SCRIPT language=javascript > alert('删除失败!');window.location='admin/adminInfo/showAdminInfo.jsp';</script>");			
 			e.printStackTrace();
 		}finally{
 			try {
@@ -63,7 +69,7 @@ public class DeleteAdminServlet extends HttpServlet{
 			}
 			
 		}
-		RequestDispatcher dispatcher = request.getRequestDispatcher("admin/adminInfo/showAdminInfo.jsp");
-		dispatcher.forward(request, response);
+		//RequestDispatcher dispatcher = request.getRequestDispatcher("admin/adminInfo/showAdminInfo.jsp");
+		//dispatcher.forward(request, response);
 	}
 }

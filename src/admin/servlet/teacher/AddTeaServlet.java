@@ -1,6 +1,7 @@
 package admin.servlet.teacher;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
@@ -33,7 +34,9 @@ public class AddTeaServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		request.setCharacterEncoding("gb2312");
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html");
+		response.setCharacterEncoding("utf-8");
 		Connection con = null;
 		PreparedStatement pre = null;
 
@@ -42,6 +45,7 @@ public class AddTeaServlet extends HttpServlet {
 		String user="sa";
 		String password = "123456";
 		
+		PrintWriter out = response.getWriter();
 		String num = request.getParameter("teaNum");
 		String teaName = request.getParameter("teaName");
 		String teaSex = request.getParameter("teaSex");
@@ -50,7 +54,8 @@ public class AddTeaServlet extends HttpServlet {
 		String phone = request.getParameter("teaPhone");
 		String teaRemarks = request.getParameter("teaRemarks");
 		if(num.length()==0 || num==null){
-			response.sendRedirect("admin/addTeaInfo.jsp");
+			out.println("<SCRIPT language=javascript > alert('添加失败,请输入教师编号!');window.location='admin/teacher/addTeaInfo.jsp';</script>");
+			//response.sendRedirect("admin/teacher/addTeaInfo.jsp");
 		}
 		
 		int teaNum = Integer.parseInt(num);
@@ -85,7 +90,9 @@ public class AddTeaServlet extends HttpServlet {
 			pre.setString(4, userType);
 			pre.setInt(5, perLimit);
 			pre.executeUpdate();
+			out.println("<SCRIPT language=javascript > alert('添加成功!');window.location='admin/teacher/showTeaInfo.jsp';</script>");
 		} catch (SQLException e) {
+			out.println("<SCRIPT language=javascript > alert('添加失败!');window.location='admin/teacher/addTeaInfo.jsp';</script>");
 			e.printStackTrace();
 		}finally{
 			try {
@@ -96,8 +103,8 @@ public class AddTeaServlet extends HttpServlet {
 			}
 			
 		}
-		RequestDispatcher dispatcher = request.getRequestDispatcher("admin/teacher/showTeaInfo.jsp");
-		dispatcher.forward(request, response);
+		//RequestDispatcher dispatcher = request.getRequestDispatcher("admin/teacher/showTeaInfo.jsp");
+		//dispatcher.forward(request, response);
 	}
 
 }

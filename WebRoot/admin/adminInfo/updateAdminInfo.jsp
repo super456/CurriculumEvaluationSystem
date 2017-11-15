@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="gb2312"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -77,25 +77,40 @@ form button:hover {
   </head>
   
 <body>
+
+<!-- 判断用户是不是直接打开这个网址，而有没有通过登录界面登录 -->
+		<%
+			String userName = (String) session.getAttribute("userName");
+			if (userName == null) {
+		%>
+		<script>
+	    alert(" 您未登录，请从登录界面登录！");
+	    //这个问题谨记，很实用
+		top.location.href="index.jsp";
+ 		</script>
+		<%
+			}
+		%>
+
 <jsp:useBean id="adminBean" class="admin.bean.admin.AdminInfo" scope="request" />
 <div class="wrapper">
   <div class="container">
  <center>
-  <h2 style="color:cyan">&nbsp;�� �� �� �� Ա �� Ϣ</h2>
-  <form action="updateAdmin" method="post" name=form class="form">
+  <h2 style="color:cyan">&nbsp;更 新 管 理 员 信 息</h2>
+  <form action="updateAdmin?tableName=admin/adminInfo/showAdminInfo.jsp" method="post" name=form class="form">
   <table border=0 background="#ffffff">
-  <tr><td>����Ա���: </td>  
+  <tr><td>管理员编号: </td>  
   <td><input type="text" name="adminNum" value=<%= request.getAttribute("adminNum") %> readonly /></td></tr>
-  <tr><td>����:</td>       
+  <tr><td>姓名:</td>       
   <td><input type="text" name="adminName" value=<%= request.getAttribute("adminName") %> /></td></tr> 
-  <tr><td>��ϵ�绰:</td>       
+  <tr><td>联系电话:</td>       
   <td><input type="text" name="adminPhone" value=<%= request.getAttribute("adminPhone") %> /></td></tr> 
-  <tr><td>Ȩ�޵ȼ�:</td>       
-  <td><input type="text" name="adminLimit" value=<%= request.getAttribute("adminLimit") %> /></td></tr>
-  <tr><td>��ע:</td>
+  <tr><td>权限等级:</td>       
+  <td><input type="text" name="adminLimit" value=<%= request.getAttribute("adminLimit") %> readonly /></td></tr>
+  <tr><td>备注:</td>
   <td><input type="text" name="adminRemarks" value=<%= request.getAttribute("adminRemarks") %> /></td></tr> 
-  <tr><td>&nbsp;&nbsp;<button type="submit" >�޸�</button></td> 
-  <td>&nbsp;&nbsp;&nbsp;&nbsp;<button type="reset">����</button></td></tr> 
+  <tr><td>&nbsp;&nbsp;<button type="submit" >修改</button></td> 
+  <td>&nbsp;&nbsp;&nbsp;&nbsp;<button type="reset">重置</button></td></tr> 
   </table>
   </form>
   </center>

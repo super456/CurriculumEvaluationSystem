@@ -1,6 +1,7 @@
 package admin.servlet.commentContent;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -31,10 +32,13 @@ public class UpdateComConServlet extends HttpServlet{
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		request.setCharacterEncoding("gb2312");
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html");
+		response.setCharacterEncoding("utf-8");
 		Connection con = null;
 		PreparedStatement pre = null;
 		
+		PrintWriter out = response.getWriter();
 		String uri = "jdbc:sqlserver://localhost:55780;DatabaseName=curriculumEvaluationSystem";
 		String user="sa";
 		String password = "123456";
@@ -71,7 +75,9 @@ public class UpdateComConServlet extends HttpServlet{
 			pre.setString(10, theTenthCon);
 			pre.setString(11, comConRemarks);
 			pre.executeUpdate();
+			out.println("<SCRIPT language=javascript > alert('修改成功!');window.location='admin/commentContent/showComCon.jsp';</script>");			
 		} catch (SQLException e) {
+			out.println("<SCRIPT language=javascript > alert('修改失败!');window.location='admin/commentContent/showComCon.jsp';</script>");			
 			e.printStackTrace();
 		}finally{
 			try {
@@ -82,7 +88,7 @@ public class UpdateComConServlet extends HttpServlet{
 			}
 			
 		}
-		RequestDispatcher dispatcher = request.getRequestDispatcher("admin/commentContent/showComCon.jsp");
-		dispatcher.forward(request, response);
+		//RequestDispatcher dispatcher = request.getRequestDispatcher("admin/commentContent/showComCon.jsp");
+		//dispatcher.forward(request, response);
 	}
 }

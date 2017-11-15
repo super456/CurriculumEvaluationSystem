@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="gb2312"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <jsp:useBean id="sqlBean" class="admin.bean.noticeBar.NoticeBarSqlBean" />
 <jsp:useBean id="noticeBarBean"
 	class="admin.bean.noticeBar.NoticeBarInfo" />
@@ -15,7 +15,6 @@
     </script>
 <%	}
 %>
-
 <html>
 	<head>
 		<base href="<%=basePath%>">
@@ -48,22 +47,22 @@ a:hover {
 		<table border=1 bgcolor="#ffffff" width=100%>
 			<tr align="center">
 				<td>
-					ͨ�������
+					通告栏编号
 				</td>
 				<td>
-					����
+					标题
 				</td>
 				<td>
-					����ʱ��
+					发布时间
 				</td>
 				<td>
-					����
+					作者
 				</td>
 				<td>
-					����
+					内容
 				</td>
 				<td>
-					�鿴���Ʋ���
+					查看限制操作
 				</td>
 			</tr>
 
@@ -83,19 +82,19 @@ a:hover {
 					<form action="limitNotice?noticeBarInfoNum=<%=noticeBarBean.getNoticeBarInfoNum()%>" method="post" style="margin-top: 20px;">
 						<select name="noticeBarLimit">
 							<option value="0">
-								ѧ��,��ʦ�鿴
+								学生,教师查看
 							</option>
 							<option value="1">
-								ѧ���鿴
+								学生查看
 							</option>
 							<option value="2">
-								��ʦ�鿴
+								教师查看
 							</option>
 							<option value="3">
-								��ֹ�鿴
+								禁止查看
 							</option>
 						</select>
-						<input type="submit" value="����" />
+						<input type="submit" value="设置" />
 					</form>
 				</td>
 			</tr>

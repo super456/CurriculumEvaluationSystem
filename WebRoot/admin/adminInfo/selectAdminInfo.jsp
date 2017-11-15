@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="gb2312"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <jsp:useBean id="adminBean" class="admin.bean.admin.AdminInfo" />
 <%
 	String path = request.getContextPath();
@@ -11,7 +11,7 @@
 	<head>
 		<base href="<%=basePath%>">
 
-		<meta charset="gb2312">
+		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="renderer" content="webkit">
 		<meta http-equiv="pragma" content="no-cache">
@@ -48,36 +48,50 @@ button:hover{
 	</head>
 
 	<body style="background-color: #FFF;">
+	
+	<!-- 判断用户是不是直接打开这个网址，而有没有通过登录界面登录 -->
+		<%
+			String userName = (String) session.getAttribute("userName");
+			if (userName == null) {
+		%>
+		<script>
+	    alert(" 您未登录，请从登录界面登录！");
+	    //这个问题谨记，很实用
+		top.location.href="index.jsp";
+ 		</script>
+		<%
+			}
+		%>
 	<center>
 	<form action="selectByAdminInfo" method="post">
 	<select name="select">
-	<option value="adminNum" selected>����Ա���</option>
-	<option value="adminName">����</option>
+	<option value="adminNum" selected>管理员编号</option>
+	<option value="adminName">姓名</option>
 	</select>
 	<input type="text" name="userInfo" style="width:160px;height:25px" />
-	<input type="submit" value="����"/>
+	<input type="submit" value="搜索"/>
 	</form>
 	</center>
 
 		<table border=1 bgcolor="#ffffff" width=90% align="center">
 			<tr align="center">
 				<td>
-					����Ա���
+					管理员编号
 				</td>
 				<td>
-					����
+					姓名
 				</td>
 				<td>
-					��ϵ�绰
+					联系电话
 				</td>
 				<td>
-					Ȩ�޵ȼ�
+					权限等级
 				</td>
 				<td>
-					��ע
+					备注
 				</td>
 				<td>
-					����
+					操作
 				</td>
 			</tr>
 
@@ -93,10 +107,10 @@ button:hover{
 				<td><%=adminBean.getAdminLimit() %></td>
 				<td><%=adminBean.getAdminRemarks() %></td>
 				<td align="center">
-					<a href="searchByAdminNum?adminNum=<%=adminBean.getAdminNum() %>">����</a>
+					<a href="searchByAdminNum?adminNum=<%=adminBean.getAdminNum() %>">更新</a>
 					&nbsp;
 					<a href="deleteAdmin?adminNum=<%= adminBean.getAdminNum() %>"
-						onclick="return confirm('ȷ��ɾ��?')">ɾ��</a>
+						onclick="return confirm('确定删除?')">删除</a>
 				</td>
 			</tr>
 			<%

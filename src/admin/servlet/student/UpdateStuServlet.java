@@ -1,6 +1,7 @@
 package admin.servlet.student;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -34,7 +35,9 @@ public class UpdateStuServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		request.setCharacterEncoding("gb2312");
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html");
+		response.setCharacterEncoding("utf-8");
 		Connection con = null;
 		PreparedStatement pre = null;
 		
@@ -55,6 +58,7 @@ public class UpdateStuServlet extends HttpServlet {
 		int stuGrade = Integer.parseInt(grade);
 		int stuPhone = Integer.parseInt(phone);
 
+		PrintWriter out = response.getWriter();
 		String sql = "update userLogin set userName=? where accountNum="+stuNum;
 		String condition = "update stuInfo set stuName=?,stuSex=?,stuGrade=?,stuForm=?,stuPhone=?,stuRemarks=? where stuNum="+stuNum;
 		try {
@@ -70,7 +74,9 @@ public class UpdateStuServlet extends HttpServlet {
 			pre = con.prepareStatement(sql);
 			pre.setString(1, stuName);
 			pre.executeUpdate();
+			out.println("<SCRIPT language=javascript > alert('修改成功!');window.location='admin/student/showStuInfo.jsp';</script>");
 		} catch (SQLException e) {
+			out.println("<SCRIPT language=javascript > alert('修改失败!');window.location='admin/student/showStuInfo.jsp';</script>");
 			e.printStackTrace();
 		}finally{
 			try {
@@ -81,8 +87,8 @@ public class UpdateStuServlet extends HttpServlet {
 			}
 			
 		}
-		RequestDispatcher dispatcher = request.getRequestDispatcher("admin/student/showStuInfo.jsp");
-		dispatcher.forward(request, response);
+		//RequestDispatcher dispatcher = request.getRequestDispatcher("admin/student/showStuInfo.jsp");
+		//dispatcher.forward(request, response);
 	}
 
 }

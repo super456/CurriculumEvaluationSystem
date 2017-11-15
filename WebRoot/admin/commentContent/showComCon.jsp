@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="gb2312"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <jsp:useBean id="comConBean" class="admin.bean.commentContent.CommentContent" />
 <jsp:useBean id="sqlBean" class="admin.bean.commentContent.ComConSqlBean" />
 <%
@@ -12,7 +12,7 @@
 	<head>
 		<base href="<%=basePath%>">
 
-		<meta charset="gb2312">
+		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="renderer" content="webkit">
 		<meta http-equiv="pragma" content="no-cache">
@@ -38,48 +38,62 @@ a:hover {
 	</head>
 
 	<body style="background-color: #FFF;">
+	
+	<!-- 判断用户是不是直接打开这个网址，而有没有通过登录界面登录 -->
+		<%
+			String userName = (String) session.getAttribute("userName");
+			if (userName == null) {
+		%>
+		<script>
+	    alert(" 您未登录，请从登录界面登录！");
+	    //这个问题谨记，很实用
+		top.location.href="index.jsp";
+ 		</script>
+		<%
+			}
+		%>
 	</center>
 
 		<table border=1 bgcolor="#ffffff" width=120%>
 			<tr align="center">
 				<td>
-					���̿����ݱ��
+					评教卡内容编号
 				</td>
 				<td>
-					��һ������
+					第一项内容
 				</td>
 				<td>
-					�ڶ�������
+					第二项内容
 				</td>
 				<td>
-					����������
+					第三项内容
 				</td>
 				<td>
-					����������
+					第四项内容
 				</td>
 				<td>
-					����������
+					第五项内容
 				</td>
 				<td>
-					����������
+					第六项内容
 				</td>
 				<td>
-				           ����������
+				           第七项内容
 				</td>
 				<td>
-				           �ڰ�������
+				           第八项内容
 				</td>
 				<td>
-				           �ھ�������
+				           第九项内容
 				</td>
 				<td>
-				           ��ʮ������
+				           第十项内容
 				</td>
 				<td>
-				           ��ע˵��
+				           备注说明
 				</td>
 				<td>
-					����
+					操作
 				</td>
 			</tr>
 			
@@ -103,9 +117,9 @@ a:hover {
 				<td width=100px><%=comConBean.getTheTenthCon() %></td>
 				<td width=100px><%=comConBean.getComConRemarks() %></td>
 				<td align="center" width=100px>
-					<a href="searchByComConNum?comConNum=<%=comConBean.getComConNum() %>">�޸�</a>
+					<a href="searchByComConNum?comConNum=<%=comConBean.getComConNum() %>">修改</a>
 					<a href="deleteComCon?comConNum=<%= comConBean.getComConNum() %>"
-						onclick="return confirm('ȷ��ɾ��?')">ɾ��</a>
+						onclick="return confirm('确定删除?')">删除</a>
 				</td>
 			</tr>
 			<%

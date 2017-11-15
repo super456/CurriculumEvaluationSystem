@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="gb2312"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <jsp:useBean id="couClassBean" class="admin.bean.commentCourse.CouClassStuInfo"/>
 <%
 String path = request.getContextPath();
@@ -32,28 +32,42 @@ a:hover {
   </head>
   
   <body style="background-color: #FFF;">
+  
+  <!-- 鍒ゆ柇鐢ㄦ埛鏄笉鏄洿鎺ユ墦寮�杩欎釜缃戝潃锛岃�屾湁娌℃湁閫氳繃鐧诲綍鐣岄潰鐧诲綍 -->
+		<%
+			String userName = (String) session.getAttribute("userName");
+			if (userName == null) {
+		%>
+		<script>
+	    alert(" 鎮ㄦ湭鐧诲綍锛岃浠庣櫥褰曠晫闈㈢櫥褰曪紒");
+	    //杩欎釜闂璋ㄨ锛屽緢瀹炵敤
+		top.location.href="index.jsp";
+ 		</script>
+		<%
+			}
+		%>
   <center>
 			<form action="selectByCouClassStuInfo" method="post">
 				<select name="select">
 					<option value="couNum" selected> 
-						课程编号 
+						璇剧▼缂栧彿 
 					</option>
 					<option value="stuNum">
-						学生编号
+						瀛︾敓缂栧彿
 					</option>
 				</select>
 				<input type="text" name="userInfo"
 					style="width: 160px; height: 25px" />
-				<input type="submit" value="搜索" />
+				<input type="submit" value="鎼滅储" />
 			</form>
 		</center>  
 <table border=1 bgcolor="#ffffff" width=90% align="center">
 <tr align="center">
-  <td>课程班级学生信息编号</td>
-  <td>课程编号</td>
-  <td>学生编号</td>
-  <td>是否评教</td>
-  <td>操作</td>
+  <td>璇剧▼鐝骇瀛︾敓淇℃伅缂栧彿</td>
+  <td>璇剧▼缂栧彿</td>
+  <td>瀛︾敓缂栧彿</td>
+  <td>鏄惁璇勬暀</td>
+  <td>鎿嶄綔</td>
 </tr>
 
 			<%
@@ -67,8 +81,8 @@ a:hover {
 				<td><%=couClassBean.getStuNum() %></td>
 				<td><%=couClassBean.getIsTeachMess() %></td>
 				<td align="center">
-				<a href="selectByCommentCouInfo?stuNum=<%=couClassBean.getStuNum() %>&couNum=<%=couClassBean.getCouNum() %>">评教分数</a>&nbsp;&nbsp;
-				<a href="searchByStuNum?stuNum=<%=couClassBean.getStuNum() %>&tableName=admin/student/searchStuInfo.jsp">学生信息</a>
+				<a href="selectByCommentCouInfo?stuNum=<%=couClassBean.getStuNum() %>&couNum=<%=couClassBean.getCouNum() %>">璇勬暀鍒嗘暟</a>&nbsp;&nbsp;
+				<a href="searchByStuNum?stuNum=<%=couClassBean.getStuNum() %>&tableName=admin/student/searchStuInfo.jsp">瀛︾敓淇℃伅</a>
 				</td>
 			</tr>
 			<%

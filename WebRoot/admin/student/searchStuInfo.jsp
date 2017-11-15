@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="gb2312"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -8,7 +8,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-	<meta charset="gb2312">
+	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit">
 	<meta http-equiv="pragma" content="no-cache">
@@ -81,30 +81,44 @@ form button:hover {
   </head>
   
   <body>
+  
+  <!-- 判断用户是不是直接打开这个网址，而有没有通过登录界面登录 -->
+		<%
+			String userName = (String) session.getAttribute("userName");
+			if (userName == null) {
+		%>
+		<script>
+	    alert(" 您未登录，请从登录界面登录！");
+	    //这个问题谨记，很实用
+		top.location.href="index.jsp";
+ 		</script>
+		<%
+			}
+		%>
   <div class="wrapper">
   <div class="container">
  <center>
-  <h2 style="color:cyan">&nbsp;�� �� ѧ �� �� Ϣ</h2>
+  <h2 style="color:cyan">&nbsp;查 看 学 生 信 息</h2>
   <form action="searchByStuNum" method="post" name=form class="form">
   <table border=0 background="#ffffff">
-  <tr><td>ѧ�����: </td>  
+  <tr><td>学生编号: </td>  
   <td><input type="text" value=<%= request.getAttribute("stuNum") %> readonly /></td></tr>
-  <tr><td>����:</td>       
+  <tr><td>姓名:</td>       
   <td><input type="text" value=<%= request.getAttribute("stuName") %> readonly /></td></tr>
-  <tr><td>�Ա�:</td>
+  <tr><td>性别:</td>
   <td> <input type="text" value=<%= request.getAttribute("stuSex") %> readonly />
   </select></td></tr> 
-  <tr><td>�꼶:</td>       
+  <tr><td>年级:</td>       
   <td><input type="text" value=<%= request.getAttribute("stuGrade") %> readonly /></td></tr> 
-  <tr><td>Ժϵרҵ���༶:</td>       
+  <tr><td>院系专业及班级:</td>       
   <td><input type="text" value=<%= request.getAttribute("stuForm") %> readonly /></td></tr>
-  <tr><td>��ϵ�绰:</td>       
+  <tr><td>联系电话:</td>       
   <td><input type="text" value=<%= request.getAttribute("stuPhone") %> readonly /></td></tr>
-  <tr><td>��ע:</td>
+  <tr><td>备注:</td>
   <td><textArea rows=8 cols=26 
   style="background-color: rgba(255, 255, 255, 0.2);border-radius:3px;font-size: 18px;color: white;"
    disabled ><%= request.getAttribute("stuRemarks") %></textArea></td></tr>  
-  <button type="submit" >����</button>
+  <button type="submit" >返回</button>
   </table>
   </form>
   </center>

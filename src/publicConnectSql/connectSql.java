@@ -304,8 +304,7 @@ public class connectSql {
 		}
 		return list;
 	}
-	
-	
+
 	//10.教师好评榜分学期及关键字筛选信息方法体
 	public List showTeaPraiseListInfo(String sql){
 		List list = new ArrayList();
@@ -340,3 +339,4 @@ public class connectSql {
 	}
 	
 }
+

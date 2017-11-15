@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="gb2312"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -80,30 +80,43 @@ form button:hover {
   
   <body>
 
+<!-- 判断用户是不是直接打开这个网址，而有没有通过登录界面登录 -->
+		<%
+			String userName = (String) session.getAttribute("userName");
+			if (userName == null) {
+		%>
+		<script>
+	    alert(" 您未登录，请从登录界面登录！");
+	    //这个问题谨记，很实用
+		top.location.href="index.jsp";
+ 		</script>
+		<%
+			}
+		%>
 <div class="wrapper">
   <div class="container">
  <center>
-  <h2 style="color:cyan">&nbsp;�� �� ͨ �� �� �� Ϣ</h2>
+  <h2 style="color:cyan">&nbsp;添 加 通 告 栏 信 息</h2>
   <form action="addNoticeBar" method="post" name=form class="form">
   <table border=0 background="#ffffff">
-  <tr><td>����: </td>  
+  <tr><td>标题: </td>  
   <td><input type="text" name="title" /></td></tr>
-  <tr><td>����:</td>       
+  <tr><td>作者:</td>       
   <td><input type="text" name="author" /></td></tr>
-  <tr><td>����:</td>
+  <tr><td>内容:</td>
   <td><textArea name="content" rows=8 cols=25 
   style="background-color: rgba(255, 255, 255, 0.2);border-radius:3px;font-size: 18px;color: white;"
    ></textArea></td></tr>
-  <tr><td>�鿴����:</td>       
+  <tr><td>查看限制:</td>       
   <td><select name="noticeBarLimit" >
-  <option value="0">ѧ��,��ʦ�鿴</option>
-  <option value="1">ѧ���鿴</option>
-  <option value="2">��ʦ�鿴</option>
-  <option value="3">��ֹ�鿴</option>
+  <option value="0">学生,教师查看</option>
+  <option value="1">学生查看</option>
+  <option value="2">教师查看</option>
+  <option value="3">禁止查看</option>
   </select></td></tr>
   
-  <tr><td>&nbsp;&nbsp;<button type="submit" >�ύ</button></td> 
-  <td>&nbsp;&nbsp;&nbsp;&nbsp;<button type="reset">����</button></td></tr> 
+  <tr><td>&nbsp;&nbsp;<button type="submit" >提交</button></td> 
+  <td>&nbsp;&nbsp;&nbsp;&nbsp;<button type="reset">重置</button></td></tr> 
   </table>
   </form>
   </center>

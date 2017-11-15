@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="gb2312"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <jsp:useBean id="teaPraiseBean" class="admin.bean.commentCourse.TeaPraiseListInfo" />
 <jsp:useBean id="sqlBean" class="admin.bean.commentCourse.TeaPraiseListSqlBean" />
 <%
@@ -52,50 +52,63 @@ a:hover {
 
 	<body style="background-color: #FFF;">
 
+<!-- 判断用户是不是直接打开这个网址，而有没有通过登录界面登录 -->
+		<%
+			String userName = (String) session.getAttribute("userName");
+			if (userName == null) {
+		%>
+		<script>
+	    alert(" 您未登录，请从登录界面登录！");
+	    //这个问题谨记，很实用
+		top.location.href="index.jsp";
+ 		</script>
+		<%
+			}
+		%>
 		<center>
 			<form action="selectByTeaPraiseInfo" method="post">
 				<select name="select">
 					<option value="teaPraiseListInfo.teaNum" selected>
-						��ʦ���
+						教师编号
 					</option>
 					<option value="teaName">
-						��ʦ����
+						教师姓名
 					</option>
 					<option value="couName">
-						�γ�����
+						课程名称
 					</option>
 				</select>
 				<input type="text" name="userInfo"
 					style="width: 160px; height: 25px" />
-				<input type="submit" value="����" />
+				<input type="submit" value="搜索" />
 			</form>
 		</center>
 
 		<table border=1 bgcolor="#ffffff" width=100%>
 			<tr align="center">
 				<td>
-					��ʦ��������
+					教师好评榜编号
 				</td>
 				<td>
-					�γ̱��
+					课程编号
 				</td>
 				<td>
-					�γ�����
+					课程名称
 				</td>
 				<td>
-					��ʦ���
+					教师编号
 				</td>
 				<td>
-					��ʦ����
+					任课老师
 				</td>
 				<td>
-					����ѧ��
+					开课学期
 				</td>
 				<td>
-					������ƽ������
+					所有总平均分数
 				</td>
 				<td>
-					����
+					操作
 				</td>
 			</tr>
 			<%
@@ -118,7 +131,7 @@ a:hover {
 				<td align="center">
 					<a
 						href="javascript:postwith('selectByCommentCouInfo',{'select':'couNum','userInfo':'<%=teaPraiseBean.getCouNum()%>'})">
-						�鿴����</a>
+						查看详情</a>
 				</td>
 			</tr>
 			<%

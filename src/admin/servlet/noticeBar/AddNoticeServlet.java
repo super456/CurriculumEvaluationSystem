@@ -1,6 +1,7 @@
 package admin.servlet.noticeBar;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
@@ -33,7 +34,9 @@ public class AddNoticeServlet extends HttpServlet{
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		request.setCharacterEncoding("gb2312");
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html");
+		response.setCharacterEncoding("utf-8");
 		Connection con = null;
 		PreparedStatement pre = null;
 
@@ -42,6 +45,7 @@ public class AddNoticeServlet extends HttpServlet{
 		String user="sa";
 		String password = "123456";
 		
+		PrintWriter out = response.getWriter();
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
 		String author = request.getParameter("author");
@@ -65,7 +69,9 @@ public class AddNoticeServlet extends HttpServlet{
 			pre.setString(4, content);
 			pre.setInt(5, noticeBarLimit);
 			pre.executeUpdate();
+			out.println("<SCRIPT language=javascript > alert('添加成功!');window.location='admin/noticeBar/showNoticeBarInfo.jsp';</script>");			
 		} catch (SQLException e) {
+			out.println("<SCRIPT language=javascript > alert('添加失败!');window.location='admin/noticeBar/addNoticeBarInfo.jsp';</script>");			
 			e.printStackTrace();
 		}finally{
 			try {
@@ -76,7 +82,7 @@ public class AddNoticeServlet extends HttpServlet{
 			}
 			
 		}
-		RequestDispatcher dispatcher = request.getRequestDispatcher("admin/noticeBar/showNoticeBarInfo.jsp");
-		dispatcher.forward(request, response);
+		//RequestDispatcher dispatcher = request.getRequestDispatcher("admin/noticeBar/showNoticeBarInfo.jsp");
+		//dispatcher.forward(request, response);
 	}
 }
