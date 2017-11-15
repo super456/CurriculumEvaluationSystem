@@ -93,41 +93,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <a href="javascript:;" class="dd-item">各学期好评<span class="scm dd-ar"></span></a>
                                      <ul class="ad-item-list">
                                         <li class="J_menuItem" href="student/teaPraiseListInfo/index.jsp?couTerm=171802" data-index="1">各学期好评</li>
-                                        <li class="J_menuItem" href="student/teaPraiseListInfo/honor.jsp" data-index="2">获奖荣誉</li>
+                                        <li class="J_menuItem" href="student/teaPraiseListInfo/honor.jsp?couTerm=171801" data-index="2">获奖荣誉</li>
                                     </ul>
-                                </dd>
-                            </dl>
-                        </li>
-                        <li>
-                            <div class="li-item"><em class="scm li-ico ic5"></em>捐赠管理<span class="scm arrow"></span></div>
-                            <dl>
-                                <dd>
-                                    <a href="#" class="dd-item">校友高级搜索<span class="scm dd-ar"></span></a>
-                                </dd>
-                                <dd>
-                                    <a href="#" class="dd-item">校友高级搜索<span class="scm dd-ar"></span></a>
-                                </dd>
-                            </dl>
-                        </li>
-                        <li>
-                            <div class="li-item"><em class="scm li-ico ic6"></em>统计管理<span class="scm arrow"></span></div>
-                            <dl>
-                                <dd>
-                                    <a href="#" class="dd-item">校友高级搜索<span class="scm dd-ar"></span></a>
-                                </dd>
-                                <dd>
-                                    <a href="#" class="dd-item">校友高级搜索<span class="scm dd-ar"></span></a>
-                                </dd>
-                            </dl>
-                        </li>
-                        <li>
-                            <div class="li-item"><em class="scm li-ico ic7"></em>系统管理<span class="scm arrow"></span></div>
-                            <dl>
-                                <dd>
-                                    <a href="#" class="dd-item">校友高级搜索<span class="scm dd-ar"></span></a>
-                                </dd>
-                                <dd>
-                                    <a href="#" class="dd-item">校友高级搜索<span class="scm dd-ar"></span></a>
                                 </dd>
                             </dl>
                         </li>
