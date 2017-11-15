@@ -93,7 +93,8 @@ public class updatePersonalInfo extends HttpServlet {
 		conSql.StartCon();
 		int judge=conSql.insertUpdate(sqlString);
 		if (judge==1) {
-			out.println("<SCRIPT language=javascript > alert('修改个人信息成功~');window.history.go(-2);</script>"); 
+			out.println("<SCRIPT language=javascript > alert('修改个人信息成功~');window.history.back();</script>"); 
+			//out.println("<SCRIPT language=javascript > alert('修改个人信息成功~');window.history.go(-2);</script>"); 
 		}else{
 			out.println("<SCRIPT language=javascript > alert('修改个人信息失败，请重新操作！');window.history.back();</script>"); 
 			//response.sendRedirect("student/personalInfo/index.jsp");
