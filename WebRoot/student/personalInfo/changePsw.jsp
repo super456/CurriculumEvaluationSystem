@@ -16,9 +16,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
+	<link rel="stylesheet" type="text/css" href="publicStyle/css/bootstrap.css">
+	
 <style type="text/css">
 body{
 	margin:0;
@@ -102,16 +101,16 @@ form button:hover {
 <div class="wrapper">
   <div class="container">
  <center>
-  <h2 style="color:cyan">&nbsp;修 改 密 码</h2>
+  <h2>&nbsp;修 改 密 码</h2>
   <form action="updatePersonalPsw" method="post" onSubmit="return checkForm()" name="form">
   <table border=0 background="#ffffff">
-  <tr><td>原密码: </td>  
-  <td><input type="password" name="oldPsw"/></td></tr>
-  <tr><td>新密码:</td>       
-  <td><input type="password" name="newPsw"  /></td></tr>
-  <tr><td>重复新密码:</td>       
-  <td><input type="password" name="checkNewPsw" /></td></tr> 
-  <tr><td>&nbsp;<button type="submit" >提交</button></td> <!-- 表单验证未做 -->
+  <tr><th>原密码：</th>  
+  <td><input type="password" name="oldPsw"required/></td></tr>
+  <tr><th>新密码：</th>       
+  <td><input type="password" name="newPsw" required /></td></tr>
+  <tr><th>重复新密码：</th>       
+  <td><input type="password" name="checkNewPsw" required/></td></tr> 
+  <tr><td>&nbsp;<button type="submit" >提交</button></td> 
   <td>&nbsp;&nbsp;&nbsp;<button type="reset">重置</button></td></tr> 
   </table>
   </form>

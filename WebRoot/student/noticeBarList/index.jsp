@@ -16,27 +16,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
+	
+	<link rel="stylesheet" type="text/css" href="publicStyle/css/bootstrap.css">
+
 
   </head>
-  <style type="text/css">
-.wrapper {
-  width: 100%;
-  overflow: hidden;
-
-}
-.container {
-  margin: 0 auto;
-  height: 450px;
-  text-align: center;
-}
-table{
-	border=0;
-	background="#ffffff";
-}
-</style>
   <body>
   <!-- 做一个页面访问量，有一个问题：因为本页面是所有通告栏文章通用展示的，所以会显示所有文章的阅读量总和 -->
   <%! int count=0;
@@ -64,9 +48,9 @@ table{
   <div class="container">
  <center>
   <h2>&nbsp;<%=request.getAttribute("title") %></h2>
-  <table>
+  <table class="table table-striped  table-condensed">
   <tr><td>作者: <%=request.getAttribute("author") %></td><td>发布时间：<%=request.getAttribute("releaseTime") %></td><td>访问量：<%=count %></td></tr>  
-  <tr><td colspan="2"><testarea rows="5"cols="20">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=request.getAttribute("content") %></testarea></td></tr>
+  <tr><td colspan="3"><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=request.getAttribute("content") %></div></td></tr>
 
   </table>
   </center>

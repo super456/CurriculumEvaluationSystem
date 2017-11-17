@@ -19,9 +19,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
+	<link rel="stylesheet" type="text/css" href="publicStyle/css/bootstrap.css">
 
   </head>
   <!-- 判断用户是不是直接打开这个网址，而有没有通过登录界面登录 -->
@@ -41,18 +39,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <%
    //获取传递过来的课程名和教师名字
    //解决过一个大大的问题，jsp href get方式传参获取中文乱码问题，直接修改Tomcat的server.xml文件的  <Connector port="8080" protocol="HTTP/1.1" 
-    //           connectionTimeout="20000" 
-       //        redirectPort="8443" URIEncoding="UTF-8" />
 
   	String couName=request.getParameter("couName");
     String teaName=request.getParameter("teaName");
   
   %>
   <form action="handleComCard?couName=<%=couName %>&teaName=<%=teaName %>" method="post" onSubmit="return show_confirm();">
-  	<div align="center"><h2>课程名称：<%=couName %> &nbsp;&nbsp; 教师姓名：<%=teaName%></h2></div>
-    <table border="1" align="center" cellpadding="15px">
-    <tr><td rowspan="2">序号</td><td rowspan="2">评教指标内容</td><td colspan="5" align="center">评价选项（单选）</td></tr>
-    <tr><td>非常同意</td><td>同意</td><td>一般</td><td>不同意</td><td>非常不同意</td></tr>
+  	<div align="center"><h2>课程名称：<%=couName %> &nbsp;&nbsp; 任课老师：<%=teaName%></h2></div>
+    <table class="table table-striped table-bordered table-hover table-condensed">
+    <tr><th rowspan="2">序号</th>
+    		<th rowspan="2">评教指标内容</th>
+    		<th colspan="5" align="center">评价选项（单选）</th>
+    </tr>
+    <tr>
+    		<th>非常同意</th>
+    		<th>同意</th>
+    		<th>一般</th>
+    		<th>不同意</th>
+    		<th>非常不同意</th>
+    </tr>
     <%
     		String condition="select top 1 * from commentContent";
     		conSql.StartCon();
@@ -155,12 +160,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		<td colspan="7">学生意见与建议：感谢您对以上指标的评价，如果您还有其他任何新的想法，宝贵的建议，请在下面的空白处留言。我们珍视每一位同学个性化的思考。</td>
     </tr>
     <tr>
-    		<td colspan="7"><textarea rows="5" cols="10" name="stuLeaveMsg"></textarea></td>
+    		<td colspan="7"><textarea class="form-control" name="stuLeaveMsg" placeholder="请在这里输入意见与建议"></textarea></td>
     </tr>
     <%} %>
     </table>
     <br/>
-    <div align="center"><input type="submit" value="提交">&nbsp;&nbsp;<input type="reset" value="重置"/></div>
+    <div align="center"><input type="submit" value="提交" class="btn btn-info">&nbsp;&nbsp;<input type="reset" value="重置" class="btn btn-success"/></div>
     </form>
     
     <!-- 表单验证 -->

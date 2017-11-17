@@ -18,9 +18,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
+	<link rel="stylesheet" type="text/css" href="publicStyle/css/bootstrap.css">
 
   </head>
   
@@ -38,8 +36,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  		<% 
  	}
 %>
-		<center>
-			<form action="student/teaPraiseListInfo/index.jsp" method="post">
+		<center><br/>
+			<form action="student/teaPraiseListInfo/index.jsp" class="form-horizontal" method="post">
 				<select name="couTerm">
 					<option value="171802" selected>
 						2017-2018第二学期
@@ -61,12 +59,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						课程单位
 					</option>
 				</select>
-				<input type="text" name="searchInfo" style="width: 160px; height: 25px" required/>
-				<input type="submit" value="搜索" />
+				<input type="text" name="searchInfo" style="width: 160px; height: 25px" class="input-medium search-query" placeholder="请输入全称" required/>
+				<input type="submit" value="搜索" class="btn btn-info"/>
 			</form>
 		</center>
 
-		<table border=1 bgcolor="#ffffff" width="100%">
+		<table class="table table-striped table-bordered table-hover table-condensed">
 			<tr align="center">
 				<td>序号</td><td>课程名称</td><td>任课教师</td><td>课程单位</td><td>上课时间</td><td>上课地点</td><td>课程学分</td><td>评教总平均分数</td>
 			</tr>
@@ -99,7 +97,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					teaPraiseListInfo = (student.bean.TeaPraiseListInfo) it.next();
 				if(teaPraiseListInfo.getCouName()==null){
 					%>
-					<script language="javascript">
+					<script type="text/javascript">
 					alert('输入内容有误，匹配不到信息！');
 					</script>
 					<% 
