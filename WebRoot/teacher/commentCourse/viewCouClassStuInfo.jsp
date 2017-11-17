@@ -18,20 +18,8 @@
 		<meta http-equiv="expires" content="0">
 		<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 		<meta http-equiv="description" content="This is my page">
+	<link rel="stylesheet" type="text/css" href="publicStyle/css/bootstrap.css">
 
-		<style type="text/css">
-a {
-	list-style-type: none;
-	padding: 0px;
-	margin: 0px;
-	color: #53e3a6;
-	text-decoration: none;
-}
-
-a:hover {
-	color: cyan;
-}
-</style>
 	</head>
 
 	<body style="background-color: #FFF;">
@@ -49,7 +37,7 @@ a:hover {
 			}
 		%>
 
-		<center>
+		<center><br/>
 			<form action="teacher/commentCourse/viewCouClassStuInfo.jsp" method="post">
 				<%
 				    int accountNum = (Integer)session.getAttribute("accountNum");
@@ -136,29 +124,29 @@ a:hover {
 				<%
 				}
 				%>
-				<input type="submit" value="提交" />
+				<input type="submit" value="提交" class="btn btn-success"/>
 			</form>
 		</center>
-		<table border=1 bgcolor="#ffffff" width=90% align="center">
-			<tr align="center">
-				<td>
+		<table class="table table-striped table-bordered table-hover table-condensed">
+			<tr>
+				<th>
 					课程班级学生信息编号
-				</td>
-				<td>
+				</th>
+				<th>
 					课程编号
-				</td>
-				<td>
+				</th>
+				<th>
 					课程名称
-				</td>
-				<td>
+				</th>
+				<th>
 					学生编号
-				</td>
-				<td>
+				</th>
+				<th>
 					是否评教
-				</td>
-				<td>
+				</th>
+				<th>
 					操作
-				</td>
+				</th>
 			</tr>
 			<%
 			    String sql;
@@ -184,9 +172,9 @@ a:hover {
 				<td><%=bean.getCouName()%></td>
 				<td><%=bean.getStuNum()%></td>
 				<td><%=bean.getIsTeachMess()%></td>
-				<td align="center">
+				<td>
 					<a
-				href="viewByStuNum?stuNum=<%=bean.getStuNum()%>&tableName=teacher/commentCourse/viewStuInfo.jsp&couTerm=<%=couTerm %>&isTeach=<%=isTeach %>">学生信息</a>
+				href="viewByStuNum?stuNum=<%=bean.getStuNum()%>&tableName=teacher/commentCourse/viewStuInfo.jsp&couTerm=<%=couTerm %>&isTeach=<%=isTeach %>" class="btn btn-info">学生信息</a>
 				</td>
 			</tr>
 			<%

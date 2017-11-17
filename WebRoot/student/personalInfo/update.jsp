@@ -143,7 +143,7 @@ form button:hover {
   <tr><th>备注:</th>
   <td><textArea name="stuRemarks" class="form-control">
   <%= personalInfo.getStuRemarks() %></textArea></td></tr> 
-  <tr><td>&nbsp;<button type="submit" >提交</button></td> <!-- 表单验证未做 -->
+  <tr><td>&nbsp;<button type="submit" >提交</button></td>
   <td>&nbsp;&nbsp;&nbsp;<button type="reset">重置</button></td></tr> 
   </table>
   <%} %>

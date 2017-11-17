@@ -44,7 +44,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  		<% 
  	}
 %>
-<div class="wrapper">
   <div class="container">
  <center>
   <h2>&nbsp;<%=request.getAttribute("title") %></h2>
@@ -55,6 +54,5 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </table>
   </center>
   </div>
-</div>
   </body>
 </html>

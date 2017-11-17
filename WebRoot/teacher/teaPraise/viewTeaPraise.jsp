@@ -17,20 +17,8 @@
 		<meta http-equiv="expires" content="0">
 		<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 		<meta http-equiv="description" content="This is my page">
+	<link rel="stylesheet" type="text/css" href="publicStyle/css/bootstrap.css">
 
-		<style type="text/css">
-a {
-	list-style-type: none;
-	padding: 0px;
-	margin: 0px;
-	color: #53e3a6;
-	text-decoration: none;
-}
-
-a:hover {
-	color: cyan;
-}
-</style>
 	</head>
 
 	<body style="background-color: #FFF;">
@@ -48,8 +36,8 @@ a:hover {
 		<%
 			}
 		%>
-		<center>
-			<form action="selectByTeaPraise" method="post" name=form>
+		<center><br/>
+			<form action="selectByTeaPraise" method="post"name=form>
 				<%
 					String cT = request.getParameter("couTerm");//获取查询的学期，默认为171802，即2017-2018第二学期
 					int couTerm = Integer.parseInt(cT);
@@ -62,7 +50,7 @@ a:hover {
 					<option value="171801">
 						2017-2018第一学期
 					</option>
-				</select>
+					</select>
 				<%
 					} else {
 				%>
@@ -82,34 +70,34 @@ a:hover {
 				<option value="couName">课程名称</option>
 				<option value="couFrom">系部名称</option>
 				</select>
-				<input type="text" name="userInfo" />
-				<input type="submit" value="搜索" />
+				<input type="text" name="userInfo" style="width: 160px; height: 25px" class="input-medium search-query" placeholder="请输入全称" required/>
+				<input type="submit" value="搜索" class="btn btn-success" />
 			</form>
 
 
-			<table border=1 bgcolor="#ffffff" width=80%>
-				<tr align="center">
-					<td>
+			<table class="table table-striped table-bordered table-hover table-condensed">
+				<tr>
+					<th>
 						教师好评榜编号
-					</td>
-					<td>
+					</th>
+					<th>
 						课程编号
-					</td>
-					<td>
+					</th>
+					<th>
 						课程名称
-					</td>
-					<td>
+					</th>
+					<th>
 						教师编号
-					</td>
-					<td>
+					</th>
+					<th>
 						教师姓名
-					</td>
-					<td>
+					</th>
+					<th>
 					           开课单位
-					</td>
-					<td>
+					</th>
+					<th>
 						总平均分数
-					</td>
+					</th>
 				</tr>
 				<%
 

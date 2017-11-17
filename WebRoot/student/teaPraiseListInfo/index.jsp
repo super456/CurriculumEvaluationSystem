@@ -95,7 +95,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				java.util.List list = consql.showTeaPraiseListInfo(sql);
 				for (java.util.Iterator it = list.iterator(); it.hasNext();) {
 					teaPraiseListInfo = (student.bean.TeaPraiseListInfo) it.next();
-				if(teaPraiseListInfo.getCouName()==null){
+				if(list.size()==0){
 					%>
 					<script type="text/javascript">
 					alert('输入内容有误，匹配不到信息！');

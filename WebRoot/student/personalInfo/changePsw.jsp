@@ -104,11 +104,11 @@ form button:hover {
   <h2>&nbsp;修 改 密 码</h2>
   <form action="updatePersonalPsw" method="post" onSubmit="return checkForm()" name="form">
   <table border=0 background="#ffffff">
-  <tr><th>原密码：</th>  
+  <tr><th>请输入原密码：</th>  
   <td><input type="password" name="oldPsw"required/></td></tr>
-  <tr><th>新密码：</th>       
+  <tr><th>请输入新密码：</th>       
   <td><input type="password" name="newPsw" required /></td></tr>
-  <tr><th>重复新密码：</th>       
+  <tr><th>确认新密码：</th>       
   <td><input type="password" name="checkNewPsw" required/></td></tr> 
   <tr><td>&nbsp;<button type="submit" >提交</button></td> 
   <td>&nbsp;&nbsp;&nbsp;<button type="reset">重置</button></td></tr> 

@@ -17,6 +17,7 @@
 		<meta http-equiv="expires" content="0">
 		<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 		<meta http-equiv="description" content="This is my page">
+	<link rel="stylesheet" type="text/css" href="publicStyle/css/bootstrap.css">
 
 		<style type="text/css">
 a {
@@ -49,8 +50,8 @@ a:hover {
 		<%
 			}
 		%>
-		<center>
-			<form action="teacher/commentCourse/viewCommentResult.jsp" method="get">
+		<center><br/>
+			<form action="teacher/commentCourse/viewCommentResult.jsp" class="form-horizontal" method="get">
 				<%
 					String cT = request.getParameter("couTerm");//获取查询的学期，默认为171802，即2017-2018第二学期
 					int couTerm = Integer.parseInt(cT);
@@ -78,30 +79,30 @@ a:hover {
 				<%
 					}
 				%>
-				<input type="submit" value="提交" />
+				<input type="submit" value="提交" class="btn btn-success"/>
 			</form>
 
 
-			<table border=1 bgcolor="#ffffff" width=80%>
-				<tr align="center">
-					<td>
+			<table class="table table-striped table-bordered table-hover table-condensed">
+				<tr>
+					<th>
 						课程编号
-					</td>
-					<td>
+					</th>
+					<th>
 						课程名称
-					</td>
-					<td>
+					</th>
+					<th>
 						任课老师
-					</td>
-					<td>
+					</th>
+					<th>
 						上课时间
-					</td>
-					<td>
+					</th>
+					<th>
 						所有总平均分数
-					</td>
-					<td>
+					</th>
+					<th>
 					           操作
-					</td>
+					</th>
 				</tr>
 				<%
 
@@ -119,8 +120,8 @@ a:hover {
 					<td><%=bean.getTeaName() %></td>
 					<td><%=bean.getCouTime() %></td>
 					<td><%=bean.getTheAllAvgScore() %></td>
-					<td align="center">
-					<a href="teacher/commentCourse/viewComCouInfo.jsp?couNum=<%=bean.getCouNum() %>" >查看详情</a>
+					<td>
+					<a href="teacher/commentCourse/viewComCouInfo.jsp?couNum=<%=bean.getCouNum() %>" class="btn btn-info" >查看详情</a>
 					</td>
 				</tr>
 				<%

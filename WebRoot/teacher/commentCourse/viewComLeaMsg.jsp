@@ -17,20 +17,8 @@
 		<meta http-equiv="expires" content="0">
 		<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 		<meta http-equiv="description" content="This is my page">
+	<link rel="stylesheet" type="text/css" href="publicStyle/css/bootstrap.css">
 
-		<style type="text/css">
-a {
-	list-style-type: none;
-	padding: 0px;
-	margin: 0px;
-	color: #53e3a6;
-	text-decoration: none;
-}
-
-a:hover {
-	color: cyan;
-}
-</style>
 	</head>
 
 	<body style="background-color: #FFF;">
@@ -78,27 +66,27 @@ a:hover {
 				<%
 					}
 				%>
-				<input type="submit" value="提交" />
+				<input type="submit" value="提交" class="btn btn-success"/>
 			</form>
 
 
-			<table border=1 bgcolor="#ffffff" width=80%>
+			<table class="table table-striped table-bordered table-hover table-condensed">
 				<tr align="center">
-				    <td>
+				    <th>
 				                 评教课程编号
-				    </td>
-					<td>
+				    </th>
+					<th>
 						课程编号
-					</td>
-					<td>
+					</th>
+					<th>
 						课程名称
-					</td>
-					<td>
+					</th>
+					<th>
 						上课时间
-					</td>
-					<td>
+					</th>
+					<th>
 						评教留言
-					</td>
+					</th>
 				</tr>
 				<%
 
@@ -107,8 +95,9 @@ a:hover {
 					if(list.size()==0){  %>
 					<script>
 	                 alert(" 没有评教留言! ");
+	       
  		            </script>
-				<% 	}else
+				<% return;}
 					
 					for (java.util.Iterator it = list.iterator(); it.hasNext();) {
 						bean = (teacher.bean.ComLeaMsg) it.next();

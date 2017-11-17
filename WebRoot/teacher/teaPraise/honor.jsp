@@ -17,9 +17,8 @@
 		<meta http-equiv="expires" content="0">
 		<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 		<meta http-equiv="description" content="This is my page">
-		<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
+	<link rel="stylesheet" type="text/css" href="publicStyle/css/bootstrap.css">
+
 
 	</head>
 
@@ -36,7 +35,7 @@
 		<%
 			}
 		%>
-		<center>
+		<center><br/><div class="container">
 			<form action="teacher/teaPraise/honor.jsp" method="post" name=form>
 				<%
 					String cT = request.getParameter("couTerm");//获取查询的学期，默认为171802，即2017-2018第二学期
@@ -65,20 +64,20 @@
 				<%
 					}
 				%>
-				<input type="submit" value="提交" />
+				<input type="submit" value="提交"  class="btn btn-success"/>
 			</form>
 
-			<table border=1 bgcolor="#ffffff" width=50%>
-				<tr align="center">
-					<td>
+			<table class="table table-striped table-bordered table-hover table-condensed">
+				<tr>
+					<th>
 						教师编号
-					</td>
-					<td>
+					</th>
+					<th>
 						教师姓名
-					</td>
-					<td>
+					</th>
+					<th>
 						荣誉称号
-					</td>
+					</th>
 				</tr>
 				<%
 					String honor = "优秀教师";
@@ -109,5 +108,6 @@
 
 			</table>
 		</center>
+				</div>
 	</body>
 </html>

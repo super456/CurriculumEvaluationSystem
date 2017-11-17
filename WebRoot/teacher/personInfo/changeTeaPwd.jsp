@@ -18,20 +18,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
+		<link rel="stylesheet" type="text/css" href="publicStyle/css/bootstrap.css">
+	
+	
+	
 <style type="text/css">
+body{
+	margin:0;
+	padding:0;
+	overflow:hidden;
+}
 .wrapper {
   background: #50a3a2;
   background: -webkit-linear-gradient(top left, #50a3a2 0%, #53e3a6 100%);
   background: linear-gradient(to bottom right, #50a3a2 0%, #53e3a6 100%);
   opacity: 0.8;
   width: 100%;
-  height:500px;
   overflow: hidden;
 
 }
 .container {
   max-width: 600px;
   margin: 0 auto;
+  height: 620px;
   text-align: center;
 }
 form {
@@ -49,7 +58,7 @@ form input {
   width: 250px;
   border-radius: 3px;
   padding: 10px 15px;
-  margin: 0 auto 17px auto;
+  margin: 0 auto 10px auto;
   display: block;
   text-align: center;
   font-size: 18px;
@@ -71,9 +80,6 @@ form button {
   font-size: 18px;
   -webkit-transition-duration: 0.25s;
           transition-duration: 0.25s;
-  position:obsolute;
-  top:430px;
-  left:40%;
 }
 form button:hover {
 	 background-color: rgb(32,178,170);
@@ -108,14 +114,14 @@ form button:hover {
   <h2 style="color:gray">修 改 密 码</h2>
   <form action="updateUserPwd?tableName=teacher/personInfo/changeTeaPwd.jsp"  method="post" class="form">
   <table border=0 background="#ffffff">  
-  <tr><td>请输入旧密码: </td>  
+  <tr><th>请输入旧密码： </th>  
   <td><input type="password" name="oldPwd"  /></td></tr>
-  <tr><td>请输入新密码:</td>       
+  <tr><th>请输入新密码：</th>       
   <td><input type="password" name="newPassword" /></td></tr>
-  <tr><td>确认密码:</td>
+  <tr><th>确认新密码：</th>
   <td> <input type="password" name="confirmNewPassword" /></td></tr>         
   </table>
-  <button type="submit" >修改</button>
+  <button type="submit" >修改</button>&nbsp;&nbsp;&nbsp;<button type="reset">重置</button>
   </form>
   </center>
   </div> 
