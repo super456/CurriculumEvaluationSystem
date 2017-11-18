@@ -45,6 +45,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  		<% 
  	}
 %>
-<div>欢 迎 来 到 后 台 管 理 系 统</div>
+<div>欢 迎 来 到 学 生 评 教 管 理 系 统 后 台</div>
 </body>
 </html>

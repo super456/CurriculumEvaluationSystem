@@ -20,32 +20,9 @@
 		<meta http-equiv="expires" content="0">
 		<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 		<meta http-equiv="description" content="This is my page">
-
-<style type="text/css">
-a {
-	list-style-type: none;
-	padding: 0px;
-	margin: 0px;
-	color: #53e3a6;
-	text-decoration: none;
-}
-
-a:hover {
-	color: cyan;
-}
-
-button{
-   font-size:20px;
-   width:50px;
-   padding: 0px;
-   margin-top: 20px;
-   height:25px;
-   background-color:#96FED1;
-}
-button:hover{
-   background-color:white;
-}
-</style>
+	<link rel="stylesheet" type="text/css" href="publicStyle/css/bootstrap.css">
+	
+	
 	</head>
 
 	<body style="background-color: #FFF;">
@@ -68,51 +45,42 @@ button:hover{
 			}
 		%>
 		
-	<center>
+	<center><br/>
 	<form action="selectByAdminInfo" method="post">
 	<select name="select">
 	<option value="adminNum" selected>管理员编号</option>
 	<option value="adminName">姓名</option>
 	</select>
-	<input type="text" name="userInfo" style="width:160px;height:25px" />
-	<input type="submit" value="搜索"/>
+	<input type="text" name="userInfo" style="width:160px;height:25px"  class="input-medium search-query"/>
+	<input type="submit" value="搜索" class="btn btn-success"/>
 	</form>
 	</center>
 
-		<table border=1 bgcolor="#ffffff" width=90% align="center">
-			<tr align="center">
-				<td>
-					管理员编号
-				</td>
-				<td>
-					姓名
-				</td>
-				<td>
-					联系电话
-				</td>
-				<td>
-					权限等级
-				</td>
-				<td>
-					备注
-				</td>
+		<table class="table table-striped table-bordered table-hover table-condensed">
+			<tr>
+				<th>序号</th>
+				<th>管理员编号</th>
+				<th>姓名</th>
+				<th>联系电话</th>
+				<th>权限等级</th>
+				<th>备注</th>
 				<%
-			if(adminLimit == 2){
+			      if(adminLimit == 2){
 				 %>
-				<td>
-					操作
-				</td>
+				<th>操作</th>
 				<% } %>
 			</tr>
 
 			<%
 				String sql = "select * from adminInfo order by adminNum";
 				sqlBean.startCon();
+				int count=1;//添加个序号自增列
 				java.util.List list = sqlBean.showAllAdmin(sql);
 				for (java.util.Iterator it = list.iterator(); it.hasNext();) {
 					adminBean = (admin.bean.admin.AdminInfo) it.next();
 			%>
 			<tr>
+			   <td><%=count %></td>
 				<td><%=adminBean.getAdminNum() %></td>
 				<td><%=adminBean.getAdminName() %></td>
 				<td><%=adminBean.getAdminPhone() %></td>
@@ -121,16 +89,16 @@ button:hover{
 				<% 
 				if(adminLimit == 2){
 				%>
-				<td align="center">
-					<a href="searchByAdminNum?adminNum=<%= adminBean.getAdminNum() %>" >更新</a>
+				<td>
+					<a href="searchByAdminNum?adminNum=<%= adminBean.getAdminNum() %>" class="btn btn-info">更新</a>
 					&nbsp;
 					<a href="deleteAdmin?adminNum=<%= adminBean.getAdminNum() %>"
-						onclick="return confirm('确定删除?')">删除</a>
+						onclick="return confirm('确定删除?')" class="btn btn-danger">删除</a>
 				</td>
 				<% } %>
 			</tr>
 			<%
-				}
+				count++;}
 			%>
 
 

@@ -18,6 +18,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
+		<link rel="stylesheet" type="text/css" href="publicStyle/css/bootstrap.css">
+	
 <style type="text/css">
 .wrapper {
   background: #50a3a2;
@@ -109,14 +111,14 @@ form button:hover {
   <h2 style="color:gray">修 改 密 码</h2>
   <form action="updateUserPwd?tableName=admin/personInfo/changeAdminPwd.jsp"  method="post" class="form">
   <table border=0 background="#ffffff">  
-  <tr><td>请输入旧密码: </td>  
+  <tr><th>请输入旧密码：</th>  
   <td><input type="password" name="oldPwd"  /></td></tr>
-  <tr><td>请输入新密码:</td>       
+  <tr><th>请输入新密码：</th>       
   <td><input type="password" name="newPassword" /></td></tr>
-  <tr><td>确认密码:</td>
+  <tr><th>确认新密码：</th>
   <td> <input type="password" name="confirmNewPassword" /></td></tr>         
   </table>
-  <button type="submit" >修改</button>
+  <button type="submit" >修改</button>&nbsp;&nbsp;&nbsp;<button type="reset">重置</button>
   </form>
   </center>
   </div> 
