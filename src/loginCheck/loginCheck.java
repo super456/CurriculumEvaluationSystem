@@ -94,13 +94,23 @@ public class loginCheck extends HttpServlet {
 		}
 		
 		int accountNum=Integer.parseInt(request.getParameter("accountNum"));
+		//判断用户是否被限制登录
+		connectSql conSql=new connectSql();
+		conSql.StartCon();
+		String checkLoginLimit="Select perLimit from userLogin where accountNum='"+accountNum+"'";
+		int perLimit=conSql.intQuery(checkLoginLimit);
+		if (perLimit==1) {
+			out.println("<SCRIPT language=javascript > alert('对不起，您已被限制登录，请联系管理员！');window.history.back();</script>"); 
+			return;
+		}
+		
+		
 		String userPassword=request.getParameter("userPassword");
 		String loginIdentity=request.getParameter("select");
 		session.setAttribute("loginIdentity", loginIdentity);//绑定存储session对象用户的登录身份
 		//数据库查询验证账号密码
-		String sqlString= "Select*from userLogin where accountNum='" + accountNum
+		String sqlString= "Select * from userLogin where accountNum='" + accountNum
 		+ "'and password='" + userPassword + "'and userType='"+loginIdentity+"'";
-		connectSql conSql=new connectSql();
 		conSql.StartCon();//启动连接数据库
 		boolean result=conSql.loginQuery(sqlString);
 		if (result) {
