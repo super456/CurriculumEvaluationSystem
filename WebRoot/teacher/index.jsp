@@ -111,7 +111,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <div class="ad-message">
                         <div class="ad-top-left">
                             <div class="ad-change-btn"><a id="ad-list" href="javascript:;" class="scm ad-list-btn"></a></div>
-                            <div class="ad-search-box clear">
+                          
+                         <!--   <div class="ad-search-box clear">
                                 <div class="ad-search-sel">
                                     <select>
                                         <option>新闻类</option>
@@ -124,7 +125,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <input type="text" class="ad-search-input" placeholder="请输入你要查找的内容">
                                     <input type="submit" class="scm ad-search-btn" value=""> 
                                 </div>
-                            </div>
+                            </div> --> 
+                            
+                            
                         </div>
                         <div class="ad-top-right">
                             <div class="ad-notice">

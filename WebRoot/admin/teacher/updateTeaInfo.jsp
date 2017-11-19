@@ -17,7 +17,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
+	<link rel="stylesheet" type="text/css" href="publicStyle/css/bootstrap.css">
+	
+	
 <style type="text/css">
+body{
+	margin:0;
+	padding:0;
+}
 .wrapper {
   background: #50a3a2;
   background: -webkit-linear-gradient(top left, #50a3a2 0%, #53e3a6 100%);
@@ -30,7 +37,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 .container {
   max-width: 600px;
   margin: 0 auto;
-  height: 620px;
+  height: 520px;
   text-align: center;
 }
 form {
@@ -70,25 +77,17 @@ form button {
   font-size: 18px;
   -webkit-transition-duration: 0.25s;
           transition-duration: 0.25s;
+          margin-top:20px;
+
+}
+form select{
+	margin-bottom:15px;
 }
 form button:hover {
 	 background-color: rgb(32,178,170);
 	 color:white;
 }
 </style>
-<script type="text/javascript">
-  window.onload=function(){   
-  var osel=document.getElementById("teaSex"); 
-  var length=osel.getElementsByTagName("option").length; 
-  var opts = osel.getElementsByTagName("option");
-  var status = "<%=request.getAttribute("teaSex")%>";
-  for(var i=0;i<length;i++){
-    if(status == opts[i].value){
-     opts[i].selected=true;
-    }
-  }  
-} 
-</script>
   </head>
   
   <body>
@@ -109,28 +108,26 @@ form button:hover {
   <div class="wrapper">
   <div class="container">
  <center>
-  <h2 style="color:cyan">&nbsp;修 改 教 师 信 息</h2>
+  <h2>&nbsp;修 改 教 师 信 息</h2>
   <form action="updateTea?tableName=admin/teacher/showTeaInfo.jsp" method="post" name=form class="form">
   <table border=0 background="#ffffff">
-  <tr><td>教师编号: </td>  
+  <tr><th>教师编号：</th>  
   <td><input type="text" name="teaNum" value=<%= request.getAttribute("teaNum") %> readonly /></td></tr>
-  <tr><td>姓名:</td>       
+  <tr><th>姓名：</th>       
   <td><input type="text" name="teaName" value=<%= request.getAttribute("teaName") %> /></td></tr>
-  <tr><td>性别:</td>
+  <tr><th>性别：</th>
   <td> <select name="teaSex" id="teaSex">
   <option value="男" >--男性--</option>
   <option value="女" >--女性--</option>
   </select></td></tr> 
-  <tr><td>出生日期:</td>       
+  <tr><th>出生日期：</th>       
   <td><input type="text" name="teaBirthday" value=<%= request.getAttribute("teaBirthday") %> /></td></tr> 
-  <tr><td>院系专业及班级:</td>       
+  <tr><th>院系专业及班级：</th>       
   <td><input type="text" name="teaForm" value=<%= request.getAttribute("teaForm") %> /></td></tr>
-  <tr><td>联系电话:</td>       
+  <tr><th>联系电话：</th>       
   <td><input type="text" name="teaPhone" value=<%= request.getAttribute("teaPhone") %> /></td></tr>
-  <tr><td>备注:</td>
-  <td><textArea name="teaRemarks" rows=8 cols=24 
-  style="background-color: rgba(255, 255, 255, 0.2);border-radius:3px;font-size: 18px;color: white;"
-   ><%= request.getAttribute("teaRemarks") %></textArea></td></tr> 
+  <tr><th>备注：</th>
+  <td><textArea name="teaRemarks" class="form-control"><%= request.getAttribute("teaRemarks") %></textArea></td></tr> 
   <tr><td>&nbsp;<button type="submit" >修改</button></td> 
   <td>&nbsp;&nbsp;&nbsp;<button type="reset">重置</button></td></tr> 
   </table>

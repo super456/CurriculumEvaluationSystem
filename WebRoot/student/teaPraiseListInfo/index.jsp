@@ -65,8 +65,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</center>
 
 		<table class="table table-striped table-bordered table-hover table-condensed">
-			<tr align="center">
-				<td>序号</td><td>课程名称</td><td>任课教师</td><td>课程单位</td><td>上课时间</td><td>上课地点</td><td>课程学分</td><td>评教总平均分数</td>
+			<tr>
+				<th>序号</th>
+				<th>课程名称</th>
+				<th>任课教师</th>
+				<th>课程单位</th>
+				<th>上课时间</th>
+				<th>上课地点</th>
+				<th>课程学分</th>
+				<th>评教总平均分数</th>
 			</tr>
 			<%
 				int count=1;//定义序号自增

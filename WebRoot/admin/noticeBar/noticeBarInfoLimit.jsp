@@ -27,43 +27,19 @@
 		<meta http-equiv="expires" content="0">
 		<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 		<meta http-equiv="description" content="This is my page">
-
-		<style type="text/css">
-a {
-	list-style-type: none;
-	padding: 0px;
-	margin: 0px;
-	color: #53e3a6;
-	text-decoration: none;
-}
-
-a:hover {
-	color: cyan;
-}
-</style>
+	<link rel="stylesheet" type="text/css" href="publicStyle/css/bootstrap.css">
+	
 	</head>
 
-	<body style="background-color: #FFF;">
-		<table border=1 bgcolor="#ffffff" width=100%>
-			<tr align="center">
-				<td>
-					通告栏编号
-				</td>
-				<td>
-					标题
-				</td>
-				<td>
-					发布时间
-				</td>
-				<td>
-					作者
-				</td>
-				<td>
-					内容
-				</td>
-				<td>
-					查看限制操作
-				</td>
+	<body style="background-color: #FFF;"><br/>
+		<table class="table table-striped table-bordered table-hover table-condensed">
+			<tr>
+				<th>通告栏编号</th>
+				<th>标题</th>
+				<th>发布时间</th>
+				<th>作者</th>
+				<th>内容</th>
+				<th>查看限制操作</th>
 			</tr>
 
 			<%
@@ -82,7 +58,7 @@ a:hover {
 					<form action="limitNotice?noticeBarInfoNum=<%=noticeBarBean.getNoticeBarInfoNum()%>" method="post" style="margin-top: 20px;">
 						<select name="noticeBarLimit">
 							<option value="0">
-								学生,教师查看
+								学生，教师查看
 							</option>
 							<option value="1">
 								学生查看
@@ -94,7 +70,7 @@ a:hover {
 								禁止查看
 							</option>
 						</select>
-						<input type="submit" value="设置" />
+						<input type="submit" value="设置" class="btn btn-success"/>
 					</form>
 				</td>
 			</tr>

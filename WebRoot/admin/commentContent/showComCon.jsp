@@ -20,21 +20,8 @@
 		<meta http-equiv="expires" content="0">
 		<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 		<meta http-equiv="description" content="This is my page">
-
-<style type="text/css">
-a {
-	list-style-type: none;
-	padding: 0px;
-	margin: 0px;
-	color: #53e3a6;
-	text-decoration: none;
-}
-
-a:hover {
-	color: cyan;
-}
-
-</style>
+	<link rel="stylesheet" type="text/css" href="publicStyle/css/bootstrap.css">
+	
 	</head>
 
 	<body style="background-color: #FFF;">
@@ -52,49 +39,23 @@ a:hover {
 		<%
 			}
 		%>
-	</center>
+	</center><br/>
 
-		<table border=1 bgcolor="#ffffff" width=120%>
-			<tr align="center">
-				<td>
-					评教卡内容编号
-				</td>
-				<td>
-					第一项内容
-				</td>
-				<td>
-					第二项内容
-				</td>
-				<td>
-					第三项内容
-				</td>
-				<td>
-					第四项内容
-				</td>
-				<td>
-					第五项内容
-				</td>
-				<td>
-					第六项内容
-				</td>
-				<td>
-				           第七项内容
-				</td>
-				<td>
-				           第八项内容
-				</td>
-				<td>
-				           第九项内容
-				</td>
-				<td>
-				           第十项内容
-				</td>
-				<td>
-				           备注说明
-				</td>
-				<td>
-					操作
-				</td>
+		<table class="table table-striped table-bordered table-hover table-condensed">
+			<tr>
+				<th>序号</th>
+				<th>第一项内容</th>
+				<th>第二项内容</th>
+				<th>第三项内容</th>
+				<th>第四项内容</th>
+				<th>第五项内容</th>
+				<th>第六项内容</th>
+				<th>第七项内容</th>
+				<th>第八项内容</th>
+				<th>第九项内容</th>
+				<th> 第十项内容</th>
+				<th>备注说明</th>
+				<th>操作</th>
 			</tr>
 			
 			<%
@@ -116,10 +77,10 @@ a:hover {
 				<td width=100px><%=comConBean.getTheNinthCon() %></td>
 				<td width=100px><%=comConBean.getTheTenthCon() %></td>
 				<td width=100px><%=comConBean.getComConRemarks() %></td>
-				<td align="center" width=100px>
-					<a href="searchByComConNum?comConNum=<%=comConBean.getComConNum() %>">修改</a>
+				<td>
+					<a href="searchByComConNum?comConNum=<%=comConBean.getComConNum() %>" class="btn btn-info">修改</a>
 					<a href="deleteComCon?comConNum=<%= comConBean.getComConNum() %>"
-						onclick="return confirm('确定删除?')">删除</a>
+						onclick="return confirm('确定删除?')" class="btn btn-danger">删除</a>
 				</td>
 			</tr>
 			<%

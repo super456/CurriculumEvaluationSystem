@@ -16,20 +16,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-
-<style type="text/css">
-a {
-	list-style-type: none;
-	padding: 0px;
-	margin: 0px;
-	color: #53e3a6;
-	text-decoration: none;
-}
-
-a:hover {
-	color: cyan;
-}
-</style>
+	<link rel="stylesheet" type="text/css" href="publicStyle/css/bootstrap.css">
+	
+	
   </head>
   
   <body style="background-color: #FFF;">
@@ -47,7 +36,7 @@ a:hover {
 		<%
 			}
 		%>
-  <center>
+  <center><br/>
 			<form action="selectByCouClassStuInfo" method="post">
 				<select name="select">
 					<option value="couNum" selected> 
@@ -58,17 +47,17 @@ a:hover {
 					</option>
 				</select>
 				<input type="text" name="userInfo"
-					style="width: 160px; height: 25px" />
-				<input type="submit" value="搜索" />
+					style="width: 160px; height: 25px" class="input-medium search-query" placeholder="请输入全称" required />
+				<input type="submit" value="搜索" class="btn btn-success"/>
 			</form>
 		</center>  
-<table border=1 bgcolor="#ffffff" width=90% align="center">
-<tr align="center">
-  <td>课程班级学生信息编号</td>
-  <td>课程编号</td>
-  <td>学生编号</td>
-  <td>是否评教</td>
-  <td>操作</td>
+<table class="table table-striped table-bordered table-hover table-condensed">
+<tr>
+  <th>序号</th>
+  <th>课程编号</th>
+  <th>学生编号</th>
+  <th>是否评教</th>
+  <th>操作</th>
 </tr>
 
 			<%
@@ -82,9 +71,9 @@ a:hover {
 				<td><%=couClassBean.getCouNum() %></td>
 				<td><%=couClassBean.getStuNum() %></td>
 				<td><%=couClassBean.getIsTeachMess() %></td>
-				<td align="center">
-				<a href="selectByCommentCouInfo?stuNum=<%=couClassBean.getStuNum() %>&couNum=<%=couClassBean.getCouNum() %>">评教分数</a>&nbsp;&nbsp;
-				<a href="searchByStuNum?stuNum=<%=couClassBean.getStuNum() %>&tableName=admin/student/searchStuInfo.jsp">学生信息</a>
+				<td>
+				<a href="selectByCommentCouInfo?stuNum=<%=couClassBean.getStuNum() %>&couNum=<%=couClassBean.getCouNum() %>" class="btn btn-info">评教分数</a>&nbsp;&nbsp;
+				<a href="searchByStuNum?stuNum=<%=couClassBean.getStuNum() %>&tableName=admin/student/searchStuInfo.jsp" class="btn btn-info">学生信息</a>
 				</td>
 			</tr>
 			<%

@@ -16,22 +16,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
-<style type="text/css">
-a {
-	list-style-type: none;
-	padding: 0px;
-	margin: 0px;
-	color: #53e3a6;
-	text-decoration: none;
-}
-
-a:hover {
-	color: cyan;
-}
-</style>
+	<link rel="stylesheet" type="text/css" href="publicStyle/css/bootstrap.css">
+	
+	
   </head>
   
   <body style="background-color: #FFF;">
@@ -48,29 +35,32 @@ a:hover {
  		</script>
 		<%
 			}
-		%>
-		<table border=1 bgcolor="#ffffff" width=100%>
-<tr align="center">
-  <td>课程编号</td>
-  <td>教师编号</td>
-  <td>任课老师</td>
-  <td>课程名称</td>
-  <td>开课学期</td>
-  <td>开课单位</td>
-  <td>上课时间</td>
-  <td>上课地点</td>
-  <td>学分</td>
-  <td>备注</td>
-  <td>操作</td>
+		%><br/>
+		<table class="table table-striped table-bordered table-hover table-condensed">
+<tr>
+	<th>序号</th>
+  <th>课程编号</th>
+  <th>教师编号</th>
+  <th>任课老师</th>
+  <th>课程名称</th>
+  <th>开课学期</th>
+  <th>课程单位</th>
+  <th>上课时间</th>
+  <th>上课地点</th>
+  <th>学分</th>
+  <th>备注</th>
+  <th>操作</th>
 </tr>
 
 			<%
 				String sql = "select couNum,teaInfo.teaNum,teaName,couName,couTerm,couFrom,couTime,couPlace,couCredit,couRemarks from CourseInfo inner join teaInfo on CourseInfo.teaNum=teaInfo.teaNum";
 				java.util.List list = sqlBean.showAllCou(sql);
+				int count=1;//序号自增序列
 				for (java.util.Iterator it = list.iterator(); it.hasNext();) {
 					couBean = (admin.bean.course.CourseInfo) it.next();
 			%>
 			<tr>
+				<td><%=count %></td>
 				<td><%=couBean.getCouNum() %></td>
 				<td><%=couBean.getTeaNum() %></td>
 				<td><%=couBean.getTeaName() %></td>
@@ -81,14 +71,14 @@ a:hover {
 				<td><%=couBean.getCouPlace() %></td>
 				<td><%=couBean.getCouCredit() %></td>
 				<td><%=couBean.getCouRemarks() %></td>
-				<td align="center">
-					<a href="searchByCouNum?couNum=<%=couBean.getCouNum() %>">更新</a>
+				<td>
+					<a href="searchByCouNum?couNum=<%=couBean.getCouNum() %>" class="btn btn-info">更新</a>
 					<a href="deleteCou?couNum=<%= couBean.getCouNum() %>"
-						onclick="return confirm('确定删除?')">删除</a>
+						onclick="return confirm('确定删除?')" class="btn btn-danger">删除</a>
 				</td>
 			</tr>
 			<%
-				}
+				count++;}
 			%>
 
 

@@ -17,22 +17,11 @@
 		<meta http-equiv="expires" content="0">
 		<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 		<meta http-equiv="description" content="This is my page">
+	<link rel="stylesheet" type="text/css" href="publicStyle/css/bootstrap.css">
+	
 
-		<style type="text/css">
-a {
-	list-style-type: none;
-	padding: 0px;
-	margin: 0px;
-	color: #53e3a6;
-	text-decoration: none;
-}
 
-a:hover {
-	color: cyan;
-}
-</style>
-
-		<script type="text/javascript">
+<script type="text/javascript">
 	function postwith(to, p) {
 		var myForm = document.createElement("form");
 		myForm.method = "post";
@@ -65,7 +54,7 @@ a:hover {
 		<%
 			}
 		%>
-		<center>
+		<center><br/>
 			<form action="selectByTeaPraiseInfo" method="post">
 				<select name="select">
 					<option value="teaPraiseListInfo.teaNum" selected>
@@ -79,37 +68,21 @@ a:hover {
 					</option>
 				</select>
 				<input type="text" name="userInfo"
-					style="width: 160px; height: 25px" />
-				<input type="submit" value="搜索" />
+					style="width: 160px; height: 25px" class="input-medium search-query" placeholder="请输入全称" required/>
+				<input type="submit" value="搜索" class="btn btn-success"/>
 			</form>
 		</center>
 
-		<table border=1 bgcolor="#ffffff" width=100%>
-			<tr align="center">
-				<td>
-					教师好评榜编号
-				</td>
-				<td>
-					课程编号
-				</td>
-				<td>
-					课程名称
-				</td>
-				<td>
-					教师编号
-				</td>
-				<td>
-					任课老师
-				</td>
-				<td>
-					开课学期
-				</td>
-				<td>
-					所有总平均分数
-				</td>
-				<td>
-					操作
-				</td>
+		<table class="table table-striped table-bordered table-hover table-condensed">
+			<tr>
+				<th>序号</th>
+				<th>课程编号</th>
+				<th>课程名称</th>
+				<th>教师编号</th>
+				<th>任课老师</th>
+				<th>开课学期</th>
+				<th>所有总平均分数</th>
+				<th>操作</th>
 			</tr>
 			<%
 				String sql = "select teaPraiseListNum,teaPraiseListInfo.couNum,couName,"
@@ -130,7 +103,7 @@ a:hover {
 				<td><%=teaPraiseBean.getTheAllAvgScore()%></td>
 				<td align="center">
 					<a
-						href="javascript:postwith('selectByCommentCouInfo',{'select':'couNum','userInfo':'<%=teaPraiseBean.getCouNum()%>'})">
+						href="javascript:postwith('selectByCommentCouInfo',{'select':'couNum','userInfo':'<%=teaPraiseBean.getCouNum()%>'})" class="btn btn-info">
 						查看详情</a>
 				</td>
 			</tr>

@@ -20,20 +20,9 @@
 		<meta http-equiv="expires" content="0">
 		<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 		<meta http-equiv="description" content="This is my page">
-
-<style type="text/css">
-a {
-	list-style-type: none;
-	padding: 0px;
-	margin: 0px;
-	color: #53e3a6;
-	text-decoration: none;
-}
-
-a:hover {
-	color: cyan;
-}
-</style>
+	<link rel="stylesheet" type="text/css" href="publicStyle/css/bootstrap.css">
+	
+	
 	</head>
 
 	<body style="background-color: #FFF;">
@@ -50,16 +39,16 @@ a:hover {
  		</script>
 		<%
 			}
-		%>
-		<table border=1 bgcolor="#ffffff" width=100%>
-<tr align="center">
-  <td>通告栏编号</td>
-  <td>标题</td>
-  <td>发布时间</td>
-  <td>作者</td>
-  <td>内容</td>
-  <td>查看限制</td>
-  <td>操作</td>
+		%><br/>
+		<table class="table table-striped table-bordered table-hover table-condensed">
+<tr>
+  <th>通告栏编号</th>
+  <th>标题</th>
+  <th>发布时间</th>
+  <th>作者</th>
+  <th>内容</th>
+  <th>查看限制</th>
+  <th>操作</th>
 </tr>
 
 			<%
@@ -76,10 +65,10 @@ a:hover {
 				<td><%=noticeBarBean.getSmallContent() %></td>
 				<td><%=noticeBarBean.getLimitMess() %></td>
 				<td align="center">
-				    <a href="searchByNoticeNum?noticeBarInfoNum=<%=noticeBarBean.getNoticeBarInfoNum() %>&tableName=admin/noticeBar/searchNoticeInfo.jsp">查看</a>
-					<a href="searchByNoticeNum?noticeBarInfoNum=<%=noticeBarBean.getNoticeBarInfoNum() %>&tableName=admin/noticeBar/updateNoticeInfo.jsp">更新</a>
+				    <a href="searchByNoticeNum?noticeBarInfoNum=<%=noticeBarBean.getNoticeBarInfoNum() %>&tableName=admin/noticeBar/searchNoticeInfo.jsp" class="btn btn-info">查看</a>
+					<a href="searchByNoticeNum?noticeBarInfoNum=<%=noticeBarBean.getNoticeBarInfoNum() %>&tableName=admin/noticeBar/updateNoticeInfo.jsp" class="btn btn-success">更新</a>
 					<a href="deleteNotice?noticeBarInfoNum=<%= noticeBarBean.getNoticeBarInfoNum() %>"
-						onclick="return confirm('确定删除?')">删除</a>
+						onclick="return confirm('确定删除?')" class="btn btn-danger">删除</a>
 				</td>
 			</tr>
 			<%

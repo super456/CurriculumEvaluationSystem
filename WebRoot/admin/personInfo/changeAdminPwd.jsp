@@ -108,7 +108,7 @@ form button:hover {
   <div class="wrapper">
   <div class="container">
  <center>
-  <h2 style="color:gray">修 改 密 码</h2>
+  <h2>修 改 密 码</h2>
   <form action="updateUserPwd?tableName=admin/personInfo/changeAdminPwd.jsp"  method="post" class="form">
   <table border=0 background="#ffffff">  
   <tr><th>请输入旧密码：</th>  

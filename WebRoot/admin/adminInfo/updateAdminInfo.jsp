@@ -96,7 +96,7 @@ form button:hover {
 <div class="wrapper">
   <div class="container">
  <center>
-  <h2 style="color:cyan">&nbsp;更 新 管 理 员 信 息</h2>
+  <h2>&nbsp;更 新 管 理 员 信 息</h2>
   <form action="updateAdmin?tableName=admin/adminInfo/showAdminInfo.jsp" method="post" name=form class="form">
   <table border=0 background="#ffffff">
   <tr><td>管理员编号: </td>  
