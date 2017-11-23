@@ -98,6 +98,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 </dd>
                             </dl>
                         </li>
+                         <li>
+                            <div class="li-item"><em class="scm li-ico ic6"></em>友情链接<span class="scm arrow"></span></div>
+                            <dl>
+                                <dd>
+                                    <a href="javascript:;" class="dd-item">我的南苑<span class="scm dd-ar"></span></a>
+                                     <ul class="ad-item-list">
+                                        <li class="J_menuItem" href="student/link" data-index="1">我的南苑</li>
+                                    </ul>
+                                </dd>
+                     
+                            </dl>
+                        </li>
+                        
                     </ul>
                 </div>
             </div>
