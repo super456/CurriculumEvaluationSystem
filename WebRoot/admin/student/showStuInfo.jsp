@@ -32,7 +32,7 @@
     if(pageNo > totalPage) pageNo = totalPage;
      
     int startPos = (pageNo-1) * pageSize; //每页开始的帖子
-    String sql = "select top "+pageSize+" * from stuInfo where stuNum not in (select top "+startPos+" stuNum from stuInfo order by stuForm,stuGrade,stuNum) order by stuForm,stuGrade,stuNum";
+    String sql = "select top "+pageSize+" * from stuInfo where stuNum not in (select top "+startPos+" stuNum from stuInfo order by stuFrom,stuGrade,stuNum) order by stuFrom,stuGrade,stuNum";
 %>
 
 <html>
@@ -131,7 +131,7 @@
                                          共<%=totalPage %>页 第<%=pageNo %>页 
                <a href="admin/student/showStuInfo.jsp?pageNo=1">首页</a> 
                <a href="admin/student/showStuInfo.jsp?pageNo=<%=pageNo-1 %>">上一页</a> 
-               <a href="admin/student/showStuInfo.jsp?pageNo=<%=pageNo+1 %>">下一页</a> 
+               <a href="admin/student/showStuInfo.jsp?pageNo=<%=pageNo+1 %>" >下一页</a> 
                <a href="admin/student/showStuInfo.jsp?pageNo=<%=totalPage %>">末页</a>
         </center>
 	</body>
