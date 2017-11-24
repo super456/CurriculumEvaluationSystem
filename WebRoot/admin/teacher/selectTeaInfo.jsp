@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<jsp:useBean id="teaBean" class="admin.bean.teacher.TeaInfo" scope="request" />
+<jsp:useBean id="teaBean" class="admin.bean.teacher.TeaInfo" />
+<jsp:useBean id="sqlBean" class="admin.bean.teacher.TeaSqlBean" />
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -7,6 +8,38 @@
 			+ path + "/";
 
 	String limitMess = (String) request.getAttribute("limitMess");
+%>
+<jsp:useBean id="con" class="admin.bean.PageShow" />
+<%
+    String select = (String)request.getAttribute("select");
+	String userInfo = (String)request.getAttribute("userInfo");	 
+	if(select == null || userInfo == null){
+	 select = request.getParameter("select");
+	 userInfo = request.getParameter("userInfo");
+	}   
+    final int pageSize = 8;//每页显示的数量
+    int pageNo = 1;  //显示的页数
+    String pageNoStr = request.getParameter("pageNo");
+    if(pageNoStr!=null && !pageNoStr.trim().equals("")){
+     try{
+         pageNo = Integer.parseInt(pageNoStr);
+        }catch(NumberFormatException e){
+            pageNo = 1;
+        }
+    }
+     
+     if(pageNo<=0){
+         pageNo = 1;
+     }
+    con.startCon();
+    int rowCount = con.getCount("select count(*) from teaInfo where "+select+" like '%"+userInfo+"%'"); //获取总行数
+    int totalPage = 0; //总页数
+    totalPage = (rowCount + pageSize - 1)/pageSize; //计算总页数
+     
+    if(pageNo > totalPage) pageNo = totalPage;
+     
+    int startPos = (pageNo-1) * pageSize; //每页开始的帖子
+    String sql = "select top "+pageSize+" * from teaInfo where "+select+" = '"+userInfo+"' and teaNum not in (select top "+startPos+" teaNum from teaInfo order by teaForm,teaNum) order by teaForm,teaNum";
 %>
 
 <html>
@@ -21,31 +54,8 @@
 		<meta http-equiv="expires" content="0">
 		<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 		<meta http-equiv="description" content="This is my page">
+		<link rel="stylesheet" type="text/css" href="publicStyle/css/bootstrap.css">
 
-		<style type="text/css">
-a {
-	list-style-type: none;
-	padding: 0px;
-	margin: 0px;
-	color: #53e3a6;
-	text-decoration: none;
-}
-
-a:hover {
-	color: cyan;
-}
-button{
-   font-size:20px;
-   width:50px;
-   padding: 0px;
-   margin-top: 20px;
-   height:25px;
-   background-color:#96FED1;
-}
-button:hover{
-   background-color:white;
-}
-</style>
 	</head>
 
 	<body style="background-color: #FFF;">
@@ -64,9 +74,10 @@ button:hover{
 			}
 		%>
 		<center>
+		<br/>
 			<form action="selectByTeaInfo" method="post" name=form>
 				<select name="select">
-					<option value="teaNum" selected>
+					<option value="teaNum" >
 						教师编号
 					</option>
 					<option value="teaName">
@@ -77,48 +88,54 @@ button:hover{
 					</option>
 				</select>
 				<input type="text" name="userInfo"
-					style="width: 160px; height: 25px" />
-				<input type="submit" value="搜索" />
+					style="width: 160px; height: 25px" class="input-medium search-query" placeholder="请输入全称" required />
+				<input type="submit" value="搜索" class="btn btn-success" />
 			</form>
 		</center>
 
-		<table border=1 bgcolor="#ffffff" width=100%>
+		<table class="table table-striped table-bordered table-hover table-condensed">
 			<tr align="center">
-				<td>
+			    <th>
+					序号
+				</th>
+				<th>
 					教师编号
-				</td>
-				<td>
+				</th>
+				<th>
 					姓名
-				</td>
-				<td>
+				</th>
+				<th>
 					性别
-				</td>
-				<td>
+				</th>
+				<th>
 					出生日期
-				</td>
-				<td>
+				</th>
+				<th>
 					所在单位
-				</td>
-				<td>
+				</th>
+				<th>
 					联系电话
-				</td>
-				<td>
+				</th>
+				<th>
 					简介
-				</td>
-				<td>
+				</th>
+				<th>
 				  是否限制登录
-				</td>
-				<td>
+				</th>
+				<th>
 					操作
-				</td>
+				</th>
 			</tr>
 
 			<%
-				java.util.List list = (List)request.getAttribute("list");
+				sqlBean.startCon();
+				java.util.List list = sqlBean.showAllTea(sql);
+				int count=1;
 				for (java.util.Iterator it = list.iterator(); it.hasNext();) {
 					teaBean = (admin.bean.teacher.TeaInfo) it.next();
 			%>
 			<tr>
+			    <td><%=count %></td>
 				<td><%=teaBean.getTeaNum()%></td>
 				<td><%=teaBean.getTeaName()%></td>
 				<td><%=teaBean.getTeaSex()%></td>
@@ -128,23 +145,30 @@ button:hover{
 				<td><%=teaBean.getTeaRemarks()%></td>
 				<td align="center" valign="bottom">
 					<form
-						action="limitLogin?accountNum=<%=teaBean.getTeaNum()%>&tableName=admin/teacher/selectTeaInfo.jsp&table=teaInfo"
+						action="limitLogin?accountNum=<%=teaBean.getTeaNum()%>&tableName=admin/teacher/selectTeaInfo.jsp&table=teaInfo&select=<%=select %>&userInfo=<%=userInfo %>"
 						method="post">
-						<button type="submit" ><%=teaBean.getLimitMess() %></button>
+						<button type="submit" class="btn btn-warning"><%=teaBean.getLimitMess() %></button>
 					</form>
 				</td>
 				<td align="center">
-					<a href="searchByTeaNum?teaNum=<%=teaBean.getTeaNum()%>">更新</a>
+					<a href="searchByTeaNum?teaNum=<%=teaBean.getTeaNum()%>" class="btn btn-info" >更新</a>
 					&nbsp;
 					<a href="deleteTea?teaNum=<%=teaBean.getTeaNum()%>"
-						onclick="return confirm('确定删除?')">删除</a>
+						onclick="return confirm('确定删除?')" class="btn btn-danger" >删除</a>
 				</td>
 			</tr>
 			<%
+			    count++;
 				}
 			%>
 
 		</table>
-
+		<center>
+                                         共<%=totalPage %>页 第<%=pageNo %>页 
+               <a href="admin/teacher/selectTeaInfo.jsp?pageNo=1&select=<%=select %>&userInfo=<%=userInfo %>">首页</a> 
+               <a href="admin/teacher/selectTeaInfo.jsp?pageNo=<%=pageNo-1 %>&select=<%=select %>&userInfo=<%=userInfo %>">上一页</a> 
+               <a href="admin/teacher/selectTeaInfo.jsp?pageNo=<%=pageNo+1 %>&select=<%=select %>&userInfo=<%=userInfo %>">下一页</a> 
+               <a href="admin/teacher/selectTeaInfo.jsp?pageNo=<%=totalPage %>&select=<%=select %>&userInfo=<%=userInfo %>">末页</a>
+        </center>
 	</body>
 </html>

@@ -1,7 +1,6 @@
 package admin.servlet.commentCourse;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
@@ -9,8 +8,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import admin.bean.commentCourse.TeaPraiseListSqlBean;
 
 public class SelectByTeaPraiseInfo extends HttpServlet{
 
@@ -35,16 +32,15 @@ public class SelectByTeaPraiseInfo extends HttpServlet{
 		response.setCharacterEncoding("utf-8");
 		
 		String select = request.getParameter("select");
-		String userInfo = request.getParameter("userInfo");	    
-		String condition = "select teaPraiseListNum,teaPraiseListInfo.couNum,couName,"+
-        "teaPraiseListInfo.teaNum,teaName,teaPraiseListInfo.couTerm,theAllAvgScore from teaPraiseListInfo "+
-        "inner join courseInfo on teaPraiseListInfo.couNum=courseInfo.couNum inner join "+
-        "teaInfo on teaPraiseListInfo.teaNum=teaInfo.teaNum where "+select+" like '%"+userInfo+"%'";
-		TeaPraiseListSqlBean teaPraise = new TeaPraiseListSqlBean();
-		List list = teaPraise.showAllTeaPraise(condition);
+		String userInfo = request.getParameter("userInfo");	 
+		String term = request.getParameter("couTerm");
+		int couTerm = Integer.parseInt(term);
+		if(select.equals("teaNum"))
+			select = "teaPraiseListInfo.teaNum";
+		request.setAttribute("select", select);
+		request.setAttribute("userInfo", userInfo);
 		
-		request.setAttribute("list", list);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("admin/commentCourse/selectTeaPraiseInfo.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("admin/commentCourse/selectTeaPraiseInfo.jsp?couTerm=<%=couTerm %>");
 		dispatcher.forward(request, response);
 	}
 }

@@ -110,6 +110,15 @@
   </servlet-mapping>
   
   <servlet>
+    <servlet-name>selectByCouInfo</servlet-name>
+    <servlet-class>admin.servlet.course.SelectByCouInfo</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>selectByCouInfo</servlet-name>
+    <url-pattern>/selectByCouInfo</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
     <servlet-name>AddCouServlet</servlet-name>
     <servlet-class>admin.servlet.course.AddCouServlet</servlet-class>
   </servlet>
@@ -198,6 +207,16 @@
   <servlet-mapping>
     <servlet-name>SelectByTeaPraiseInfo</servlet-name>
     <url-pattern>/selectByTeaPraiseInfo</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>BackToTeaPraise</servlet-name>
+    <servlet-class>admin.servlet.commentCourse.BackToTeaPraise</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>BackToTeaPraise</servlet-name>
+    <url-pattern>/backToTeaPraise</url-pattern>
   </servlet-mapping>
   
   <servlet>

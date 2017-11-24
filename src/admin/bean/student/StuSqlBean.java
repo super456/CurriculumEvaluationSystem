@@ -15,7 +15,7 @@ public class StuSqlBean {
 	PreparedStatement pre;
 	ResultSet rs;
 	
-	public StuSqlBean(){
+	public void startCon(){
 		String uri = "jdbc:sqlserver://localhost:55780;DatabaseName=curriculumEvaluationSystem";
 		String user="sa";
 		String password = "123456";
@@ -50,7 +50,7 @@ public class StuSqlBean {
 				list.add(bean);
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 		finally{
 			try {

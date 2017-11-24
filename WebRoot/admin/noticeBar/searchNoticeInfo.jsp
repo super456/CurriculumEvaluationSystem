@@ -19,6 +19,10 @@ int noticeBarLimit = noticeBean.getNoticeBarInfoLimit();
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
 <style type="text/css">
+body{
+  margin:0px;
+  padding:0px;
+}
 .wrapper {
   background: #50a3a2;
   background: -webkit-linear-gradient(top left, #50a3a2 0%, #53e3a6 100%);

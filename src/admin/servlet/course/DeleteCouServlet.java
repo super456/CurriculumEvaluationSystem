@@ -45,6 +45,8 @@ public class DeleteCouServlet extends HttpServlet {
 		
 		String num = request.getParameter("couNum");	
 		int couNum = Integer.parseInt(num);
+		String term = request.getParameter("couTerm");
+		int couTerm = Integer.parseInt(term);
 
 		String condition = "delete from courseInfo where couNum=?";
 		try {
@@ -52,9 +54,15 @@ public class DeleteCouServlet extends HttpServlet {
 			pre = con.prepareStatement(condition);
 			pre.setInt(1, couNum);
 			pre.executeUpdate();
-			out.println("<SCRIPT language=javascript > alert('删除成功!');window.location='admin/course/showCourseInfo.jsp';</script>");			
+			if(couTerm == 171801)
+			    out.println("<SCRIPT language=javascript > alert('删除成功!');window.location='admin/course/showCourseInfo.jsp?couTerm=171801';</script>");		
+			else
+			    out.println("<SCRIPT language=javascript > alert('删除成功!');window.location='admin/course/showCourseInfo.jsp?couTerm=171802';</script>");		
 		} catch (SQLException e) {
-			out.println("<SCRIPT language=javascript > alert('删除失败!');window.location='admin/course/showCourseInfo.jsp';</script>");			
+			if(couTerm == 171801)
+			   out.println("<SCRIPT language=javascript > alert('删除失败!');window.location='admin/course/showCourseInfo.jsp'?couTerm=171801;</script>");
+			else
+			   out.println("<SCRIPT language=javascript > alert('删除失败!');window.location='admin/course/showCourseInfo.jsp?couTerm=171802';</script>");	
 			e.printStackTrace();
 		}finally{
 			try {

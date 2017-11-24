@@ -50,8 +50,9 @@ public class SearchByCouNum extends HttpServlet{
 		
 		String num = request.getParameter("couNum");		
 		int couNum = Integer.parseInt(num);
+		String couTerm = request.getParameter("couTerm");		
 		
-		String condition = "select * from courseInfo where couNum=?";
+		String condition = "select * from courseInfo where couNum=? order by couFrom,teaNum";
 		try {
 			con = DriverManager.getConnection(uri, user, password);
 			pre = con.prepareStatement(condition);
@@ -84,7 +85,7 @@ public class SearchByCouNum extends HttpServlet{
 			
 		}
 		request.setAttribute("courseBean", couBean);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("admin/course/updateCouInfo.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("admin/course/updateCouInfo.jsp?couTerm=<%=couTerm %>");
 		dispatcher.forward(request, response);
 	}
 }

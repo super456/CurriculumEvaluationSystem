@@ -74,9 +74,15 @@ public class AddCouServlet extends HttpServlet {
 			pre.setInt(8, couCredit);
 			pre.setString(9, couRemarks);
 			pre.executeUpdate();
-			out.println("<SCRIPT language=javascript > alert('添加成功!');window.location='admin/course/showCourseInfo.jsp';</script>");			
+			if(couTerm == 171801)
+			  out.println("<SCRIPT language=javascript > alert('添加成功!');window.location='admin/course/showCourseInfo.jsp?couTerm=171801';</script>");		
+			else
+			  out.println("<SCRIPT language=javascript > alert('添加成功!');window.location='admin/course/showCourseInfo.jsp?couTerm=171802';</script>");		
 		} catch (SQLException e) {
-			out.println("<SCRIPT language=javascript > alert('添加失败!');window.location='admin/course/addCourseInfo.jsp';</script>");			
+			if(couTerm == 171801)
+			  out.println("<SCRIPT language=javascript > alert('添加失败!');window.location='admin/course/addCourseInfo.jsp?couTerm=171801';</script>");	
+			else
+			  out.println("<SCRIPT language=javascript > alert('添加失败!');window.location='admin/course/addCourseInfo.jsp?couTerm=171802';</script>");			
 			e.printStackTrace();
 		}finally{
 			try {

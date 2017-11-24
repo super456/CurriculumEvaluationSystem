@@ -5,7 +5,34 @@
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
 			+ request.getServerName() + ":" + request.getServerPort()
-			+ path + "/";
+			+ path + "/";	
+%>
+<jsp:useBean id="con" class="admin.bean.PageShow" />
+<%
+    final int pageSize = 8;//每页显示的数量
+    int pageNo = 1;  //显示的页数
+    String pageNoStr = request.getParameter("pageNo");
+    if(pageNoStr!=null && !pageNoStr.trim().equals("")){
+     try{
+         pageNo = Integer.parseInt(pageNoStr);
+        }catch(NumberFormatException e){
+            pageNo = 1;
+        }
+    }
+     
+     if(pageNo<=0){
+         pageNo = 1;
+     }
+     
+    int totalPage = 0; //总页数
+    con.startCon(); 
+    int rowCount = con.getCount("select count(*) from stuInfo"); //获取总行数
+    totalPage = (rowCount + pageSize - 1)/pageSize; //计算总页数
+     
+    if(pageNo > totalPage) pageNo = totalPage;
+     
+    int startPos = (pageNo-1) * pageSize; //每页开始的帖子
+    String sql = "select top "+pageSize+" * from stuInfo where stuNum not in (select top "+startPos+" stuNum from stuInfo order by stuForm,stuGrade,stuNum) order by stuForm,stuGrade,stuNum";
 %>
 
 <html>
@@ -42,7 +69,7 @@
 	<center><br/>
 	<form action="selectByStuInfo" method="post" name=form>
 	<select name="select">
-	<option value="stuNum" selected>学号</option>
+	<option value="stuNum">学号</option>
 	<option value="stuName">姓名</option>
 	<option value="stuGrade">年级</option>
 	<option value="stuForm">院系专业</option>
@@ -67,8 +94,8 @@
 			</tr>
 
 			<%
-				String sql = "select * from stuInfo order by stuNum";
-			int count=1;//用于序号自增序列
+			    int count=1; //用于序号自增序列
+			    sqlBean.startCon();
 				java.util.List list = sqlBean.showAllStu(sql);
 				for (java.util.Iterator it = list.iterator(); it.hasNext();) {
 					stuBean = (admin.bean.student.StuInfo) it.next();
@@ -100,6 +127,12 @@
 
 
 		</table>
-
+		<center>
+                                         共<%=totalPage %>页 第<%=pageNo %>页 
+               <a href="admin/student/showStuInfo.jsp?pageNo=1">首页</a> 
+               <a href="admin/student/showStuInfo.jsp?pageNo=<%=pageNo-1 %>">上一页</a> 
+               <a href="admin/student/showStuInfo.jsp?pageNo=<%=pageNo+1 %>">下一页</a> 
+               <a href="admin/student/showStuInfo.jsp?pageNo=<%=totalPage %>">末页</a>
+        </center>
 	</body>
 </html>

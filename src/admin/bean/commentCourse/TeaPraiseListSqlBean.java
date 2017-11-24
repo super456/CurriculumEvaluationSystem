@@ -14,7 +14,7 @@ public class TeaPraiseListSqlBean {
 	PreparedStatement pre;
 	ResultSet rs;
 	
-	public TeaPraiseListSqlBean(){
+	public void startCon(){
 		String url = "jdbc:sqlserver://localhost:55780;DatabaseName=curriculumEvaluationSystem";
 		String user="sa";
 		String password = "123456";
@@ -42,11 +42,12 @@ public class TeaPraiseListSqlBean {
 				bean.setTeaNum(rs.getInt(4));
 				bean.setTeaName(rs.getString(5));
 				bean.setCouTerm(rs.getInt(6));
-				bean.setTheAllAvgScore(rs.getFloat(7));
+				bean.setCouFrom(rs.getString(7));
+				bean.setTheAllAvgScore(rs.getFloat(8));
 				list.add(bean);
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 		finally{
 			try {

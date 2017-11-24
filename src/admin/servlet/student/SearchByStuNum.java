@@ -45,7 +45,13 @@ public class SearchByStuNum extends HttpServlet{
 		String num = request.getParameter("stuNum");		
 		int stuNum = Integer.parseInt(num);
 		String tableName = request.getParameter("tableName");
-		String condition = "select * from stuInfo where stuNum=?";
+		String term = request.getParameter("couTerm");
+		int couTerm;
+		if(term != null){
+			couTerm = Integer.parseInt(term);
+			tableName = tableName+"?couTerm="+couTerm;
+		}
+		String condition = "select * from stuInfo where stuNum=? order by stuForm,stuGrade,stuNum";
 		try {
 			con = DriverManager.getConnection(uri, user, password);
 			pre = con.prepareStatement(condition);
@@ -81,7 +87,10 @@ public class SearchByStuNum extends HttpServlet{
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		response.sendRedirect("admin/commentCourse/showCouClassStuInfo.jsp");
+		String term = request.getParameter("couTerm");
+	    int couTerm=0;
+	    if(term != null || term.length()!=0)
+		  couTerm = Integer.parseInt(term);
+		response.sendRedirect("admin/commentCourse/showCouClassStuInfo.jsp?couTerm="+couTerm);
 	}
 }

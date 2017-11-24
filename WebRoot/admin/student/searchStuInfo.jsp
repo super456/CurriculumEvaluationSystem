@@ -92,6 +92,10 @@ form button:hover {
   
   <!-- 判断用户是不是直接打开这个网址，而有没有通过登录界面登录 -->
 		<%
+		    String term = request.getParameter("couTerm");
+		    int couTerm=0;
+		    if(term != null || term.length()!=0)
+			  couTerm = Integer.parseInt(term);
 			String userName = (String) session.getAttribute("userName");
 			if (userName == null) {
 		%>
@@ -107,7 +111,7 @@ form button:hover {
   <div class="container">
  <center>
   <h2>&nbsp;查 看 学 生 信 息</h2>
-  <form action="searchByStuNum" method="post" name=form class="form">
+  <form action="searchByStuNum?couTerm=<%=couTerm %>" method="post" name=form class="form">
   <table border=0 background="#ffffff">
   <tr><th>学生编号：</th>  
   <td><input type="text" value=<%= request.getAttribute("stuNum") %> readonly /></td></tr>
@@ -124,7 +128,7 @@ form button:hover {
   <td><input type="text" value=<%= request.getAttribute("stuPhone") %> readonly /></td></tr>
   <tr><th>备注：</th>
   <td><textArea class="form-control" disabled ><%= request.getAttribute("stuRemarks") %></textArea></td></tr>  
-  <tr><td><button type="submit" >返回</button></td></tr>
+  <tr><td></td><td><button type="submit" >返回</button></td></tr>
   </table>
   </form>
   </center>

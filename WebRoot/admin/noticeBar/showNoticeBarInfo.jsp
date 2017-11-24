@@ -7,6 +7,33 @@
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
+<jsp:useBean id="con" class="admin.bean.PageShow" />
+<%
+    final int pageSize = 8;//每页显示的数量
+    int pageNo = 1;  //显示的页数
+    String pageNoStr = request.getParameter("pageNo");
+    if(pageNoStr!=null && !pageNoStr.trim().equals("")){
+     try{
+         pageNo = Integer.parseInt(pageNoStr);
+        }catch(NumberFormatException e){
+            pageNo = 1;
+        }
+    }
+     
+     if(pageNo<=0){
+         pageNo = 1;
+     }
+     
+    int totalPage = 0; //总页数
+    con.startCon(); 
+    int rowCount = con.getCount("select count(*) from noticeBarInfo"); //获取总行数
+    totalPage = (rowCount + pageSize - 1)/pageSize; //计算总页数
+     
+    if(pageNo > totalPage) pageNo = totalPage;
+     
+    int startPos = (pageNo-1) * pageSize; //每页开始的帖子
+    String sql = "select top "+pageSize+" * from noticeBarInfo where noticeBarInfoNum not in (select top "+startPos+" noticeBarInfoNum from noticeBarInfo )";
+%>
 
 <html>
 	<head>
@@ -52,7 +79,7 @@
 </tr>
 
 			<%
-				String sql = "select * from  noticeBarInfo";
+			    sqlBean.startCon();
 				java.util.List list = sqlBean.showAllNoticeBar(sql);
 				for (java.util.Iterator it = list.iterator(); it.hasNext();) {
 					noticeBarBean = (admin.bean.noticeBar.NoticeBarInfo) it.next();
@@ -77,6 +104,13 @@
 
 
 		</table>
-
+		<center>
+                                         共<%=totalPage %>页 第<%=pageNo %>页 
+               <a href="admin/noticeBar/showNoticeBarInfo.jsp?pageNo=1">首页</a> 
+               <a href="admin/noticeBar/showNoticeBarInfo.jsp?pageNo=<%=pageNo-1 %>">上一页</a> 
+               <a href="admin/noticeBar/showNoticeBarInfo.jsp?pageNo=<%=pageNo+1 %>">下一页</a> 
+               <a href="admin/noticeBar/showNoticeBarInfo.jsp?pageNo=<%=totalPage %>">末页</a>
+        </center>
+		
 	</body>
 </html>

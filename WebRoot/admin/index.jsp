@@ -104,7 +104,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <dd>
                                     <a href="javascript:;" class="dd-item">查看所有课程信息<span class="scm dd-ar"></span></a>
                                     <ul class="ad-item-list">
-                                        <li class="J_menuItem" href="admin/course/showCourseInfo.jsp" data-index="1">查看所有课程信息</li>
+                                        <li class="J_menuItem" href="admin/course/showCourseInfo.jsp?couTerm=171802" data-index="1">查看所有课程信息</li>
                                     </ul>
                                 </dd>
                                 <dd>
@@ -122,19 +122,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <dd>
                                     <a href="javascript:;" class="dd-item">查看课程评比结果<span class="scm dd-ar"></span></a>
                                     <ul class="ad-item-list">
-                                        <li class="J_menuItem" href="admin/commentCourse/showTeaPraiseListInfo.jsp" data-index="1">查看课程评比结果</li>
+                                        <li class="J_menuItem" href="admin/commentCourse/showTeaPraiseListInfo.jsp?couTerm=171802" data-index="1">查看课程评比结果</li>
                                     </ul>
                                 </dd>
                                 <dd>
                                     <a href="javascript:;" class="dd-item">查看课程评比详情<span class="scm dd-ar"></span></a>
                                     <ul class="ad-item-list">
-                                        <li class="J_menuItem" href="admin/commentCourse/showCommentCouInfo.jsp" data-index="1">查看课程评比详情</li>
+                                        <li class="J_menuItem" href="admin/commentCourse/showCommentCouInfo.jsp?couTerm=171802" data-index="1">查看课程评比详情</li>
                                     </ul>
                                 </dd>
                                 <dd>
                                     <a href="javascript:;" class="dd-item">查看班级学生评比信息<span class="scm dd-ar"></span></a>
                                     <ul class="ad-item-list">
-                                        <li class="J_menuItem" href="admin/commentCourse/showCouClassStuInfo.jsp" data-index="1">查看班级学生评比信息</li>
+                                        <li class="J_menuItem" href="admin/commentCourse/showCouClassStuInfo.jsp?couTerm=171802" data-index="1">查看班级学生评比信息</li>
                                     </ul>
                                 </dd>
                             </dl>

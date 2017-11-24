@@ -125,7 +125,7 @@ form button:hover {
   <tr><th>联系电话:</th>       
   <td><input type="text" name="adminPhone" /></td></tr> 
   <tr><th>权限等级:</th>       
-  <td><input type="text" name="adminLimit" /></td></tr>
+  <td><input type="text" name="adminLimit" value="1" readonly/></td></tr>
   <tr><th>备注:</th>
   <td><textarea  name="adminRemarks" class="form-control"/></textarea></td></tr> 
   <tr><td>&nbsp;<button type="submit" >提交</button></td> 

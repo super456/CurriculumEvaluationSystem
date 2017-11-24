@@ -35,13 +35,17 @@ public class SelectByCouClassStuInfo extends HttpServlet{
 		response.setCharacterEncoding("utf-8");
 		
 		String select = request.getParameter("select");
-		String userInfo = request.getParameter("userInfo");	    
-		String condition = "select * from couClassStuInfo where "+select+" like '%"+userInfo+"%'";
-		CouClassStuSqlBean CouClassStu = new CouClassStuSqlBean();
-		List list = CouClassStu.showAllCouClassStu(condition);
+		String userInfo = request.getParameter("userInfo");	
+		String num = request.getParameter("couTerm");
+		int couTerm = Integer.parseInt(num);
+		if(select.equals("couNum"))
+			select = "courseInfo.couNum";
+		if(select.equals("stuNum"))
+			select = "stuInfo.stuNum";
+		request.setAttribute("select", select);
+		request.setAttribute("userInfo", userInfo);
 		
-		request.setAttribute("list", list);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("admin/commentCourse/selectCouClassStuInfo.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("admin/commentCourse/selectCouClassStuInfo.jsp?couTerm=<%=couTerm %>");
 		dispatcher.forward(request, response);
 	}
 }

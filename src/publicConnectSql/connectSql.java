@@ -4,7 +4,6 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.sun.media.ui.TabControl;
 
 import student.bean.CommentContents;
 import student.bean.NoticeBarList;

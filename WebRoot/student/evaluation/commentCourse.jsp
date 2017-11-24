@@ -39,7 +39,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <%
    //获取传递过来的课程名和教师名字
    //解决过一个大大的问题，jsp href get方式传参获取中文乱码问题，直接修改Tomcat的server.xml文件的  <Connector port="8080" protocol="HTTP/1.1" 
-
   	String couName=request.getParameter("couName");
     String teaName=request.getParameter("teaName");
   

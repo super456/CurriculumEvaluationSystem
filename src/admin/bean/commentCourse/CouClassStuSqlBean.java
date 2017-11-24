@@ -14,7 +14,7 @@ public class CouClassStuSqlBean {
 	PreparedStatement pre;
 	ResultSet rs;
 
-	public CouClassStuSqlBean() {
+	public void startCon() {
 		String uri = "jdbc:sqlserver://localhost:55780;DatabaseName=curriculumEvaluationSystem";
 		String user = "sa";
 		String password = "123456";
@@ -38,14 +38,17 @@ public class CouClassStuSqlBean {
 			rs = pre.executeQuery();
 			while (rs.next()) {
 				CouClassStuInfo bean = new CouClassStuInfo();
-				bean.setCouClassStuInfoNum(rs.getInt(1));
-				bean.setCouNum(rs.getInt(2));
-				bean.setStuNum(rs.getInt(3));
-				bean.setIsTeach(rs.getInt(4));
+				bean.setCouNum(rs.getInt(1));
+				bean.setStuNum(rs.getInt(2));
+				bean.setStuName(rs.getString(3));
+				bean.setCouName(rs.getString(4));
+				bean.setCouTerm(rs.getInt(5));
+				bean.setCouFrom(rs.getString(6));
+				bean.setIsTeach(rs.getInt(7));
 				list.add(bean);
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 		} finally {
 			try {
 				pre.close();

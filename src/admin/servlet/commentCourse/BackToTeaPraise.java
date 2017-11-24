@@ -1,15 +1,7 @@
-package admin.servlet.student;
+package admin.servlet.commentCourse;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.List;
-
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
@@ -18,10 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import admin.bean.student.StuInfo;
-import admin.bean.student.StuSqlBean;
+import admin.bean.commentCourse.CouClassStuSqlBean;
 
-public class SelectByStuInfo extends HttpServlet{
+public class BackToTeaPraise extends HttpServlet{
 
 	public void init(ServletConfig config) throws ServletException {
 		super.init(config);
@@ -42,14 +33,14 @@ public class SelectByStuInfo extends HttpServlet{
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html");
 		response.setCharacterEncoding("utf-8");
-		String select = request.getParameter("select");
-		String userInfo = request.getParameter("userInfo");	    
-	   
-		request.setAttribute("select", select);
-		request.setAttribute("userInfo", userInfo);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("admin/student/selectStuInfo.jsp");
-		dispatcher.forward(request, response);
+		
+		String term = request.getParameter("couTerm");
+		int couTerm = Integer.parseInt(term);
+		String tableName = request.getParameter("tableName");
+		if(tableName.equals("admin/commentCourse/showTeaPraiseListInfo.jsp"))
+			tableName = "admin/commentCourse/showTeaPraiseListInfo.jsp?couTerm=<%=couTerm %>";
+		else if(tableName.equals("admin/commentCourse/showCouClassStuInfo.jsp"))
+			tableName = "admin/commentCourse/showCouClassStuInfo.jsp?couTerm=<%=couTerm %>";
+		request.getRequestDispatcher(tableName).forward(request, response);
 	}
-	
-	
 }

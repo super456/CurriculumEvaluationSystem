@@ -1,15 +1,6 @@
-package admin.servlet.student;
+package admin.servlet.course;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
-
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
@@ -18,10 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import admin.bean.student.StuInfo;
-import admin.bean.student.StuSqlBean;
+import admin.bean.course.CourseInfo;
 
-public class SelectByStuInfo extends HttpServlet{
+public class SelectByCouInfo extends HttpServlet{
 
 	public void init(ServletConfig config) throws ServletException {
 		super.init(config);
@@ -42,14 +32,17 @@ public class SelectByStuInfo extends HttpServlet{
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html");
 		response.setCharacterEncoding("utf-8");
+		
+		
+		String num = request.getParameter("couTerm");		
+		int couTerm = Integer.parseInt(num);
 		String select = request.getParameter("select");
-		String userInfo = request.getParameter("userInfo");	    
-	   
+		String userInfo = request.getParameter("userInfo");
+		if(select.equals("teaNum"))
+		   select = "teaInfo.teaNum";
 		request.setAttribute("select", select);
 		request.setAttribute("userInfo", userInfo);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("admin/student/selectStuInfo.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("admin/course/selectByCouInfo.jsp?couTerm=<%=couTerm %>");
 		dispatcher.forward(request, response);
 	}
-	
-	
 }

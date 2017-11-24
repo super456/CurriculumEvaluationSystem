@@ -1,15 +1,13 @@
-package admin.bean.noticeBar;
+package admin.bean;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
-public class NoticeBarSqlBean {
-
+public class PageShow {
+	
 	Connection con;
 	PreparedStatement pre;
 	ResultSet rs;
@@ -30,24 +28,17 @@ public class NoticeBarSqlBean {
 		
 	}
 	
-	public List showAllNoticeBar(String sql){
-		List list = new ArrayList();
-		
+	//返回获取结果的行数
+	public int getCount(String sql){
+		int count = 0;
 		try {
 			pre = con.prepareStatement(sql);
 			rs = pre.executeQuery();
 			while(rs.next()){
-				NoticeBarInfo bean = new NoticeBarInfo();
-				bean.setNoticeBarInfoNum(rs.getInt(1));
-				bean.setTitle(rs.getString(2));
-				bean.setReleaseTime(rs.getDate(3));
-				bean.setAuthor(rs.getString(4));
-				bean.setContent(rs.getString(5));
-				bean.setNoticeBarInfoLimit(rs.getInt(6)); 
-				list.add(bean);
+				count = rs.getInt(1);
 			}
 		} catch (Exception e) {
-			//e.printStackTrace();
+			e.printStackTrace();
 		}
 		finally{
 			try {
@@ -58,7 +49,7 @@ public class NoticeBarSqlBean {
 			}
 			
 		}
-		return list;
+		return count;
 	}
 
 }

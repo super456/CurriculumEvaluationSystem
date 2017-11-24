@@ -53,7 +53,7 @@ public class ComConSqlBean {
 				list.add(bean);
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 		finally{
 			try {

@@ -7,6 +7,33 @@
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
+<jsp:useBean id="con" class="admin.bean.PageShow" />
+<%
+    final int pageSize = 8;//每页显示的数量
+    int pageNo = 1;  //显示的页数
+    String pageNoStr = request.getParameter("pageNo");
+    if(pageNoStr!=null && !pageNoStr.trim().equals("")){
+     try{
+         pageNo = Integer.parseInt(pageNoStr);
+        }catch(NumberFormatException e){
+            pageNo = 1;
+        }
+    }
+     
+     if(pageNo<=0){
+         pageNo = 1;
+     }
+     
+    int totalPage = 0; //总页数
+    con.startCon(); 
+    int rowCount = con.getCount("select count(*) from adminInfo"); //获取总行数
+    totalPage = (rowCount + pageSize - 1)/pageSize; //计算总页数
+     
+    if(pageNo > totalPage) pageNo = totalPage;
+     
+    int startPos = (pageNo-1) * pageSize; //每页开始的帖子
+    String sql = "select top "+pageSize+" * from adminInfo where adminNum not in (select top "+startPos+" adminNum from adminInfo order by adminNum) order by adminNum";
+%>
 
 <html>
 	<head>
@@ -72,7 +99,6 @@
 			</tr>
 
 			<%
-				String sql = "select * from adminInfo order by adminNum";
 				sqlBean.startCon();
 				int count=1;//添加个序号自增列
 				java.util.List list = sqlBean.showAllAdmin(sql);
@@ -89,7 +115,7 @@
 				<% 
 				if(adminLimit == 2){
 				%>
-				<td>
+				<td align="center">
 					<a href="searchByAdminNum?adminNum=<%= adminBean.getAdminNum() %>" class="btn btn-info">更新</a>
 					&nbsp;
 					<a href="deleteAdmin?adminNum=<%= adminBean.getAdminNum() %>"
@@ -103,6 +129,12 @@
 
 
 		</table>
-
+		<center>
+                                         共<%=totalPage %>页 第<%=pageNo %>页 
+               <a href="admin/adminInfo/showAdminInfo.jsp?pageNo=1">首页</a> 
+               <a href="admin/adminInfo/showAdminInfo.jsp?pageNo=<%=pageNo-1 %>">上一页</a> 
+               <a href="admin/adminInfo/showAdminInfo.jsp?pageNo=<%=pageNo+1 %>">下一页</a> 
+               <a href="admin/adminInfo/showAdminInfo.jsp?pageNo=<%=totalPage %>">末页</a>
+        </center>
 	</body>
 </html>

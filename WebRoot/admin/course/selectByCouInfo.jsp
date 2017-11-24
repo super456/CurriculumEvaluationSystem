@@ -9,6 +9,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <%
     String cT = request.getParameter("couTerm");//获取查询的学期，默认为171802，即2017-2018第二学期
 	int couTerm = Integer.parseInt(cT);
+    String select = (String)request.getAttribute("select");
+	String userInfo = (String)request.getAttribute("userInfo");	 
+	if(select == null || userInfo == null){
+	 select = request.getParameter("select");
+	 userInfo = request.getParameter("userInfo");
+	}   
 	
     final int pageSize = 8;//每页显示的数量
     int pageNo = 1;  //显示的页数
@@ -24,21 +30,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      if(pageNo<=0){
          pageNo = 1;
      }
-     
+    con.startCon();
+    int rowCount = con.getCount("select count(*) from courseInfo inner join teaInfo on courseInfo.teaNum=teaInfo.teaNum where "+select+" like '%"+userInfo+"%' and couTerm="+couTerm); //获取总行数
     int totalPage = 0; //总页数
-    con.startCon(); 
-    String condition = "select count(*) from courseInfo inner join teaInfo on courseInfo.teaNum=teaInfo.teaNum " +
-				"where couTerm="+couTerm;
-    int rowCount = con.getCount(condition); //获取总行数
     totalPage = (rowCount + pageSize - 1)/pageSize; //计算总页数
      
     if(pageNo > totalPage) pageNo = totalPage;
      
     int startPos = (pageNo-1) * pageSize; //每页开始的帖子
     String sql = "select top "+pageSize+" couNum,teaInfo.teaNum,teaName,couName,couTerm,couFrom,couTime,couPlace," +
-	    		"couCredit,couRemarks from courseInfo inner join teaInfo on courseInfo.teaNum=teaInfo.teaNum where couTerm="+couTerm+" and couNum not in " +
-	    		"(select top "+startPos+" couNum from courseInfo inner join teaInfo on courseInfo.teaNum=teaInfo.teaNum " +
-	    		"where couTerm="+couTerm+" order by couFrom,teaInfo.teaNum) order by couFrom,teaInfo.teaNum";
+				"couCredit,couRemarks from courseInfo inner join teaInfo on courseInfo.teaNum=teaInfo.teaNum " +
+				"where "+select+" = '"+userInfo+"' and couTerm= "+couTerm+" and couNum not in " +
+				"(select top "+startPos+" couNum from courseInfo inner join teaInfo on courseInfo.teaNum=teaInfo.teaNum " +
+				"where couTerm="+couTerm+" order by couFrom,teaInfo.teaNum) order by couFrom,teaInfo.teaNum";
 %>
 
 <html>
@@ -74,6 +78,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<center>
 		<form action="selectByCouInfo" method="post" name=form>
 				<%
+				
 					if (couTerm == 171802) {
 				%>
 				<select name="couTerm">
@@ -111,7 +116,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</center>
 		<table class="table table-striped table-bordered table-hover table-condensed">
 <tr>
-  <th>序号</th>
+	<th>序号</th>
   <th>课程编号</th>
   <th>教师编号</th>
   <th>任课老师</th>
@@ -126,7 +131,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </tr>
 
 			<%
-				sqlBean.startCon();
+			    sqlBean.startCon();
 				java.util.List list = sqlBean.showAllCou(sql);
 				int count=1;//序号自增序列
 				for (java.util.Iterator it = list.iterator(); it.hasNext();) {
@@ -158,10 +163,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</table>
 		<center>
                                          共<%=totalPage %>页 第<%=pageNo %>页 
-               <a href="admin/course/showCourseInfo.jsp?pageNo=1&couTerm=<%=couTerm %>">首页</a> 
-               <a href="admin/course/showCourseInfo.jsp?pageNo=<%=pageNo-1 %>&couTerm=<%=couTerm %>">上一页</a> 
-               <a href="admin/course/showCourseInfo.jsp?pageNo=<%=pageNo+1 %>&couTerm=<%=couTerm %>">下一页</a> 
-               <a href="admin/course/showCourseInfo.jsp?pageNo=<%=totalPage %>&couTerm=<%=couTerm %>">末页</a>
+               <a href="admin/course/selectByCouInfo.jsp?pageNo=1&select=<%=select %>&userInfo=<%=userInfo %>&couTerm=<%=couTerm %>">首页</a> 
+               <a href="admin/course/selectByCouInfo.jsp?pageNo=<%=pageNo-1 %>&select=<%=select %>&userInfo=<%=userInfo %>&couTerm=<%=couTerm %>">上一页</a> 
+               <a href="admin/course/selectByCouInfo.jsp?pageNo=<%=pageNo+1 %>&select=<%=select %>&userInfo=<%=userInfo %>&couTerm=<%=couTerm %>">下一页</a> 
+               <a href="admin/course/selectByCouInfo.jsp?pageNo=<%=totalPage %>&select=<%=select %>&userInfo=<%=userInfo %>&couTerm=<%=couTerm %>">末页</a>
         </center>
 		
 	</body>

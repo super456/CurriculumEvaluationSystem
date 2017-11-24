@@ -15,7 +15,7 @@ public class TeaSqlBean {
 	PreparedStatement pre;
 	ResultSet rs;
 	
-	public TeaSqlBean(){
+	public void startCon(){
 		String url = "jdbc:sqlserver://localhost:55780;DatabaseName=curriculumEvaluationSystem";
 		String user="sa";
 		String password = "123456";
@@ -48,7 +48,7 @@ public class TeaSqlBean {
 				list.add(bean);
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 		finally{
 			try {

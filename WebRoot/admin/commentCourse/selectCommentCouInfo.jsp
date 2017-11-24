@@ -5,6 +5,44 @@
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
+<jsp:useBean id="con" class="admin.bean.PageShow" />
+<%
+    String cT = request.getParameter("couTerm");//获取查询的学期，默认为171802，即2017-2018第二学期
+	int couTerm = Integer.parseInt(cT);
+    String select = (String)request.getAttribute("select");
+	String userInfo = (String)request.getAttribute("userInfo");	 
+	if(select == null || userInfo == null){
+	 select = request.getParameter("select");
+	 userInfo = request.getParameter("userInfo");
+	}   
+	
+    final int pageSize = 8;//每页显示的数量
+    int pageNo = 1;  //显示的页数
+    String pageNoStr = request.getParameter("pageNo");
+    if(pageNoStr!=null && !pageNoStr.trim().equals("")){
+     try{
+         pageNo = Integer.parseInt(pageNoStr);
+        }catch(NumberFormatException e){
+            pageNo = 1;
+        }
+    }
+     
+     if(pageNo<=0){
+         pageNo = 1;
+     }
+    con.startCon();
+    int rowCount = con.getCount("select count(*) from commentCouInfo inner join courseInfo on commentCouInfo.couNum=courseInfo.couNum where "+select+" = '"+userInfo+"' and couTerm="+couTerm); //获取总行数
+    int totalPage = 0; //总页数
+    totalPage = (rowCount + pageSize - 1)/pageSize; //计算总页数
+     
+    if(pageNo > totalPage) pageNo = totalPage;
+     
+    int startPos = (pageNo-1) * pageSize; //每页开始的帖子
+    String sql = "select top "+pageSize+" * " +
+	    		"from commentCouInfo inner join courseInfo on commentCouInfo.couNum=courseInfo.couNum where couTerm="+couTerm+" and comCouNum not in " +
+	    		"(select top "+startPos+" comCouNum from commentCouInfo inner join courseInfo on commentCouInfo.couNum=courseInfo.couNum where couTerm="+couTerm+" ) "+
+	    		" and "+select+" = '"+userInfo+"'";
+%>
 
 <html>
 	<head>
@@ -39,7 +77,33 @@
 			}
 		%>
 		<center><br/>
-			<form action="selectByCommentCouInfo" method="post">
+			<form action="selectByCommentCouInfo?tableName=admin/commentCourse/selectCommentCouInfo.jsp" method="post">
+			<%
+
+					if (couTerm == 171802) {
+				%>
+				<select name="couTerm">
+					<option value="171802" selected>
+						2017-2018第二学期
+					</option>
+					<option value="171801">
+						2017-2018第一学期
+					</option>
+					</select>
+				<%
+					} else {
+				%>
+				<select name="couTerm">
+					<option value="171802">
+						2017-2018第二学期
+					</option>
+					<option value="171801" selected>
+						2017-2018第一学期
+					</option>
+				</select>
+				<%
+					}
+				%>
 				<select name="select">
 					<option value="couNum" selected>
 						课程编号
@@ -56,9 +120,10 @@
 
 		<table class="table table-striped table-bordered table-hover table-condensed">
 			<tr>
-				<th>评教课程编号</th>
+				<th>序号</th>
 				<th>课程编号</th>
 				<th>学生编号</th>
+				<th>开课学期</th>
 				<th>评教时间</th>
 				<th>first分数</th>
 				<th>second分数</th>
@@ -75,15 +140,19 @@
 				<th>平均分数</th>
 			</tr>
 			<jsp:useBean id="commentCouBean" class="admin.bean.commentCourse.CommentCouInfo" />
+			<jsp:useBean id="sqlBean" class="admin.bean.commentCourse.CommentCouSqlBean" />
 			<%
-				java.util.List list = (List)request.getAttribute("list");
+			    int count=1;
+			    sqlBean.startCon();
+				java.util.List list = sqlBean.showAllCommentCou(sql);
 				for (java.util.Iterator it = list.iterator(); it.hasNext();) {
 					commentCouBean = (admin.bean.commentCourse.CommentCouInfo) it.next();
 			%>
 			<tr>
-			    <td><%=commentCouBean.getComCouNum() %></td>
+			    <td><%=count %></td>
 				<td><%=commentCouBean.getCouNum() %></td>
 				<td><%=commentCouBean.getStuNum() %></td>
+				<td><%=commentCouBean.getCouTerm() %></td>
 				<td><%=commentCouBean.getComDate() %></td>
 				<td><%=commentCouBean.getComFirstScore() %></td>
 				<td><%=commentCouBean.getComSecondScore() %></td>
@@ -100,12 +169,20 @@
 				<td><%=commentCouBean.getComAvgScore() %></td>
 			</tr>
 			<%
+			    count++;
 				}
 			%>
 
 
 		</table>
-
+		<center>
+                                         共<%=totalPage %>页 第<%=pageNo %>页 
+               <a href="admin/commentCourse/selectCommentCouInfo.jsp?pageNo=1&select=<%=select %>&userInfo=<%=userInfo %>&couTerm=<%=couTerm %>">首页</a> 
+               <a href="admin/commentCourse/selectCommentCouInfo.jsp?pageNo=<%=pageNo-1 %>&select=<%=select %>&userInfo=<%=userInfo %>&couTerm=<%=couTerm %>">上一页</a> 
+               <a href="admin/commentCourse/selectCommentCouInfo.jsp?pageNo=<%=pageNo+1 %>&select=<%=select %>&userInfo=<%=userInfo %>&couTerm=<%=couTerm %>">下一页</a> 
+               <a href="admin/commentCourse/selectCommentCouInfo.jsp?pageNo=<%=totalPage %>&select=<%=select %>&userInfo=<%=userInfo %>&couTerm=<%=couTerm %>">末页</a>
+        </center>
+		
 	</body>
 </html>
 

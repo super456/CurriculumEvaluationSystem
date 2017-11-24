@@ -4,12 +4,24 @@ import java.util.Date;
 
 public class CommentCouInfo {
 
-	int comCouNum,couNum,stuNum;
+	int comCouNum,couNum,stuNum,couTerm;
 	Date comDate;
 	int comFirstScore,comSecondScore,comThirdScore,comFourthScore,comFifthScore;
 	int comSixthScore,comSeventhScore,comEighthScore,comNinthScore,comTenthScore,comTotalScore;
-	String comLeaMsg;
+	String comLeaMsg,stuName;
+	public String getStuName() {
+		return stuName;
+	}
+	public void setStuName(String stuName) {
+		this.stuName = stuName;
+	}
 	float comAvgScore;
+	public int getCouTerm() {
+		return couTerm;
+	}
+	public void setCouTerm(int couTerm) {
+		this.couTerm = couTerm;
+	}
 	public int getComCouNum() {
 		return comCouNum;
 	}

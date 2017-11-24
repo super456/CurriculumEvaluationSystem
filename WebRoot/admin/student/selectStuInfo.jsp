@@ -1,10 +1,43 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<jsp:useBean id="stuBean" class="admin.bean.student.StuInfo" scope="request" />
+<jsp:useBean id="stuBean" class="admin.bean.student.StuInfo" />
+<jsp:useBean id="sqlBean" class="admin.bean.student.StuSqlBean" />
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
+%>
+<jsp:useBean id="con" class="admin.bean.PageShow" />
+<%
+    String select = (String)request.getAttribute("select");
+	String userInfo = (String)request.getAttribute("userInfo");	 
+	if(select == null || userInfo == null){
+	 select = request.getParameter("select");
+	 userInfo = request.getParameter("userInfo");
+	}   
+    final int pageSize = 8;//每页显示的数量
+    int pageNo = 1;  //显示的页数
+    String pageNoStr = request.getParameter("pageNo");
+    if(pageNoStr!=null && !pageNoStr.trim().equals("")){
+     try{
+         pageNo = Integer.parseInt(pageNoStr);
+        }catch(NumberFormatException e){
+            pageNo = 1;
+        }
+    }
+     
+     if(pageNo<=0){
+         pageNo = 1;
+     }
+    con.startCon();
+    int rowCount = con.getCount("select count(*) from stuInfo where "+select+" like '%"+userInfo+"%'"); //获取总行数
+    int totalPage = 0; //总页数
+    totalPage = (rowCount + pageSize - 1)/pageSize; //计算总页数
+     
+    if(pageNo > totalPage) pageNo = totalPage;
+     
+    int startPos = (pageNo-1) * pageSize; //每页开始的帖子
+    String sql = "select top "+pageSize+" * from stuInfo where "+select+" = '"+userInfo+"' and stuNum not in (select top "+startPos+" stuNum from stuInfo order by stuForm,stuGrade,stuNum) order by stuForm,stuGrade,stuNum";
 %>
 
 <html>
@@ -19,31 +52,7 @@
 		<meta http-equiv="expires" content="0">
 		<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 		<meta http-equiv="description" content="This is my page">
-
-<style type="text/css">
-a {
-	list-style-type: none;
-	padding: 0px;
-	margin: 0px;
-	color: #53e3a6;
-	text-decoration: none;
-}
-
-a:hover {
-	color: cyan;
-}
-button{
-   font-size:20px;
-   width:50px;
-   padding: 0px;
-   margin-top: 20px;
-   height:25px;
-   background-color:#96FED1;
-}
-button:hover{
-   background-color:white;
-}
-</style>
+       <link rel="stylesheet" type="text/css" href="publicStyle/css/bootstrap.css">
 	</head>
 
 	<body style="background-color: #FFF;">
@@ -62,20 +71,24 @@ button:hover{
 			}
 		%>
 	<center>
+	<br/>
 	<form action="selectByStuInfo" method="post" name=form>
 	<select name="select">
-	<option value="stuNum" selected>学号</option>
+	<option value="stuNum">学号</option>
 	<option value="stuName">姓名</option>
 	<option value="stuGrade">年级</option>
 	<option value="stuForm">院系专业</option>
 	</select>
-	<input type="text" name="userInfo" style="width:160px;height:25px" />
-	<input type="submit" value="搜索"/>
+	<input type="text" name="userInfo" style="width:160px;height:25px"  class="input-medium search-query" placeholder="请输入全称" required/>
+	<input type="submit" value="搜索" class="btn btn-success" />
 	</form>
 	</center>
 
-		<table border=1 bgcolor="#ffffff" width=100%>
+		<table class="table table-striped table-bordered table-hover table-condensed" >
 			<tr align="center">
+			    <td>
+					序号
+				</td>
 				<td>
 					学生编号
 				</td>
@@ -106,11 +119,14 @@ button:hover{
 			</tr>
 			
 			<%
-			    java.util.List list = (List)request.getAttribute("list");
+			    sqlBean.startCon();
+			    java.util.List list = sqlBean.showAllStu(sql);
+			    int count = 1;
 				for (java.util.Iterator it = list.iterator();it.hasNext();) {
 					stuBean = (admin.bean.student.StuInfo)it.next();
 			 %>
 			<tr>
+			    <td><%=count %></td>
 				<td><%=stuBean.getStuNum()%></td>
 				<td><%=stuBean.getStuName()%></td>
 				<td><%=stuBean.getStuSex()%></td>
@@ -119,22 +135,30 @@ button:hover{
 				<td><%=stuBean.getStuPhone()%></td>
 				<td><%=stuBean.getStuRemarks()%></td>
 				<td align="center" valign="bottom">
-				<form action="limitLogin?accountNum=<%=stuBean.getStuNum()%>&tableName=admin/student/selectStuInfo.jsp&table=stuInfo" method="post" >
-				<button type="submit" ><%=stuBean.getLimitMess() %></button>
+				<form class="button" action="limitLogin?accountNum=<%=stuBean.getStuNum()%>&tableName=admin/student/selectStuInfo.jsp&table=stuInfo&select=<%=select %>&userInfo=<%=userInfo %>" method="post" >
+				<button type="submit" class="btn btn-warning"><%=stuBean.getLimitMess() %></button>
 				</form>
 				</td>
 				<td align="center">
-					<a href="searchByStuNum?stuNum=<%=stuBean.getStuNum()%>&tableName=admin/student/updateStuInfo.jsp">更新</a>
+					<a href="searchByStuNum?stuNum=<%=stuBean.getStuNum()%>&tableName=admin/student/updateStuInfo.jsp" class="btn btn-info">更新</a>
 					&nbsp;
 					<a href="deleteStu?stuNum=<%= stuBean.getStuNum() %>"
-						onclick="return confirm('确定删除?')">删除</a>
+						onclick="return confirm('确定删除?')" class="btn btn-danger" >删除</a>
 				</td>
 			</tr>
 			<%
+			  count++;
 			  }
 			%>
 
 		</table>
-
+		
+		<center>
+                                         共<%=totalPage %>页 第<%=pageNo %>页 
+               <a href="admin/student/selectStuInfo.jsp?pageNo=1&select=<%=select %>&userInfo=<%=userInfo %>">首页</a> 
+               <a href="admin/student/selectStuInfo.jsp?pageNo=<%=pageNo-1 %>&select=<%=select %>&userInfo=<%=userInfo %>">上一页</a> 
+               <a href="admin/student/selectStuInfo.jsp?pageNo=<%=pageNo+1 %>&select=<%=select %>&userInfo=<%=userInfo %>">下一页</a> 
+               <a href="admin/student/selectStuInfo.jsp?pageNo=<%=totalPage %>&select=<%=select %>&userInfo=<%=userInfo %>">末页</a>
+        </center>
 	</body>
 </html>

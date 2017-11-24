@@ -42,12 +42,9 @@ public class SelectByTeaInfo extends HttpServlet{
 		
 		String select = request.getParameter("select");
 		String userInfo = request.getParameter("userInfo");	    
-		String condition = "select * from teaInfo where "+select+" like '%"+userInfo+"%'";
+		request.setAttribute("select", select);
+		request.setAttribute("userInfo", userInfo);
 		
-		TeaSqlBean tea = new TeaSqlBean();
-		List list = tea.showAllTea(condition);
-		
-		request.setAttribute("list", list);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("admin/teacher/selectTeaInfo.jsp");
 		dispatcher.forward(request, response);
 	}

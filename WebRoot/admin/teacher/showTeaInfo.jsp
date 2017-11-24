@@ -6,6 +6,33 @@
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
+<jsp:useBean id="con" class="admin.bean.PageShow" />
+<%
+    final int pageSize = 8;//每页显示的数量
+    int pageNo = 1;  //显示的页数
+    String pageNoStr = request.getParameter("pageNo");
+    if(pageNoStr!=null && !pageNoStr.trim().equals("")){
+     try{
+         pageNo = Integer.parseInt(pageNoStr);
+        }catch(NumberFormatException e){
+            pageNo = 1;
+        }
+    }
+     
+     if(pageNo<=0){
+         pageNo = 1;
+     }
+     
+    int totalPage = 0; //总页数
+    con.startCon(); 
+    int rowCount = con.getCount("select count(*) from teaInfo"); //获取总行数
+    totalPage = (rowCount + pageSize - 1)/pageSize; //计算总页数
+     
+    if(pageNo > totalPage) pageNo = totalPage;
+     
+    int startPos = (pageNo-1) * pageSize; //每页开始的帖子
+    String sql = "select top "+pageSize+" * from teaInfo where teaNum not in (select top "+startPos+" teaNum from teaInfo order by teaForm,teaNum) order by teaForm,teaNum";
+%>
 
 <html>
 	<head>
@@ -42,7 +69,7 @@
 		<center><br/>
 			<form action="selectByTeaInfo" method="post">
 				<select name="select">
-					<option value="teaNum" selected>
+					<option value="teaNum">
 						教师编号
 					</option>
 					<option value="teaName">
@@ -74,8 +101,9 @@
 			<jsp:useBean id="teaBean" class="admin.bean.teacher.TeaInfo" />
 			<jsp:useBean id="sqlBean" class="admin.bean.teacher.TeaSqlBean" />
 			<%
-				String sql = "select * from teaInfo";
+
 				int count=1;//添加自增序号列
+				sqlBean.startCon();
 				java.util.List list = sqlBean.showAllTea(sql);
 				for (java.util.Iterator it = list.iterator(); it.hasNext();) {
 					teaBean = (admin.bean.teacher.TeaInfo) it.next();
@@ -108,6 +136,13 @@
 
 
 		</table>
-
+		
+	    <center>
+                                         共<%=totalPage %>页 第<%=pageNo %>页 
+               <a href="admin/teacher/showTeaInfo.jsp?pageNo=1">首页</a> 
+               <a href="admin/teacher/showTeaInfo.jsp?pageNo=<%=pageNo-1 %>">上一页</a> 
+               <a href="admin/teacher/showTeaInfo.jsp?pageNo=<%=pageNo+1 %>">下一页</a> 
+               <a href="admin/teacher/showTeaInfo.jsp?pageNo=<%=totalPage %>">末页</a>
+        </center>
 	</body>
 </html>

@@ -38,12 +38,9 @@ public class SelectByAdminInfo extends HttpServlet{
 		
 		String select = request.getParameter("select");
 		String userInfo = request.getParameter("userInfo");	    
-		String condition = "select * from adminInfo where "+select+" like '%"+userInfo+"%'";
 		
-		AdminSqlBean admin = new AdminSqlBean();
-		List list = admin.showAllAdmin(condition);
-		
-		request.setAttribute("list", list);
+		request.setAttribute("select", select);
+		request.setAttribute("userInfo", userInfo);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("admin/adminInfo/selectAdminInfo.jsp");
 		dispatcher.forward(request, response);
 	}

@@ -3,7 +3,13 @@ package admin.bean.commentCourse;
 public class TeaPraiseListInfo {
 
 	int teaPraiseListNum,couNum,teaNum,couTerm;
-	String couName,teaName;
+	String couName,teaName,couFrom;
+	public String getCouFrom() {
+		return couFrom;
+	}
+	public void setCouFrom(String couFrom) {
+		this.couFrom = couFrom;
+	}
 	public String getTeaName() {
 		return teaName;
 	}

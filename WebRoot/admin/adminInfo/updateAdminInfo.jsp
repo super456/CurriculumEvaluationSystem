@@ -15,7 +15,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-<style type="text/css">
+	<style type="text/css">
+body{
+	margin:0;
+	padding:0;
+}
 .wrapper {
   background: #50a3a2;
   background: -webkit-linear-gradient(top left, #50a3a2 0%, #53e3a6 100%);
@@ -28,7 +32,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 .container {
   max-width: 600px;
   margin: 0 auto;
-  height: 450px;
+  height: 520px;
   text-align: center;
 }
 form {
@@ -68,6 +72,11 @@ form button {
   font-size: 18px;
   -webkit-transition-duration: 0.25s;
           transition-duration: 0.25s;
+          margin-top:20px;
+
+}
+form select{
+	margin-bottom:15px;
 }
 form button:hover {
 	 background-color: rgb(32,178,170);
