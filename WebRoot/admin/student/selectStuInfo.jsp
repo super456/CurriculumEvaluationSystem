@@ -37,7 +37,7 @@
     if(pageNo > totalPage) pageNo = totalPage;
      
     int startPos = (pageNo-1) * pageSize; //每页开始的帖子
-    String sql = "select top "+pageSize+" * from stuInfo where "+select+" = '"+userInfo+"' and stuNum not in (select top "+startPos+" stuNum from stuInfo order by stuForm,stuGrade,stuNum) order by stuForm,stuGrade,stuNum";
+    String sql = "select top "+pageSize+" * from stuInfo where "+select+" like '%"+userInfo+"%' and stuNum not in (select top "+startPos+" stuNum from stuInfo order by stuFrom,stuGrade,stuNum) order by stuFrom,stuGrade,stuNum";
 %>
 
 <html>
@@ -79,7 +79,7 @@
 	<option value="stuGrade">年级</option>
 	<option value="stuForm">院系专业</option>
 	</select>
-	<input type="text" name="userInfo" style="width:160px;height:25px"  class="input-medium search-query" placeholder="请输入全称" required/>
+	<input type="text" name="userInfo" style="width:160px;height:25px"  class="input-medium search-query" placeholder="请输入全称" />
 	<input type="submit" value="搜索" class="btn btn-success" />
 	</form>
 	</center>

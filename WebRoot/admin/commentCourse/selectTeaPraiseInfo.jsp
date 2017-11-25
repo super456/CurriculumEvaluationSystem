@@ -35,7 +35,7 @@
     int totalPage = 0; //总页数
     con.startCon();
     String condition = "select count(*) from teaPraiseListInfo inner join courseInfo on teaPraiseListInfo.couNum=courseInfo.couNum inner join " +
-				"teaInfo on teaPraiseListInfo.teaNum=teaInfo.teaNum where "+select+" = '"+userInfo+"' and teaPraiseListInfo.couTerm= "+couTerm;
+				"teaInfo on teaPraiseListInfo.teaNum=teaInfo.teaNum where "+select+" like '%"+userInfo+"%' and teaPraiseListInfo.couTerm= "+couTerm;
     int rowCount = con.getCount(condition); //获取总行数    int totalPage = 0; //总页数
     totalPage = (rowCount + pageSize - 1)/pageSize; //计算总页数
      
@@ -45,7 +45,7 @@
     String sql = "select top "+pageSize+" teaPraiseListNum,teaPraiseListInfo.couNum,couName,teaPraiseListInfo.teaNum," +
 	    		"teaName,teaPraiseListInfo.couTerm,couFrom,theAllAvgScore from teaPraiseListInfo inner join courseInfo on teaPraiseListInfo.couNum=courseInfo.couNum inner join teaInfo on teaPraiseListInfo.teaNum=teaInfo.teaNum where teaPraiseListInfo.couTerm="+couTerm+" and teaPraiseListInfo.couNum not in " +
 	    		"(select top "+startPos+" teaPraiseListInfo.couNum from teaPraiseListInfo inner join courseInfo on teaPraiseListInfo.couNum=courseInfo.couNum inner join teaInfo on teaPraiseListInfo.teaNum=teaInfo.teaNum " +
-	    		"where teaPraiseListInfo.couTerm="+couTerm+" order by couFrom,teaPraiseListInfo.couNum) and "+select+" = '"+userInfo+"' order by couFrom,teaPraiseListInfo.couNum";
+	    		"where teaPraiseListInfo.couTerm="+couTerm+" order by couFrom,teaPraiseListInfo.couNum) and "+select+" like '%"+userInfo+"%' order by couFrom,teaPraiseListInfo.couNum";
 %>
 
 <html>
@@ -137,7 +137,7 @@
 					</option>
 				</select>
 				<input type="text" name="userInfo"
-					style="width: 160px; height: 25px" class="input-medium search-query" placeholder="请输入全称" required/>
+					style="width: 160px; height: 25px" class="input-medium search-query" placeholder="请输入全称" />
 				<input type="submit" value="搜索" class="btn btn-success"/>
 			</form>
 		</center>
@@ -167,7 +167,7 @@
 				<td><%=teaPraiseBean.getCouName()%></td>
 				<td><%=teaPraiseBean.getTeaNum()%></td>
 				<td><%=teaPraiseBean.getTeaName()%></td>
-				<td><%=teaPraiseBean.getCouTerm()%></td>
+				<td><%=teaPraiseBean.getCouTerm() %></td>
 				<td><%=teaPraiseBean.getCouFrom() %></td>
 				<td><%=teaPraiseBean.getTheAllAvgScore()%></td>
 				<td align="center">

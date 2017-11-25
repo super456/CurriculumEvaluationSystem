@@ -48,7 +48,7 @@ public class SearchByTeaNum extends HttpServlet{
 		String num = request.getParameter("teaNum");		
 		int teaNum = Integer.parseInt(num);
 		
-		String condition = "select * from teaInfo where teaNum=? order by teaForm,teaNum";
+		String condition = "select * from teaInfo where teaNum=? order by teaFrom,teaNum";
 		try {
 			con = DriverManager.getConnection(uri, user, password);
 			pre = con.prepareStatement(condition);

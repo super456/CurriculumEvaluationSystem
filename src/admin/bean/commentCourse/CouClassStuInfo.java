@@ -3,12 +3,20 @@ package admin.bean.commentCourse;
 public class CouClassStuInfo {
 
 	int couNum,stuNum,isTeach,couTerm;
-    String isTeachMess,stuName,couName,couFrom;
+    String isTeachMess,stuName,couName,couFrom,couTermMess;
+	public String getCouTermMess() {
+		return couTermMess;
+	}
+
 	public int getCouTerm() {
 		return couTerm;
 	}
 
 	public void setCouTerm(int couTerm) {
+		if(couTerm == 171801)
+			couTermMess = "2017-2018第一学期";
+		else if(couTerm == 171802)
+			couTermMess = "2017-2018第二学期";
 		this.couTerm = couTerm;
 	}
 

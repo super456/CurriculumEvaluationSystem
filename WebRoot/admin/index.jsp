@@ -126,12 +126,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     </ul>
                                 </dd>
                                 <dd>
-                                    <a href="javascript:;" class="dd-item">查看课程评比详情<span class="scm dd-ar"></span></a>
-                                    <ul class="ad-item-list">
-                                        <li class="J_menuItem" href="admin/commentCourse/showCommentCouInfo.jsp?couTerm=171802" data-index="1">查看课程评比详情</li>
-                                    </ul>
-                                </dd>
-                                <dd>
                                     <a href="javascript:;" class="dd-item">查看班级学生评比信息<span class="scm dd-ar"></span></a>
                                     <ul class="ad-item-list">
                                         <li class="J_menuItem" href="admin/commentCourse/showCouClassStuInfo.jsp?couTerm=171802" data-index="1">查看班级学生评比信息</li>

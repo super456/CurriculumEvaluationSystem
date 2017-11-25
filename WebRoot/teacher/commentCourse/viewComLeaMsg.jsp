@@ -90,7 +90,7 @@
 				</tr>
 				<%
 
-					String sql = "select comCouNum,commentCouInfo.couNum,couName,couTime,comLeaMsg from courseInfo inner join commentCouInfo on courseInfo.couNum = commentCouInfo.couNum where couTerm="+couTerm+" and teaNum="+accountNum+" and not exists (select comLeaMsg from commentCouInfo where comLeaMsg is null)";
+					String sql = "select comCouNum,commentCouInfo.couNum,couName,couTime,comLeaMsg from courseInfo inner join commentCouInfo on courseInfo.couNum = commentCouInfo.couNum where couTerm="+couTerm+" and teaNum="+accountNum+" and not exists (select comLeaMsg from commentCouInfo where comLeaMsg is null)";					
 					java.util.List list = sqlBean.viewComLeaMsg(sql);
 					if(list.size()==0){  %>
 					<script>

@@ -33,7 +33,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     int totalPage = 0; //总页数
     con.startCon();
     String condition = "select count(*) from couClassStuInfo inner join courseInfo on couClassStuInfo.couNum=courseInfo.couNum inner join stuInfo on " +
-				"stuInfo.stuNum=couClassStuInfo.stuNum where "+select+" = '"+userInfo+"' and couTerm= "+couTerm;
+				"stuInfo.stuNum=couClassStuInfo.stuNum where "+select+" like '%"+userInfo+"%' and couTerm= "+couTerm;
     int rowCount = con.getCount(condition); //获取总行数    int totalPage = 0; //总页数
     totalPage = (rowCount + pageSize - 1)/pageSize; //计算总页数
      
@@ -43,7 +43,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     String sql = "select top "+pageSize+" courseInfo.couNum,stuInfo.stuNum,stuName,couName,couTerm,couFrom,isTeach " +
 	    		"from couClassStuInfo inner join courseInfo on couClassStuInfo.couNum=courseInfo.couNum inner join stuInfo on stuInfo.stuNum=couClassStuInfo.stuNum where couTerm="+couTerm+" and couClassStuInfoNum not in " +
 	    		"(select top "+startPos+" couClassStuInfoNum from couClassStuInfo inner join courseInfo on couClassStuInfo.couNum=courseInfo.couNum inner join stuInfo on stuInfo.stuNum=couClassStuInfo.stuNum " +
-	    		"where couTerm="+couTerm+" order by couFrom,courseInfo.couNum,stuInfo.stuNum) and "+select+" = '"+userInfo+"' order by couFrom,courseInfo.couNum,stuInfo.stuNum";
+	    		"where couTerm="+couTerm+" order by couFrom,courseInfo.couNum,stuInfo.stuNum) and "+select+" like '%"+userInfo+"%' order by couFrom,courseInfo.couNum,stuInfo.stuNum";
 %>
 
 
@@ -117,7 +117,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</option>
 				</select>
 				<input type="text" name="userInfo"
-					style="width: 160px; height: 25px" class="input-medium search-query" placeholder="请输入全称" required />
+					style="width: 160px; height: 25px" class="input-medium search-query" placeholder="请输入全称"  />
 				<input type="submit" value="搜索" class="btn btn-success"/>
 			</form>
 		</center>  
@@ -147,7 +147,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<td><%=couClassBean.getStuNum() %></td>
 				<td><%=couClassBean.getStuName() %></td>
 				<td><%=couClassBean.getCouName() %></td>
-				<td><%=couClassBean.getCouTerm() %></td>
+				<td><%=couClassBean.getCouTermMess() %></td>
 				<td><%=couClassBean.getCouFrom() %></td>
 				<td><%=couClassBean.getIsTeachMess() %></td>
 				<td align="center">

@@ -70,7 +70,7 @@ public class UpdateTeaServlet extends HttpServlet {
 
 		PrintWriter out = response.getWriter();
 		String sql = "update userLogin set userName=? where accountNum="+teaNum;
-		String condition = "update teaInfo set teaName=?,teaSex=?,teaBirthday=?,teaForm=?,teaPhone=?,teaRemarks=? where teaNum="+teaNum;
+		String condition = "update teaInfo set teaName=?,teaSex=?,teaBirthday=?,teaFrom=?,teaPhone=?,teaRemarks=? where teaNum="+teaNum;
 		try {
 			con = DriverManager.getConnection(uri, user, password);
 			pre = con.prepareStatement(condition);

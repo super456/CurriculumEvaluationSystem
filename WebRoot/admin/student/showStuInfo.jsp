@@ -74,7 +74,7 @@
 	<option value="stuGrade">年级</option>
 	<option value="stuForm">院系专业</option>
 	</select>
-	<input type="text" name="userInfo" style="width:160px;height:25px"  class="input-medium search-query"/>
+	<input type="text" name="userInfo" style="width:160px;height:25px"  class="input-medium search-query" placeholder="请输入全称" />
 	<input type="submit" value="搜索" class="btn btn-success"/>
 	</form>
 	</center>
@@ -89,7 +89,7 @@
 				<th>院系专业及班级</th>
 				<th>电话</th>
 				<th>备注</th>
-				<th> 是否限制登录</th>
+				<th>是否限制登录</th>
 				<th>操作</th>
 			</tr>
 

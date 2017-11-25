@@ -132,7 +132,7 @@
 					</option>
 				</select>
 				<input type="text" name="userInfo"
-					style="width: 160px; height: 25px" class="input-medium search-query" placeholder="请输入全称" required/>
+					style="width: 160px; height: 25px" class="input-medium search-query" placeholder="请输入全称" />
 				<input type="submit" value="搜索" class="btn btn-success"/>
 			</form>
 		</center>

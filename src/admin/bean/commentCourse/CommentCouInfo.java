@@ -8,7 +8,10 @@ public class CommentCouInfo {
 	Date comDate;
 	int comFirstScore,comSecondScore,comThirdScore,comFourthScore,comFifthScore;
 	int comSixthScore,comSeventhScore,comEighthScore,comNinthScore,comTenthScore,comTotalScore;
-	String comLeaMsg,stuName;
+	String comLeaMsg,stuName,couTermMess;
+	public String getCouTermMess() {
+		return couTermMess;
+	}
 	public String getStuName() {
 		return stuName;
 	}
@@ -20,6 +23,10 @@ public class CommentCouInfo {
 		return couTerm;
 	}
 	public void setCouTerm(int couTerm) {
+		if(couTerm == 171801)
+			couTermMess = "2017-2018第一学期";
+		else if(couTerm == 171802)
+			couTermMess = "2017-2018第二学期";
 		this.couTerm = couTerm;
 	}
 	public int getComCouNum() {

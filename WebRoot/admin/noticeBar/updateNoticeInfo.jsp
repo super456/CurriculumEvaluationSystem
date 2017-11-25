@@ -23,8 +23,13 @@ int noticeBarLimit = noticeBean.getNoticeBarInfoLimit();
 	
 <style type="text/css">
 body{
+<<<<<<< HEAD
+  margin:0px;
+  padding:0px;
+=======
 	margin:0;
 	padding:0;
+>>>>>>> e2f618422c8ce18d065193776fa58eabace237dd
 }
 .wrapper {
   background: #50a3a2;

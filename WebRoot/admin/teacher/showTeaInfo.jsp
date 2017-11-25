@@ -31,7 +31,7 @@
     if(pageNo > totalPage) pageNo = totalPage;
      
     int startPos = (pageNo-1) * pageSize; //每页开始的帖子
-    String sql = "select top "+pageSize+" * from teaInfo where teaNum not in (select top "+startPos+" teaNum from teaInfo order by teaForm,teaNum) order by teaForm,teaNum";
+    String sql = "select top "+pageSize+" * from teaInfo where teaNum not in (select top "+startPos+" teaNum from teaInfo order by teaFrom,teaNum) order by teaFrom,teaNum";
 %>
 
 <html>
@@ -80,7 +80,7 @@
 					</option>
 				</select>
 				<input type="text" name="userInfo"
-					style="width: 160px; height: 25px" class="input-medium search-query" placeholder="请输入全称" required />
+					style="width: 160px; height: 25px" class="input-medium search-query" placeholder="请输入全称" />
 				<input type="submit" value="搜索"  class="btn btn-success"/>
 			</form>
 		</center>
