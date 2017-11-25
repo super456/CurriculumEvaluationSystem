@@ -92,7 +92,7 @@
 				<th>权限等级</th>
 				<th>备注</th>
 				<%
-			      if(adminLimit == 2){
+			      if(adminLimit == 5){
 				 %>
 				<th>操作</th>
 				<% } %>
@@ -113,7 +113,7 @@
 				<td><%=adminBean.getAdminLimit() %></td>
 				<td><%=adminBean.getAdminRemarks() %></td>
 				<% 
-				if(adminLimit == 2){
+				if(adminLimit == 5){
 				%>
 				<td align="center">
 					<a href="searchByAdminNum?adminNum=<%= adminBean.getAdminNum() %>" class="btn btn-info">更新</a>

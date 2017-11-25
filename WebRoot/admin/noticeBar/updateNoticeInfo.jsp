@@ -18,10 +18,18 @@ int noticeBarLimit = noticeBean.getNoticeBarInfoLimit();
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
+		<link rel="stylesheet" type="text/css" href="publicStyle/css/bootstrap.css">
+	
+	
 <style type="text/css">
 body{
+<<<<<<< HEAD
   margin:0px;
   padding:0px;
+=======
+	margin:0;
+	padding:0;
+>>>>>>> e2f618422c8ce18d065193776fa58eabace237dd
 }
 .wrapper {
   background: #50a3a2;
@@ -35,7 +43,7 @@ body{
 .container {
   max-width: 600px;
   margin: 0 auto;
-  height: 470px;
+  height: 520px;
   text-align: center;
 }
 form {
@@ -68,7 +76,6 @@ form button {
   background-color: white;
   border: 0;
   padding: 10px 15px;
-  margin-top:20px;
   color: #53e3a6;
   border-radius: 3px;
   width: 125px;
@@ -76,6 +83,11 @@ form button {
   font-size: 18px;
   -webkit-transition-duration: 0.25s;
           transition-duration: 0.25s;
+          margin-top:20px;
+
+}
+form select{
+	margin-bottom:15px;
 }
 form button:hover {
 	 background-color: rgb(32,178,170);
@@ -117,20 +129,20 @@ form button:hover {
   <div class="wrapper">
   <div class="container">
  <center>
-  <h2 style="color:cyan">&nbsp;修 改 通 告 栏 信 息</h2>
+  <h2>&nbsp;修 改 通 告 栏 信 息</h2>
   <form action="updateNotice?noticeBarInfoNum=<%=noticeBean.getNoticeBarInfoNum() %> " method="post" name=form class="form">
   <table border=0 background="#ffffff">
-  <tr><td>标题: </td>  
+  <tr><th>标题: </th>  
   <td><input type="text" name="title" value=<%=noticeBean.getTitle() %> /></td></tr>
-  <tr><td>作者:</td>       
+  <tr><th>作者:</th>       
   <td><input type="text" name="author" value=<%=noticeBean.getAuthor() %> /></td></tr>
-  <tr><td>内容:</td>
+  <tr><th>内容:</th>
   <td><textArea name="content" rows=8 cols=25 
-  style="background-color: rgba(255, 255, 255, 0.2);border-radius:3px;font-size: 18px;color: white;"
+  style="background-color: rgba(255, 255, 255, 0.2);border-radius:3px;font-size: 18px;color: white;margin-bottom:20px;"
    ><%=noticeBean.getContent() %></textArea></td></tr>   
-  <tr><td>查看限制:</td>       
+  <tr><th>查看限制:</th>       
   <td><select name="noticeBarLimit" id="noticeBarLimit" >
-  <option value="0">学生,教师查看</option>
+  <option value="0">学生，教师查看</option>
   <option value="1">学生查看</option>
   <option value="2">教师查看</option>
   <option value="3">禁止查看</option>

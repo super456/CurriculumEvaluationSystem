@@ -131,7 +131,7 @@
                                          共<%=totalPage %>页 第<%=pageNo %>页 
                <a href="admin/student/showStuInfo.jsp?pageNo=1">首页</a> 
                <a href="admin/student/showStuInfo.jsp?pageNo=<%=pageNo-1 %>">上一页</a> 
-               <a href="admin/student/showStuInfo.jsp?pageNo=<%=pageNo+1 %>">下一页</a> 
+               <a href="admin/student/showStuInfo.jsp?pageNo=<%=pageNo+1 %>" >下一页</a> 
                <a href="admin/student/showStuInfo.jsp?pageNo=<%=totalPage %>">末页</a>
         </center>
 	</body>
