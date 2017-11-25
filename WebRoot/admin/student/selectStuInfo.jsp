@@ -85,37 +85,17 @@
 	</center>
 
 		<table class="table table-striped table-bordered table-hover table-condensed" >
-			<tr align="center">
-			    <td>
-					序号
-				</td>
-				<td>
-					学生编号
-				</td>
-				<td>
-					姓名
-				</td>
-				<td>
-					性别
-				</td>
-				<td>
-					年级
-				</td>
-				<td>
-					院系专业及班级
-				</td>
-				<td>
-					电话
-				</td>
-				<td>
-					备注
-				</td>
-				<td>
-				    是否限制登录
-				</td>
-				<td>
-					操作
-				</td>
+			<tr>
+			    <th>序号</th>
+				<th>学生编号</th>
+				<th>姓名</th>
+				<th>性别</th>
+				<th>年级</th>
+				<th>院系专业及班级</th>
+				<th>电话</th>
+				<th>备注</th>
+				<th>是否限制登录</th>
+				<th>操作</th>
 			</tr>
 			
 			<%

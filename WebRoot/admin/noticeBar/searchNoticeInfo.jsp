@@ -18,6 +18,9 @@ int noticeBarLimit = noticeBean.getNoticeBarInfoLimit();
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
+	<link rel="stylesheet" type="text/css" href="publicStyle/css/bootstrap.css">
+	
+	
 <style type="text/css">
 body{
   margin:0px;
@@ -119,20 +122,20 @@ button:hover {
   <div class="wrapper">
   <div class="container">
  <center>
-  <h2 style="color:cyan">&nbsp;查 看 通 告 栏 详 细 信 息</h2>
+  <h2>&nbsp;查 看 通 告 栏 详 细 信 息</h2>
   <form action="searchByNoticeNum" method="post" name=form class="form">
   <table border=0 background="#ffffff">
-  <tr><td>标题: </td>  
+  <tr><th>标题: </th>  
   <td><input type="text" value=<%=noticeBean.getTitle() %> readonly /></td></tr>
-  <tr><td>发布时间: </td>  
+  <tr><th>发布时间: </th>  
   <td><input type="text" value=<%=noticeBean.getReleaseTime() %> readonly /></td></tr>
-  <tr><td>作者:</td>       
+  <tr><th>作者:</th>       
   <td><input type="text" value=<%=noticeBean.getAuthor() %> readonly /></td></tr>
-  <tr><td>内容:</td>
+  <tr><th>内容:</th>
   <td><textArea rows=8 cols=25 
   style="background-color: rgba(255, 255, 255, 0.2);border-radius:3px;font-size: 18px;color: white;" readonly
    ><%=noticeBean.getContent() %></textArea></td></tr>   
-  <tr><td>查看限制:</td>       
+  <tr><th>查看限制:</th>       
   <td><select name="noticeBarLimit" id="noticeBarLimit" disabled>
   <option value="0">学生,教师查看</option>
   <option value="1">学生查看</option>

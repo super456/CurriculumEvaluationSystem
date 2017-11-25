@@ -129,24 +129,12 @@
 		</center>
 		<table class="table table-striped table-bordered table-hover table-condensed">
 			<tr>
-				<th>
-					课程班级学生信息编号
-				</th>
-				<th>
-					课程编号
-				</th>
-				<th>
-					课程名称
-				</th>
-				<th>
-					学生编号
-				</th>
-				<th>
-					是否评教
-				</th>
-				<th>
-					操作
-				</th>
+				<th>课程班级学生信息编号</th>
+				<th>课程编号</th>
+				<th>课程名称</th>
+				<th>学生编号</th>
+				<th>是否评教</th>
+				<th>操作</th>
 			</tr>
 			<%
 			    String sql;

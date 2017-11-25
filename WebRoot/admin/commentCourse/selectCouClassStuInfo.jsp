@@ -122,7 +122,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</form>
 		</center>  
 <table class="table table-striped table-bordered table-hover table-condensed">
-<tr align="center">
+<tr>
   <th>序号</th>
   <th>课程编号</th>
   <th>学生编号</th>

@@ -71,22 +71,12 @@
 
 
 			<table class="table table-striped table-bordered table-hover table-condensed">
-				<tr align="center">
-				    <th>
-				                 评教课程编号
-				    </th>
-					<th>
-						课程编号
-					</th>
-					<th>
-						课程名称
-					</th>
-					<th>
-						上课时间
-					</th>
-					<th>
-						评教留言
-					</th>
+				<tr>
+				    <th>评教课程编号 </th>
+					<th>课程编号</th>
+					<th>课程名称</th>
+					<th>上课时间</th>
+					<th>评教留言</th>
 				</tr>
 				<%
 

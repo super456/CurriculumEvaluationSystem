@@ -12,9 +12,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
+	<link rel="stylesheet" type="text/css" href="publicStyle/css/bootstrap.css">
+	
 	<style type="text/css">
 body{
 	margin:0;
@@ -108,15 +107,15 @@ form button:hover {
   <h2>&nbsp;更 新 管 理 员 信 息</h2>
   <form action="updateAdmin?tableName=admin/adminInfo/showAdminInfo.jsp" method="post" name=form class="form">
   <table border=0 background="#ffffff">
-  <tr><td>管理员编号: </td>  
+  <tr><th>管理员编号：</th>  
   <td><input type="text" name="adminNum" value=<%= request.getAttribute("adminNum") %> readonly /></td></tr>
-  <tr><td>姓名:</td>       
+  <tr><th>姓名：</th>       
   <td><input type="text" name="adminName" value=<%= request.getAttribute("adminName") %> /></td></tr> 
-  <tr><td>联系电话:</td>       
+  <tr><th>联系电话：</th>       
   <td><input type="text" name="adminPhone" value=<%= request.getAttribute("adminPhone") %> /></td></tr> 
-  <tr><td>权限等级:</td>       
+  <tr><th>权限等级：</th>       
   <td><input type="text" name="adminLimit" value=<%= request.getAttribute("adminLimit") %> readonly /></td></tr>
-  <tr><td>备注:</td>
+  <tr><th>备注：</th>
   <td><input type="text" name="adminRemarks" value=<%= request.getAttribute("adminRemarks") %> /></td></tr> 
   <tr><td>&nbsp;&nbsp;<button type="submit" >修改</button></td> 
   <td>&nbsp;&nbsp;&nbsp;&nbsp;<button type="reset">重置</button></td></tr> 

@@ -23,13 +23,8 @@ int noticeBarLimit = noticeBean.getNoticeBarInfoLimit();
 	
 <style type="text/css">
 body{
-<<<<<<< HEAD
   margin:0px;
   padding:0px;
-=======
-	margin:0;
-	padding:0;
->>>>>>> e2f618422c8ce18d065193776fa58eabace237dd
 }
 .wrapper {
   background: #50a3a2;
@@ -132,15 +127,15 @@ form button:hover {
   <h2>&nbsp;修 改 通 告 栏 信 息</h2>
   <form action="updateNotice?noticeBarInfoNum=<%=noticeBean.getNoticeBarInfoNum() %> " method="post" name=form class="form">
   <table border=0 background="#ffffff">
-  <tr><th>标题: </th>  
+  <tr><th>标题：</th>  
   <td><input type="text" name="title" value=<%=noticeBean.getTitle() %> /></td></tr>
-  <tr><th>作者:</th>       
+  <tr><th>作者：</th>       
   <td><input type="text" name="author" value=<%=noticeBean.getAuthor() %> /></td></tr>
-  <tr><th>内容:</th>
+  <tr><th>内容：</th>
   <td><textArea name="content" rows=8 cols=25 
   style="background-color: rgba(255, 255, 255, 0.2);border-radius:3px;font-size: 18px;color: white;margin-bottom:20px;"
    ><%=noticeBean.getContent() %></textArea></td></tr>   
-  <tr><th>查看限制:</th>       
+  <tr><th>查看限制：</th>       
   <td><select name="noticeBarLimit" id="noticeBarLimit" >
   <option value="0">学生，教师查看</option>
   <option value="1">学生查看</option>

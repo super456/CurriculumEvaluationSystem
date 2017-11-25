@@ -17,20 +17,8 @@
 		<meta http-equiv="expires" content="0">
 		<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 		<meta http-equiv="description" content="This is my page">
+	<link rel="stylesheet" type="text/css" href="publicStyle/css/bootstrap.css">
 
-		<style type="text/css">
-a {
-	list-style-type: none;
-	padding: 0px;
-	margin: 0px;
-	color: #53e3a6;
-	text-decoration: none;
-}
-
-a:hover {
-	color: cyan;
-}
-</style>
 	</head>
 
 	<body style="background-color: #FFF;">
@@ -48,7 +36,7 @@ a:hover {
 		<%
 			}
 		%>
-		<center>
+		<center><br/>
 			<form action="selectByTeaPraise" method="post" name=form>
 
 				<select name="couTerm">
@@ -70,29 +58,15 @@ a:hover {
 			</form>
 
 
-			<table border=1 bgcolor="#ffffff" width=80%>
-				<tr align="center">
-					<td>
-						教师好评榜编号
-					</td>
-					<td>
-						课程编号
-					</td>
-					<td>
-						课程名称
-					</td>
-					<td>
-						教师编号
-					</td>
-					<td>
-						教师姓名
-					</td>
-					<td>
-					           开课单位
-					</td>
-					<td>
-						总平均分数
-					</td>
+			<table class="table table-striped table-bordered table-hover table-condensed">
+				<tr>
+					<th>教师好评榜编号</th>
+					<th>课程编号</th>
+					<th>课程名称</th>
+					<th>教师编号</th>
+					<th>教师姓名</th>
+					<th>开课单位</th>
+					<th>总平均分数</th>
 				</tr>
 				<%
 				    

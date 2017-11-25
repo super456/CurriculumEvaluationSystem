@@ -94,37 +94,17 @@
 		</center>
 
 		<table class="table table-striped table-bordered table-hover table-condensed">
-			<tr align="center">
-			    <th>
-					序号
-				</th>
-				<th>
-					教师编号
-				</th>
-				<th>
-					姓名
-				</th>
-				<th>
-					性别
-				</th>
-				<th>
-					出生日期
-				</th>
-				<th>
-					所在单位
-				</th>
-				<th>
-					联系电话
-				</th>
-				<th>
-					简介
-				</th>
-				<th>
-				  是否限制登录
-				</th>
-				<th>
-					操作
-				</th>
+			<tr>
+			    <th>序号</th>
+				<th>教师编号</th>
+				<th>姓名</th>
+				<th>性别</th>
+				<th>出生日期</th>
+				<th>所在单位</th>
+				<th>联系电话</th>
+				<th>简介</th>
+				<th>是否限制登录</th>
+				<th>操作</th>
 			</tr>
 
 			<%

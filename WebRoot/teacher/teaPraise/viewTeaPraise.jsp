@@ -77,27 +77,13 @@
 
 			<table class="table table-striped table-bordered table-hover table-condensed">
 				<tr>
-					<th>
-						教师好评榜编号
-					</th>
-					<th>
-						课程编号
-					</th>
-					<th>
-						课程名称
-					</th>
-					<th>
-						教师编号
-					</th>
-					<th>
-						教师姓名
-					</th>
-					<th>
-					           开课单位
-					</th>
-					<th>
-						总平均分数
-					</th>
+					<th>教师好评榜编号</th>
+					<th>课程编号</th>
+					<th>课程名称</th>
+					<th>教师编号</th>
+					<th>教师姓名</th>
+					<th>开课单位</th>
+					<th>总平均分数</th>
 				</tr>
 				<%
 

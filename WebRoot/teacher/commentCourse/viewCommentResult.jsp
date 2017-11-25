@@ -85,24 +85,12 @@ a:hover {
 
 			<table class="table table-striped table-bordered table-hover table-condensed">
 				<tr>
-					<th>
-						课程编号
-					</th>
-					<th>
-						课程名称
-					</th>
-					<th>
-						任课老师
-					</th>
-					<th>
-						上课时间
-					</th>
-					<th>
-						所有总平均分数
-					</th>
-					<th>
-					           操作
-					</th>
+					<th>课程编号</th>
+					<th>课程名称</th>
+					<th>任课老师</th>
+					<th>上课时间</th>
+					<th>所有总平均分数</th>
+					<th> 操作</th>
 				</tr>
 				<%
 
