@@ -78,7 +78,7 @@
 	<option value="adminNum" selected>管理员编号</option>
 	<option value="adminName">姓名</option>
 	</select>
-	<input type="text" name="userInfo" style="width:160px;height:25px"  class="input-medium search-query"/>
+	<input type="text" name="userInfo" style="width:160px;height:25px"  class="input-medium search-query" placeholder="请输入全称" />
 	<input type="submit" value="搜索" class="btn btn-success"/>
 	</form>
 	</center>

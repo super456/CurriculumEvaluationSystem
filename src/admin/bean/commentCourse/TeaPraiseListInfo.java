@@ -3,7 +3,10 @@ package admin.bean.commentCourse;
 public class TeaPraiseListInfo {
 
 	int teaPraiseListNum,couNum,teaNum,couTerm;
-	String couName,teaName,couFrom;
+	String couName,teaName,couFrom,couTermMess;
+	public String getCouTermMess() {
+		return couTermMess;
+	}
 	public String getCouFrom() {
 		return couFrom;
 	}
@@ -33,6 +36,10 @@ public class TeaPraiseListInfo {
 		return teaNum;
 	}
 	public void setTeaNum(int teaNum) {
+		if(couTerm == 171801)
+			couTermMess = "2017-2018第一学期";
+		else if(couTerm == 171802)
+			couTermMess = "2017-2018第二学期";
 		this.teaNum = teaNum;
 	}
 	public int getCouTerm() {

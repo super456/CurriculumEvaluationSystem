@@ -51,7 +51,7 @@ public class SearchByStuNum extends HttpServlet{
 			couTerm = Integer.parseInt(term);
 			tableName = tableName+"?couTerm="+couTerm;
 		}
-		String condition = "select * from stuInfo where stuNum=? order by stuForm,stuGrade,stuNum";
+		String condition = "select * from stuInfo where stuNum=? order by stuFrom,stuGrade,stuNum";
 		try {
 			con = DriverManager.getConnection(uri, user, password);
 			pre = con.prepareStatement(condition);

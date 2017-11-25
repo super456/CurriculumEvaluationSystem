@@ -37,7 +37,7 @@
     if(pageNo > totalPage) pageNo = totalPage;
      
     int startPos = (pageNo-1) * pageSize; //每页开始的帖子
-    String sql = "select top "+pageSize+" * from adminInfo where "+select+" = '"+userInfo+"' and adminNum not in (select top "+startPos+" adminNum from adminInfo order by adminNum) order by adminNum";
+    String sql = "select top "+pageSize+" * from adminInfo where "+select+" like '%"+userInfo+"%' and adminNum not in (select top "+startPos+" adminNum from adminInfo order by adminNum) order by adminNum";
 %>
 
 <html>
@@ -81,7 +81,7 @@
 	<option value="adminNum" selected>管理员编号</option>
 	<option value="adminName">姓名</option>
 	</select>
-	<input type="text" name="userInfo" style="width:160px;height:25px" class="input-medium search-query"/>
+	<input type="text" name="userInfo" style="width:160px;height:25px" class="input-medium search-query" placeholder="请输入全称" />
 	<input type="submit" value="搜索" class="btn btn-success" />
 	</form>
 	</center>

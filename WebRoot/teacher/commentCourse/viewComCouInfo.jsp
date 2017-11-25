@@ -37,71 +37,44 @@
 		<%
 			}
 		%>
-
-		<table border=1 bgcolor="#ffffff" width=130%>
+		<br/>
+		<table class="table table-striped table-bordered table-hover table-condensed">
 			<tr align="center">
-				<td>
-					评教课程编号
-				</td>
-				<td>
-					课程编号
-				</td>
-				<td>
-					学生编号
-				</td>
-				<td>
-					评教时间
-				</td>
-				<td>
-					first分数
-				</td>
-				<td>
-					second分数
-				</td>
-				<td>
-					third分数
-				</td>
-				<td>
-					fourth分数
-				</td>
-				<td>
-					fifth分数
-				</td>
-				<td>
-					sixth分数
-				</td>
-				<td>
-					seventh分数
-				</td>
-				<td>
-					eighth分数
-				</td>
-				<td>
-					ninth分数
-				</td>
-				<td>
-					tenth分数
-				</td>
-				<td>
-					总分数
-				</td>
-				<td>
-					平均分数
-				</td>
+				<th>序号</th>
+				<th>课程编号</th>
+				<th>学生编号</th>
+				<th>开课学期</th>
+				<th>评教时间</th>
+				<th>first分数</th>
+				<th>second分数</th>
+				<th>third分数</th>
+				<th>fourth分数</th>
+				<th>fifth分数</th>
+				<th>sixth分数</th>
+				<th>seventh分数</th>
+				<th>eighth分数</th>
+				<th>ninth分数</th>
+				<th>tenth分数</th>
+				<th>总分数</th>
+				<th>平均分数</th>
 			</tr>
 			<jsp:useBean id="commentCouBean" class="admin.bean.commentCourse.CommentCouInfo" />
 			<jsp:useBean id="sqlBean" class="admin.bean.commentCourse.CommentCouSqlBean" />
 			<%
+			    int count=1;
 			    String couNum = request.getParameter("couNum");
-                String sql = "select * from commentCouInfo where couNum = '"+couNum+"'";
+			    String couTerm = request.getParameter("couTerm");
+                String sql = "select * from commentCouInfo inner join courseInfo on commentCouInfo.couNum=courseInfo.couNum where courseInfo.couNum = '"+couNum+"' and couTerm='"+couTerm+"'";
+                sqlBean.startCon();
 				java.util.List list = sqlBean.showAllCommentCou(sql);
 				for (java.util.Iterator it = list.iterator(); it.hasNext();) {
 					commentCouBean = (admin.bean.commentCourse.CommentCouInfo) it.next();
 			%>
 			<tr>
-			    <td><%=commentCouBean.getComCouNum() %></td>
+			    <td><%=count %></td>
 				<td><%=commentCouBean.getCouNum() %></td>
 				<td><%=commentCouBean.getStuNum() %></td>
+				<td><%=commentCouBean.getCouTermMess() %></td>
 				<td><%=commentCouBean.getComDate() %></td>
 				<td><%=commentCouBean.getComFirstScore() %></td>
 				<td><%=commentCouBean.getComSecondScore() %></td>
@@ -117,11 +90,17 @@
 				<td><%=commentCouBean.getComAvgScore() %></td>
 			</tr>
 			<%
+				count++;
 				}
 			%>
 
 
 		</table>
-
+		<center>
+        <form action="backToTeaPraise?couTerm=<%=couTerm %>&tableName=teacher/commentCourse/viewCommentResult.jsp" method="post">
+	    <input type="submit" value="返回" class="btn btn-success"  />
+		</form>
+        </center>
+		
 	</body>
 </html>

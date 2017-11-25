@@ -113,7 +113,11 @@ form button:hover {
   <tr><th>课程名称：</th>
   <td><input type="text" name="couName" /></td></tr>
   <tr><th>开课学期：</th>       
-  <td><input type="text" name="couTerm" /></td></tr> 
+  <td>
+  <select name="couTerm">
+  <option value="171802" selected>2017-2018第二学期</option>
+  <option value="171801">2017-2018第一学期</option>
+  </select></td></tr> 
   <tr><th>开课单位：</th>       
   <td><input type="text" name="couFrom" /></td></tr>
   <tr><th>上课时间：</th>       

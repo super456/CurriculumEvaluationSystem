@@ -121,7 +121,7 @@ a:hover {
 					<td><%=bean.getCouTime() %></td>
 					<td><%=bean.getTheAllAvgScore() %></td>
 					<td>
-					<a href="teacher/commentCourse/viewComCouInfo.jsp?couNum=<%=bean.getCouNum() %>" class="btn btn-info" >查看详情</a>
+					<a href="teacher/commentCourse/viewComCouInfo.jsp?couNum=<%=bean.getCouNum() %>&couTerm=<%=cT %> " class="btn btn-info" >查看详情</a>
 					</td>
 				</tr>
 				<%

@@ -60,7 +60,7 @@ public class UpdateStuServlet extends HttpServlet {
 
 		PrintWriter out = response.getWriter();
 		String sql = "update userLogin set userName=? where accountNum="+stuNum;
-		String condition = "update stuInfo set stuName=?,stuSex=?,stuGrade=?,stuForm=?,stuPhone=?,stuRemarks=? where stuNum="+stuNum;
+		String condition = "update stuInfo set stuName=?,stuSex=?,stuGrade=?,stuFrom=?,stuPhone=?,stuRemarks=? where stuNum="+stuNum;
 		try {
 			con = DriverManager.getConnection(uri, user, password);
 			pre = con.prepareStatement(condition);

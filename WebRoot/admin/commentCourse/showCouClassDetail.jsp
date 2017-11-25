@@ -79,7 +79,7 @@
 			    <td><%=count %></td>
 				<td><%=commentCouBean.getStuNum() %></td>
 				<td><%=commentCouBean.getStuName() %></td>
-				<td><%=commentCouBean.getCouTerm() %></td>
+				<td><%=commentCouBean.getCouTermMess() %></td>
 				<td><%=commentCouBean.getComDate() %></td>
 				<td><%=commentCouBean.getComFirstScore() %></td>
 				<td><%=commentCouBean.getComSecondScore() %></td>

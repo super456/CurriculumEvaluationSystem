@@ -3,7 +3,7 @@ package admin.bean.course;
 public class CourseInfo {
 
 	int couNum,teaNum,couTerm,couCredit;
-	String couName,couFrom,couTime,couPlace,couRemarks,teaName;
+	String couName,couFrom,couTime,couPlace,couRemarks,teaName,couTermMess;
 	public String getTeaName() {
 		return teaName;
 	}
@@ -26,7 +26,14 @@ public class CourseInfo {
 		return couTerm;
 	}
 	public void setCouTerm(int couTerm) {
+		if(couTerm == 171801)
+			couTermMess = "2017-2018第一学期";
+		else if(couTerm == 171802)
+			couTermMess = "2017-2018第二学期";
 		this.couTerm = couTerm;
+	}
+	public String getCouTermMess() {
+		return couTermMess;
 	}
 	public int getCouCredit() {
 		return couCredit;

@@ -105,7 +105,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<option value="couName">课程名称</option>
 				<option value="couFrom">课程单位</option>			
 				</select>
-				<input type="text" name="userInfo" style="width: 160px; height: 25px" class="input-medium search-query" placeholder="请输入全称" required/>
+				<input type="text" name="userInfo" style="width: 160px; height: 25px" class="input-medium search-query" placeholder="请输入全称" />
 				<input type="submit" value="搜索" class="btn btn-success" />
 			</form>
 		</center>
@@ -138,7 +138,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<td><%=couBean.getTeaNum() %></td>
 				<td><%=couBean.getTeaName() %></td>
 				<td><%=couBean.getCouName() %></td>
-				<td><%=couBean.getCouTerm() %></td>
+				<td><%=couBean.getCouTermMess() %></td>
 				<td><%=couBean.getCouFrom() %></td>
 				<td><%=couBean.getCouTime() %></td>
 				<td><%=couBean.getCouPlace() %></td>

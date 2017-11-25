@@ -41,6 +41,8 @@ public class BackToTeaPraise extends HttpServlet{
 			tableName = "admin/commentCourse/showTeaPraiseListInfo.jsp?couTerm=<%=couTerm %>";
 		else if(tableName.equals("admin/commentCourse/showCouClassStuInfo.jsp"))
 			tableName = "admin/commentCourse/showCouClassStuInfo.jsp?couTerm=<%=couTerm %>";
+		else if(tableName.equals("teacher/commentCourse/viewCommentResult.jsp"))
+			tableName = "teacher/commentCourse/viewCommentResult.jsp?couTerm=<%=couTerm %>";
 		request.getRequestDispatcher(tableName).forward(request, response);
 	}
 }

@@ -40,7 +40,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     int startPos = (pageNo-1) * pageSize; //每页开始的帖子
     String sql = "select top "+pageSize+" couNum,teaInfo.teaNum,teaName,couName,couTerm,couFrom,couTime,couPlace," +
 				"couCredit,couRemarks from courseInfo inner join teaInfo on courseInfo.teaNum=teaInfo.teaNum " +
-				"where "+select+" = '"+userInfo+"' and couTerm= "+couTerm+" and couNum not in " +
+				"where "+select+" like '%"+userInfo+"%' and couTerm= "+couTerm+" and couNum not in " +
 				"(select top "+startPos+" couNum from courseInfo inner join teaInfo on courseInfo.teaNum=teaInfo.teaNum " +
 				"where couTerm="+couTerm+" order by couFrom,teaInfo.teaNum) order by couFrom,teaInfo.teaNum";
 %>
@@ -110,7 +110,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<option value="couName">课程名称</option>
 				<option value="couFrom">课程单位</option>			
 				</select>
-				<input type="text" name="userInfo" style="width: 160px; height: 25px" class="input-medium search-query" placeholder="请输入全称" required/>
+				<input type="text" name="userInfo" style="width: 160px; height: 25px" class="input-medium search-query" placeholder="请输入全称" />
 				<input type="submit" value="搜索" class="btn btn-success" />
 			</form>
 		</center>
@@ -143,7 +143,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<td><%=couBean.getTeaNum() %></td>
 				<td><%=couBean.getTeaName() %></td>
 				<td><%=couBean.getCouName() %></td>
-				<td><%=couBean.getCouTerm() %></td>
+				<td><%=couBean.getCouTermMess() %></td>
 				<td><%=couBean.getCouFrom() %></td>
 				<td><%=couBean.getCouTime() %></td>
 				<td><%=couBean.getCouPlace() %></td>

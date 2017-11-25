@@ -31,7 +31,7 @@
          pageNo = 1;
      }
     con.startCon();
-    int rowCount = con.getCount("select count(*) from commentCouInfo inner join courseInfo on commentCouInfo.couNum=courseInfo.couNum where "+select+" = '"+userInfo+"' and couTerm="+couTerm); //获取总行数
+    int rowCount = con.getCount("select count(*) from commentCouInfo inner join courseInfo on commentCouInfo.couNum=courseInfo.couNum where "+select+" like '%"+userInfo+"%' and couTerm="+couTerm); //获取总行数
     int totalPage = 0; //总页数
     totalPage = (rowCount + pageSize - 1)/pageSize; //计算总页数
      
@@ -41,7 +41,7 @@
     String sql = "select top "+pageSize+" * " +
 	    		"from commentCouInfo inner join courseInfo on commentCouInfo.couNum=courseInfo.couNum where couTerm="+couTerm+" and comCouNum not in " +
 	    		"(select top "+startPos+" comCouNum from commentCouInfo inner join courseInfo on commentCouInfo.couNum=courseInfo.couNum where couTerm="+couTerm+" ) "+
-	    		" and "+select+" = '"+userInfo+"'";
+	    		" and "+select+" like '%"+userInfo+"%'";
 %>
 
 <html>
@@ -113,7 +113,7 @@
 					</option>
 				</select>
 				<input type="text" name="userInfo"
-					style="width: 160px; height: 25px" class="input-medium search-query" placeholder="请输入全称" required />
+					style="width: 160px; height: 25px" class="input-medium search-query" placeholder="请输入全称"  />
 				<input type="submit" value="搜索" class="btn btn-success"/>
 			</form>
 		</center>
@@ -152,7 +152,7 @@
 			    <td><%=count %></td>
 				<td><%=commentCouBean.getCouNum() %></td>
 				<td><%=commentCouBean.getStuNum() %></td>
-				<td><%=commentCouBean.getCouTerm() %></td>
+				<td><%=commentCouBean.getCouTermMess() %></td>
 				<td><%=commentCouBean.getComDate() %></td>
 				<td><%=commentCouBean.getComFirstScore() %></td>
 				<td><%=commentCouBean.getComSecondScore() %></td>
