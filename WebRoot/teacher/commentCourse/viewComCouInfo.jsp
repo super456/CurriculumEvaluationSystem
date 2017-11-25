@@ -37,57 +37,25 @@
 		<%
 			}
 		%>
-
-		<table border=1 bgcolor="#ffffff" width=130%>
-			<tr align="center">
-				<td>
-					评教课程编号
-				</td>
-				<td>
-					课程编号
-				</td>
-				<td>
-					学生编号
-				</td>
-				<td>
-					评教时间
-				</td>
-				<td>
-					first分数
-				</td>
-				<td>
-					second分数
-				</td>
-				<td>
-					third分数
-				</td>
-				<td>
-					fourth分数
-				</td>
-				<td>
-					fifth分数
-				</td>
-				<td>
-					sixth分数
-				</td>
-				<td>
-					seventh分数
-				</td>
-				<td>
-					eighth分数
-				</td>
-				<td>
-					ninth分数
-				</td>
-				<td>
-					tenth分数
-				</td>
-				<td>
-					总分数
-				</td>
-				<td>
-					平均分数
-				</td>
+<br/>
+		<table class="table table-striped table-bordered table-hover table-condensed">
+			<tr>
+				<th>评教课程编号</th>
+				<th>课程编号</th>
+				<th>学生编号</th>
+				<th>评教时间</th>
+				<th>first分数</th>
+				<th>second分数</th>
+				<th>third分数</th>
+				<th>fourth分数</th>
+				<th>fifth分数</th>
+				<th>sixth分数</th>
+				<th>seventh分数</th>
+				<th>eighth分数</th>
+				<th>ninth分数</th>
+				<th>tenth分数</th>
+				<th>总分数</th>
+				<th>平均分数</th>
 			</tr>
 			<jsp:useBean id="commentCouBean" class="admin.bean.commentCourse.CommentCouInfo" />
 			<jsp:useBean id="sqlBean" class="admin.bean.commentCourse.CommentCouSqlBean" />
