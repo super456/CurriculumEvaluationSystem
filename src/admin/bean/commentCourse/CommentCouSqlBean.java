@@ -59,7 +59,7 @@ public class CommentCouSqlBean {
 				list.add(bean);
 			}
 		} catch (Exception e) {
-			//e.printStackTrace();
+			e.printStackTrace();
 		}
 		finally{
 			try {
@@ -103,7 +103,7 @@ public class CommentCouSqlBean {
 				list.add(bean);
 			}
 		} catch (Exception e) {
-			//e.printStackTrace();
+			e.printStackTrace();
 		}
 		finally{
 			try {
