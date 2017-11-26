@@ -72,7 +72,7 @@
 	<option value="stuNum">学号</option>
 	<option value="stuName">姓名</option>
 	<option value="stuGrade">年级</option>
-	<option value="stuForm">院系专业</option>
+	<option value="stuFrom">院系专业</option>
 	</select>
 	<input type="text" name="userInfo" style="width:160px;height:25px"  class="input-medium search-query" placeholder="请输入全称" />
 	<input type="submit" value="搜索" class="btn btn-success"/>
