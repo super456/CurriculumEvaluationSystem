@@ -39,28 +39,47 @@
 		<center><br/>
 			<form action="selectByTeaPraise" method="post" name=form>
 
+				<%
+					String cT = request.getParameter("couTerm");//获取查询的学期，默认为171802，即2017-2018第二学期
+					int couTerm = Integer.parseInt(cT);
+					if (couTerm == 171802) {
+				%>
 				<select name="couTerm">
-					<option value="171802" >
+					<option value="171802" selected>
 						2017-2018第二学期
 					</option>
 					<option value="171801">
 						2017-2018第一学期
 					</option>
+					</select>
+				<%
+					} else {
+				%>
+				<select name="couTerm">
+					<option value="171802">
+						2017-2018第二学期
+					</option>
+					<option value="171801" selected>
+						2017-2018第一学期
+					</option>
 				</select>
+				<%
+					}
+				%>
 				
 				<select name="select">
 				<option value="teaName">教师名称</option>
 				<option value="couName">课程名称</option>
 				<option value="couFrom">系部名称</option>
 				</select>
-				<input type="text" name="userInfo" />
-				<input type="submit" value="搜索" />
+				<input type="text" name="userInfo" style="width: 160px; height: 25px" class="input-medium search-query" placeholder="请输入全称" />
+				<input type="submit" value="搜索" class="btn btn-success" />
 			</form>
 
 
 			<table class="table table-striped table-bordered table-hover table-condensed">
 				<tr>
-					<th>教师好评榜编号</th>
+					<th>序号</th>
 					<th>课程编号</th>
 					<th>课程名称</th>
 					<th>教师编号</th>
@@ -69,13 +88,13 @@
 					<th>总平均分数</th>
 				</tr>
 				<%
-				    
+				    int count = 1;
 					java.util.List list = (List)request.getAttribute("list");
 					for (java.util.Iterator it = list.iterator(); it.hasNext();) {
 						teaPraiseBean = (teacher.bean.TeaPraiseListInfo) it.next();
 				%>
 				<tr>
-					<td><%=teaPraiseBean.getTeaPraiseListNum() %></td>
+					<td><%=count %></td>
 					<td><%=teaPraiseBean.getCouNum() %></td>
 					<td><%=teaPraiseBean.getCouName() %></td>
 					<td><%=teaPraiseBean.getTeaNum() %></td>
@@ -84,6 +103,7 @@
 					<td><%=teaPraiseBean.getTheAllAvgScore() %></td>
 				</tr>
 				<%
+				    count++;
 					}
 				%>
 

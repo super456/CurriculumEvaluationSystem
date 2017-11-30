@@ -59,7 +59,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						课程单位
 					</option>
 				</select>
-				<input type="text" name="searchInfo" style="width: 160px; height: 25px" class="input-medium search-query" placeholder="请输入全称" required/>
+				<input type="text" name="searchInfo" style="width: 160px; height: 25px" class="input-medium search-query" placeholder="请输入全称" />
 				<input type="submit" value="搜索" class="btn btn-info"/>
 			</form>
 		</center>

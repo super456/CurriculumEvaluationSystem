@@ -48,7 +48,7 @@ public class SelectByTeaPraise extends HttpServlet{
 		List list = teaPraise.viewAllTeaPraise(condition);
 		
 		request.setAttribute("list", list);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("teacher/teaPraise/selectTeaPraise.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("teacher/teaPraise/selectTeaPraise.jsp?couTerm=<%=couTerm %>");
 		dispatcher.forward(request, response);
 	}
 }

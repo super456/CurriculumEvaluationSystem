@@ -37,7 +37,7 @@
 			}
 		%>
 		<center><br/>
-			<form action="selectByTeaPraise" method="post"name=form>
+			<form action="selectByTeaPraise" method="post" name=form>
 				<%
 					String cT = request.getParameter("couTerm");//获取查询的学期，默认为171802，即2017-2018第二学期
 					int couTerm = Integer.parseInt(cT);
@@ -70,14 +70,14 @@
 				<option value="couName">课程名称</option>
 				<option value="couFrom">系部名称</option>
 				</select>
-				<input type="text" name="userInfo" style="width: 160px; height: 25px" class="input-medium search-query" placeholder="请输入全称" required/>
+				<input type="text" name="userInfo" style="width: 160px; height: 25px" class="input-medium search-query" placeholder="请输入全称" />
 				<input type="submit" value="搜索" class="btn btn-success" />
 			</form>
 
 
 			<table class="table table-striped table-bordered table-hover table-condensed">
 				<tr>
-					<th>教师好评榜编号</th>
+					<th>序号</th>
 					<th>课程编号</th>
 					<th>课程名称</th>
 					<th>教师编号</th>
@@ -86,7 +86,7 @@
 					<th>总平均分数</th>
 				</tr>
 				<%
-
+				    int count = 1;
 					String sql = "select teaPraiseListNum,teaPraiseListInfo.couNum,couName,"
 							+ "teaPraiseListInfo.teaNum,teaName,couFrom,theAllAvgScore from teaPraiseListInfo "
 							+ "inner join courseInfo on teaPraiseListInfo.couNum=courseInfo.couNum inner join "
@@ -98,7 +98,7 @@
 						teaPraiseBean = (teacher.bean.TeaPraiseListInfo) it.next();
 				%>
 				<tr>
-					<td><%=teaPraiseBean.getTeaPraiseListNum() %></td>
+					<td><%=count %></td>
 					<td><%=teaPraiseBean.getCouNum() %></td>
 					<td><%=teaPraiseBean.getCouName() %></td>
 					<td><%=teaPraiseBean.getTeaNum() %></td>
@@ -107,6 +107,7 @@
 					<td><%=teaPraiseBean.getTheAllAvgScore() %></td>
 				</tr>
 				<%
+				    count++;
 					}
 				%>
 

@@ -94,7 +94,7 @@ form button:hover {
 		    String condition = "select adminLimit from adminInfo where adminNum = "+accountNum;
 		    sqlBean.startCon();
 		    int adminLimit = sqlBean.searchAdminNum(condition);
-		    if(adminLimit == 1){ %>
+		    if(adminLimit != 5){ %>
 		    <script>
 	    alert(" 权限不够，不能进入!");
 		top.location.href="admin";
