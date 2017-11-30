@@ -38,7 +38,6 @@ body{
 .container {
   max-width: 600px;
   margin: 0 auto;
-  height: 550px;
   text-align: center;
 }
 form {
@@ -63,7 +62,7 @@ form input {
   color: white;
   font-weight: 300;
 }
-button {
+form button {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
@@ -78,11 +77,13 @@ button {
   font-size: 18px;
   -webkit-transition-duration: 0.25s;
           transition-duration: 0.25s;
-  position:absolute;
-  margin-left:-5%;
-  margin-top:400px;
+          margin-top:20px;
+
 }
-button:hover {
+form select{
+	margin-bottom:15px;
+}
+form button:hover {
 	 background-color: rgb(32,178,170);
 	 color:white;
 }
@@ -133,7 +134,7 @@ button:hover {
   <td><input type="text" value=<%=noticeBean.getAuthor() %> readonly /></td></tr>
   <tr><th>内容:</th>
   <td><textArea rows=8 cols=25 
-  style="background-color: rgba(255, 255, 255, 0.2);border-radius:3px;font-size: 18px;color: white;" readonly
+  style="background-color: rgba(255, 255, 255, 0.2);border-radius:3px;font-size: 18px;color: white;margin-bottom:20px;" readonly
    ><%=noticeBean.getContent() %></textArea></td></tr>   
   <tr><th>查看限制:</th>       
   <td><select name="noticeBarLimit" id="noticeBarLimit" disabled>
@@ -143,7 +144,7 @@ button:hover {
   <option value="3">禁止查看</option>
   </select></td></tr>
   
-  <button type="submit" >返回</button>
+  <tr><td><button type="submit" >返回</button></td></tr>
   </table>
   </form>
   </center>

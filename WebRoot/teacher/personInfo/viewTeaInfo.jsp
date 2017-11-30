@@ -107,7 +107,7 @@ form button:hover {
   <div class="wrapper">
   <div class="container">
  <center>
-  <h2 style="color:gray">个 人 信 息</h2>
+  <h2>个 人 信 息</h2>
   <form action="updateTea?tableName=teacher/personInfo/viewTeaInfo.jsp" method="post" name=form class="form">
   <table border=0 background="#ffffff">
   
@@ -122,7 +122,7 @@ form button:hover {
   <tr><th>教师编号：</th>  
   <td><input type="text" name="teaNum" value=<%=bean.getTeaNum() %>  readonly /></td></tr>
   <tr><th>姓名：</th>       
-  <td><input type="text" name="teaName" value=<%=bean.getTeaName() %> /></td></tr>
+  <td><input type="text" name="teaName" value=<%=bean.getTeaName() %> readonly/></td></tr>
   <tr><th>性别：</th>
   <td>     <select name="teaSex">
   <% 

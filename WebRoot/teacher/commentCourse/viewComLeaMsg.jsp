@@ -37,7 +37,7 @@
 		<%
 			}
 		%>
-		<center>
+		<center><br/>
 			<form action="teacher/commentCourse/viewComLeaMsg.jsp" method="get">
 				<%
 					String cT = request.getParameter("couTerm");//获取查询的学期，默认为171802，即2017-2018第二学期

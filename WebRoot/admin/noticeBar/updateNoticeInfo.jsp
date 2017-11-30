@@ -133,7 +133,7 @@ form button:hover {
   <td><input type="text" name="author" value=<%=noticeBean.getAuthor() %> /></td></tr>
   <tr><th>内容：</th>
   <td><textArea name="content" rows=8 cols=25 
-  style="background-color: rgba(255, 255, 255, 0.2);border-radius:3px;font-size: 18px;color: white;margin-bottom:20px;"
+  style="background-color: rgba(255, 255, 255, 0.2);border-radius:3px;font-size: 18px;color: white;margin-bottom:20px;margin-bottom:20px;"
    ><%=noticeBean.getContent() %></textArea></td></tr>   
   <tr><th>查看限制：</th>       
   <td><select name="noticeBarLimit" id="noticeBarLimit" >
